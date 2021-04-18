@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>supervisor mode | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="内存管理的概念ps: 连续分配 指为用户进程分配的必须是一个连续的内存空间。 单一连续分配 在单一连续分配方式中，内存被分为 系统区 和 用户区 。 系统区通常位于内存的低地址部分，用于存放操作系统相关数据:用户区用于存放用户进程相关数据。 内存中只能有 一道用户程序 ，用户程序独占整个用户区空间。  优点 :  实现简单: 无外部碎片 ; 可以采用覆盖技术扩充内存: 不一定需要采取内存保护（eg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="supervisor mode">
+<meta property="og:url" content="http://example.com/2021/02/01/supervisor-mode/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="内存管理的概念ps: 连续分配 指为用户进程分配的必须是一个连续的内存空间。 单一连续分配 在单一连续分配方式中，内存被分为 系统区 和 用户区 。 系统区通常位于内存的低地址部分，用于存放操作系统相关数据:用户区用于存放用户进程相关数据。 内存中只能有 一道用户程序 ，用户程序独占整个用户区空间。  优点 :  实现简单: 无外部碎片 ; 可以采用覆盖技术扩充内存: 不一定需要采取内存保护（eg">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/table.png">
+<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/speration.png">
+<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/eg1.png">
+<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/eg2.png">
+<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/eg3.png">
+<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/eg4.png">
+<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/eg5.png">
+<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/eg6.png">
+<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/conclusion.png">
+<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/conclusion1.png">
+<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/change.png">
+<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/eg7.png">
+<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/strature.png">
+<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/conclusion2.png">
+<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/PROCESS.png">
+<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/table3.png">
+<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/conclusion3.png">
+<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/part.png">
+<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/proccess.png">
+<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/conclusion4.png">
+<meta property="article:published_time" content="2021-02-01T07:48:53.000Z">
+<meta property="article:modified_time" content="2021-04-18T09:10:37.809Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="system">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/02/01/supervisor-mode/table.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-supervisor-mode" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/02/01/supervisor-mode/" class="article-date">
+  <time class="dt-published" datetime="2021-02-01T07:48:53.000Z" itemprop="datePublished">2021-02-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      supervisor mode
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="内存管理的概念"><a href="#内存管理的概念" class="headerlink" title="内存管理的概念"></a>内存管理的概念</h1><p>ps: <em><strong>连续分配</strong></em> 指为用户进程分配的必须是一个连续的内存空间。</p>
+<h2 id="单一连续分配"><a href="#单一连续分配" class="headerlink" title="单一连续分配"></a>单一连续分配</h2><ul>
+<li>在单一连续分配方式中，内存被分为 <em><strong>系统区</strong></em> 和 <em><strong>用户区</strong></em> 。</li>
+<li>系统区通常位于内存的低地址部分，用于存放操作系统相关数据:用户区用于存放用户进程相关数据。</li>
+<li>内存中只能有 <em><strong>一道用户程序</strong></em> ，用户程序独占整个用户区空间。</li>
+</ul>
+<p><em><strong>优点</strong></em> :</p>
+<ol>
+<li>实现简单: <em><strong>无外部碎片</strong></em> ;</li>
+<li>可以采用覆盖技术扩充内存:</li>
+<li>不一定需要采取内存保护（eg:早期的PC操作系统MS-DOS)。</li>
+</ol>
+<p><em><strong>缺点</strong></em> :</p>
+<ol>
+<li>只能用于单用户、单任务的操作系统中;</li>
+<li>有内部碎片;</li>
+<li>存储器利用率极低。</li>
+</ol>
+<p>ps：分配给某进程的内存区域中，如果有些部分没有用上，就是“内部碎片”</p>
+<h2 id="固定分区分配"><a href="#固定分区分配" class="headerlink" title="固定分区分配"></a>固定分区分配</h2><p>20世纪60年代出现了支持多道程序的系统，为了能在内存中装入多道程序，且这些程序之间又不会相互干扰，于是将整个用户空间划分为 <em><strong>若千个固定大小的分区，在每个分区中只装入一道作业</strong></em> ，这样就形成了最早的、最简单的一种可运行多道程序的内存管理方式。</p>
+<ul>
+<li><p>分区大小相等</p>
+<ol>
+<li>缺乏灵活性;</li>
+<li>但是很适合用于用一台计算机控制多个 <em><strong>相同对象</strong></em> 的场合（比如:钢铁广有n个相同的炼钢炉，就可把内存分为n个大小相等的区域存放n个炼钢炉控制程序)</li>
+</ol>
+</li>
+<li><p>分区大小不等</p>
+<ol>
+<li>增加了灵活性;</li>
+<li>可以满足不同大小的进程需求。根据常在系统中运行的作业大小情况进行划分(比如:划分多个小分区、适量中等分区、少量大分区)</li>
+</ol>
+</li>
+<li><p>操作系统需要建立一个数据结构 &gt;&gt;&gt; <em><strong>分区说明表</strong></em> ，来实现各个分区的分配与回收。每个表项对应一个分区，通常按分区大小排列。每个表项包括对应分区的大小、 <em><strong>起始地址</strong></em> 、 <em><strong>状态</strong></em> （是否已分配）。</p>
+</li>
+<li><p>用数据结构的数组(或链表)即可表示这个表。</p>
+</li>
+<li><p>当某用户程序要装入内存时，由操作系统内核程序根据用户程序大小检索该表，从中找到一个能满足大小的、未分配的分区，将之分配给该程序，然后修改状态为“已分配”。</p>
+</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/table.png" class title="This is an example image"></div>
+
+<p><em><strong>优点</strong></em> :实现简单，无 <em><strong>外部</strong></em> 碎片。<br><em><strong>缺点</strong></em> : </p>
+<ol>
+<li>当用户程序太大时，可能所有的分区都不能满足需求，此时不得不采用覆盖技术来解决，但这又会降低性能;</li>
+<li>会产生 <em><strong>内部</strong></em> 碎片，内存利用率低。</li>
+</ol>
+<h2 id="动态分区分配"><a href="#动态分区分配" class="headerlink" title="动态分区分配"></a>动态分区分配</h2><p><em><strong>动态分区分配</strong></em> 又称为 <em><strong>可变分区分配</strong></em> 。这种分配方式 <em><strong>不会预先划分内存分区</strong></em> ，而是在进程装入内存时，根据进程的大小动态地建立分区，并使分区的大小正好适合进程的需要。因此系统分区的大小和数目是可变的。(eg:假设某计算机内存大小为64MB，系统区8MB，用户区共56 MB.….)</p>
+<p><em><strong>问题:</strong></em> </p>
+<ol>
+<li>系统要用什么样的数据结构记录内存的使用情况?</li>
+<li>当很多个空闲分区都能满足需求时,应该选择哪个分区进行分配?</li>
+<li>如何进行分区的分配与回收操作?</li>
+</ol>
+<h3 id="系统要用什么样的数据结构记录内存的使用情况"><a href="#系统要用什么样的数据结构记录内存的使用情况" class="headerlink" title="系统要用什么样的数据结构记录内存的使用情况?"></a>系统要用什么样的数据结构记录内存的使用情况?</h3><ul>
+<li>两种常用的数据结构<ul>
+<li>空闲分区表：空闲分区表:每个空闲分区对应个表项。表项中包含分区号、分区大小、分区起始地址等信息</li>
+<li>空想分区链：每个分区的起始部分和末尾部分分别设置前向指针和后向指针。起始部分处还可记录分区大小等信息</li>
+</ul>
+</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/speration.png" class title="This is an example image"></div>
+
+<h3 id="当很多个空闲分区都能满足需求时-应该选择哪个分区进行分配"><a href="#当很多个空闲分区都能满足需求时-应该选择哪个分区进行分配" class="headerlink" title="当很多个空闲分区都能满足需求时,应该选择哪个分区进行分配?"></a>当很多个空闲分区都能满足需求时,应该选择哪个分区进行分配?</h3><p>&emsp;&emsp;应该用最大的分区进行分配?还是用最小的分区进行分配?又或是用地址最低的部分进行分配?<br>&emsp;&emsp;把一个新作业装入内存时，须按照一定的 <em><strong>动态分区分配算法</strong></em> ，从空闲分区表（或空闲分区链）中选出一个分区分配给该作业。由于分配算法算法对系统性能有很天的影响，因此人们对它进行了广泛的研究。</p>
+<h3 id="如何进行分区的分配与回收操作"><a href="#如何进行分区的分配与回收操作" class="headerlink" title="如何进行分区的分配与回收操作?"></a>如何进行分区的分配与回收操作?</h3><p>如果足够分配：</p>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/eg1.png" class title="This is an example image"></div>
+
+<p>如果刚好分配完：</p>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/eg2.png" class title="This is an example image"></div>
+
+<p>接下来讨论回收，<br>情况一:回收区的后面有一个相邻的空闲分区，两个相邻的空闲分区合并为一个</p>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/eg3.png" class title="This is an example image"></div>
+
+<p>情况二:回收区的前面有一个相邻的空闲分区，两个相邻的空闲分区合并为一个</p>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/eg4.png" class title="This is an example image"></div>
+
+<p>情况三:回收区的前、后各有一个相邻的空闲分区，三个相邻的空闲分区合并为一个</p>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/eg5.png" class title="This is an example image"></div>
+
+<p>情况四:回收区的前、后都没有相邻的空闲分区，新增一个表项<br>注:各表项的顺序不一定按照地址递增顺序排列，具体的排列方式需要依据动态分区分配算法来确定。</p>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/eg6.png" class title="This is an example image"></div>
+
+<h2 id="动态分区分配-1"><a href="#动态分区分配-1" class="headerlink" title="动态分区分配"></a>动态分区分配</h2><p>动态分区分配没有 <em><strong>内部碎片</strong></em> ，但是有 <em><strong>外部碎片</strong></em> 。</p>
+<ul>
+<li>内部碎片，分配给某进程的内存区域中，如果有些部分没有用上</li>
+<li>外部碎片，是指内存中的某些空闲分区 <em><strong>由于太小而难以利用</strong></em> 。</li>
+</ul>
+<p>&emsp;&emsp;如果内存中空闲空间的总和本来可以满足某进程的要求,但由于进程需要的是一整块连续的内存空间，因此这些“碎片”不能满足进程的需求。<br>&emsp;&emsp;可以通过紧凑(拼凑，Compaction）技术来解决外部碎片。 &gt;&gt;&gt; 将已分配的内存进行挪位，腾出一个大空间<br>&emsp;&emsp;动态重定位装入方式最适合这里的紧凑技术，紧凑之后需要将各个进程的起始地址修改，一般存放在进程对应的PCB中，进程上CPU之前会把进程起始地址放到重定位寄存器中。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/conclusion.png" class title="This is an example image"></div>
+
+<p>总之,相邻的空闲分区要合并<br>另外，需要对用于管理空闲分区的数据结构有印象 –&gt; 空闲分区表、空闲分区链</p>
+<h1 id="动态分区分配算法"><a href="#动态分区分配算法" class="headerlink" title="动态分区分配算法"></a>动态分区分配算法</h1><p>动态分区分配算法:在动态分区分配方式中，当很多个空闲分区都能满足需求时，应该选择哪个分区进行分配?</p>
+<ul>
+<li>首次适应算法(First Fit)</li>
+<li>最佳适应算法(Best Fit)</li>
+<li>最坏适应算法(Worst Fit)</li>
+<li>邻近适应算法(Next Fit)</li>
+</ul>
+<h2 id="首次适应算法"><a href="#首次适应算法" class="headerlink" title="首次适应算法"></a>首次适应算法</h2><p><em><strong>算法思想</strong></em> :每次都从低地址开始查找，找到第一个能满足大小的空闲分区。<br><em><strong>如何实现</strong></em> :空闲分区以 <em><strong>地址递增</strong></em> 的次序排列。每次分配内存时 <em><strong>顺序查找</strong></em> 空闲分区链（或空闲分区表)，找到大小能满足要求的第一个空闲分区。</p>
+<h2 id="最佳适应算法"><a href="#最佳适应算法" class="headerlink" title="最佳适应算法"></a>最佳适应算法</h2><p><em><strong>算法思想</strong></em> :由于动态分区分配是一种连续分配方式，为各进程分配的空间必须是连续的一整片区域。因此为了保证当“大进程”到来时能有连续的大片空间，可以 <em><strong>尽可能多地留下大片的空闲区</strong></em> ，即， <em><strong>优先使用更小</strong></em> 的空闲区。<br><em><strong>如何实现</strong></em> :空闲分区 <em><strong>按容量递增次序链接</strong></em> 。每次分配内存时顺序查找 <em><strong>空闲分区链</strong></em> （或空闲分区表），找到大小能满足要求的第一个空闲分区。</p>
+<p><em><strong>缺点:</strong></em><br>每次都选最小的分区进行分配，会留下越来越多的、很小的、难以利用的内存块。因此这种方法会产生很多的 <em><strong>外部碎片</strong></em> 。</p>
+<h2 id="最坏适应算法"><a href="#最坏适应算法" class="headerlink" title="最坏适应算法"></a>最坏适应算法</h2><p>又称最大适应算法（Largest Fit)<br><em><strong>算法思想</strong></em> :为了解决最佳适应算法的问题――即留下太多难以利用的小碎片，可以在每次分配时优先使用最大的连续空闲区，这样分配后剩余的空闲区就不会太小，更方便使用。<br><em><strong>如何实现</strong></em> :空闲分区 <em><strong>按容量递减次序</strong></em> 链接。每次分配内存时顺序查找 <em><strong>空闲分区链</strong></em> （或空闲分区表），找到大小能满足要求的第一个空闲分区。重写表后，重新排序。</p>
+<p><em><strong>缺点:</strong></em><br>每次都选最大的分区进行分配，虽然可以让分配后留下的空闲区更大，更可用，但是这种方式会导致较大的连续空闲区被迅速用完。如果之后有“大进程”到达，就没有内存分区可用了。</p>
+<h2 id="邻近适应算法"><a href="#邻近适应算法" class="headerlink" title="邻近适应算法"></a>邻近适应算法</h2><p><em><strong>算法思想</strong></em> :首次适应算法每次都从链头开始查找的。这可能会导致低地址部分出现很多小的空闲分区，而每次分配查找时，都要经过这些分区，因此也增加了查找的开销。如果每次都从上次查找结束的位置开始检索，就能解决上述问题。<br><em><strong>如何实现</strong></em> :空闲分区 <em><strong>以地址递增</strong></em> 的顺序排列（可排成一个循环链表)。每次分配内存时 <em><strong>从上次查找结束的位置</strong></em> 开始查找 <em><strong>空闲分区链</strong></em> （或空闲分区表），找到大小能满足要求的第一个空闲分区。</p>
+<ul>
+<li>好处是，算法开销较小，不需要重新排列列表。</li>
+<li>首次适应算法每次都要从头查找，每次都需要检索低地址的小分区。但是这种规则也决定了当低地址部分有更小的分区可以满足需求时，会更有可能用到低地址部分的小分区，也会更有可能把高地址部分的天分区保留下来（最佳适应算法的优点)</li>
+<li>邻近适应算法的规则可能会导致无论低地址、高地址部分的空闲分区都有相同的概率被使用，也就导致了高地址部分的大分区更可能被使用，划分为小分区，最后导致无大分区可用（最大适应算法的缺点)<br>综合来看,四种算法中, <em><strong>首次适应算法</strong></em> 的效果反而更好</li>
+</ul>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/conclusion1.png" class title="This is an example image"></div>
+
+<p>开销 &gt;&gt;&gt; 每次都需要重新排序</p>
+<h1 id="连续分配方式的缺点"><a href="#连续分配方式的缺点" class="headerlink" title="连续分配方式的缺点"></a>连续分配方式的缺点</h1><p>考虑支持多道程序的两种连续分配方式:</p>
+<ol>
+<li>固定分区分配:缺乏灵活性，会产生大量的内部碎片，内存的利用率很低。</li>
+<li>动态分区分配:会产生很多外部碎片，虽然可以用“紧淡”技术来处理，但是“紧凑”的时间代价很高</li>
+</ol>
+<p>原因是，连续分配方式必须要求占用一块连续的区域。<br>如果允许将一个述程分散地装入到许多不相邻的分区中,便可充分地利用内存，而无需再进行“紧凌”<br>基于这一思想，产生了“非连续分配方式”，或者称为“离散分配方式”。</p>
+<p><em><strong>连续分配</strong></em> :为用户进程分配的必须是一个 <em><strong>连续的内存空间</strong></em> 。<br><em><strong>非连续分配</strong></em> :为用户进程分配的可以是一些 <em><strong>分散的内存空间</strong></em> 。</p>
+<h1 id="非连续分配"><a href="#非连续分配" class="headerlink" title="非连续分配"></a>非连续分配</h1><h2 id="把固定分区分配改造为非连续分配版本"><a href="#把固定分区分配改造为非连续分配版本" class="headerlink" title="把固定分区分配改造为非连续分配版本"></a>把固定分区分配改造为非连续分配版本</h2><ul>
+<li>假设进程A大小为23MB，但是每个分区大小只有10MB，如果进程只能占用一个分区，那显然放不下。</li>
+<li>解决思路:如果允许进程占用多个分区，那么可以把进程拆分成 10MB + 10MB + 3MB三个部分，再把这三个部分分别放到三个分区中(这些分区不要求连续）…</li>
+<li>进程A的最后一个部分是3MB，放入分区后会产生7MB的内部碎片。</li>
+<li>如果每个分区大小为 2MB，那么进程A可以拆分成11 * 2能B+1MB共 12个部分，只有最后一部分1MB占不满分区，会产生1MB的内部碎片。</li>
+<li>显然，如果把分区大小设置的更小一些，内部碎片会更小，内存利用率会更高。</li>
+</ul>
+<p>基本分页存储管理的思想 — 把内存分为一个个相等的小分区,再按照分区大小把进程拆分成一个个小部分</p>
+<h2 id="分配存储管理的基本概念"><a href="#分配存储管理的基本概念" class="headerlink" title="分配存储管理的基本概念"></a>分配存储管理的基本概念</h2><ul>
+<li>将内存空间分为一个个大小相等的分区（比如:每个分区4KB)，每个分区就是一个 <em><strong>“页框”</strong></em> ，或称 <em><strong>“页帧”</strong></em> 、 <em><strong>“内存块”</strong></em> 、 <em><strong>“物理块”</strong></em> 。每个页框有一个编号，即 <em><strong>“页框号”</strong></em> (或者 <em><strong>“内存块号”、“页帧号”、“物理块号”</strong></em> ）页框号 <em><strong>从0开始</strong></em> 。</li>
+<li>将用户进程的地址空间也分为 <em><strong>与页框大小相等</strong></em> 的一个个区域，称为 <em><strong>“页”或“页面”</strong></em> 。每个页面也有一个编号，即“页号”，页号也是从0开始。( <em><strong>注:进程的最后一个页面可能没有一个页框那么大。因此，页框不能太大，否则可能产生过大的内部碎片</strong></em> )</li>
+<li>操作系统以 <em><strong>页框</strong></em> 为单位为各个进程分配内存空间。进程的每个页面分别放入一个页框中。也就是说，进程的 <em><strong>页面与内存</strong></em> 的页框有 <em><strong>一一对应</strong></em> 的关系。</li>
+<li>各个页面不必连续存放，也不必按先后顺序来，可以放到不相邻的各个页框中。</li>
+</ul>
+<h2 id="如何实现地址转换"><a href="#如何实现地址转换" class="headerlink" title="如何实现地址转换"></a>如何实现地址转换</h2><p>将进程地址空间分页之后,操作系统该如何实现逻辑地址到物理地址的转换?</p>
+<h3 id="动态重定位"><a href="#动态重定位" class="headerlink" title="动态重定位"></a>动态重定位</h3><p>重定位寄存器:存放装入模块存放的起始位置<br>思想:模块在内存中的的 <em><strong>“起始地址”</strong></em> ＋目标内存单元相对于起始位置的 <em><strong>“偏移量”</strong></em> </p>
+<p>如果采用分页技术,应该如何实现地址转换?<br>CPU执行指令1，需要访问逻辑地址为80的内存单元，如何转化为物理地址?</p>
+<ul>
+<li>逻辑地址为80的内存单元:</li>
+<li>应该在 <em><strong>1号页</strong></em> ，该页在内存中的 <em><strong>起始位置为450</strong></em> ，逻辑地址为80的内存单元相对于该页的起始地址而言， <em><strong>“偏移量”应该是30</strong></em> 。</li>
+<li>实际物理地址=450 + 30 = 480</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/change.png" class title="This is an example image"></div>
+
+<ol>
+<li>要算出逻辑地址对应的 <em><strong>页号</strong></em> </li>
+<li>要知道该页号对应页面在内存中的 <em><strong>起始地址</strong></em> </li>
+<li>要算出逻辑地址 <em><strong>在页面内的“偏移量”</strong></em> </li>
+<li>物理地址 = 页面始址 ＋页内偏移量</li>
+</ol>
+<p>如何计算:</p>
+<ul>
+<li>页号 = 逻辑地址 / 页面长度(取除法的整数部分)</li>
+<li>页内偏移量 = 逻辑地址 % (页面长度取除法的余数部分) <em><strong>页面在内存中的起始位置</strong></em> :操作系统需要用某种数据结构记录进程各个页面的起始位置。</li>
+</ul>
+<p>eg:</p>
+<ul>
+<li>页号= 80 / 50 = 1</li>
+<li>页内偏移量 = 80 % 50 = 30</li>
+<li><em><strong>1号页</strong></em> 在内存中存放的 <em><strong>起始位置</strong></em> 450</li>
+</ul>
+<p>在计算机中，为了方便计算页号、页内偏移量，页面大小一般设为2的整数幂</p>
+<p>如何计算:</p>
+<ul>
+<li>页号 = 逻辑地址 / 页面长度(取除法的整数部分)</li>
+<li>页内偏移量 = 逻辑地址 % 页面长度（取除法的余数部分)</li>
+<li>假设用32个二进制位表示逻辑地址，页面大小为2<sup>12</sup>B = 4096B = 4KB</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/eg7.png" class title="This is an example image"></div>
+
+<p>Eg:逻辑地址2，用二进制表示应该是00000000000000000000 <em><strong>000000000010</strong></em><br>若0号页在内存中的起始地址为x，则逻辑地址2对应的物理地址应该是X+000000000010<br>Eg:逻辑地址4097，用二进制表示应该是00000000000000000001 <em><strong>000000000001</strong></em><br>若1号页在内存中的起始地址为x，则逻辑地址4097对应的物理地址应该是X+000000000001</p>
+<p>与另一种算法的结果对比:<br>页号 = 逻辑地址 / 页面长度<br>页内偏移量 = 逻辑地址 % 页面长度</p>
+<p>结论:如果每个页面大小为2<sup>k</sup>B，用二进制数表示逻辑地址，则末尾K位即为 <em><strong>页内偏移量</strong></em> ，其余部分就是 <em><strong>页号</strong></em><br>因此，如果让每个页面的大小为2的整数幂，计算机就可以很方便地得出一个逻辑地址对应的页号和页内偏移量。</p>
+<h2 id="逻辑地址"><a href="#逻辑地址" class="headerlink" title="逻辑地址"></a>逻辑地址</h2><p>分页存储管理的逻辑地址结构如下所示:</p>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/strature.png" class title="This is an example image"></div>
+
+<p>地址结构包含两个部分:前一部分为页号，后一部分为页内偏移量W。在上图所示的例子中，地址长度为32位，其中0 ~ 11位为 <em><strong>“页内偏移量”</strong></em> ，或称 <em><strong>“页内地址”</strong></em> ;12 ~ 31位为 <em><strong>“页号”</strong></em> 。</p>
+<ul>
+<li>如果有K位表示“页内偏移量”，则说明该系统中一个页面的大小是2<sup>k</sup>个内存单元</li>
+<li>如果有M位表示“页号”，则说明在该系统中，一个进程最多允许有2<sup>M</sup>个页面</li>
+</ul>
+<p>分页存储管理中，如何实现地址转换?</p>
+<ol>
+<li>要算出逻辑地址对应的页号</li>
+<li>要知道该页号对应页面在内存中的起始地址</li>
+<li>要算出逻辑地址在页面内的“偏移量”</li>
+<li>物理地址 = 页面始址 + 页内偏移量</li>
+</ol>
+<p>注:如果题目中是用十进制数表示逻辑地址，则</p>
+<ul>
+<li>页号 = 逻辑地址 / 页面长度(取除法的整数部分)</li>
+<li>页内偏移量 = 逻辑地址 % 页面长度（取除法的余数部分)</li>
+</ul>
+<h2 id="页表"><a href="#页表" class="headerlink" title="页表"></a>页表</h2><p>为了能知道进程的每个页面在内存中存放的位置，操作系统要为每个进程建立一张页表。</p>
+<ol>
+<li>一个进程对应一张页表</li>
+<li>进程的每一页对应一个页表项</li>
+<li>每个页表项由“页号”和“块号”组成</li>
+<li>页表记录进程页面和实际存放的内存块之间的对应关系</li>
+</ol>
+<div style="width:70%;margin:auto"></div>
+
+<p>M号内存块的起始地址 = M * 内存块大小</p>
+<p>为什么每个页表项的长度是相同的，页号是“隐含”的? &gt;&gt;&gt; 页表项中不用记录页号<br>Eg:假设某系统物理内存大小为4GB，页面大小为4KB，则每个页表项至少应该为多少字节?<br>4GB = 2<sup>32</sup>B，4KB = 2<sup>12</sup>B<br>因此4GB 的内存总共会被分为 2<sup>32</sup> / 2<sup>12</sup> = 2<sup>20</sup>个内存块，因此内存块号的范围应该是0 ~ 2<sup>20</sup> - 1因此至少要20个二进制位才能表示这么多的内存块号，因此至少要3个字节才够（每个字节8个二进制位，3个字节共24个二进制位&gt;</p>
+<ul>
+<li>各页表项会按顺序连续地存放在内存中</li>
+<li>如果该页表在内存中存放的起始地址为×，则M号页对应的页表项一定是存放在内存地址为×＋3 * M因此,页表中的“页号”可以是“隐含”的。</li>
+<li>只需要知道页表存放的起始地址和页表项长度，即可找到各个页号对应的页表项存放的位置</li>
+</ul>
+<p>在本例中，一个页表项占3B，如果进程由n个页面，则该进程的页表总共会占3 * n个字节</p>
+<h2 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h2><div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/conclusion2.png" class title="This is an example image"></div>
+
+<h1 id="非连续分配管理方式"><a href="#非连续分配管理方式" class="headerlink" title="非连续分配管理方式"></a>非连续分配管理方式</h1><p>重点理解、记忆基本地址变换机构（用于实现逻辑地址到物理地址转换的一组硬件机构）的原理和流程</p>
+<h2 id="基本地址变换机构"><a href="#基本地址变换机构" class="headerlink" title="基本地址变换机构"></a>基本地址变换机构</h2><ul>
+<li>基本地址变换机构可以借助进程的页表将逻辑地址转换为物理地址。</li>
+<li>通常会在系统中设置一个 <em><strong>页表寄存器</strong></em> （PTR），存放 <em><strong>页表在内存中的起始地址F和页表长度M</strong></em> 。进程未执行时，页表的始址和页表长度放在 <em><strong>进程控制块</strong></em> （PCB）中，当进程被调度时，操作系统内核会把它们放到页表寄存器中。</li>
+<li>注意:页面大小是2的整数幂</li>
+<li>设页面大小为L，逻辑地址A到物理地址E的变换过程如下:</li>
+</ul>
+<p>设页面大小为L，逻辑地址A到物理地址E的变换过程如下:</p>
+<ol>
+<li>计算页号 Р 和页内偏移量 w （如果用十进制数手算，则 P = A / L，W = A % L:但是在计算机实际运行时，逻辑地址结构是固定不变的，因此计算机硬件可以更快地得到二进制表示的页号、页内偏移量）</li>
+<li>比较页号 P 和页表长度 M ，若 P ≥ M ，则产生越界中断，否则继续执行。(注意:页号是从0开始的，而页表长度至少是1，因此P=M时也会越界）</li>
+<li>页表中页号P对应的页表项地址 = 页表起始地址 F + 页号 P * 页表项长度，取出该页表项内容 b ,即为内存块号。（注意区 <em><strong>分页表项长度、页表长度、页面大小</strong></em> 的区别。 <em><strong>页表长度</strong></em> 指的是这个页表中总共有几个页表项，即总共有几个页; <em><strong>页表项长度</strong></em> 指的是每个页表项占多大的存储空间; <em><strong>页面大小</strong></em> 指的是一个页面占多大的存储空间)</li>
+<li>计算E = b * L + W，用得到的物理地址 E 去访存。(如果内存块号、页面偏移量是用二进制表示的，那么把二者拼接起来就是最终的物理地址了)</li>
+</ol>
+<p>操作系统将内存分为系统区和用户区</p>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/PROCESS.png" class title="This is an example image"></div>
+
+<p><em><strong>动手验证:</strong></em><br>假设页面大小 L= 1KB，最终要访问的内存块号b = 2，页内偏移量W= 1023。</p>
+<ol>
+<li>尝试用E= b * L + W 计算目标物理地址。</li>
+<li>尝试把内存块号、页内偏移量用二进制表示，并把它们拼接起来得到物理地址。对比1、2的结果是否一致</li>
+</ol>
+<p>例:若页面大小L为1K字节，页号2对应的内存块号b=8，将逻辑地址A=2500转换为物理地址E。</p>
+<ul>
+<li>等价描述:某系统按字节寻址，逻辑地址结构中，页内偏移量占10位，页号2对应的内存块号b=8，将逻辑地址A=2500转换为物理地址E。</li>
+<li>说明一个页面的大小为2<sup>10</sup>sup&gt;B = 1KB</li>
+</ul>
+<p>在分页存储管理（页式管理）的系统中，只要确定了每个页面的大小，逻辑地址结构就确定了。因此，页式管理中地址是一维的。即，只要给出一个逻辑地址，系统就可以自动地算出页号、页内偏移量两个部分，并不需要显式地告诉系统这个逻辑地址中，页内偏移量占多少位。</p>
+<h2 id="对页表项大小的进一步探讨"><a href="#对页表项大小的进一步探讨" class="headerlink" title="对页表项大小的进一步探讨"></a>对页表项大小的进一步探讨</h2><p>每个页表项的长度是相同的，页号是“隐含”的<br>Eg:假设某系统物理内存大小为4GB，页面大小为4KB，的内存总共会被分为2<sup>32</sup>/2<sup>12</sup>=2<sup>20</sup>个内存块，因此内存块号的范围应该是0 ~ 2<sup>20</sup>-1<br>因此至少要20个二进制位才能表示这么多的内存块号，因此至少要3个字节才够（每个字节8个二进制位，3个字节共24个二进制位)</p>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/table3.png" class title="This is an example image"></div>
+
+<ul>
+<li>各页表项会按顺序连续地存放在内存中</li>
+<li>如果该页表在内存中存放的起始地址为 × ，则 M 号页对应的页表项是存放在内存地址为 × ＋ 3 * M</li>
+<li>一个页面为4KB，则每个页框可以存放4096/3 = 1365个页表项，但是这个页框会剩余4096 % 3 = 1B页内碎片因此，1365号页表项存放的地址为X＋3 * 1365 + 1</li>
+<li>如果每个页表项占4字节，则每个页框刚好可存放1024个页表项</li>
+<li>1024号页表项虽然是存放在下一个页框中的，但是它的地址依然可以用 X + 4 * 1024得出</li>
+</ul>
+<p>结论:理论上，页表项长度为3B即可表示内存块号的范围，但是，为了方便页表的查询，常常会让一个页表项占更多的字节，使得每个页面恰好可以装得下整数个页表项。<br>进程页表通常是装在连续的内存块中的</p>
+<h2 id="总结-3"><a href="#总结-3" class="headerlink" title="总结"></a>总结</h2><div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/conclusion3.png" class title="This is an example image"></div>
+
+<p>第一次访问内存:查页表<br>第二次访问内存:访问目标内存单元</p>
+<h1 id="具有快表的地址变换机构"><a href="#具有快表的地址变换机构" class="headerlink" title="具有快表的地址变换机构"></a>具有快表的地址变换机构</h1><p>是基本地址变换机构的改进版本</p>
+<h2 id="局部性原理"><a href="#局部性原理" class="headerlink" title="局部性原理"></a>局部性原理</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int i &#x3D; 0;</span><br><span class="line">int a[100];</span><br><span class="line">while (i &lt; 100)&#123;</span><br><span class="line">	a[i] &#x3D; i;</span><br><span class="line">	i++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/part.png" class title="This is an example image"></div>
+
+<p>这个程序执行时,会很频繁地访问10号、23号内存块。<br><em><strong>时间局部性</strong></em> :如果执行了程序中的某条指令，那么不久后这条指令很有可能再次执行;如果某个数据被访问过，不久之后该数据很可能再次被访问。（因为程序中存在大量的循环)<br><em><strong>空间局部性</strong></em> :一旦程序访问了某个存储单元，在不久之后，其附近的存储单元也很有可能被访问。（因为很多数据在内存中都是连续存放的)</p>
+<p>上小节介绍的基本地址变换机构中，每次要访问一个逻辑地址，都需要查询内存中的页表。由于局部性原理， <em><strong>可能连续很多次查到的都是同一个页表项</strong></em> 。既然如此，能否利用这个特性减少访问页表的次数呢?</p>
+<h2 id="什么是快表-TLB"><a href="#什么是快表-TLB" class="headerlink" title="什么是快表(TLB)"></a>什么是快表(TLB)</h2><p>快表，又称联想寄存器（TLB），是一种访问速度比内存快很多的高速缓冲存储器，用来存放当前访问的若干页表项，以加速地址变换的过程。与此对应，内存中的页表常称为慢表。</p>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/proccess.png" class title="This is an example image"></div>
+
+<ul>
+<li>若快表命中，就不需要再访问内存了</li>
+<li>若快表没有目标页表项，则需要查询内存中的页表</li>
+<li>快表存放的是页表的一部分副本</li>
+</ul>
+<h2 id="引入快表后，地址的变换过程"><a href="#引入快表后，地址的变换过程" class="headerlink" title="引入快表后，地址的变换过程"></a>引入快表后，地址的变换过程</h2><ol>
+<li>CPU给出逻辑地址，由某个硬件算得页号、页内偏移量，将页号与快表中的所有页号进行比较。</li>
+<li>如果找到匹配的页号，说明要访问的页表项在快表中有副本，则直接从中取出该页对应的内存块号，再将内存块号与页内偏移量拼接形成物理地址，最后，访问该物理地址对应的 <em><strong>内存单元</strong></em> 。因此，若 <em><strong>快表命中</strong></em> ，则访问某个逻辑地址仅需 <em><strong>一次访存</strong></em> 即可。</li>
+<li>如果没有找到匹配的页号，则需要 <em><strong>访问内存中的页表</strong></em> ，找到对应页表项，得到页面存放的内存块号，再将内存块号与页内偏移量拼接形成物理地址，最后， <em><strong>访问</strong></em> 该物理地址对应的 <em><strong>内存单元</strong></em> 。因此,若快表未命中，则访问某个逻辑地址需要 <em><strong>两次访存</strong></em> （注意: <em><strong>在找到页表项后</strong></em> ，应 <em><strong>同时将其存入快表</strong></em> ，以便后面可能的再次访问。但若快表已满，则必须按照一定的算法对旧的页表项进行替换)</li>
+</ol>
+<p>由于查询快表的速度比查询页表的速度快很多，因此只要快表命中，就可以节省很多时间。因为局部性原理，一般来说快表的命中率可以达到90%以上。<br>例:某系统使用基本分页存储管理，并采用了具有快表的地址变换机构。访问一次快表耗时1us，访问一次内存耗时100us。若快表的命中率为90%，那么访问一个逻辑地址的平均耗时是多少?<br>(1 + 100) * 0.9 +(1 + 100 + 100) * 0.1 = 111 us<br>有的系统支持快表和慢表同时查找，如果是这样，平均耗时应该是(1 + 100) * 0.9 + (100 + 100) * 0.1 = 110.9 us<br>若未采用快表机制，则访问一个逻辑地址需要 100 + 100  = 200us</p>
+<h2 id="总结-4"><a href="#总结-4" class="headerlink" title="总结"></a>总结</h2><div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/conclusion4.png" class title="This is an example image"></div>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/01/supervisor-mode/" data-id="cknn1mv9c003ccrupd5bkg2z7" data-title="supervisor mode" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/02/02/Java-day14/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java day14
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/30/Overlay-and-swap/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Overlay and swap</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/issues/" rel="tag">issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start-here/" rel="tag">start here</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/" rel="tag">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/" rel="tag">writing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Internet/" style="font-size: 15px;">Internet</a> <a href="/tags/Programming-Language/" style="font-size: 17.5px;">Programming Language</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/start-here/" style="font-size: 12.5px;">start here</a> <a href="/tags/system/" style="font-size: 20px;">system</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/writing/" style="font-size: 10px;">writing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/18/network%20of%20computer2/">network of computer2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/Java%20day1/">Java day1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/Java-day19/">Java day19</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/23/Java-day18/">Java day18</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

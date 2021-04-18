@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Java day8 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="伪类选择器用于向某些选择器添加特殊效果 可查 1www.w3school.com.cn  锚伪类链接的不同状态都可以用不同的方式显示，这些状态包括:活动状态、已被访问状态、未被访问状态、和鼠标悬停状态 ctrl + shift + delete —&gt; 清楚浏览器打开后的信息重新刷新网页，链接恢复未被访问状态 未被访问过的连接 a标签 默认是蓝色   访问过后是紫色，按住不放是红色 伪类选择器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java day8">
+<meta property="og:url" content="http://example.com/2021/01/20/Java-day8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="伪类选择器用于向某些选择器添加特殊效果 可查 1www.w3school.com.cn  锚伪类链接的不同状态都可以用不同的方式显示，这些状态包括:活动状态、已被访问状态、未被访问状态、和鼠标悬停状态 ctrl + shift + delete —&gt; 清楚浏览器打开后的信息重新刷新网页，链接恢复未被访问状态 未被访问过的连接 a标签 默认是蓝色   访问过后是紫色，按住不放是红色 伪类选择器">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/01/20/Java-day8/baidu.png">
+<meta property="og:image" content="http://example.com/2021/01/20/Java-day8/computed.png">
+<meta property="article:published_time" content="2021-01-20T08:44:28.000Z">
+<meta property="article:modified_time" content="2021-04-18T09:10:25.165Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Programming Language">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/01/20/Java-day8/baidu.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Java-day8" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/20/Java-day8/" class="article-date">
+  <time class="dt-published" datetime="2021-01-20T08:44:28.000Z" itemprop="datePublished">2021-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Java day8
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h3><p>用于向某些选择器添加特殊效果</p>
+<p><em><strong>可查</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">www.w3school.com.cn</span><br></pre></td></tr></table></figure>
+
+<h4 id="锚伪类"><a href="#锚伪类" class="headerlink" title="锚伪类"></a>锚伪类</h4><p>链接的不同状态都可以用不同的方式显示，这些状态包括:活动状态、已被访问状态、未被访问状态、和鼠标悬停状态</p>
+<p>ctrl + shift + delete —&gt; 清楚浏览器打开后的信息<br>重新刷新网页，链接恢复未被访问状态</p>
+<p><em><strong>未被访问过的连接 a标签 默认是蓝色</strong></em></p>
+<div style="width:70%;margin:auto"><img src="/2021/01/20/Java-day8/baidu.png" class title="This is an example image"></div>
+
+<p>访问过后是紫色，按住不放是红色</p>
+<p>伪类选择器可以同时使用也可以单个使用<br>但是四个一起使用要注意顺序</p>
+<ul>
+<li>hover 必须置于 link与visited 之后才是有效的</li>
+<li>active 必须置于 hover 之后才有效</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;未被访问</span><br><span class="line">a:link&#123;</span><br><span class="line">	color: black;</span><br><span class="line">	text-decoration: none;	&#x2F;&#x2F;去除下划线</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;已被访问</span><br><span class="line">a:visited&#123;</span><br><span class="line">	color: gray;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;hover鼠标悬停</span><br><span class="line">a:hover&#123;</span><br><span class="line">	color: yellow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;鼠标点击</span><br><span class="line">a:active&#123;</span><br><span class="line">	color: darkred;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ps:注意顺序与生效有关 --&gt; 不要把悬停放在前面</span><br><span class="line"></span><br><span class="line">&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.baidu.com&quot;&gt;百度&lt;&#x2F;a&gt;</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>也可以在非超链接使用</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">	border: 1px double green;</span><br><span class="line">	width: 100px;</span><br><span class="line">	height: 100px;</span><br><span class="line">	background-color: lightyellow;</span><br><span class="line">&#125;</span><br><span class="line">div:hover&#123;</span><br><span class="line">	background-color: lightblue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;div&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li><p>input</p>
+<ul>
+<li>type<ul>
+<li>text 文本框</li>
+<li>password 密码框</li>
+<li>radio 单选框</li>
+<li>checkbox 复选框</li>
+<li>button 按钮</li>
+<li>file 文件上传</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>文本域</p>
+<ul>
+<li>textarea</li>
+</ul>
+</li>
+<li><p>下拉框</p>
+<ul>
+<li>select &gt;&gt;&gt; option</li>
+</ul>
+</li>
+<li><p>表单标签</p>
+<ul>
+<li><p>在页面上没有显示效果 用于划定数据提交范围</p>
+</li>
+<li><p>form</p>
+<ul>
+<li><p>action 用于定义提交地址</p>
+</li>
+<li><p>method 用于定义数据提交方式</p>
+<ul>
+<li>get 数据通过地址栏提交 数据量小 只能提交文本 相对不安全</li>
+<li>post 数据单独打包发送 数据量大 可以提交文本和文件 相对安全</li>
+</ul>
+</li>
+<li><p>要求form内部的所有输入框有name属性 通过value定义提交的值</p>
+<ul>
+<li>name属性用于让服务器区分数据的含义</li>
+</ul>
+</li>
+<li><p>提交按钮 input type=”submit”提交 type=”reset”</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>框架标签</p>
+<ul>
+<li><p>用于在当前网页引入其他网页</p>
+</li>
+<li><p>可以将多个网页整合到一个网页上</p>
+</li>
+<li><p>iframe src 引入网页的地址</p>
+</li>
+<li><p>frameset 将网页划分上下 rows=”20%, * ,200px” 或 左右 col=”第一部分的宽度…” 的几个部分</p>
+<ul>
+<li>frame src 引入网页的地址</li>
+</ul>
+</li>
+<li><p>使用frameset要求当前网页不能有body标签</p>
+</li>
+</ul>
+</li>
+<li><p>CSS &gt;&gt;&gt; 做网页美化</p>
+<ul>
+<li>三种引入方式</li>
+<li>行内式 通过标签的style属性引入 直接定义当前标签的CSS样式</li>
+<li>内嵌式 在head中 使用一堆style引入 通过选择器样式的作用范围</li>
+<li>链接式 单独定义CSS外部样式文件 在head中 使用link标签 引入外部样式文件</li>
+</ul>
+</li>
+<li><p>三大基本选择器</p>
+<ul>
+<li>标签名选择器 定位到页面上所有同名标签 标签名{样式名:样式值;样式名:样式值;…}</li>
+<li>id选择器 通过id定位到页面上唯一的一个标签 #id值{样式名:样式值;样式名:样式值;…}</li>
+<li>class选择器 通过class属性定位到页面多个可以是不同名字的标签 .class值{样式名:样式值;样式名:样式值;…}</li>
+</ul>
+</li>
+<li><p>层级选择器</p>
+<ul>
+<li>通过父级元素逐层找到子元素</li>
+<li>父级元素选择器 子元素选择器{}</li>
+</ul>
+</li>
+<li><p>属性选择器</p>
+<ul>
+<li>通过指定标签名和属性值得样式</li>
+<li>标签名[属性名=属性值]{}</li>
+</ul>
+</li>
+<li><p>分组选择器</p>
+<ul>
+<li>选择器1，选择器2，…，选择器n{}</li>
+</ul>
+</li>
+<li><p>伪类选择器</p>
+<ul>
+<li>用于定义标签的四种状态<ul>
+<li>未访问过 :link{}</li>
+<li>访问过 :visited{}</li>
+<li>鼠标悬停 :hover{}</li>
+<li>鼠标激活(按住鼠标不放) :active{}</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>hover必须在 link与visited之后</p>
+</li>
+<li><p>active必须在 hover之后</p>
+</li>
+</ul>
+<h1 id="主要目标"><a href="#主要目标" class="headerlink" title="主要目标"></a>主要目标</h1><ul>
+<li>盒子模型</li>
+<li>定位和浮动及案例开发</li>
+<li>列表标签及案例开发</li>
+<li>网页布局相关的CSS样式 以及案例</li>
+</ul>
+<h1 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h1><h2 id="什么是网页布局"><a href="#什么是网页布局" class="headerlink" title="什么是网页布局"></a>什么是网页布局</h2><p>房子 &gt;&gt;&gt; 格局<br>网页 &gt;&gt;&gt; 格局 网页内容的主体规划</p>
+<ol>
+<li>盒子模型 &gt;&gt;&gt; 标签和标签之间存在包含关系时 位置的调整</li>
+<li>定位 &gt;&gt;&gt; 多个块标签处于同一行的位置处理问题</li>
+<li>浮动 &gt;&gt;&gt; 块标签在页面上指定位置的处理问题</li>
+</ol>
+<p>块标签 &gt;&gt;&gt; 页面上独立占用一行的标签<br>行内标签 &gt;&gt;&gt; 不会独立占用一行的标签</p>
+<p>网页的布局基本都是用块标签来完成的<br>一般做布局 使用的标签是 div 帮助我们将网页划分成多个小方块</p>
+<h2 id="盒子模型基本用法"><a href="#盒子模型基本用法" class="headerlink" title="盒子模型基本用法"></a>盒子模型基本用法</h2><p>当块标签有包含关系时 位置的调整<br>好比两个盒子 一大一小 大盒子装小盒子，小盒子在大盒子内部位置如何调整</p>
+<p>ps:border线型</p>
+<ul>
+<li>dotted</li>
+<li>dashed</li>
+<li>solid</li>
+<li>double</li>
+<li>groove</li>
+<li>ridge</li>
+<li>inset</li>
+<li>outset</li>
+</ul>
+<h2 id="内边距"><a href="#内边距" class="headerlink" title="内边距"></a>内边距</h2><p><em><strong>内边距查看</strong></em></p>
+<ol>
+<li>FN + F12 —&gt; 开发者工具</li>
+<li>找到div</li>
+<li>找到盒子模型布局</li>
+</ol>
+<div style="width:70%;margin:auto"><img src="/2021/01/20/Java-day8/computed.png" class title="This is an example image"></div>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">   #div1&#123;</span><br><span class="line">      border:1px groove blue;</span><br><span class="line">      width: 400px;</span><br><span class="line">      height: 400px;</span><br><span class="line">      &#x2F;* 内部元素距离当前块元素边界的距离 *&#x2F;</span><br><span class="line">      &#x2F;* </span><br><span class="line">      padding:100px; </span><br><span class="line">      同时设置上下左右四个内边距都是100px</span><br><span class="line">      </span><br><span class="line">      padding:50px 100px; </span><br><span class="line">      设置上下内边距50px 左右内边距100px</span><br><span class="line">      </span><br><span class="line">      padding:10px 20px 30px 40px;</span><br><span class="line">      顺时针方向 上10px 右20px 下30px 左40px</span><br><span class="line">      </span><br><span class="line">      padding-top: 10px;</span><br><span class="line">      padding-right: 20px;</span><br><span class="line">      padding-bottom: 30px;</span><br><span class="line">      padding-left: 40px;</span><br><span class="line">      分别设置内边距</span><br><span class="line">      </span><br><span class="line">      内边不会占用空间 而是将块标签放大</span><br><span class="line"></span><br><span class="line">      *&#x2F;</span><br><span class="line">      padding-top: 10px;</span><br><span class="line">      padding-right: 20px;</span><br><span class="line">      padding-bottom: 30px;</span><br><span class="line">      padding-left: 40px;</span><br><span class="line">   &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id&#x3D;&quot;div1&quot;&gt;</span><br><span class="line">   hello word</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="外边距"><a href="#外边距" class="headerlink" title="外边距"></a>外边距</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">   #div1&#123;</span><br><span class="line">      border: 1px solid red;</span><br><span class="line">      background-color: darkgoldenrod;</span><br><span class="line">      width: 300px;</span><br><span class="line">      height: 300px;</span><br><span class="line">      &#x2F;* </span><br><span class="line">       外边距 当前块标签外部的和父级块标签之间的距离</span><br><span class="line">       </span><br><span class="line">       margin: 200px;</span><br><span class="line">       设置上下左右外边距200px</span><br><span class="line">       </span><br><span class="line">       margin: 100px 200px;</span><br><span class="line">       设置上下外边距100px 左右外边距100px</span><br><span class="line">       </span><br><span class="line">       margin: 10px 20px 30px 40px;</span><br><span class="line">       设置上10px 右20px 下30px 左40px</span><br><span class="line">       </span><br><span class="line">       margin-top: 10px;</span><br><span class="line">       margin-right: 20px;</span><br><span class="line">       margin-bottom: 30px;</span><br><span class="line">       margin-left: 40px;</span><br><span class="line">       四个单独设置</span><br><span class="line">       *&#x2F;</span><br><span class="line">      margin-top: 10px;</span><br><span class="line">      margin-right: 20px;</span><br><span class="line">      margin-bottom: 30px;</span><br><span class="line">      margin-left: 40px;</span><br><span class="line">   &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">   </span><br><span class="line">   &lt;div id&#x3D;&quot;div1&quot;&gt;</span><br><span class="line">      hello word</span><br><span class="line">   &lt;&#x2F;div&gt;</span><br><span class="line">   nice to meet you  </span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>盒子模型其实就是通过标签的内边距和外边距的特点调整两个有包含关系的标签</p>
+<h3 id="设置居中"><a href="#设置居中" class="headerlink" title="设置居中"></a>设置居中</h3><p>左右可用，但上下不可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">   .outerdiv&#123;</span><br><span class="line">      width: 400px;</span><br><span class="line">      height: 400px;</span><br><span class="line">      border: 1px solid red;</span><br><span class="line">      &#x2F;* 调整外部盒子内边距 *&#x2F;</span><br><span class="line">      &#x2F;* padding: 20px; *&#x2F;</span><br><span class="line">      </span><br><span class="line">      &#x2F;* </span><br><span class="line">      通过外边距设置居中</span><br><span class="line">      左右可以auto 自动分配居中 但是上下不生效</span><br><span class="line">      *&#x2F;</span><br><span class="line">      margin: 0px auto;</span><br><span class="line">   &#125;</span><br><span class="line">   .innerdiv&#123;</span><br><span class="line">      width:200px ;</span><br><span class="line">      height: 200px;</span><br><span class="line">      border: 1px solid green;</span><br><span class="line">      &#x2F;* 设置里面盒子外边距 *&#x2F;</span><br><span class="line">      &#x2F;*             </span><br><span class="line">      margin-top: 20px;</span><br><span class="line">      margin-left: 20px;</span><br><span class="line">       *&#x2F;</span><br><span class="line">      &#x2F;* 设置横向居中 *&#x2F;</span><br><span class="line">      margin: 0px auto;</span><br><span class="line">   &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class&#x3D;&quot;outerdiv&quot;&gt;</span><br><span class="line">   &lt;div class&#x3D;&quot;innerdiv&quot;&gt;</span><br><span class="line">      hello world</span><br><span class="line">   &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>ps:win + shift + s 快速截图</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">   #d1&#123;</span><br><span class="line">      &#x2F;* </span><br><span class="line">      width 宽度 内部容量为 ** 像素</span><br><span class="line">      height 高度 内部容量 **像素</span><br><span class="line">      块实际大小不一定 如边界会是指扩大</span><br><span class="line">       *&#x2F;</span><br><span class="line">      width: 200px;</span><br><span class="line">      height: 200px;</span><br><span class="line">      background-color: yellow;</span><br><span class="line">      border: 20px solid red;</span><br><span class="line">   &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">   &lt;div id&#x3D;&quot;d1&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>盒子模型无论是 <em><strong>内边距</strong></em> 还是 <em><strong>外边距</strong></em> 调整，都不会影响块标签内部的总量</li>
+<li>只能向外扩张</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">   #d1&#123;</span><br><span class="line">      &#x2F;* </span><br><span class="line">      width 宽度 内部容量为 ** 像素</span><br><span class="line">      height 高度 内部容量 **像素</span><br><span class="line">      块实际大小不一定 如边界会是指扩大</span><br><span class="line">       *&#x2F;</span><br><span class="line">      width: 200px;</span><br><span class="line">      height: 200px;</span><br><span class="line">      background-color: yellow;</span><br><span class="line">      border: 20px solid red;</span><br><span class="line">      &#x2F;* padding: 20px; *&#x2F;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   #d2&#123;</span><br><span class="line">      width: 100px;</span><br><span class="line">      height: 100px;</span><br><span class="line">      background-color: green;</span><br><span class="line">      margin-top: 20px;</span><br><span class="line">   &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id&#x3D;&quot;d1&quot;&gt;</span><br><span class="line">   &lt;div id&#x3D;&quot;d2&quot;&gt;</span><br><span class="line">      hello world</span><br><span class="line">   &lt;&#x2F;div&gt;</span><br><span class="line">   hello world</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可见调整外边距时不会让块标签大小产生变化，只会让块标签包含关系产生一种距离缝隙，如果调整内边距会让整个快的大小产变化。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/20/Java-day8/" data-id="cknn1mv7h000ycrup0f28bvqp" data-title="Java day8" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/21/consumption-problem/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          consumption problem
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/20/Semaphore-mechanism/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Semaphore mechanism</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/issues/" rel="tag">issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start-here/" rel="tag">start here</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/" rel="tag">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/" rel="tag">writing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Internet/" style="font-size: 15px;">Internet</a> <a href="/tags/Programming-Language/" style="font-size: 17.5px;">Programming Language</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/start-here/" style="font-size: 12.5px;">start here</a> <a href="/tags/system/" style="font-size: 20px;">system</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/writing/" style="font-size: 10px;">writing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/18/network%20of%20computer2/">network of computer2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/Java%20day1/">Java day1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/Java-day19/">Java day19</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/23/Java-day18/">Java day18</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

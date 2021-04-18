@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Java day17 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="回顾 数据类型  浮点型 float double 字符型 char 2B unicode 布尔型 boolean true false 逻辑判断   运算符  赋值运算符 &#x3D;  算数运算符 + - * &#x2F; %  变量如果小于int 结果以int型存储 如果大于int 以最大变量的数据类型存储   拓展运算符 +&#x3D; -&#x3D; &#x2F;&#x3D; %&#x3D; ++ –  ++–在前 让变量先自增自减 然后使用变量的值运算">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java day17">
+<meta property="og:url" content="http://example.com/2021/02/18/Java-day17/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="回顾 数据类型  浮点型 float double 字符型 char 2B unicode 布尔型 boolean true false 逻辑判断   运算符  赋值运算符 &#x3D;  算数运算符 + - * &#x2F; %  变量如果小于int 结果以int型存储 如果大于int 以最大变量的数据类型存储   拓展运算符 +&#x3D; -&#x3D; &#x2F;&#x3D; %&#x3D; ++ –  ++–在前 让变量先自增自减 然后使用变量的值运算">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/02/18/Java-day17/2021-02-21_195717.png">
+<meta property="article:published_time" content="2021-02-18T11:51:32.000Z">
+<meta property="article:modified_time" content="2021-04-18T09:10:19.526Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Programming Language">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/02/18/Java-day17/2021-02-21_195717.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Java-day17" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/02/18/Java-day17/" class="article-date">
+  <time class="dt-published" datetime="2021-02-18T11:51:32.000Z" itemprop="datePublished">2021-02-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Java day17
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><ul>
+<li><p>数据类型</p>
+<ul>
+<li>浮点型 float double</li>
+<li>字符型 char 2B unicode</li>
+<li>布尔型 boolean true false 逻辑判断</li>
+</ul>
+</li>
+<li><p>运算符</p>
+<ul>
+<li><p>赋值运算符 =</p>
+</li>
+<li><p>算数运算符 + - * / %</p>
+<ul>
+<li>变量如果小于int 结果以int型存储 如果大于int 以最大变量的数据类型存储</li>
+</ul>
+</li>
+<li><p>拓展运算符 += -= /= %= ++ –</p>
+<ul>
+<li>++–在前 让变量先自增自减 然后使用变量的值运算</li>
+<li>在变量后 先试用变量运算 然后让变量自增自减</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>关系运算符 = &gt;= &lt;= == !=</p>
+</li>
+</ul>
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">package demo1;</span><br><span class="line"></span><br><span class="line">public class Test1 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        &#x2F;*逻辑运算符 运算结果是布尔类型</span><br><span class="line">        * &amp; 逻辑与运算 并且 多个条件同为true 则为true 一方为false 则为false</span><br><span class="line">        * | 逻辑或运算 或者</span><br><span class="line">        * &amp;&amp; 短路与运算 并且</span><br><span class="line">        * || 短路或运算 或者</span><br><span class="line">        * ^ 逻辑异或运算</span><br><span class="line">        * ! 逻辑非运算</span><br><span class="line">        * *&#x2F;</span><br><span class="line"></span><br><span class="line">        boolean b &#x3D; 10 &gt; 20 &amp; 20 &lt; 30 &amp; 30 &lt; 40;</span><br><span class="line">        System.out.println(b);</span><br><span class="line">        boolean b2 &#x3D; 10 &gt; 20 | 20 &lt; 30 | 30 &gt; 40;</span><br><span class="line">        System.out.println(b2);</span><br><span class="line"></span><br><span class="line">        int age &#x3D; 25;</span><br><span class="line">        &#x2F;&#x2F;                 false 并且 true</span><br><span class="line">        boolean b3 &#x3D; age &gt;&#x3D; 20 &amp; age &lt;&#x3D; 30;</span><br><span class="line">        System.out.println(b3);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;短路与运算 发现前面的一项结果为false 则后面的条件就不运算了</span><br><span class="line">        boolean b4 &#x3D; false &amp;&amp; 1 &#x2F; 0 &gt; 0;</span><br><span class="line">        System.out.println(b4);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;短路或运算 发现前面的一项为true时 则后面的条件就不运算了</span><br><span class="line">        boolean b5 &#x3D; true || 1&#x2F;0&gt;1;</span><br><span class="line">        System.out.println(b5);</span><br><span class="line">        &#x2F;*以后基本使用短路的与运算和或运算*&#x2F;</span><br><span class="line"></span><br><span class="line">        &#x2F;*异或运算 ^</span><br><span class="line">        * 相同则为false 不同则为true</span><br><span class="line">        * *&#x2F;</span><br><span class="line"></span><br><span class="line">        boolean b6 &#x3D; 10 &gt; 20 ^ 20 &lt; 30;</span><br><span class="line">        System.out.println(b6);</span><br><span class="line">        </span><br><span class="line">        &#x2F;*逻辑非运算*&#x2F;</span><br><span class="line">        boolean b7 &#x3D; !(10 &lt; 20);</span><br><span class="line">        System.out.println(!b7);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">package demo1;</span><br><span class="line"></span><br><span class="line">public class Test2 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        &#x2F;*位运算符在二进制上运算的符号</span><br><span class="line">        * &gt;&gt; 右移运算</span><br><span class="line">        * &lt;&lt; 左移运算</span><br><span class="line">        * &gt;&gt;&gt; 不带号右移运算</span><br><span class="line">        * &amp; 按位与运算</span><br><span class="line">        * | 按位或运算</span><br><span class="line">        *  ^ 按位异或运算</span><br><span class="line">        *  ~ 按位取反运算</span><br><span class="line">        *</span><br><span class="line">        * *&#x2F;</span><br><span class="line"></span><br><span class="line">        int a &#x3D; -8;&#x2F;&#x2F;00000000 00000000 00000000 00001000</span><br><span class="line">        &#x2F;&#x2F;左移动一位 相当于乘2</span><br><span class="line">        int b &#x3D; a &lt;&lt; 1;&#x2F;&#x2F; *** 00010000</span><br><span class="line">        System.out.println(b);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;右移动一位 相当于除2</span><br><span class="line">        int c &#x3D; a &gt;&gt; 1;&#x2F;&#x2F;00000100</span><br><span class="line">        System.out.println(c);</span><br><span class="line"></span><br><span class="line">        &#x2F;*</span><br><span class="line">        * &gt;&gt; &lt;&lt; 不会移动符号位</span><br><span class="line">        * &gt;&gt;&gt; 移动符号位</span><br><span class="line">        * 最高位位0 代表正数 最高位位1 代表负数</span><br><span class="line">        * 10000000 00000000 00000000 00000100</span><br><span class="line">        * 01000000 00000000 00000000 00000010</span><br><span class="line">        * *&#x2F;</span><br><span class="line">        int d &#x3D; a &gt;&gt;&gt; 1;</span><br><span class="line">        System.out.println(d);</span><br><span class="line"></span><br><span class="line">        int e &#x3D; 8;&#x2F;&#x2F;00001000</span><br><span class="line">        int f &#x3D; 9;&#x2F;&#x2F;00001001</span><br><span class="line">        &#x2F;*同为1 则为1 一方为0 则为0*&#x2F;</span><br><span class="line">        int g &#x3D; e &amp; f;&#x2F;&#x2F;00001000</span><br><span class="line">        System.out.println(g);</span><br><span class="line">        &#x2F;*同为0 则为0 一方为1 则为1*&#x2F;</span><br><span class="line">        int h &#x3D; e | g;&#x2F;&#x2F;00001001</span><br><span class="line">        System.out.println(h);</span><br><span class="line"></span><br><span class="line">        &#x2F;*相同则为0 不同则为1 异或*&#x2F;</span><br><span class="line">        int i &#x3D; e ^ f;&#x2F;&#x2F;000000001</span><br><span class="line">        System.out.println(i);</span><br><span class="line"></span><br><span class="line">        &#x2F;*按位取反运算*&#x2F;</span><br><span class="line">        int j &#x3D; ~10;&#x2F;&#x2F;-3 -2 -1 | 0 1 2 3 镜像直接看 10 &gt; -11</span><br><span class="line">        System.out.println(j);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实际开发中很少使用</p>
+<h2 id="条件运算符"><a href="#条件运算符" class="headerlink" title="条件运算符"></a>条件运算符</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package demo1;</span><br><span class="line"></span><br><span class="line">public class Test3 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        &#x2F;*</span><br><span class="line">        * 条件运算符 java中唯一的一个三目运算符</span><br><span class="line">        * 条件? 值1:值2</span><br><span class="line">        * 做一些简单的逻辑判断</span><br><span class="line">        * *&#x2F;</span><br><span class="line"></span><br><span class="line">        int a &#x3D; true?10:20;&#x2F;&#x2F;为真 将前面一个值赋值给a</span><br><span class="line">        System.out.println(a);</span><br><span class="line">        int i &#x3D; 10;</span><br><span class="line">        int j &#x3D; 20;</span><br><span class="line">        System.out.println(i&gt;j?i:j);&#x2F;&#x2F;谁大输出谁</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package demo1;</span><br><span class="line"></span><br><span class="line">public class Test4 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        boolean b &#x3D; 1+0 &gt; 1 || 5 &gt; 3?true:false;</span><br><span class="line">        &#x2F;*</span><br><span class="line">        * 算数运算符优先级 &gt; 关系运算符 &gt; 条件运算符 &gt; 逻辑运算符 &gt; 赋值运算符</span><br><span class="line">        * </span><br><span class="line">        *</span><br><span class="line">        * *&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实在分不清 则加小括号提高优先级即可</p>
+<h1 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h1><ul>
+<li>顺序结构 &gt;&gt;&gt; 从上往下一行一行执行</li>
+<li>分支结构 &gt;&gt;&gt; 根据条件选择不同的分支去执行</li>
+<li>循环结构 &gt;&gt;&gt; 需要反复执行的结构</li>
+</ul>
+<h2 id="多条件分支"><a href="#多条件分支" class="headerlink" title="多条件分支"></a>多条件分支</h2><p>双分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">package iDemo;</span><br><span class="line"></span><br><span class="line">public class Test1 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        &#x2F;*给定一个整数 判断是奇数还是偶数*&#x2F;</span><br><span class="line">        int i &#x3D;16;</span><br><span class="line">        &#x2F;*</span><br><span class="line">        * if else</span><br><span class="line">        * 语法 if(条件 结果为boolean类型)&#123;</span><br><span class="line">        *           分支1</span><br><span class="line">        *     &#125;else&#123;</span><br><span class="line">        *            分支2</span><br><span class="line">        *     &#125;</span><br><span class="line">        * 当括号中的条件成立 执行分支1</span><br><span class="line">        * 当括号中的条件不成立 执行分支2</span><br><span class="line">        * *&#x2F;</span><br><span class="line">        if(i % 2 &#x3D;&#x3D; 0)&#123;</span><br><span class="line">            System.out.println(&quot;是偶数&quot;);</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            System.out.println(&quot;是奇数&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>多分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">package iDemo;</span><br><span class="line"></span><br><span class="line">public class Test2 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        &#x2F;*给定任意整数</span><br><span class="line">         * 如果是3的倍数 输出乒</span><br><span class="line">         * 如果是5的倍数 输出乓</span><br><span class="line">         * 如果是3和5的倍数 输出乒乓</span><br><span class="line">         * 如果都不是 输出该数本身</span><br><span class="line">         * if(条件1)&#123;</span><br><span class="line">         * &#125;else if(条件2)&#123;</span><br><span class="line">         * &#125;else if(条件3)&#123;</span><br><span class="line">         * &#125;......</span><br><span class="line">         * else&#123;</span><br><span class="line">         * &#125;</span><br><span class="line">         * 从上往下挨个检查条件是否成立</span><br><span class="line">         * 如果其中某一个条件成立了 则执行对应的分支代码 其余条件则不再判断了；</span><br><span class="line">         * 如果都不成立 那么自动执行else中的代码 *&#x2F;</span><br><span class="line">        int i &#x3D; 15;</span><br><span class="line">        if(i % 3 &#x3D;&#x3D; 0 &amp;&amp; i % 5 &#x3D;&#x3D; 0)&#123;</span><br><span class="line">            System.out.println(&quot;乒乓&quot;);</span><br><span class="line">        &#125;else if(i % 5 &#x3D;&#x3D; 0)&#123;</span><br><span class="line">            System.out.println(&quot;乓&quot;);</span><br><span class="line">        &#125;else if(i % 3 &#x3D;&#x3D; 0)&#123;</span><br><span class="line">            System.out.println(&quot;乒&quot;);</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p>给定月份 输入该月份所在的季节以及该季节的主要活动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">package iDemo;</span><br><span class="line"></span><br><span class="line">public class Test3 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int month &#x3D; 10;</span><br><span class="line">        &#x2F;&#x2F;添加一堆代码</span><br><span class="line">        &#x2F;&#x2F;春季:播种</span><br><span class="line">        &#x2F;&#x2F;夏季:吃烧烤</span><br><span class="line">        &#x2F;&#x2F;秋季:秋收</span><br><span class="line">        &#x2F;&#x2F;冬季:睡觉</span><br><span class="line">        &#x2F;&#x2F;其他:月份有误</span><br><span class="line"></span><br><span class="line">        if(month &gt;&#x3D; 3 &amp;&amp; month &lt;&#x3D; 5)&#123;</span><br><span class="line">            System.out.println(&quot;春季，春眠不觉晓&quot;);</span><br><span class="line">        &#125;else if(6 &lt;&#x3D; month &amp;&amp; month &lt;&#x3D; 8)&#123;</span><br><span class="line">            System.out.println(&quot;夏季，夏天蚊子咬&quot;);</span><br><span class="line">        &#125;else if(9 &lt;&#x3D; month &amp;&amp; month &lt;&#x3D; 11)&#123;</span><br><span class="line">            System.out.println(&quot;秋季，秋天一身包&quot;);</span><br><span class="line">        &#125;else if(month &#x3D;&#x3D; 12 || month &#x3D;&#x3D; 1 || month &#x3D;&#x3D; 2)&#123;</span><br><span class="line">            System.out.println(&quot;冬季，蚊子死翘翘&quot;);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            System.out.println(&quot;月份有误&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package iDemo;</span><br><span class="line"></span><br><span class="line">public class Test4 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        &#x2F;*</span><br><span class="line">        * if 语句可以单独使用</span><br><span class="line">        * else 语句不能单独使用 必须依附于某个if</span><br><span class="line">        * if else 大括号可以省略不写</span><br><span class="line">        *           当大括号不写的时候 仅仅只能关联一行代码</span><br><span class="line">        *</span><br><span class="line">        * *&#x2F;</span><br><span class="line">        int i &#x3D; 4;</span><br><span class="line">        if(i &gt; 5)</span><br><span class="line">            System.out.println(&quot;你好&quot;);</span><br><span class="line">        else</span><br><span class="line">            System.out.println(&quot;hello&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="练习-1"><a href="#练习-1" class="headerlink" title="练习"></a>练习</h2><p>给定月份年份 输出有多少天</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">package iDemo;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Test5 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        Scanner sc &#x3D; new Scanner(System.in);</span><br><span class="line">        System.out.println(&quot;请输入年份&quot;);</span><br><span class="line">        int year &#x3D; sc.nextInt();</span><br><span class="line">        System.out.println(&quot;请输入月份&quot;);</span><br><span class="line">        int month &#x3D; sc.nextInt();</span><br><span class="line"></span><br><span class="line">        if(month &#x3D;&#x3D; 1 || month &#x3D;&#x3D; 3 || month &#x3D;&#x3D; 5 || month &#x3D;&#x3D; 7 ||month &#x3D;&#x3D; 8 || month &#x3D;&#x3D; 10 || month &#x3D;&#x3D; 12)&#123;</span><br><span class="line">            System.out.println(&quot;31天&quot;);</span><br><span class="line">        &#125;else if(month &#x3D;&#x3D; 4 || month &#x3D;&#x3D; 6 || month &#x3D;&#x3D; 9 || month &#x3D;&#x3D; 11)&#123;</span><br><span class="line">            System.out.println(&quot;30天&quot;);</span><br><span class="line">        &#125;else if(month &#x3D;&#x3D; 2)&#123;</span><br><span class="line">            if(year % 4 &#x3D;&#x3D; 0)&#123;</span><br><span class="line">                System.out.println(&quot;29天&quot;);</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                System.out.println(&quot;28天&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            System.out.println(&quot;月份有误&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        sc.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="键盘输入"><a href="#键盘输入" class="headerlink" title="键盘输入"></a>键盘输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">package iDemo;</span><br><span class="line"></span><br><span class="line">&#x2F;*笔的路径 导入Scanner 导包*&#x2F;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Test6 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        &#x2F;*借笔写字</span><br><span class="line">        * 创建一个扫描仪对象</span><br><span class="line">        *</span><br><span class="line">        * *&#x2F;</span><br><span class="line">        Scanner sc &#x3D; new Scanner(System.in);</span><br><span class="line">        &#x2F;*</span><br><span class="line">        * 使用笔写字</span><br><span class="line">        * 从键盘录入信息</span><br><span class="line">        * *&#x2F;</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;请输入一些语句&quot;);</span><br><span class="line">        String s1 &#x3D; sc.nextLine();&#x2F;&#x2F;会受之前输入的影响 之前不能有输入语句</span><br><span class="line">        System.out.println(&quot;您输入的是:&quot; + s1);</span><br><span class="line"></span><br><span class="line">        &#x2F;*从键盘接受一个整数*&#x2F;</span><br><span class="line">        System.out.println(&quot;请输入一个整数&quot;);</span><br><span class="line">        int b &#x3D; sc.nextInt();</span><br><span class="line">        System.out.println(&quot;您输入的是:&quot; + b);&#x2F;&#x2F; + 代表文字拼接</span><br><span class="line"></span><br><span class="line">        &#x2F;*从键盘录入一个浮点数*&#x2F;</span><br><span class="line">        System.out.println(&quot;请输入一个小数&quot;);</span><br><span class="line">        double d &#x3D; sc.nextDouble();</span><br><span class="line">        System.out.println(&quot;您输入的是&quot; + d);</span><br><span class="line"></span><br><span class="line">        &#x2F;*从键盘接受文字*&#x2F;</span><br><span class="line">        System.out.println(&quot;请输入一些内容&quot;);</span><br><span class="line">        String s &#x3D; sc.next();&#x2F;&#x2F;弊端 &gt;&gt;&gt; 空格前面的文字可以录入 后面的不行</span><br><span class="line">        System.out.println(&quot;您输入的是:&quot; + s);</span><br><span class="line"></span><br><span class="line">        &#x2F;*释放资源</span><br><span class="line">        * 关闭扫描仪</span><br><span class="line">        * *&#x2F;</span><br><span class="line">        sc.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div style="width:70%;margin:auto"><img src="/2021/02/18/Java-day17/2021-02-21_195717.png" class title="This is an example image"></div>
+
+<h2 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">package switchDemo;</span><br><span class="line"></span><br><span class="line">public class Test1 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        &#x2F;*</span><br><span class="line">        * swith case</span><br><span class="line">        *</span><br><span class="line">        * switch(变量 非boolean)&#123;</span><br><span class="line">        *  case 变量可能出现的值 :</span><br><span class="line">        *</span><br><span class="line">        * &#125;</span><br><span class="line">        * 开关语句</span><br><span class="line">        *</span><br><span class="line">        * if(必须是布尔类型)&#123;</span><br><span class="line">        * &#125;else if()&#123;</span><br><span class="line">        * &#125;...</span><br><span class="line">        * else&#123;</span><br><span class="line">        * &#125;</span><br><span class="line">        *</span><br><span class="line">        * *&#x2F;</span><br><span class="line"></span><br><span class="line">        &#x2F;*给定月份 输出季节*&#x2F;</span><br><span class="line">        int month &#x3D; 10;</span><br><span class="line">        switch (month)&#123;     &#x2F;&#x2F;认为匹配之后的所有代码都可以执行 用break终止</span><br><span class="line">            case 1:</span><br><span class="line">            case 2:</span><br><span class="line">            case 12:</span><br><span class="line">                System.out.println(&quot;冬季&quot;);</span><br><span class="line">                break;</span><br><span class="line">            case 3:</span><br><span class="line">            case 4:</span><br><span class="line">            case 5:</span><br><span class="line">                System.out.println(&quot;春季&quot;);</span><br><span class="line">                break;</span><br><span class="line">            case 6:</span><br><span class="line">            case 7:</span><br><span class="line">            case 8:</span><br><span class="line">                System.out.println(&quot;夏季&quot;);</span><br><span class="line">                break;</span><br><span class="line">            case 9:</span><br><span class="line">            case 10:</span><br><span class="line">            case 11:</span><br><span class="line">                System.out.println(&quot;秋季&quot;);</span><br><span class="line">                break;</span><br><span class="line"></span><br><span class="line">            default:&#x2F;&#x2F;相当于最后一个else break加不加都行</span><br><span class="line">                System.out.println(&quot;月份有误&quot;);</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="练习-2"><a href="#练习-2" class="headerlink" title="练习"></a>练习</h2><p>用switch 语句完成输入年份和月份 输出天数 要求键盘输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">package switchDemo;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Test2 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner sc &#x3D; new Scanner(System.in);</span><br><span class="line">        System.out.println(&quot;请输入年份&quot;);</span><br><span class="line">        int year &#x3D; sc.nextInt();</span><br><span class="line">        System.out.println(&quot;请输入月份&quot;);</span><br><span class="line">        int month &#x3D; sc.nextInt();</span><br><span class="line"></span><br><span class="line">        switch (month)&#123;</span><br><span class="line">            case 1:</span><br><span class="line">            case 3:</span><br><span class="line">            case 5:</span><br><span class="line">            case 7:</span><br><span class="line">            case 8:</span><br><span class="line">            case 10:</span><br><span class="line">            case 12:</span><br><span class="line">                System.out.println(&quot;31天&quot;);</span><br><span class="line">                break;</span><br><span class="line">            case 4:</span><br><span class="line">            case 6:</span><br><span class="line">            case 9:</span><br><span class="line">            case 11:</span><br><span class="line">                System.out.println(&quot;30&quot;);</span><br><span class="line">                break;</span><br><span class="line">            case 2:</span><br><span class="line">                if (year % 4 &#x3D;&#x3D; 0)&#123;</span><br><span class="line">                    System.out.println(&quot;29天&quot;);</span><br><span class="line">                &#125;else &#123;</span><br><span class="line">                    System.out.println(&quot;28天&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">                break;</span><br><span class="line">            default:</span><br><span class="line">                System.out.println(&quot;输入有误&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        sc.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">package switchDemo;</span><br><span class="line"></span><br><span class="line">public class Test3 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        &#x2F;&#x2F;byte short int char 可以</span><br><span class="line">        &#x2F;&#x2F;long 不可以</span><br><span class="line">        char c &#x3D; &#39;a&#39;;</span><br><span class="line">        switch (c)&#123;</span><br><span class="line">            case &#39;a&#39;:</span><br><span class="line">                System.out.println(c);</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">        String s &#x3D; &quot;好&quot;;</span><br><span class="line">        switch (s)&#123;</span><br><span class="line">            case &quot;好&quot;:</span><br><span class="line">                System.out.println(s);</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">       &#x2F;* boolean b &#x3D; true;</span><br><span class="line">        switch (b)&#123;</span><br><span class="line">            case &#39;a&#39;:</span><br><span class="line">        &#125;不能布尔类型*&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h2><p>让计算机反复执行相同的代码</p>
+<h3 id="while"><a href="#while" class="headerlink" title="while"></a>while</h3><p>语法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while(条件)&#123;</span><br><span class="line">    循环体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>先判断条件是否成立 如果成立 那么执行循环体<br>执行完循环体 再次判断条件是否成立 如果成立 继续执行循环体<br>直到条件不成立 循环结束</p>
+<p>输出1 - 100</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package whileDmoe;</span><br><span class="line"></span><br><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        &#x2F;*输出 1 - 100*&#x2F;</span><br><span class="line">        int i &#x3D; 1;&#x2F;&#x2F;初始变量</span><br><span class="line">        while(i &lt;&#x3D; 100)&#123;&#x2F;&#x2F;循环条件</span><br><span class="line">            System.out.println(i);&#x2F;&#x2F;循环要执行的功能</span><br><span class="line">            i++;&#x2F;&#x2F;初始变量变化方式</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="练习-3"><a href="#练习-3" class="headerlink" title="练习"></a>练习</h2><p>输出 1 - 100 内所有的奇数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package whileDmoe;</span><br><span class="line"></span><br><span class="line">public class Test2 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int i &#x3D; 1;</span><br><span class="line">        while(i &lt;&#x3D; 100)&#123;</span><br><span class="line">            &#x2F;&#x2F;如果是偶数 输出 如果是奇数就不输出</span><br><span class="line">            if(i % 2 &#x3D;&#x3D; 1) &#123;</span><br><span class="line">                System.out.println(i);</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出 1 - 100 内所有5的倍数 三个一行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package whileDmoe;</span><br><span class="line"></span><br><span class="line">public class Test4 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int i &#x3D; 0;</span><br><span class="line">        while(i &lt;&#x3D; 100)&#123;</span><br><span class="line">            if(i % 5 &#x3D;&#x3D; 0)&#123;</span><br><span class="line">                System.out.print(i + &quot; &quot;);</span><br><span class="line">                if (i % 3 &#x3D;&#x3D; 0)&#123;</span><br><span class="line">                    System.out.println();&#x2F;&#x2F;相当于换行</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package whileDmoe;</span><br><span class="line"></span><br><span class="line">public class Test5 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int i &#x3D; 0;</span><br><span class="line">        int j &#x3D; 0;</span><br><span class="line">        while(i &lt;&#x3D; 100)&#123;</span><br><span class="line">            if(i % 5 &#x3D;&#x3D; 0)&#123;</span><br><span class="line">                System.out.print(i + &quot; &quot;);</span><br><span class="line">                j++;</span><br><span class="line">                if(j % 3 &#x3D;&#x3D;0)&#123;</span><br><span class="line">                    System.out.println();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出 1 - 100 内所有奇数的和</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package whileDmoe;</span><br><span class="line"></span><br><span class="line">public class Test3 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int i &#x3D; 0;</span><br><span class="line">        int sum &#x3D; 0;</span><br><span class="line">        while(i &lt;&#x3D; 100)&#123;</span><br><span class="line">            if(i % 2 !&#x3D; 0)&#123;</span><br><span class="line">                sum &#x3D; sum + i;</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(sum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>从键盘录入任意整数 倒序输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package whileDmoe;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Test6 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner sc &#x3D; new Scanner(System.in);</span><br><span class="line">        System.out.println(&quot;请输入一个整数&quot;);</span><br><span class="line">        int num &#x3D; sc.nextInt();&#x2F;&#x2F;123456 654321</span><br><span class="line">        while(num !&#x3D; 0)&#123;</span><br><span class="line">            System.out.print(num % 10);</span><br><span class="line">            num &#x2F;&#x3D; 10;</span><br><span class="line">        &#125;</span><br><span class="line">        sc.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从键盘输入学生考试的科目数和学生的每科成绩 输出 总分 最高分 平均分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">package whileDmoe;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Test8 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner sc &#x3D; new Scanner(System.in);</span><br><span class="line">        System.out.println(&quot;请输入考试科目数&quot;);</span><br><span class="line">        int num &#x3D; sc.nextInt();</span><br><span class="line">        int i &#x3D; 1;</span><br><span class="line">        &#x2F;*用于计算总分*&#x2F;</span><br><span class="line">        int sum &#x3D; 0;</span><br><span class="line">        &#x2F;*用于记录最大值*&#x2F;</span><br><span class="line">        int max &#x3D; 0;</span><br><span class="line">        &#x2F;*用于记录最小值*&#x2F;</span><br><span class="line">        int min &#x3D; 9999;</span><br><span class="line">        while(i &lt;&#x3D; num)&#123;</span><br><span class="line">            System.out.println(&quot;请录入第&quot;+i+&quot;科的分数&quot;);</span><br><span class="line">            int score &#x3D; sc.nextInt();</span><br><span class="line">            sum +&#x3D; score;</span><br><span class="line">            &#x2F;*判断最大值*&#x2F;</span><br><span class="line">            if(max &lt;&#x3D; score)&#123;</span><br><span class="line">                max &#x3D; score;</span><br><span class="line">            &#125;</span><br><span class="line">            &#x2F;*判断最小值*&#x2F;</span><br><span class="line">            if(min &gt; score)&#123;</span><br><span class="line">                min &#x3D; score;</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;总分为:&quot;+sum);</span><br><span class="line">        System.out.println(&quot;平均分为:&quot;+(sum*1.0&#x2F;num));</span><br><span class="line">        System.out.println(&quot;最高分为:&quot;+max);</span><br><span class="line">        System.out.println(&quot;最低分为&quot;+min);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>判断一个数是不是水仙花数</p>
+<p>输出 100 - 1000 所有的水仙花数 </p>
+<p><code>147 &gt;&gt;&gt; 1*1*1 + 4*4*4 + 7*7*7 = 147</code></p>
+<p>代码如下所示:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package whileDmoe;</span><br><span class="line"></span><br><span class="line">public class Test7 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int i &#x3D; 100;</span><br><span class="line">        while(i &lt; 1000)&#123;</span><br><span class="line">            int g &#x3D; i % 10;</span><br><span class="line">            int s &#x3D; i &#x2F; 10 % 10;</span><br><span class="line">            int b &#x3D; i &#x2F; 100;</span><br><span class="line">            if(g * g * g + s * s * s + b * b * b &#x3D;&#x3D; i)&#123;</span><br><span class="line">                System.out.println(i);</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>判断一个数是不是素数</p>
+<p>输出1 - 100所有素数</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/18/Java-day17/" data-id="cknn1mv9a0039cruph2pvbbcy" data-title="Java day17" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/02/23/Java-day18/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java day18
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/02/16/Java-day16/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java day16</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/issues/" rel="tag">issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start-here/" rel="tag">start here</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/" rel="tag">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/" rel="tag">writing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Internet/" style="font-size: 15px;">Internet</a> <a href="/tags/Programming-Language/" style="font-size: 17.5px;">Programming Language</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/start-here/" style="font-size: 12.5px;">start here</a> <a href="/tags/system/" style="font-size: 20px;">system</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/writing/" style="font-size: 10px;">writing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/18/network%20of%20computer2/">network of computer2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/Java%20day1/">Java day1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/Java-day19/">Java day19</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/23/Java-day18/">Java day18</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

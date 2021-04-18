@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>transparent-transmission | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="透明传输问题 当PPP用在同步传输链路时，协议规定采用硬件来完成 比特填充 （和HDLC的做法一样)。 当PPP用在异步传输时，就使用一种特殊的 字符填充法 。  字符填充 将信息字段中出现的每一个Ox7E字节转变成为2字节序列(0x7D,0x5E)。 若信息字段中出现一个0x7D的字节,则将其转变成为⒉字节序列(Ox7D,0x5D)。 若信息字段中出现ASCII码的控制字符（即数值小于0x20的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="transparent-transmission">
+<meta property="og:url" content="http://example.com/2021/01/19/transparent-transmission/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="透明传输问题 当PPP用在同步传输链路时，协议规定采用硬件来完成 比特填充 （和HDLC的做法一样)。 当PPP用在异步传输时，就使用一种特殊的 字符填充法 。  字符填充 将信息字段中出现的每一个Ox7E字节转变成为2字节序列(0x7D,0x5E)。 若信息字段中出现一个0x7D的字节,则将其转变成为⒉字节序列(Ox7D,0x5D)。 若信息字段中出现ASCII码的控制字符（即数值小于0x20的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/01/19/transparent-transmission/status.png">
+<meta property="og:image" content="http://example.com/2021/01/19/transparent-transmission/adapter.png">
+<meta property="article:published_time" content="2021-01-19T11:55:58.000Z">
+<meta property="article:modified_time" content="2021-04-18T09:10:52.025Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Internet">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/01/19/transparent-transmission/status.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-transparent-transmission" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/19/transparent-transmission/" class="article-date">
+  <time class="dt-published" datetime="2021-01-19T11:55:58.000Z" itemprop="datePublished">2021-01-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      transparent-transmission
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="透明传输问题"><a href="#透明传输问题" class="headerlink" title="透明传输问题"></a>透明传输问题</h1><ul>
+<li>当PPP用在同步传输链路时，协议规定采用硬件来完成 <em><strong>比特填充</strong></em> （和HDLC的做法一样)。</li>
+<li>当PPP用在异步传输时，就使用一种特殊的 <em><strong>字符填充法</strong></em> 。</li>
+</ul>
+<h2 id="字符填充"><a href="#字符填充" class="headerlink" title="字符填充"></a>字符填充</h2><ul>
+<li>将信息字段中出现的每一个Ox7E字节转变成为2字节序列(0x7D,0x5E)。</li>
+<li>若信息字段中出现一个0x7D的字节,则将其转变成为⒉字节序列(Ox7D,0x5D)。</li>
+<li>若信息字段中出现ASCII码的控制字符（即数值小于0x20的字符)，则在该字符前面要加入一个0x7D字节，同时将该字符的编码加以改变。</li>
+</ul>
+<h2 id="零比特填充"><a href="#零比特填充" class="headerlink" title="零比特填充"></a>零比特填充</h2><ul>
+<li>PPP协议用在SONET/SDH链路时，使用同步传输（一连串的比特连续传送)。 <em><strong>这时PPP协议采用零比特填充方法来实现透明传输</strong></em> 。</li>
+<li>在发送端，只要发现有5个连续1，则立即填入一个0。</li>
+<li>接收端对帧中的比特流进行扫描。每当发现5个连续1时，就把这5个连续1后的一个0删除。</li>
+</ul>
+<p>否则，信息字段中出现了和标志字段F完全一样的8比特组合，会被误认为是标志字段F，因此发送端在5个连1之后填入0比特再发送出去，接收端把5个连1之后的0比特删除。</p>
+<p>ps:以0x开始的数据表示16进制。计算机中每位的权为16，即(16进制)10 = (10进制)1 * 16<br>所以，见到 7E —&gt; 7D 5E 见到 7D —&gt; 7D 5D</p>
+<h2 id="不提供使用序号和确认的可靠传输"><a href="#不提供使用序号和确认的可靠传输" class="headerlink" title="不提供使用序号和确认的可靠传输"></a>不提供使用序号和确认的可靠传输</h2><ul>
+<li>PPP协议之所以不使用序号和确认机制是出于以下的考虑:<ul>
+<li>在数据链路层出现差错的概率不大时，使用比较简单的PPP协议较为合理。</li>
+<li>在因特网环境下，PPP的信息字段放入的数据是IP数据报。数据链路层的可靠传输并不能够保证网络层的传输也是可靠的。</li>
+<li>帧检验序列FCS字段可保证无差错接受。</li>
+</ul>
+</li>
+</ul>
+<h2 id="PPP协议的工作状态"><a href="#PPP协议的工作状态" class="headerlink" title="PPP协议的工作状态"></a>PPP协议的工作状态</h2><ul>
+<li>当用户拨号接入ISP时，路由器的调制解调器对拨号做出确认，并建立一条物理连接。</li>
+<li>PC机向路由器发送一系列的LCP分组（封装成多个PPP帧)。</li>
+<li>这些分组及其响应选择一些PPP参数，并进行网络层配置，NCP给新接入的PC机分配一个临时的IP地址，使PC机成为因特网上的一个主机。</li>
+<li>通信完毕时，NCP释放网络层连接，收回原来分配出去的IP地址。接着，LCP释放数据链路层连接。最后释放的是物理层的连接。</li>
+</ul>
+<p>ps:ISP Internet Service Provider 互联网服务提供商;LCP Link Control Protocol 链路控制协议;NCP Network control protocol 网络控制协议</p>
+<ul>
+<li>链路控制协议（LCP）：一种扩展链路控制协议，用于建立、配置、测试和管理数据链路连接。</li>
+<li>网络控制协议（NCP）：协商该链路上所传输的数据包格式与类型，建立、配置不同的网络层协议；</li>
+</ul>
+<p><em><strong>PPP协议状态图</strong></em> </p>
+<div style="width:70%;margin:auto"><img src="/2021/01/19/transparent-transmission/status.png" class title="This is an example image"></div>
+
+<p>ps:NCP主要和上层(网络层)协议协商<br>ps:LCP主要和下次进行链路之间的协商<br>ps:鉴别为身份认证</p>
+<h2 id="使用广播信道的数据链路层"><a href="#使用广播信道的数据链路层" class="headerlink" title="使用广播信道的数据链路层"></a>使用广播信道的数据链路层</h2><h3 id="局域网的数据链路层"><a href="#局域网的数据链路层" class="headerlink" title="局域网的数据链路层"></a>局域网的数据链路层</h3><ul>
+<li><p><em><strong>局域网最主要的特点是:</strong></em></p>
+<ul>
+<li>网络为一个单位所拥有;</li>
+<li>地理范围和站点数目均有限。</li>
+</ul>
+</li>
+<li><p><em><strong>局域网的主要优点</strong></em></p>
+<ul>
+<li>具有广播功能，从一个站点可很方便地访问全网。局域网上的主机可共享连接在局域网上的各种硬件和软件资源。</li>
+<li>便于系统的扩展和逐渐地演变，各设备的位置可灵活调整和改变。</li>
+<li>提高了系统的可靠性、可用性和残存性。</li>
+</ul>
+</li>
+</ul>
+<p>拓扑结构:星形网、总线网、环型网</p>
+<ul>
+<li><p><em><strong>静态划分信道</strong></em></p>
+<ul>
+<li>频分复用</li>
+<li>时分复用</li>
+<li>波分复用</li>
+<li>码分复用</li>
+</ul>
+</li>
+<li><p><em><strong>动态媒体接入控制</strong></em></p>
+<ul>
+<li>随机接入</li>
+<li>受控接入,如多点线路探询(polling)，或轮询。</li>
+</ul>
+</li>
+</ul>
+<h3 id="主要用到的两个以太网标准"><a href="#主要用到的两个以太网标准" class="headerlink" title="主要用到的两个以太网标准"></a>主要用到的两个以太网标准</h3><ul>
+<li>DIX Ethernet V2是世界上第一个局域网产品(以太网）的规约。</li>
+<li>IEEE 802.3是第一个IEEE的以太网标准。</li>
+</ul>
+<h3 id="数据链路层的两个子层"><a href="#数据链路层的两个子层" class="headerlink" title="数据链路层的两个子层"></a>数据链路层的两个子层</h3><ul>
+<li><p>为了使数据链路层能更好地适应多种局域网标准，IEEE 802委员会就将局域网的数据链路层拆成两个子层:</p>
+<ul>
+<li>逻辑链路控制LLC (Logical Link Control)子层;</li>
+<li>媒体接入控制MAC (Medium Access Control)子层。</li>
+</ul>
+</li>
+<li><p>与接入到传输媒体有关的内容都放在MAC子层，而LLC子层则与传输媒体无关。</p>
+</li>
+<li><p>不管采用何种协议的局域网，对LLC子层来说都是透明的。</p>
+</li>
+</ul>
+<h3 id="适配器的作用"><a href="#适配器的作用" class="headerlink" title="适配器的作用"></a>适配器的作用</h3><ul>
+<li>网络接口板又称为通信适配器(adapter)或网络接口卡NIC(Network Interface Card)，或“网卡”</li>
+<li>适配器的重要功能:<ul>
+<li>进行串行/并行转换。</li>
+<li>对数据进行缓存。</li>
+<li>在计算机的操作系统安装设备驱动程序。</li>
+<li>实现以太网协议。</li>
+</ul>
+</li>
+</ul>
+<h3 id="计算机通过适配器和局域网进行通信"><a href="#计算机通过适配器和局域网进行通信" class="headerlink" title="计算机通过适配器和局域网进行通信"></a>计算机通过适配器和局域网进行通信</h3><div style="width:70%;margin:auto"><img src="/2021/01/19/transparent-transmission/adapter.png" class title="This is an example image"></div>
+
+<p>MAC:指硬件地址</p>
+<h3 id="CSMA-CD协议"><a href="#CSMA-CD协议" class="headerlink" title="CSMA/CD协议"></a>CSMA/CD协议</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/19/transparent-transmission/" data-id="cknn1mv90002vcrupexkj115v" data-title="transparent-transmission" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/20/Semaphore-mechanism/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Semaphore mechanism
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/18/Java-day7/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java day7</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/issues/" rel="tag">issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start-here/" rel="tag">start here</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/" rel="tag">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/" rel="tag">writing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Internet/" style="font-size: 15px;">Internet</a> <a href="/tags/Programming-Language/" style="font-size: 17.5px;">Programming Language</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/start-here/" style="font-size: 12.5px;">start here</a> <a href="/tags/system/" style="font-size: 20px;">system</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/writing/" style="font-size: 10px;">writing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/18/network%20of%20computer2/">network of computer2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/Java%20day1/">Java day1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/Java-day19/">Java day19</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/23/Java-day18/">Java day18</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

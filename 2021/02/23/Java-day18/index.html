@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Java day18 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="练习从键盘录入一个数字 判断它是不是素数 123456789101112131415161718192021222324252627package whileDmoe;import java.util.Scanner;public class Test9 &amp;#123;    public static void main(String[] args) &amp;#123;        Scanner s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java day18">
+<meta property="og:url" content="http://example.com/2021/02/23/Java-day18/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="练习从键盘录入一个数字 判断它是不是素数 123456789101112131415161718192021222324252627package whileDmoe;import java.util.Scanner;public class Test9 &amp;#123;    public static void main(String[] args) &amp;#123;        Scanner s">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-02-23T12:17:52.000Z">
+<meta property="article:modified_time" content="2021-04-18T09:10:20.110Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Programming Language">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Java-day18" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/02/23/Java-day18/" class="article-date">
+  <time class="dt-published" datetime="2021-02-23T12:17:52.000Z" itemprop="datePublished">2021-02-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Java day18
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p>从键盘录入一个数字 判断它是不是素数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">package whileDmoe;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Test9 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner sc &#x3D; new Scanner(System.in);</span><br><span class="line">        System.out.println(&quot;请录入一个整数&quot;);</span><br><span class="line">        int i &#x3D; sc.nextInt();</span><br><span class="line">        &#x2F;&#x2F; 2 3 4 5 14</span><br><span class="line">        int num &#x3D; 2;</span><br><span class="line">        &#x2F;*不要在循环中做输出了 在循环中做标记*&#x2F;</span><br><span class="line">        boolean flag &#x3D; true;</span><br><span class="line">        while(num &lt; i)&#123;</span><br><span class="line">            if(i % num &#x3D;&#x3D; 0)&#123;</span><br><span class="line">                flag &#x3D; false;</span><br><span class="line">            &#125;</span><br><span class="line">            num++;</span><br><span class="line">        &#125;</span><br><span class="line">        if (flag &#x3D;&#x3D; true)&#123;</span><br><span class="line">            System.out.println(&quot;是素数&quot;);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            System.out.println(&quot;不是素数&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        sc.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出 1 - 100 内所有素数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">package whileDmoe;</span><br><span class="line"></span><br><span class="line">public class Test10 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int i &#x3D; 1;</span><br><span class="line">        while (i &lt;&#x3D; 100) &#123;</span><br><span class="line">            &#x2F;&#x2F;是素数 就输出 不是不输出</span><br><span class="line">            int num &#x3D; 2;</span><br><span class="line">            boolean flag &#x3D; true;</span><br><span class="line">            while (num &lt; i&#x2F;2) &#123;&#x2F;&#x2F;计算一半即可判断</span><br><span class="line">                if (i % num &#x3D;&#x3D; 0) &#123;</span><br><span class="line">                    flag &#x3D; false;</span><br><span class="line">                &#125;</span><br><span class="line">                num++;</span><br><span class="line">            &#125;</span><br><span class="line">            if (flag) &#123;&#x2F;&#x2F;if 可以放布尔类型</span><br><span class="line">                System.out.println(i);</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">package demo1;</span><br><span class="line"></span><br><span class="line">public class Test1 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        &#x2F;&#x2F;22 - 59 59-23&#x3D;36 共37个数字</span><br><span class="line">        &#x2F;&#x2F;Math.random() 0.00000000001 &gt; 0.99999999999 范围内随机生成</span><br><span class="line">        &#x2F;&#x2F;0 - 36</span><br><span class="line">        int value &#x3D; (int)(Math.random()*37) + 23;</span><br><span class="line">        System.out.println(value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="模拟回合制打怪游戏"><a href="#模拟回合制打怪游戏" class="headerlink" title="模拟回合制打怪游戏"></a>模拟回合制打怪游戏</h2><p>玩家 hp 315<br>怪物 hp 500<br>玩家怪物互砍<br>玩家每次攻击怪物产生5-8点伤害<br>怪物每次攻击玩家产生3-5点伤害<br>采用回合制 一方挂掉 游戏结束<br>用程序模拟战斗过程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">package demo1;</span><br><span class="line"></span><br><span class="line">public class Test2 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        &#x2F;*</span><br><span class="line">        * int w &#x3D; 315</span><br><span class="line">        * int g &#x3D; 500</span><br><span class="line">        * while(玩家怪物都活着)&#123;</span><br><span class="line">        *   生成玩家攻击力 5</span><br><span class="line">        *   怪物血量对应减少</span><br><span class="line">        *   输出玩家攻击怪物 怪物掉了*点血 还剩*点血</span><br><span class="line">        *   怪物攻击玩家</span><br><span class="line">        *   生成怪物攻击力</span><br><span class="line">        *   玩家血量对应减少</span><br><span class="line">        *   输出怪物攻击玩家 玩家掉了*点血 还剩*点血</span><br><span class="line">        * &#125;</span><br><span class="line">        * *&#x2F;</span><br><span class="line"></span><br><span class="line">        int w &#x3D;315;</span><br><span class="line">        int g &#x3D; 500;</span><br><span class="line">        &#x2F;&#x2F;回合计数变量</span><br><span class="line">        int h &#x3D; 1;</span><br><span class="line">        while(true)&#123;&#x2F;&#x2F;循环一直执行</span><br><span class="line">            System.out.println(&quot;--------------第&quot;+h+&quot;回合--------------&quot;);</span><br><span class="line">            h++;</span><br><span class="line">            &#x2F;&#x2F;玩家攻击力</span><br><span class="line">            int wg &#x3D; (int)(Math.random()*4) + 5;</span><br><span class="line">            &#x2F;&#x2F;减少怪物血量</span><br><span class="line">            g -&#x3D; wg;</span><br><span class="line">            &#x2F;&#x2F;输出结果</span><br><span class="line">            System.out.println(&quot;玩家攻击怪物，怪物掉了&quot; +wg+ &quot;点血，还剩&quot; +g+ &quot;点血&quot;);</span><br><span class="line">            &#x2F;&#x2F;判断怪物是否已经挂掉</span><br><span class="line">            if (g &lt;&#x3D; 0)&#123;</span><br><span class="line">                &#x2F;&#x2F;让循环结束</span><br><span class="line">                System.out.println(&quot;怪物挂掉，胜利&quot;);</span><br><span class="line">                &#x2F;&#x2F;停止循环继续执行</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            &#x2F;&#x2F;怪物攻击力</span><br><span class="line">            int gg &#x3D; (int)(Math.random()*3) + 3;</span><br><span class="line">            &#x2F;&#x2F;减少玩家血量</span><br><span class="line">            w -&#x3D; gg;</span><br><span class="line">            &#x2F;&#x2F;输出</span><br><span class="line">            System.out.println(&quot;怪物攻击玩家，玩家掉了&quot;+gg+&quot;点血，还剩&quot;+w+&quot;点血&quot;);</span><br><span class="line">            if (w &lt;&#x3D; 0)&#123;</span><br><span class="line">                &#x2F;&#x2F;让循环结束</span><br><span class="line">                System.out.println(&quot;玩家挂掉，失败&quot;);</span><br><span class="line">                &#x2F;&#x2F;停止循环继续执行</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="循环的嵌套执行"><a href="#循环的嵌套执行" class="headerlink" title="循环的嵌套执行"></a>循环的嵌套执行</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">package demo1;</span><br><span class="line"></span><br><span class="line">public class Test3 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        &#x2F;*外层循环执行一次 内层循环执行多次*&#x2F;</span><br><span class="line">        &#x2F;*计算次数的变量*&#x2F;</span><br><span class="line">        int c &#x3D; 0;</span><br><span class="line">        int i &#x3D; 1;</span><br><span class="line">        while(i &lt;&#x3D; 10)&#123;</span><br><span class="line">            System.out.println(&quot;i的值为&quot;+i);</span><br><span class="line"></span><br><span class="line">            int j &#x3D; 1;</span><br><span class="line">            while(j &lt;&#x3D; 10)&#123;</span><br><span class="line">                System.out.println(&quot;j的值为&quot;+j);</span><br><span class="line">                j++;</span><br><span class="line">                c++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(c);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用各种穷举法 完成数学上的计算</p>
+<p>假设 100担粮食 用100匹马一次运走<br>大马 一次 4担粮食<br>中马 一次 2担粮食<br>小马 一次 2匹1担粮食<br>问三种马各有多少匹</p>
+<p>穷举法</p>
+<h2 id="do-while循环"><a href="#do-while循环" class="headerlink" title="do while循环"></a>do while循环</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">package demo1;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Test4 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        &#x2F;&#x2F;先判断条件是否成立 如果成立则执行循环体</span><br><span class="line">        int i &#x3D; 0;</span><br><span class="line">        while(i &lt;&#x3D; 10)&#123;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#x2F;*do while*&#x2F;</span><br><span class="line">        &#x2F;&#x2F;先执行循环体 再判断条件是否成立 如果成立 继续执行循环体</span><br><span class="line">        &#x2F;&#x2F;无论条件是否成立 循环体至少执行一次</span><br><span class="line">        &#x2F;&#x2F;一般不用</span><br><span class="line">&#x2F;*        int j &#x3D; 1;</span><br><span class="line">        do &#123;</span><br><span class="line">            System.out.println(j);</span><br><span class="line">            j++;</span><br><span class="line">            &#x2F;&#x2F;循环体</span><br><span class="line">        &#125;while(j&lt;&#x3D;10);*&#x2F;</span><br><span class="line"></span><br><span class="line">        &#x2F;*从键盘录入任意整数 倒序输出*&#x2F;</span><br><span class="line">        Scanner sc &#x3D; new Scanner(System.in);</span><br><span class="line">        System.out.println(&quot;请录入任意整数&quot;);</span><br><span class="line">        int num &#x3D; sc.nextInt();</span><br><span class="line">        do &#123;</span><br><span class="line">            &#x2F;*先输出最后一位</span><br><span class="line">            * 再把最后一位去掉*&#x2F;</span><br><span class="line">            System.out.println(num % 10);</span><br><span class="line">            num &#x2F;&#x3D; 10;</span><br><span class="line">        &#125;while(num !&#x3D; 0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">package forDemo;</span><br><span class="line"></span><br><span class="line">public class Test1 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        &#x2F;*语法特点</span><br><span class="line">        * 初始值 循环条件 迭代 都可以放在小括号中</span><br><span class="line">        * 也可以不放在小括号中</span><br><span class="line">        * 如果初始值放在for循环之外 那么 初始值使用范围比较大 在for循环之后任然可以使用</span><br><span class="line">        * 如果初始值放在for循环之内 那么 初始值使用范围较小 在for循环之内可以用 出了循环不可用</span><br><span class="line">        *</span><br><span class="line">        * 迭代如果放在for循环体中 可以自己决定什么时候执行迭代</span><br><span class="line">        * 如果放在for小括号中 那么意味着迭代是循环体最后一行</span><br><span class="line">        *</span><br><span class="line">        * for循环书写的次数多一些</span><br><span class="line">        * 因为for循环可以控制初始变量为内部的局部变量 索引它更符合高内聚 低耦合的程序设计原则</span><br><span class="line">        * 高内聚：程序的模块内部连接可以特别紧密</span><br><span class="line">        * 低耦合：程序的模块和模块之间 联系越简单越好</span><br><span class="line">        *</span><br><span class="line">        * 地铁</span><br><span class="line">        * 绿皮火车</span><br><span class="line">        * *&#x2F;</span><br><span class="line">        for(int i &#x3D; 1;i&lt;&#x3D;10;i++)&#123;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#x2F;*System.out.println(i);*&#x2F;</span><br><span class="line"></span><br><span class="line">        int j &#x3D; 1;</span><br><span class="line">        for(;j &lt;&#x3D; 10;)&#123;</span><br><span class="line">            j++;</span><br><span class="line">            System.out.println(j);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(j);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="练习-1"><a href="#练习-1" class="headerlink" title="练习"></a>练习</h2><p>直角三角形</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package forDemo;</span><br><span class="line"></span><br><span class="line">public class Test2 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        &#x2F;*向控制打印多少排 *&#x2F;</span><br><span class="line">        for (int j&#x3D;1;j&lt;&#x3D;10;j++)&#123;</span><br><span class="line">            &#x2F;*向控制台打印一排* *&#x2F;</span><br><span class="line">            for (int i&#x3D;1;i&lt;&#x3D;j;i++)&#123;</span><br><span class="line">                &#x2F;*每一排 有多少* *&#x2F;</span><br><span class="line">                System.out.print(i+&quot;*&quot;+j+&quot;&#x3D;&quot;+i*j+&quot;\t&quot;);&#x2F;&#x2F;横向跳表格 tab</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>平行四边形</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package forDemo;</span><br><span class="line"></span><br><span class="line">public class Test3 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        for (int i &#x3D; 0;i &lt; 10;i++)&#123;</span><br><span class="line">            for (int i1&#x3D; 0;i1&lt;10-i;i1++)&#123;</span><br><span class="line">                System.out.print(&quot; &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            for (int i1&#x3D;0;i1&lt;20;i1++)&#123;</span><br><span class="line">                System.out.print(&quot;#&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>等腰三角形</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package forDemo;</span><br><span class="line"></span><br><span class="line">public class Test3 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        for (int i &#x3D; 0;i &lt; 10;i++)&#123;</span><br><span class="line">            for (int i1&#x3D; 0;i1&lt;10-i;i1++)&#123;</span><br><span class="line">                System.out.print(&quot; &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            for (int i1&#x3D;0;i1 &lt; (i+1)*2-1;i1++)&#123;</span><br><span class="line">                System.out.print(&quot;#&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>等腰梯形</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package forDemo;</span><br><span class="line"></span><br><span class="line">public class Test3 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        for (int i &#x3D; 5;i &lt; 10;i++)&#123;</span><br><span class="line">            for (int i1&#x3D; 0;i1&lt;10-i;i1++)&#123;</span><br><span class="line">                System.out.print(&quot; &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            for (int i1&#x3D;0;i1 &lt; (i+1)*2-1;i1++)&#123;</span><br><span class="line">                System.out.print(&quot;#&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="练习-2"><a href="#练习-2" class="headerlink" title="练习"></a>练习</h2><p>求阶乘问题 &gt;&gt;&gt; 从键盘输入任意整数 输出该整数的阶乘</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package forDemo;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Test4 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner sc &#x3D; new Scanner(System.in);</span><br><span class="line">        System.out.println(&quot;请录入一个整数&quot;);</span><br><span class="line">        int num &#x3D; sc.nextInt();</span><br><span class="line">        &#x2F;*计数变量*&#x2F;</span><br><span class="line">        int j &#x3D; 1;</span><br><span class="line">        for (int i &#x3D; 1; i &lt;&#x3D; num; i++)&#123;</span><br><span class="line">            j *&#x3D; i;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(j);</span><br><span class="line">        sc.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>求a的b次方问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package forDemo;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Test5 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner sc &#x3D; new Scanner(System.in);</span><br><span class="line">        System.out.println(&quot;请录入底数&quot;);</span><br><span class="line">        int d &#x3D; sc.nextInt();</span><br><span class="line">        System.out.println(&quot;请录入指数&quot;);</span><br><span class="line">        int b &#x3D; sc.nextInt();</span><br><span class="line">        &#x2F;*计数变量*&#x2F;</span><br><span class="line">        long j &#x3D; 1;</span><br><span class="line">        for (int i &#x3D; 1; i &lt;&#x3D; b ; i++) &#123;</span><br><span class="line">            j *&#x3D; d;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(d+&quot;的&quot;+b+&quot;次方为&quot;+j);</span><br><span class="line">        sc.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>棋盘上的麦粒问题 16格 &gt;&gt;&gt; 每个麦粒重0.0001克 问麦粒总重量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package forDemo;</span><br><span class="line"></span><br><span class="line">public class Test6 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        &#x2F;*准备一个计数变量 统计麦粒的总数量*&#x2F;</span><br><span class="line">        long sum &#x3D; 1;</span><br><span class="line">        &#x2F;*准备一个计数变量 用于统计当前麦粒的数量*&#x2F;</span><br><span class="line">        long num &#x3D; 1;</span><br><span class="line">        &#x2F;&#x2F;从第二格 到最后一格有多少个麦粒</span><br><span class="line">        for (int i &#x3D; 2; i &lt;&#x3D; 32; i++) &#123;</span><br><span class="line">            num *&#x3D; 2;</span><br><span class="line">            sum +&#x3D; num;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(sum*0.0001);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>模拟密码验证问题 &gt;&gt;&gt; 从键盘录入6位密码 验证密码是不是6位 </p>
+<ol>
+<li>如果不是 提示重新输入 直到录入6位为止 </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">package forDemo;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Test7 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner sc &#x3D; new Scanner(System.in);</span><br><span class="line">        System.out.println(&quot;请录入密码&quot;);</span><br><span class="line">        int code &#x3D; sc.nextInt();</span><br><span class="line">        &#x2F;*</span><br><span class="line">        * 判断是否是6位</span><br><span class="line">        * 如果不是6位 再次输入</span><br><span class="line">        * *&#x2F;</span><br><span class="line">        while(code &lt; 100000 || code &gt; 999999)&#123;</span><br><span class="line">            System.out.println(&quot;密码非6位，请重新输入一个6位密码&quot;);</span><br><span class="line">            code &#x3D; sc.nextInt();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(code);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>效验密码是否正确 三次以内输入密码子正确显示欢迎 否则显示密码错误 吞卡 </li>
+<li>位数不对 不算一次机会</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">package forDemo;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Test7 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner sc &#x3D; new Scanner(System.in);</span><br><span class="line">        System.out.println(&quot;请录入密码&quot;);</span><br><span class="line">        int code &#x3D; sc.nextInt();</span><br><span class="line">        &#x2F;*</span><br><span class="line">        * 判断是否是6位</span><br><span class="line">        * 如果不是6位 再次输入</span><br><span class="line">        * *&#x2F;</span><br><span class="line"></span><br><span class="line">        &#x2F;*判断密码是否正确*&#x2F;</span><br><span class="line">        for (int i &#x3D; 2; i &gt;&#x3D; 0 ; i--) &#123;</span><br><span class="line">            &#x2F;&#x2F;录入密码动作</span><br><span class="line">            while(code &lt; 100000 || code &gt; 999999)&#123;</span><br><span class="line">                System.out.println(&quot;密码非6位，请重新输入一个6位密码&quot;);</span><br><span class="line">                code &#x3D; sc.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">            if (code &#x3D;&#x3D; 123456)&#123;</span><br><span class="line">                System.out.println(&quot;欢迎&quot;);</span><br><span class="line">                break;</span><br><span class="line">            &#125;else&#123;&#x2F;&#x2F;假设密码不正确</span><br><span class="line">                &#x2F;&#x2F;没有输入机会 吞卡</span><br><span class="line">                &#x2F;&#x2F;还有输入机会 提示用户再次输入</span><br><span class="line">                if(i &#x3D;&#x3D; 0)&#123;</span><br><span class="line">                    System.out.println(&quot;三次输入错误，吞卡&quot;);</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    System.out.println(&quot;密码有误，还有&quot;+i+&quot;次机会，请重新输入密码&quot;);</span><br><span class="line">                    code &#x3D; sc.nextInt();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/23/Java-day18/" data-id="cknn1mv73000mcrup0051b1k3" data-title="Java day18" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/02/25/Java-day19/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java day19
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/02/18/Java-day17/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java day17</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/issues/" rel="tag">issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start-here/" rel="tag">start here</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/" rel="tag">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/" rel="tag">writing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Internet/" style="font-size: 15px;">Internet</a> <a href="/tags/Programming-Language/" style="font-size: 17.5px;">Programming Language</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/start-here/" style="font-size: 12.5px;">start here</a> <a href="/tags/system/" style="font-size: 20px;">system</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/writing/" style="font-size: 10px;">writing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/18/network%20of%20computer2/">network of computer2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/Java%20day1/">Java day1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/Java-day19/">Java day19</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/23/Java-day18/">Java day18</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

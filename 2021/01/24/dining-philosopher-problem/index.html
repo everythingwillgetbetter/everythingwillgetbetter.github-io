@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>dining philosopher problem | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="哲学家就餐问题问题描述&amp;emsp;&amp;emsp;一张圆桌上坐着5名哲学家，每两个哲学家之间的桌上摆一根筷子，桌子的中间是一碗米饭。哲学家们倾注毕生的精力用于思考和进餐，哲学家在思考时，并不影响他人。只有当哲学家饥饿时，才试图拿起左、右两根筷子(一根一根地拿起）。如果筷子已在他人手上，则需等待。饥饿的哲学家只有同时拿起两根筷子才可以开始进餐，当进餐完毕后，放下筷子继续思考。 问题分析 关系分析。系统中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dining philosopher problem">
+<meta property="og:url" content="http://example.com/2021/01/24/dining-philosopher-problem/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="哲学家就餐问题问题描述&amp;emsp;&amp;emsp;一张圆桌上坐着5名哲学家，每两个哲学家之间的桌上摆一根筷子，桌子的中间是一碗米饭。哲学家们倾注毕生的精力用于思考和进餐，哲学家在思考时，并不影响他人。只有当哲学家饥饿时，才试图拿起左、右两根筷子(一根一根地拿起）。如果筷子已在他人手上，则需等待。饥饿的哲学家只有同时拿起两根筷子才可以开始进餐，当进餐完毕后，放下筷子继续思考。 问题分析 关系分析。系统中">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/01/24/dining-philosopher-problem/conclusion.png">
+<meta property="article:published_time" content="2021-01-24T06:33:28.000Z">
+<meta property="article:modified_time" content="2021-04-18T09:10:09.790Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="system">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/01/24/dining-philosopher-problem/conclusion.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-dining-philosopher-problem" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/24/dining-philosopher-problem/" class="article-date">
+  <time class="dt-published" datetime="2021-01-24T06:33:28.000Z" itemprop="datePublished">2021-01-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      dining philosopher problem
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="哲学家就餐问题"><a href="#哲学家就餐问题" class="headerlink" title="哲学家就餐问题"></a>哲学家就餐问题</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>&emsp;&emsp;一张圆桌上坐着5名哲学家，每两个哲学家之间的桌上摆一根筷子，桌子的中间是一碗米饭。哲学家们倾注毕生的精力用于思考和进餐，哲学家在思考时，并不影响他人。只有当哲学家饥饿时，才试图拿起左、右两根筷子(一根一根地拿起）。如果筷子已在他人手上，则需等待。饥饿的哲学家只有同时拿起两根筷子才可以开始进餐，当进餐完毕后，放下筷子继续思考。</p>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><ol>
+<li>关系分析。系统中有5个哲学家进程，5位哲学家与左右邻居对其中间筷子的访问是互斥关系。</li>
+<li>整理思路。这个问题中只有互斥关系，但与之前遇到的问题不同的事，每个哲学家进程需要同时持有 <em><strong>两个临界资源</strong></em> 才能开始吃饭。如何避免临界资源分配不当造成的 <em><strong>死锁现象</strong></em> ，是哲学家问题的精髓。</li>
+<li>信号量设置。定义互斥信号量数组<br>chopstick[5]={1,1,1,1,1}用于实现对5个筷子的互诉访问。并对哲学家按0 ~ 4编号，哲学家i左边的筷子编号为i，右边的筷子编号为(i+1)%5。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">semaphore chopstick[5] &#x3D; &#123;1,1,1,1,1&#125;;</span><br><span class="line">Pi() &#123;			&#x2F;&#x2F;i号哲学家的进程</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(chopstick[i]);		&#x2F;&#x2F;拿左</span><br><span class="line">		P(chopstick[(i＋1)%5]);	&#x2F;&#x2F;拿右</span><br><span class="line">		吃饭..</span><br><span class="line">		V(chopstick[i]);		&#x2F;&#x2F;放左</span><br><span class="line">		V(chopstick[(i+1)%5]);	&#x2F;&#x2F;放右</span><br><span class="line">		思考....</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果5个哲学家并发地拿起了自己左手边的筷子…</li>
+<li>每位哲学家循环等待右边的人放下筷子（阻塞)发生“死锁”</li>
+</ul>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol>
+<li>可以对哲学家进程施加一些限制条件，比如最多允许四个哲学家同时进餐。这样可以保证至少有一个哲学家是可以拿到左右两只筷子的</li>
+<li>要求奇数号哲学家先拿左边的筷子，然后再拿右边的筷子，而偶数号哲学家刚好相反。用这种方法可以保证如果相邻的两个奇偶号哲学家都想吃饭,那么只会有其中一个可以拿起第一只筷子,另一个会直接阻寨。这就避免了占有一支后再等待另一只的情况。</li>
+<li>仅当一个哲学家左右两支筷子都可用时才允许他抓起筷子。</li>
+</ol>
+<h2 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现"></a>如何实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">semaphore chopstick[5] &#x3D; &#123;1,1,1,1,1&#125;;</span><br><span class="line">semaphore mutex &#x3D; 1;		&#x2F;&#x2F;互斥地取筷子</span><br><span class="line">Pi() &#123;			&#x2F;&#x2F;i号哲学家的进程</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(mutex);</span><br><span class="line">		P(chopstick[i]);		&#x2F;&#x2F;拿左</span><br><span class="line">		P(chopstick[(i＋1)%5]);	&#x2F;&#x2F;拿右</span><br><span class="line">		V(mutex);</span><br><span class="line">		吃饭..</span><br><span class="line">		V(chopstick[i]);		&#x2F;&#x2F;放左</span><br><span class="line">		V(chopstick[(i+1)%5]);	&#x2F;&#x2F;放右</span><br><span class="line">		思考....</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因此这种方法并不能保证只有两边的筷子都可用时，才允许哲学家拿起筷子。<br>&emsp;&emsp;更准确的说法应该是:各哲学家拿筷子这件事必须互斥的执行。这就保证了即使一个哲学家在拿筷子拿到一半时被阻塞，也不会有别的哲学家会继续尝试拿筷子。这样的话,当前正在吃饭的哲学家放下筷子后，被阻塞的哲学家就可以获得等待的筷子了。<br>–&gt; 可行不会死锁</p>
+<h2 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h2><ul>
+<li>哲学家进餐问题的关键在于解决进程死锁。</li>
+<li>这些进程之间只存在互斥关系，但是与之前接触到的互斥关系不同的是，每个进程都需要同时持有两个临界资源，因此就有“死锁”问题的隐患。</li>
+<li>如果在考试中遇到了一个进程需要同时持有多个临界资源的情况，应该参考哲学家问题的思想，分析题中给出的进程之间是否会发生循环等待，是否会发生死锁。</li>
+<li>可以参考哲学家就餐问题解决死锁的三种思路。</li>
+</ul>
+<h1 id="管程"><a href="#管程" class="headerlink" title="管程"></a>管程</h1><h2 id="为什么要引入管程"><a href="#为什么要引入管程" class="headerlink" title="为什么要引入管程"></a>为什么要引入管程</h2><ul>
+<li>信号量机制存在的问题，编写程序困难、易出错</li>
+<li>如:错了P操作顺序，会发生死锁</li>
+</ul>
+<p>–&gt; 能不能设计一种机制,让程序员写程序时不需要再关注复杂的PV操作，让写代码更轻松呢?</p>
+<p>1973年，Brinch Hansen首次在程序设计语言(Pascal)中引入了“管程”成分—―一种高级同步机制</p>
+<h2 id="管程的定义和基本特征"><a href="#管程的定义和基本特征" class="headerlink" title="管程的定义和基本特征"></a>管程的定义和基本特征</h2><p>管程是一种特殊的软件模块，有这些部分组成:</p>
+<ol>
+<li>局部于管程的共享数据结构说明;</li>
+<li>对该数据结构进行操作的一组过程;</li>
+<li>对局部于管程的共享数据设置初始值的语句;</li>
+<li>管程有一个名字。</li>
+</ol>
+<p>跨考Tips:“过程”其实就是“函数”</p>
+<p>管程的基本特征:</p>
+<ol>
+<li>局部于管程的数据只能被局部于管程的过程所访问;</li>
+<li>一个进程只有通过调用管程内的过程才能进入管程访问共享数据;</li>
+<li><em><strong>每次仅允许一个进程在管程内执行某个内部过程。</strong></em></li>
+</ol>
+<h2 id="拓展1-用管程解决生产者消费者问题"><a href="#拓展1-用管程解决生产者消费者问题" class="headerlink" title="拓展1:用管程解决生产者消费者问题"></a>拓展1:用管程解决生产者消费者问题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">monitor ProducerConsumer</span><br><span class="line">	condition full,empty;	&#x2F;&#x2F;条件变量用来实现同步(排队) 编程中设置条件变量和等待唤醒操作，以解决同步问题</span><br><span class="line">	int count&#x3D;0;				&#x2F;&#x2F;缓冲区中的产品数</span><br><span class="line">	void insert (Item item)&#123;	&#x2F;&#x2F;把产品item放入缓冲区 由编译器负责实现各进程互斥地进入管程中的过程</span><br><span class="line">		if (count &#x3D;&#x3D; N)</span><br><span class="line">			wait (full);</span><br><span class="line">		count++;</span><br><span class="line">		insert_item (item);</span><br><span class="line">		if ( count &#x3D;&#x3D; 1)</span><br><span class="line">			signal(empty);</span><br><span class="line">	&#125;</span><br><span class="line">	Item remove()&#123;	&#x2F;&#x2F;从缓冲区中取出一个产品</span><br><span class="line">		if (count &#x3D;&#x3D; 0)</span><br><span class="line">			wait (empty) ;</span><br><span class="line">		count--;</span><br><span class="line">		if (count &#x3D;&#x3D; N-1)</span><br><span class="line">			signal(full);</span><br><span class="line">		return remove_item();</span><br><span class="line">	&#125;</span><br><span class="line">end monitor;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;生产者进程</span><br><span class="line">producer()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		item &#x3D; 生产一个产品;</span><br><span class="line">		ProdecerConsumer.insert (item);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;清费者进程</span><br><span class="line">consumer ()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		item &#x3D; Prodecerconsumer. remove ();</span><br><span class="line">		消费产品item;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>每次仅允许一个进程在管程内执行某个内部过程。<br>例1:两个生产者进程并发执行，依次调用了insert过程…<br>例2:两个消费者进程先执行，生产者进程后执行…</p>
+<ul>
+<li>只需要调用方法，本身就能保证是互斥进行的</li>
+<li>若消费者进程count = 0,则发送等待，排在empty队列中</li>
+<li>第二个开始时，也会插入empty队尾</li>
+<li>生产者将产品放入缓冲区，并检查自己的产品是不是缓冲区中的第一个产品</li>
+<li>如果是第一个产品，就有可能有消费者进程在等待这个产品，执行唤醒操作signal(empty)</li>
+<li>一般唤醒排在对头的第一个消费者进程</li>
+<li>消费者进程执行count–,使之返回为0</li>
+<li>检查自己取走产品之前缓冲区是否已经满了，如果缓冲区是满的，意味着有生产者进程需要被唤醒，则调用signal(full)</li>
+<li>最后remove()会返回一个消费者进程想要的产品的指针</li>
+<li>其他消费者都不需要处理，由管程解决</li>
+</ul>
+<p>引入管程的目的无非就是要更方便地实现进程互斥和同步。</p>
+<ol>
+<li>需要在管程中定义共享数据（如生产者消费者问题的缓冲区）</li>
+<li>需要在管程中定义用于访问这些共享数据的“入口”—―其实就是一些函数（如生产者消费者问题中，可以定交一个函数用于将产品放入缓冲区，再定义一个函数用于从缓冲区取出产品)</li>
+<li>只有 <em><strong>通过这些特定的“入口”才能访问共享数据</strong></em></li>
+<li>管程中有很多“入口”，但是每次只能开放其中一个“入口”，并且只能让 <em><strong>一个进程或线程进入</strong></em> （如生产者消费者问题中，各进程需要互斥地访问共享缓冲区。管程的这种特性即可保证一个时间段内最多只会有一个进程在访问缓冲区。 <em><strong>注意:这种互斥特性是由编译器负责实现的，程序员不用关心)</strong></em></li>
+<li>可在管程中设置 <em><strong>条件变量及等待/唤醒操作</strong></em> 以解决同步问题。可以让一个进程或线程在条件变量上等待（ <em><strong>此时，该进程应先释放誓程的使用权，也就是让出“入口”</strong></em> )﹔可以通过唤醒操作将等待在条件变量上的进程或线程唤醒。</li>
+</ol>
+<p>程序员可以用某种特殊的语法定义一个管程（比如: monitor ProducerConsumer …end monitor;),之后其他程序员就可以使用这个管程提供的特定“入口”很方便地使用实现进程同步/互斥了。</p>
+<p>—&gt;封装思想</p>
+<h2 id="拓展2-Java中类似于管程的机制"><a href="#拓展2-Java中类似于管程的机制" class="headerlink" title="拓展2:Java中类似于管程的机制"></a>拓展2:Java中类似于管程的机制</h2><p>Java中，如果用关键字synchronized来描述一个函数，那么这个函数同一时间段内只能被一个线程调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">static class monitor &#123;</span><br><span class="line">	private Item buffer[] &#x3D; new Item[N] ;</span><br><span class="line">	private int count &#x3D; 0;</span><br><span class="line">	public synchronized void insert (Item item) &#123;</span><br><span class="line">		...</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>每次只能有一个线程进入insert函数,如果多个线程同时调用insert函数,则后来者需要排队等待</p>
+<ul>
+<li>Tips:不熟悉Java的同学看不懂也没关系，不会考，仅作为思维拓展。</li>
+<li>熟悉Java的同学在时间充裕的情况下可以动手尝试用synchronized实现生产者消费者问题的“管程”</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><div style="width:70%;margin:auto"><img src="/2021/01/24/dining-philosopher-problem/conclusion.png" class title="This is an example image"></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/24/dining-philosopher-problem/" data-id="cknn1mv7w001tcrup15tw2qrf" data-title="dining philosopher problem" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/24/Java-day10/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java day10
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/23/Smoker-problem/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Smoker problem</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/issues/" rel="tag">issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start-here/" rel="tag">start here</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/" rel="tag">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/" rel="tag">writing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Internet/" style="font-size: 15px;">Internet</a> <a href="/tags/Programming-Language/" style="font-size: 17.5px;">Programming Language</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/start-here/" style="font-size: 12.5px;">start here</a> <a href="/tags/system/" style="font-size: 20px;">system</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/writing/" style="font-size: 10px;">writing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/18/network%20of%20computer2/">network of computer2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/Java%20day1/">Java day1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/Java-day19/">Java day19</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/23/Java-day18/">Java day18</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

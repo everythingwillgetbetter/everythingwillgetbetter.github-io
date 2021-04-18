@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Smoker problem | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="PV操作P操作的主要动作是：    S减1；   若S减1后仍大于或等于0，则进程继续执行；  若S减1后小于0，则该进程被阻塞后放入等待该信号量的等待队列中，然后转进程调度。  V操作的主要动作是：   S加1；  若相加后结果大于0，则进程继续执行； 若相加后结果小于或等于0，则从该信号的等待队列中释放一个等待进程，然后再返回原进程继续执行或转进程调度。  抽烟者问题问题描述&amp;emsp;&amp;em">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Smoker problem">
+<meta property="og:url" content="http://example.com/2021/01/23/Smoker-problem/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="PV操作P操作的主要动作是：    S减1；   若S减1后仍大于或等于0，则进程继续执行；  若S减1后小于0，则该进程被阻塞后放入等待该信号量的等待队列中，然后转进程调度。  V操作的主要动作是：   S加1；  若相加后结果大于0，则进程继续执行； 若相加后结果小于或等于0，则从该信号的等待队列中释放一个等待进程，然后再返回原进程继续执行或转进程调度。  抽烟者问题问题描述&amp;emsp;&amp;em">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/01/23/Smoker-problem/structure.png">
+<meta property="article:published_time" content="2021-01-23T07:27:17.000Z">
+<meta property="article:modified_time" content="2021-04-18T09:10:35.614Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="system">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/01/23/Smoker-problem/structure.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Smoker-problem" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/23/Smoker-problem/" class="article-date">
+  <time class="dt-published" datetime="2021-01-23T07:27:17.000Z" itemprop="datePublished">2021-01-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Smoker problem
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="PV操作"><a href="#PV操作" class="headerlink" title="PV操作"></a>PV操作</h1><p>P操作的主要动作是：  </p>
+<ol>
+<li>S减1；  </li>
+<li>若S减1后仍大于或等于0，则进程继续执行； </li>
+<li>若S减1后小于0，则该进程被阻塞后放入等待该信号量的等待队列中，然后转进程调度。</li>
+</ol>
+<p>V操作的主要动作是： </p>
+<ol>
+<li>S加1； </li>
+<li>若相加后结果大于0，则进程继续执行；</li>
+<li>若相加后结果小于或等于0，则从该信号的等待队列中释放一个等待进程，然后再返回原进程继续执行或转进程调度。</li>
+</ol>
+<h1 id="抽烟者问题"><a href="#抽烟者问题" class="headerlink" title="抽烟者问题"></a>抽烟者问题</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>&emsp;&emsp;假设一个系统有三个抽烟者进程和一个供应者进程。每个抽烟者不停地卷烟并抽掉它，但是要卷起并抽掉一支烟，抽烟者需要有三种材料:烟草、纸和胶水。三个抽烟者中，第一个拥有烟草、第二个拥有纸、第三个拥有胶水。供应者进程无限地提供三种材料，供应者每次将两种材料放桌子上，拥有剩下那种材料的抽烟者卷一根烟并抽掉它，并给供应者进程一个信号告诉完成了，供应者就会放另外两种材料再桌上，这个过程一直重复（让三个抽烟者轮流地抽烟)</p>
+<p>本质上这题也属于“生产者-消费者”问题，更详细的说应该是“可生产多种产品的单生产者-多消费者”。</p>
+<ol>
+<li><p>关系分析。找出题目中描述的各个进程，分析它们之间的同步、互斥关系。</p>
+<ul>
+<li>桌子可以抽象为容量为1的缓冲区，要互斥访问(看做一种组合)</li>
+<li>同步关系（从事件的角度来分析）:<ul>
+<li>桌上有组合一 –&gt; 第一个抽烟者取走东西</li>
+<li>桌上有组合二 –&gt; 第二个抽烟者取走东西</li>
+<li>桌上有组合三 –&gt; 第三个抽烟者取走东西</li>
+<li>发出完成信号 –&gt; 供应者将下一个组合放到桌上</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>整理思路。根据各进程的操作流程确定P、V操作的大致顺序</p>
+</li>
+<li><p>设置信号量。设置需要的信号量，并根据题目条件确定信号量初值。(互斥信号量初值一般为1，同步信号量的初始值要看对应资源的初始值是多少)</p>
+</li>
+</ol>
+<p>一开始没有组合一，需要供应者供应，固设置 offer1 = 0;<br>一开始没有任何完成信号，固设置 finish = 0;</p>
+<div style="width:70%;margin:auto"><img src="/2021/01/23/Smoker-problem/structure.png" class title="This is an example image"></div>
+
+<h2 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现"></a>如何实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">semaphore offer1 &#x3D; 0;		&#x2F;&#x2F;桌上组合一的数量</span><br><span class="line">semaphore offer2 &#x3D; 0;		&#x2F;&#x2F;桌上组合二的数量</span><br><span class="line">semaphore offer3 &#x3D; 0;		&#x2F;&#x2F;桌上组合三的数量</span><br><span class="line">semaphore finish &#x3D; 0;		&#x2F;&#x2F;抽烟是否完成</span><br><span class="line">int i &#x3D; 0;					&#x2F;&#x2F;用于实现“三个抽烟者轮流抽烟”</span><br><span class="line"></span><br><span class="line">provider()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		if(i &#x3D;&#x3D; 0)&#123;</span><br><span class="line">			将组合一放在桌上;</span><br><span class="line">			V(offer1)；</span><br><span class="line">		&#125;else if(i &#x3D;&#x3D; 1)&#123;</span><br><span class="line">			将组合二放在桌上;</span><br><span class="line">			V(offer2)；</span><br><span class="line">		&#125;else if(i &#x3D;&#x3D; 2)&#123;</span><br><span class="line">			将组合三放在桌上;</span><br><span class="line">			V(offer3)；</span><br><span class="line">		&#125;</span><br><span class="line">		i &#x3D; (i+1)%3;</span><br><span class="line">		P(finish);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">smoker1()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">	P(offer1);</span><br><span class="line">	从桌上拿走组合一:卷烟；抽掉；</span><br><span class="line">	V(finidh);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">smoker2()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">	P(offer2);</span><br><span class="line">	从桌上拿走组合二:卷烟；抽掉；</span><br><span class="line">	V(finidh);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">smoker3()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">	P(offer.);</span><br><span class="line">	从桌上拿走组合三:卷烟；抽掉；</span><br><span class="line">	V(finidh);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题回顾"><a href="#问题回顾" class="headerlink" title="问题回顾"></a>问题回顾</h2><ul>
+<li><p>吸烟者问题可以为我们解决“可以生产多个产品的单生产者”问题提供一个思路。</p>
+</li>
+<li><p>值得吸取的精华是:“轮流让各个吸烟者吸烟”必然需要“轮流的在桌上放上组合一、二、三”，注意体会我们是如何用一个整型变量i 实现这个“轮流”过程的。</p>
+</li>
+<li><p>如果题目改为“每次随机地让一个吸烟者吸烟”，我们有应该如何用代码写出这个逻辑呢?</p>
+</li>
+<li><p>若一个生产者要生产多种产品(或者说会引发多种前驱事件），那么各个V操作应该放在各自对应的“事件”发生之后的位置。</p>
+</li>
+</ul>
+<h1 id="读者写者问题"><a href="#读者写者问题" class="headerlink" title="读者写者问题"></a>读者写者问题</h1><h2 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h2><p>有读者和写者两组并发进程，共享一个文件，当两个或两个以上的读进程同时访问共享数据时不会产生副作用，但若某个写进程和其他进程（读进程或写进程）同时访问共享数据时则可能导致数据不一致的错误。因此要求:1.允许多个读者可以同时对文件执行读操作;2.只允许一个写者往文件中写信息;3.任一写者在完成写操作之前不允许其他读者或写者工作;4.写者执行写操作前,应让已有的读者和写者全部退出。</p>
+<p>ps:与消费者进程不同,读者进程在读数据后并不会将数据清空，并不会改变数据。因此多个读者可同时访问共享数据<br>ps:读进程与写进程同时共享数据,可能导致读出的数据不一致的问题</p>
+<h1 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h1><ol>
+<li>关系分析。找出题目中描述的各个进程，分析它们之间的同步、互斥关系。</li>
+<li>整理思路。根据各进程的操作流程确定P、V操作的大致顺序</li>
+<li>设置信号量。设置需要的信号量，并根据题目条件确定信号量初值。(互斥信号量初值一般为1，同步信号量的初始值要看对应资源的初始值是多少)</li>
+</ol>
+<p>两类进程:写进程、读进程<br>互斥关系:写进程一写进程、写进程―读进程。读进程与读进程不存在互斥问题。</p>
+<ul>
+<li>写者进程和任何进程都互斥，设置一个互斥信号量rw，在写者访问共享文件前后分别执行P、V操作。</li>
+<li>读者进程和写者进程也要互斥，因此读者访问共享文件前后也要对rw执行P、V操作。</li>
+<li>如果所有读者进程在访问共享文件之前都执行P(rw)操作，那么会导致各个读进程之间也无法同时访问文件。</li>
+<li>Key:读者写者问题的核心思想—-怎么处理该问题呢?</li>
+</ul>
+<p>P(rw)和V(rw)其实就是对共享文件的“加锁”和“解锁”。既然各个读进程需要同时访问，而读进程与写进程又必须互斥访问，那么我们可以 <em><strong>让第一个访问文件的读进程“加锁”，让最后一个访问完文件的读进程“解锁”</strong></em> 。可以设置一个整数变量count来记录当前有几个读进程在访问文件。</p>
+<h1 id="如何实现-1"><a href="#如何实现-1" class="headerlink" title="如何实现"></a>如何实现</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">semaphore rw &#x3D; 1;		</span><br><span class="line">&#x2F;&#x2F;用于实现对文件的互斥访问。表示当前是否有进程在访问共享文件</span><br><span class="line">int count &#x3D; 0;</span><br><span class="line">&#x2F;&#x2F;记录当前有几个读进程在访问文件</span><br><span class="line">semaphore mutex &#x3D; 1;	</span><br><span class="line">&#x2F;&#x2F;用于保证对count变量的互斥访问</span><br><span class="line"></span><br><span class="line">writer()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(rw);		&#x2F;&#x2F;写之前&quot;加锁&quot;</span><br><span class="line">		写文件;</span><br><span class="line">		V(rw);		&#x2F;&#x2F;写之后&quot;解锁&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">read()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(mutex);		&#x2F;&#x2F;各读进程互斥访问count</span><br><span class="line">		if(count &#x3D;&#x3D; 0)</span><br><span class="line">			P(rw);		&#x2F;&#x2F;第一个读进程负责&quot;加锁&quot;  并发时会被阻塞在这里</span><br><span class="line">		count++;		&#x2F;&#x2F;访问文件的读进程+1</span><br><span class="line">		读文件;</span><br><span class="line"></span><br><span class="line">		count--;		&#x2F;&#x2F;访问文件的读进程数-1</span><br><span class="line">		if(count &#x3D;&#x3D; 0)</span><br><span class="line">			V(rw);		&#x2F;&#x2F;最后一个读进程负责&quot;解锁&quot;</span><br><span class="line">		V(mutex);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>思考</strong></em> :若两个读进程并发执行，则两个读进程有可能先后执行P(rw)，从而使第二个读进程阻塞的情况。<br><em><strong>如何解决</strong></em> :出现上述问题的原因在于对count变量的检查和赋值无法一气呵成，因此可以设置另一个互斥信号量来保证各读进程对count的访问是互斥的。</p>
+<h2 id="如何实现-2"><a href="#如何实现-2" class="headerlink" title="如何实现"></a>如何实现</h2><p><em><strong>潜在的问题</strong></em> :只要有读进程还在读，写进程就要一直阻塞等待,可能“饿死”因此，这种算法中，读进程是优先的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">semaphore rw &#x3D; 1;		</span><br><span class="line">&#x2F;&#x2F;用于实现对文件的互斥访问。表示当前是否有进程在访问共享文件</span><br><span class="line">int count &#x3D; 0;</span><br><span class="line">&#x2F;&#x2F;记录当前有几个读进程在访问文件</span><br><span class="line">semaphore mutex &#x3D; 1;	</span><br><span class="line">&#x2F;&#x2F;用于保证对count变量的互斥访问</span><br><span class="line">semaphore w &#x3D; 1;</span><br><span class="line">&#x2F;&#x2F;用于实现写进程&quot;优先&quot;</span><br><span class="line"></span><br><span class="line">writer()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(w);</span><br><span class="line">		P(rw);		&#x2F;&#x2F;写之前&quot;加锁&quot;</span><br><span class="line">		写文件;</span><br><span class="line">		V(rw);		&#x2F;&#x2F;写之后&quot;解锁&quot;</span><br><span class="line">		V(w);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">read()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(w);</span><br><span class="line">		P(mutex);		&#x2F;&#x2F;各读进程互斥访问count</span><br><span class="line">		if(count &#x3D;&#x3D; 0)</span><br><span class="line">			P(rw);		&#x2F;&#x2F;第一个读进程负责&quot;加锁&quot;  并发时会被阻塞在这里</span><br><span class="line">		count++;		&#x2F;&#x2F;访问文件的读进程+1</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(w);</span><br><span class="line">		读文件;</span><br><span class="line">		P(mutex);</span><br><span class="line">		count--;		&#x2F;&#x2F;访问文件的读进程数-1</span><br><span class="line">		if(count &#x3D;&#x3D; 0)</span><br><span class="line">			V(rw);		&#x2F;&#x2F;最后一个读进程负责&quot;解锁&quot;</span><br><span class="line">		V(mutex);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>分析以下并发执行P(w)的情况:<br>读者1 –&gt; 读者2<br>写者1 –&gt; 写者2<br>写者1 –&gt; 读者1<br>读者1 –&gt; 写者1 –&gt; 读者2<br>写者1 –&gt; 读者1 –&gt; 写者2</p>
+<p><em><strong>结论</strong></em> :在这种算法中，连续进入的多个读者可以同时读文件;写者和其他进程不能同时访问文件;写者不会饥饿，但也并不是真正的“写优先”，而是相对公平的先来先服务原则。<br>有的书上把这种算法称为“读写公平法”。</p>
+<h2 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h2><ul>
+<li>读者-写者问题为我们解决复杂的互斥问题提供了一个参考思路。</li>
+<li>其 <em><strong>核心思想</strong></em> 在于设置了一个计数器count用来记录当前正在访问共享文件的读进程数。我们可以用count的值来判断当前进入的进程是否是第一个/最后一个读进程，从而做出不同的处理。</li>
+<li>另外，对count变量的检查和赋值不能一气呵成导致了一些错误，如果需要实现“一气呵成”，自然应该想到用互斥信号量。</li>
+<li>最后，还要认真体会我们是如何解决“写进程饥饿”问题的。</li>
+</ul>
+<p>ps:绝大多数的考研PVv操作大题都可以用之前介绍的几种生产者-消费者问题的思想来解决，如果遇到更复杂的问题，可以想想能否用读者写者问题的这几个思想来解决。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/23/Smoker-problem/" data-id="cknn1mv7n001bcrup4qbxhpeo" data-title="Smoker problem" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/24/dining-philosopher-problem/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          dining philosopher problem
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/22/Java-day9/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java day9</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/issues/" rel="tag">issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start-here/" rel="tag">start here</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/" rel="tag">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/" rel="tag">writing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Internet/" style="font-size: 15px;">Internet</a> <a href="/tags/Programming-Language/" style="font-size: 17.5px;">Programming Language</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/start-here/" style="font-size: 12.5px;">start here</a> <a href="/tags/system/" style="font-size: 20px;">system</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/writing/" style="font-size: 10px;">writing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/18/network%20of%20computer2/">network of computer2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/Java%20day1/">Java day1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/Java-day19/">Java day19</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/23/Java-day18/">Java day18</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

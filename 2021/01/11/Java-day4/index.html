@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Java day4 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="ps：让字体多变 &lt;font&gt; 标签 &gt;&gt;&gt; 字体ps： 借助css样式进行进一步处理，任何一个body中的标签，都会有一个stye属性 12&lt;p style&#x3D;&quot;样式名:样式值;样式名:样式值&quot;&gt;我们不一样&lt;&#x2F;p&gt;&lt;p style&#x3D;&quot;font-size:60px;font-fam">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java day4">
+<meta property="og:url" content="http://example.com/2021/01/11/Java-day4/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="ps：让字体多变 &lt;font&gt; 标签 &gt;&gt;&gt; 字体ps： 借助css样式进行进一步处理，任何一个body中的标签，都会有一个stye属性 12&lt;p style&#x3D;&quot;样式名:样式值;样式名:样式值&quot;&gt;我们不一样&lt;&#x2F;p&gt;&lt;p style&#x3D;&quot;font-size:60px;font-fam">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/01/11/Java-day4/character-list.png">
+<meta property="og:image" content="http://example.com/2021/01/11/Java-day4/URL.png">
+<meta property="og:image" content="http://example.com/2021/01/11/Java-day4/catalog.png">
+<meta property="og:image" content="http://example.com/2021/01/11/Java-day4/address.png">
+<meta property="article:published_time" content="2021-01-11T13:01:19.000Z">
+<meta property="article:modified_time" content="2021-04-18T09:10:20.985Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Programming Language">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/01/11/Java-day4/character-list.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Java-day4" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/11/Java-day4/" class="article-date">
+  <time class="dt-published" datetime="2021-01-11T13:01:19.000Z" itemprop="datePublished">2021-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Java day4
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>ps：让字体多变 <code>&lt;font&gt;</code> 标签 &gt;&gt;&gt; 字体<br>ps： 借助css样式进行进一步处理，任何一个body中的标签，都会有一个stye属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;p style&#x3D;&quot;样式名:样式值;样式名:样式值&quot;&gt;我们不一样&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p style&#x3D;&quot;font-size:60px;font-family:新宋体;color: gold;text-decoration: underline;&quot;&gt;我们不一样&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="字符实体"><a href="#字符实体" class="headerlink" title="字符实体"></a>字符实体</h1><p>例如 <code>&lt;br /&gt;</code> 浏览器自动识别为换行，需要进行转义才能在浏览器中显示出来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt; br &#x2F; &gt;   &#x2F;&#x2F;尖角号</span><br><span class="line">武汉&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;加油   &#x2F;&#x2F;空格</span><br><span class="line">&amp;lt;  &#x2F;&#x2F;&amp;符号</span><br><span class="line">&amp;copy;   &#x2F;&#x2F;版权符</span><br></pre></td></tr></table></figure>
+
+<p>对于html没有特殊含义，但是不好打出来</p>
+<p>&emsp;&emsp;对于html有特殊含义的字符符号，想以普通文本的形式展示出来，那么就需要使用字符实体进行转义处理。</p>
+<p><em><strong>字符实体列表</strong></em></p>
+<div style="width:70%;margin:auto"><img src="/2021/01/11/Java-day4/character-list.png" class title="This is a list"></div>
+
+<p>&emsp;&emsp;其他的一些特殊符号，与html没有特殊含义，但是有不好打出来的符号</p>
+<p><em><strong>关于URL特殊符号</strong></em></p>
+<div style="width:70%;margin:auto"><img src="/2021/01/11/Java-day4/URL.png" class title="This is a list"></div>
+
+<p><em><strong>关于 html 的一些特殊符号</strong></em><br><code>https://www.w3school.com.cn/tags/html_ref_symbols.html</code></p>
+<p>ps:字符实体 – 有特殊含义  特殊符号 – 没有特殊含义</p>
+<h1 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h1><p>超链接标签也叫作 <em><strong>a标签</strong></em> ，可以给文字、图片、音乐、甚至其他的一些标签添加超链接功能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;www.baidu.com&quot;&gt;百度&lt;&#x2F;a&gt;  &#x2F;&#x2F;外部地址</span><br><span class="line">&lt;a href&#x3D;&quot;01titletag.html&quot;&gt;我自己的网页&lt;&#x2F;a&gt; &#x2F;&#x2F;内部地址，都在day2目录下</span><br></pre></td></tr></table></figure>
+
+<div style="width:70%;margin:auto"><img src="/2021/01/11/Java-day4/catalog.png" class title="This is an example image"></div>
+
+
+<p>ps:a标签默认效果，改变字体颜色，加上下划线<br><em><strong>href</strong></em> 属性设置超链接地址 – 可以是本地资源，也可以是网络资源</p>
+<h2 id="a标签其他属性"><a href="#a标签其他属性" class="headerlink" title="a标签其他属性"></a>a标签其他属性</h2><h3 id="target属性"><a href="#target属性" class="headerlink" title="target属性"></a>target属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;www.baidu.com&quot; target&#x3D;&quot;_blank&quot;&gt;百度&lt;&#x2F;a&gt;  &#x2F;&#x2F;新建一个网页打开地址</span><br><span class="line">&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;www.baidu.com&quot; target&#x3D;&quot;_self&quot;&gt;百度&lt;&#x2F;a&gt; &#x2F;&#x2F;当前页面打开，不会新建页面</span><br></pre></td></tr></table></figure>
+
+<p>ps: <em><strong>target</strong></em> 属性，设置打开方式  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_blank新建一个网页    </span><br><span class="line">_self当前页打开</span><br></pre></td></tr></table></figure>
+
+<h3 id="锚点"><a href="#锚点" class="headerlink" title="锚点"></a>锚点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;hr &#x2F;&gt;   &#x2F;&#x2F;下划线</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>快捷键操作</strong></em> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入： br*100 </span><br><span class="line">按下tab键 --&gt; 复制出100个&lt;br &#x2F;&gt;标签</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>设置锚点</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a name&#x3D;&quot;middle&quot;&gt;中部&lt;&#x2F;a&gt; &#x2F;&#x2F; 埋下锚点&quot;middle&quot;</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>跳转至锚点</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href&#x3D;&quot;#middle&quot;&gt;跳转至中部&lt;&#x2F;a&gt;   &#x2F;&#x2F;&quot;#&quot;代表当前页面，跳转至&quot;middle&quot;锚点</span><br></pre></td></tr></table></figure>
+
+<h1 id="多媒体标签-–-gt-图片、声音、视频"><a href="#多媒体标签-–-gt-图片、声音、视频" class="headerlink" title="多媒体标签 –&gt; 图片、声音、视频"></a>多媒体标签 –&gt; 图片、声音、视频</h1><h2 id="图片-–-gt-img"><a href="#图片-–-gt-img" class="headerlink" title="图片 –&gt; img"></a>图片 –&gt; img</h2><p><em><strong>img</strong></em> 可以写成双标签，但一般用单标签<br><em><strong>src</strong></em> 是source的缩写，表示图片的路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot;&#x2F;&gt;  &#x2F;&#x2F;要加上拓展名</span><br><span class="line">&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot; width&#x3D;&quot;400px&quot; height&#x3D;&quot;200px&quot;&#x2F;&gt;  &#x2F;&#x2F;控制图片的宽与高</span><br></pre></td></tr></table></figure>
+<p>ps: <em><strong>.html</strong></em> 与 <em><strong>img文件夹</strong></em> 是在同一个根目录下</p>
+<p><em><strong>也可以是网络资源</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src&#x3D;&quot;网络中的地址&quot; &#x2F;&gt; &#x2F;&#x2F;复制图片地址</span><br></pre></td></tr></table></figure>
+
+<div style="width:70%;margin:auto"><img src="/2021/01/11/Java-day4/address.png" class title="This is an example image"></div>
+
+<p><em><strong>title属性</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot; width&#x3D;&quot;400px&quot; height&#x3D;&quot;200px&quot; title&#x3D;&quot;我是白色的&quot;&#x2F;&gt;  &#x2F;&#x2F;鼠标悬停图片上的文字</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>alt属性</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot; width&#x3D;&quot;400px&quot; height&#x3D;&quot;200px&quot; title&#x3D;&quot;我是白色的&quot; alt&#x3D;&quot;我真的不知道她是谁&quot;&#x2F;&gt;  </span><br></pre></td></tr></table></figure>
+
+<p>如果图片没有加载出来 –&gt; 断网了/路径错了… –&gt;显示出alt的值</p>
+<p><em><strong>图片添加超链接</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;bebetternow.github.io&quot;&gt;</span><br><span class="line">	&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot; width&#x3D;&quot;400px&quot; height&#x3D;&quot;200px&quot; title&#x3D;&quot;我是白色的&quot; alt&#x3D;&quot;我真的不知道她是谁&quot;&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;a&gt;</span><br></pre></td></tr></table></figure>
+
+<p>ps:跳转至博客 –&gt; 要加上 <em><strong>http://</strong></em> </p>
+<h2 id="声音-–-gt-audio"><a href="#声音-–-gt-audio" class="headerlink" title="声音 –&gt; audio"></a>声音 –&gt; audio</h2><p><em><strong>src</strong></em> 用法与上一个一致<br><em><strong>controls</strong></em> 在页面上显示功能控件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio src&#x3D;&quot;audio&#x2F;Joy.mp3&quot; controls&#x3D;&quot;controls&quot;&gt;&lt;&#x2F;audio&gt;</span><br><span class="line"></span><br><span class="line">&lt;audio src&#x3D;&quot;audio&#x2F;Joy.mp3&quot; controls&#x3D;&quot;controls&quot; autoplay&#x3D;&quot;autoplay&quot;&gt;&lt;&#x2F;audio&gt; &#x2F;&#x2F; autoplay 自动播放 谷歌上不好使，但是edge上可以用</span><br><span class="line"></span><br><span class="line">&lt;audio src&#x3D;&quot;audio&#x2F;Joy.mp3&quot; loop&#x3D;&quot;loop&quot; controls&#x3D;&quot;controls&quot; autoplay&#x3D;&quot;autoplay&quot;&gt;&lt;&#x2F;audio&gt; &#x2F;&#x2F;自动循环播放</span><br><span class="line"></span><br><span class="line">&lt;audio controls&#x3D;&quot;controls&quot;&gt;</span><br><span class="line">	&lt;source src&#x3D;&quot;audio&#x2F;Joy.mp3&quot;&gt;&lt;&#x2F;source&gt;</span><br><span class="line">	&lt;source src&#x3D;&quot;audio&#x2F;Joy.mp3&quot;&gt;&lt;&#x2F;source&gt;</span><br><span class="line">	&lt;source src&#x3D;&quot;audio&#x2F;Joy.mp3&quot;&gt;&lt;&#x2F;source&gt;</span><br><span class="line">	&lt;source src&#x3D;&quot;audio&#x2F;Joy.mp3&quot;&gt;&lt;&#x2F;source&gt;</span><br><span class="line">&lt;&#x2F;audio&gt;</span><br><span class="line">&#x2F;&#x2F; 识别第一个可以播放的文件</span><br><span class="line"></span><br><span class="line">&lt;audio controls loop autoplay&gt;</span><br><span class="line">	&lt;source src&#x3D;&quot;audio&#x2F;Joy.mp3&quot;&gt;&lt;&#x2F;source&gt;</span><br><span class="line">	不支持</span><br><span class="line">	&lt;source src&#x3D;&quot;audio&#x2F;Joy.mp3&quot;&gt;&lt;&#x2F;source&gt;</span><br><span class="line">	&lt;source src&#x3D;&quot;audio&#x2F;Joy.mp3&quot;&gt;&lt;&#x2F;source&gt;</span><br><span class="line">	&lt;source src&#x3D;&quot;audio&#x2F;Joy.mp3&quot;&gt;&lt;&#x2F;source&gt;</span><br><span class="line">&lt;&#x2F;audio&gt; &#x2F;&#x2F; 也可以不加属性值</span><br></pre></td></tr></table></figure>
+
+<h2 id="视频-–-gt-video"><a href="#视频-–-gt-video" class="headerlink" title="视频 –&gt; video"></a>视频 –&gt; video</h2><p>与音频文件相似</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;video controls loop autoplay width&#x3D;&quot;30%&quot;&gt;</span><br><span class="line">	&lt;source src&#x3D;&quot;video&#x2F;Joy.mkv&quot;&gt;&lt;&#x2F;source&gt;</span><br><span class="line">&lt;&#x2F;video&gt;</span><br></pre></td></tr></table></figure>
+
+<p>ps:img文件不会换行<br>ps:互联网图片文件类型： .jpg  .gif  .png<br>ps:audio标签html5才开始支持，之前播放视频音频都是 <em><strong>使用第三方插件</strong></em> ，比如flash player，而H5不再需要插件，而浏览器自己提供功能<br>ps:audio 支持: mp3 wav  Ogg Vorbls<br>ps:video 支持: mp4 Ogg</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/11/Java-day4/" data-id="cknn1mv76000qcrup0utk34e2" data-title="Java day4" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/12/processing/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          processing
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/11/system-call/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">system call</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/issues/" rel="tag">issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start-here/" rel="tag">start here</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/" rel="tag">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/" rel="tag">writing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Internet/" style="font-size: 15px;">Internet</a> <a href="/tags/Programming-Language/" style="font-size: 17.5px;">Programming Language</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/start-here/" style="font-size: 12.5px;">start here</a> <a href="/tags/system/" style="font-size: 20px;">system</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/writing/" style="font-size: 10px;">writing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/18/network%20of%20computer2/">network of computer2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/Java%20day1/">Java day1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/Java-day19/">Java day19</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/23/Java-day18/">Java day18</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

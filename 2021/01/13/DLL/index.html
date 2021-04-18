@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>DLL | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="数据链路层实用的信道 点对点信道  –&gt; 一对一 广播信道 –&gt; 一对多 ，必须使用专用的共享信道协议来协调这些主机  简单模型主机H1向H2发送数据  · ps:逐层向下封装，转换可以传输的信号  不同的链路层可能采用不同的数据链路层协议，如果采用同一协议，可以直接视为数据链路层之间的传输。但实质上不是。 数据链路和帧 链路 是一条无源的点到点(路由器到路由器之间)的物理线段，中间没">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DLL">
+<meta property="og:url" content="http://example.com/2021/01/13/DLL/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="数据链路层实用的信道 点对点信道  –&gt; 一对一 广播信道 –&gt; 一对多 ，必须使用专用的共享信道协议来协调这些主机  简单模型主机H1向H2发送数据  · ps:逐层向下封装，转换可以传输的信号  不同的链路层可能采用不同的数据链路层协议，如果采用同一协议，可以直接视为数据链路层之间的传输。但实质上不是。 数据链路和帧 链路 是一条无源的点到点(路由器到路由器之间)的物理线段，中间没">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/01/13/DLL/model.png">
+<meta property="og:image" content="http://example.com/2021/01/13/DLL/PPP.png">
+<meta property="article:published_time" content="2021-01-13T08:34:37.000Z">
+<meta property="article:modified_time" content="2021-04-18T09:10:12.390Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Internet">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/01/13/DLL/model.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-DLL" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/13/DLL/" class="article-date">
+  <time class="dt-published" datetime="2021-01-13T08:34:37.000Z" itemprop="datePublished">2021-01-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      DLL
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="数据链路层实用的信道"><a href="#数据链路层实用的信道" class="headerlink" title="数据链路层实用的信道"></a>数据链路层实用的信道</h1><ul>
+<li>点对点信道  –&gt; 一对一</li>
+<li>广播信道 –&gt; 一对多 ，必须使用专用的共享信道协议来协调这些主机</li>
+</ul>
+<h1 id="简单模型"><a href="#简单模型" class="headerlink" title="简单模型"></a>简单模型</h1><p><em><strong>主机H1向H2发送数据</strong></em></p>
+<div style="width:70%;margin:auto"><img src="/2021/01/13/DLL/model.png" class title="This is an example image"></div>
+·
+ps:逐层向下封装，转换可以传输的信号
+
+<p>不同的链路层可能采用不同的数据链路层协议，如果采用同一协议，可以直接视为数据链路层之间的传输。但实质上不是。</p>
+<h1 id="数据链路和帧"><a href="#数据链路和帧" class="headerlink" title="数据链路和帧"></a>数据链路和帧</h1><ul>
+<li><p><em><strong>链路</strong></em> 是一条无源的点到点(路由器到路由器之间)的物理线段，中间没有任何其他的交换节点</p>
+<ul>
+<li>一条链路只是一条通路的一个组成部分</li>
+</ul>
+</li>
+<li><p><em><strong>数据链路</strong></em> 除了物理线路外，还必须有 <em><strong>通信协议</strong></em> 来控制这些数据的传输。若把实现这些协议的硬件和软件加到链路上，就构成了数据链路。</p>
+<ul>
+<li>现在最常用的方法是使用适配器(网卡)来实现这些协议的硬件和软件</li>
+<li>一般适配器都包括了数据链路层和物理层这两层的功能。  –&gt; 合并为网络接口层</li>
+</ul>
+</li>
+</ul>
+<p>数据链路层传送的是 <em><strong>“帧”</strong></em> 。</p>
+<h2 id="数据链路层三个基本概念"><a href="#数据链路层三个基本概念" class="headerlink" title="数据链路层三个基本概念"></a>数据链路层三个基本概念</h2><ul>
+<li>物理层传输时候是连续的比特流，没有分组的概念</li>
+<li>物理层不判断对不对</li>
+</ul>
+<h3 id="封装成帧"><a href="#封装成帧" class="headerlink" title="封装成帧"></a>封装成帧</h3><p>–&gt; 帧定界 = 首部 + 尾部 （只有帧分帧头与帧尾）<br>帧的数据部分长度 &lt;= MTU</p>
+<p><em><strong>用控制字符进行帧定界的方法</strong></em></p>
+<ul>
+<li>当数据是由可打印的ASCII码组成的文本文件时，帧定界可以使用特殊的帧定界符</li>
+<li>控制字符 SOH(Start Of Head)放在一帧的最前面，表示帧的首部开始。另一个控制字符EOT(End Of Transmission)表示帧的结束。</li>
+</ul>
+<h3 id="透明传输"><a href="#透明传输" class="headerlink" title="透明传输"></a>透明传输</h3><ul>
+<li>如果数据中的某个字节的二进制代码恰好和SOH或EOT一样，数据链路层就会错误地”找到帧的边界”</li>
+<li><em><strong>解决方法</strong></em> : 字节填充(byte stuffing) 或 字符填充(character stuffing)</li>
+<li>发送端的数据链路层在数据中出现控制字符”SOH”或”EOT”的前面插入一个转义字符”ESC” (其十六进制编码是1B)。</li>
+<li>接收端的数据链路层在将数据送往网络层之前删除插入的转义字符</li>
+<li>如果转义字符也出现在数据当中，那么应在转义字符前面插入一个转义字符ESC。当接收端收到连续的两个转义字符时，就删除其中前面的一个。</li>
+</ul>
+<h3 id="差错检错"><a href="#差错检错" class="headerlink" title="差错检错"></a>差错检错</h3><ul>
+<li>在传输过程中可能会产生比特差错:1可能会变成0，而0也可能变成1</li>
+<li>在一段时间内，传输错误的比特占所传输比特总数的比率称为误码率BER(Bit Error Rate)</li>
+<li>误码率与信噪比有很大的关系</li>
+<li>为了保证数据传输的可靠性，计算机网络传输数据时，必须采用各种差错检测措施。</li>
+</ul>
+<p><em><strong>循环冗余检验原理</strong></em></p>
+<ul>
+<li>在数据链路层传送的帧中，广泛使用了循环冗余检测 CRC 的检测技术</li>
+<li>在放送端，先把数据划分为组。假定每组k个比特</li>
+<li>假设待传送的一组数据 M = 101001 我们在M的后面再添加供差错检测用的 n 为冗余码一起发送。</li>
+</ul>
+<p><em><strong>冗余码的计算</strong></em></p>
+<ul>
+<li>用二进制的模2运算进行 2^n 乘 M 的运算，这相当于在 M 后面添加 n 个0</li>
+<li>得到的(k+n)位的数据除以事先选定好的长度为(n+1)位的除数 P ，得到商是 Q 而余数是 R，余数 R 比除数 P 少一位，即 R 是 n 位。</li>
+<li>将余数 R 作为冗余码拼接在数据 M 后面发送出去。 –&gt; 正确接收时 将刚好除得净  若是除不尽代表传输出错 </li>
+</ul>
+<p><em><strong>接收端对收到的每一帧进行CRC检验</strong></em></p>
+<ol>
+<li>若得出的余数 R = 0，则判定这个帧没有差错，就能接受</li>
+<li>若余数 R ≠ 0，则判定这个帧有差错，就丢弃。</li>
+</ol>
+<ul>
+<li><p>但是这种检测方法并不能确定究竟哪个或哪几个出错</p>
+</li>
+<li><p>只要经过严格的挑选，并使用位数足够多的除数P，那么出现检测不到的差错的概率就很小很小。</p>
+</li>
+<li><p>仅利用循环冗余检验 CRC 差错检测技术只能做到无差错接收。</p>
+</li>
+<li><p>“无差错接收”是指：凡是接受的帧(既不包括丢弃的帧)，我们都能以非常接近于1的概率认为这些帧在传输过程中没有产生差错。</p>
+</li>
+<li><p>也就是说凡是接收端数据链路层接收的帧都没有传输差错(由差错的帧就丢弃，不接受)</p>
+</li>
+<li><p>要做到可靠传输(不重复，不丢失，不失序)就必须再加上确认和重传机制。</p>
+</li>
+</ul>
+<p><em><strong>所以</strong></em> ，数据链路层使用的CRC检验，能够实现无比特差错的传输，但不是可靠传输 –&gt; 不是可靠传输的协议</p>
+<h1 id="用户到ISP的链路使用PPP协议-—-gt-point-to-point-protocol"><a href="#用户到ISP的链路使用PPP协议-—-gt-point-to-point-protocol" class="headerlink" title="用户到ISP的链路使用PPP协议 —&gt; point-to-point protocol"></a>用户到ISP的链路使用PPP协议 —&gt; point-to-point protocol</h1><h2 id="PPP协议应满足"><a href="#PPP协议应满足" class="headerlink" title="PPP协议应满足"></a>PPP协议应满足</h2><ul>
+<li>简单 —&gt; 这是首要的要求</li>
+<li>封装成帧 —&gt; 必须规定特殊的字符作为帧定界符</li>
+<li>透明性 —&gt; 必须保证数据传输的透明性</li>
+<li>多网络协议 —&gt; 能够在同一条物理链路上同时支持多种网络层协议</li>
+<li>多种类型链路 —&gt; 能够在多种类型的链路上运行</li>
+<li>差错检测 —&gt; 能够对接收端收到的帧进行检测，并立即丢弃有差错的帧。</li>
+<li>检测连接状态 —&gt; 能够及时自动检测出链路是否处于正常工作状态，</li>
+<li>最大传输单元 —&gt; 必须对每一种类型的点对点链路设置最大传输单元MTU的标准默认值，促进各种实现之间的互操作性</li>
+<li>网络层地址协商 —&gt; 必须提供一种机制使通信的两个网络层实体能够通过协商知道或能够配合彼此的网络层地址。</li>
+<li>数据压缩协商 —&gt; 必须提供一种方法来协商使用数据压缩算法</li>
+</ul>
+<h2 id="不需要的功能"><a href="#不需要的功能" class="headerlink" title="不需要的功能"></a>不需要的功能</h2><ul>
+<li>纠错</li>
+<li>流量控制</li>
+<li>序号</li>
+<li>多点线路</li>
+<li>半双工或单工链路</li>
+</ul>
+<h2 id="PPP协议有三个组成部分"><a href="#PPP协议有三个组成部分" class="headerlink" title="PPP协议有三个组成部分"></a>PPP协议有三个组成部分</h2><ol>
+<li>一个将IP数据报进行封装到串行链路的方法</li>
+<li>链路控制协议LCP(Link Control Protocol)</li>
+<li>网络控制协议NCP(Network Control Protocol)</li>
+</ol>
+<h2 id="PPP协议的帧格式"><a href="#PPP协议的帧格式" class="headerlink" title="PPP协议的帧格式"></a>PPP协议的帧格式</h2><div style="width:70%;margin:auto"><img src="/2021/01/13/DLL/PPP.png" class title="This is an example image"></div>
+
+<h2 id="透明传输问题"><a href="#透明传输问题" class="headerlink" title="透明传输问题"></a>透明传输问题</h2><ul>
+<li>当PPP用在同步传输链路时，协议规定采用硬件来完成 <em><strong>比特填充</strong></em> 与HDLC的做法一样</li>
+<li>当PPP用在异步传输时，就是用一种特殊的字符填充法。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/13/DLL/" data-id="cknn1mv6f0000crup4shw1vch" data-title="DLL" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/13/Java-day5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java-day5
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/13/communication-of-processing/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">communication of processing</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/issues/" rel="tag">issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start-here/" rel="tag">start here</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/" rel="tag">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/" rel="tag">writing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Internet/" style="font-size: 15px;">Internet</a> <a href="/tags/Programming-Language/" style="font-size: 17.5px;">Programming Language</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/start-here/" style="font-size: 12.5px;">start here</a> <a href="/tags/system/" style="font-size: 20px;">system</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/writing/" style="font-size: 10px;">writing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/18/network%20of%20computer2/">network of computer2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/Java%20day1/">Java day1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/Java-day19/">Java day19</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/23/Java-day18/">Java day18</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

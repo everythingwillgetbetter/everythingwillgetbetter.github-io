@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>虚拟内存 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="虚拟内存的基本概念知识总览  传统存储管理方式的特征、缺点  一次性: 作业必须一次性全部装入内存后才能开始运行。这会造成两个问题;  作业很大时，不能全部装入内存，导致大作业无法运行: 当大量作业要求运行时，由于内存无法容纳所有作业，因此只有少量作业能运行，导致多道程序并发度下降。  驻留性: 一旦作业被装入内存，就会一直驻留在内存中，直至作业运行结束。事实上，在一个时间段内，只需要访问作业的一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="虚拟内存">
+<meta property="og:url" content="http://example.com/2021/02/06/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="虚拟内存的基本概念知识总览  传统存储管理方式的特征、缺点  一次性: 作业必须一次性全部装入内存后才能开始运行。这会造成两个问题;  作业很大时，不能全部装入内存，导致大作业无法运行: 当大量作业要求运行时，由于内存无法容纳所有作业，因此只有少量作业能运行，导致多道程序并发度下降。  驻留性: 一旦作业被装入内存，就会一直驻留在内存中，直至作业运行结束。事实上，在一个时间段内，只需要访问作业的一">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/02/06/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/all.png">
+<meta property="og:image" content="http://example.com/2021/02/06/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/trod.png">
+<meta property="og:image" content="http://example.com/2021/02/06/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/compare.png">
+<meta property="og:image" content="http://example.com/2021/02/06/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/conclusion.png">
+<meta property="og:image" content="http://example.com/2021/02/06/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/new.png">
+<meta property="og:image" content="http://example.com/2021/02/06/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/shutdown1.png">
+<meta property="og:image" content="http://example.com/2021/02/06/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/conclusion1.png">
+<meta property="article:published_time" content="2021-02-06T09:25:22.000Z">
+<meta property="article:modified_time" content="2021-04-18T09:10:54.605Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="system">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/02/06/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/all.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-虚拟内存" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/02/06/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/" class="article-date">
+  <time class="dt-published" datetime="2021-02-06T09:25:22.000Z" itemprop="datePublished">2021-02-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      虚拟内存
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="虚拟内存的基本概念"><a href="#虚拟内存的基本概念" class="headerlink" title="虚拟内存的基本概念"></a>虚拟内存的基本概念</h1><h2 id="知识总览"><a href="#知识总览" class="headerlink" title="知识总览"></a>知识总览</h2><div style="width:70%;margin:auto"><img src="/2021/02/06/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/all.png" class title="This is an example image"></div>
+
+<h2 id="传统存储管理方式的特征、缺点"><a href="#传统存储管理方式的特征、缺点" class="headerlink" title="传统存储管理方式的特征、缺点"></a>传统存储管理方式的特征、缺点</h2><div style="width:70%;margin:auto"><img src="/2021/02/06/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/trod.png" class title="This is an example image"></div>
+
+<p><em><strong>一次性:</strong></em> 作业必须一次性全部装入内存后才能开始运行。这会造成两个问题;</p>
+<ol>
+<li>作业很大时，不能全部装入内存，导致大作业无法运行:</li>
+<li>当大量作业要求运行时，由于内存无法容纳所有作业，因此只有少量作业能运行，导致多道程序并发度下降。</li>
+</ol>
+<p><em><strong>驻留性:</strong></em> 一旦作业被装入内存，就会一直驻留在内存中，直至作业运行结束。事实上，在一个时间段内，只需要访问作业的一小部分数据即可正常运行，这就导致了内存中会驻留大量的、暂时用不到的数据，浪费了宝贵的内存资源。</p>
+<h2 id="局部性原理"><a href="#局部性原理" class="headerlink" title="局部性原理"></a>局部性原理</h2><p><em><strong>时间局部性</strong></em> :如果执行了程序中的某条指令，那么不久后这条指令很有可能再次执行;如果某个数据被访问过，不久之后该数据很可能再次被访问。(因为程序中存在大量的循环)<br><em><strong>空间局部性</strong></em> :一旦程序访问了某个存储单元，在不久之后，其附近的存储单元也很有可能被访问。(因为很多数据在内存中都是连续存放的，并且程序的指令也是顺序地在内存中存放的)</p>
+<p>如何应用局部性原理?</p>
+<ul>
+<li><em><strong>高速缓冲技术</strong></em> 的思想:将近期会频繁访问到的数据放到更高速的存储器中，暂时用不到的数据放在更低速存储器中。</li>
+<li>快表机构就是将近期常访问的页表项副本放到更高速的联想寄存器中</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/02/06/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/compare.png" class title="This is an example image"></div>
+
+<h2 id="虚拟内存的定义和特征"><a href="#虚拟内存的定义和特征" class="headerlink" title="虚拟内存的定义和特征"></a>虚拟内存的定义和特征</h2><ul>
+<li>基于 <em><strong>局部性原理</strong></em> ，在程序装入时，可以将程序中 <em><strong>很快会用到的部分装入内存</strong></em> ， <em><strong>暂时用不到的部分留在外存</strong></em> ，就可以让程序开始执行。</li>
+<li>在程序执行过程中，当所访问的 <em><strong>信息不在内存时</strong></em> ，由操作系统负责将所需信息从外存调入内存，然后继续执行程序。</li>
+<li>若内存空间不够，由 <em><strong>操作系统负责将内存中暂时用不到的信息换出到外存</strong></em> 。</li>
+<li>在操作系统的管理下，在用户看来似乎有一个比实际内存大得多的内存，这就是 <em><strong>虚拟内存</strong></em></li>
+</ul>
+<p>操作系统虚拟性的一个体现,实际的物理内存大小没有变,只是在逻辑上进行了扩充。<br><em><strong>易混知识点:</strong></em></p>
+<ul>
+<li>虚拟内存的 <em><strong>最大容量</strong></em> 是由计算机的地址结构（CPU寻址范围）确定的</li>
+<li>虚拟内存的 <em><strong>实际容量</strong></em> = min{内存和外存容量之和，CPU寻址范围}</li>
+</ul>
+<p>如:某计算机地址结构为32位，按字节编址，内存大小为512MB，外存大小为2GB<br>则虚拟内存的 <em><strong>最大容量</strong></em> 为2<sup>32</sup>B = 4GB<br>虚拟内存的 <em><strong>实际容量</strong></em> = min {2<sup>32</sup>B,512MB+2GB}= 2GB+512MB</p>
+<p>虚拟内存有一下三个主要特征:</p>
+<ol>
+<li>多次性:无需在作业运行时一次性全部装入内存，而是允许被分成多次调入内存。</li>
+<li>对换性:在作业运行时无需一直常驻内存，而是允许在作业运行过程中，将作业换入、换出。</li>
+<li>虚拟性:从逻辑上扩充了内存的容量，使用户看到的内存容量，远大于实际的容量。</li>
+</ol>
+<h2 id="如何实现虚拟内存技术"><a href="#如何实现虚拟内存技术" class="headerlink" title="如何实现虚拟内存技术"></a>如何实现虚拟内存技术</h2><p>虚拟内存技术，允许一个作业分多次调入内存。如果采用连续分配方式，会不方便实现。因此，虚拟内存的实现需要建立在 <em><strong>离散分配</strong></em> 的内存管理方式基础上。</p>
+<p>主要区别:</p>
+<ul>
+<li>在程序执行过程中，当所访问的信息不在内存时，由操作系统负责将所需信息从外存调入内存，然后继续执行程序。 &gt;&gt;&gt; 操作系统要提供请求调页(或请求调段）功能</li>
+<li>若内存空间不够,由操作系统负责将内存中暂时用不到的信息换出到外存。 &gt;&gt;&gt; 操作系统要提供页面置换（或段置换）的功能</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><div style="width:70%;margin:auto"><img src="/2021/02/06/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/conclusion.png" class title="This is an example image"></div>
+
+<h1 id="请求分页管理方式"><a href="#请求分页管理方式" class="headerlink" title="请求分页管理方式"></a>请求分页管理方式</h1><p>请求分页存储管理与基本分页存储管理的主要区别:<br>在程序执行过程中，当所访问的信息不在内存时，由操作系统负责将所需信息从外存调入内存，然后继续执行程序。<br>若内存空间不够，由操作系统负责将内存中暂时用不到的信息换出到外存。</p>
+<ul>
+<li>操作系统要提供请求调页功能,将缺失页面从外存调入内存</li>
+<li>操作系统要提供页面置换的功能,将暂时用不到的页面换出外存</li>
+</ul>
+<h2 id="页表机制"><a href="#页表机制" class="headerlink" title="页表机制"></a>页表机制</h2><p>与基本分页管理相比，请求分页管理中，为了实现“请求调页”，操作系统需要知道每个页面是否已经调入内存;如果还没调入，那么也需要知道该页面在外存中存放的位置。<br>当内存空间不够时，要实现“页面置换”，操作系统需要通过某些指标来决定到底换出哪个页面:有的页面没有被修改过，就不用再浪费时间写回外存。有的页面修改过，就需要将外存中的旧数据覆盖，因此，操作系统也需要记录各个页面是否被修改的信息。</p>
+<div style="width:70%;margin:auto"><img src="/2021/02/06/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/new.png" class title="This is an example image"></div>
+
+<p>请求页表新增加了四个字段，状态位、访问字段、修改位、外存地址</p>
+<h2 id="缺页中断机构"><a href="#缺页中断机构" class="headerlink" title="缺页中断机构"></a>缺页中断机构</h2><ul>
+<li>假设此时要访问逻辑地址=(页号，页内偏移量〉= (0,1024)</li>
+<li>在请求分页系统中，每当要访问的页面不在内存时，便产生一个缺页中断，然后由操作系统的缺页中断处理程序处理中断。</li>
+<li>此时缺页的进程阻塞，放入阻塞队列， <em><strong>调页完成后再将其唤醒</strong></em> ，放回就绪队列。</li>
+<li>如果内存中 <em><strong>有空闲块</strong></em> ，则为进程分配一个空闲块，将所缺页面装入该块，并修改页表中相应的页表项。</li>
+<li>如果内存中 <em><strong>没有空闲块</strong></em> ，则由页面置换算法选择一个页面淘汰，若该页面在内存期间被修改过，则要将其写回外存。未修改过的页面不用写回外存。</li>
+</ul>
+<p>缺页中断是因为当前执行的指令想要访问的目标页面未调入内存而产生的，因此属于 <em><strong>内中断</strong></em><br>一条指令在执行期间，可能产生多次缺页中断。(如: copy A to B，即将逻辑地址A中的数据复制到逻辑地址B，而A、B属于不同的页面，则有可能产生两次中断)</p>
+<div style="width:70%;margin:auto"><img src="/2021/02/06/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/shutdown1.png" class title="This is an example image"></div>
+
+<ul>
+<li>新增步骤1:请求调页（查到页表项时进行判断)</li>
+<li>新增步骤2:页面置换（需要调入页面，但没有空闲内存块时进行)</li>
+<li>新增步骤3:需要修改请求页表中新增的表项</li>
+</ul>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>在逻辑地址变化为物理地址过程中，先检查页号的合法性</li>
+<li>如果页号没有越界，则查询页号此时在快表中，有没有页号对应的页表项</li>
+<li>如果快表命中，即可得到最终的物理地址</li>
+<li>如果快表没有命中，查询内存中的满表</li>
+<li>在找到对应的页表项之后，需要检查该页面是否已经在内存当中</li>
+<li>如果没有在内存当中，缺页中断机构，会产生一个缺页中断的信号</li>
+<li>之后会由操作系统的缺页中断处理程序进行处理，包括调页、页面置换一系类事情</li>
+<li>当页面调入之后，也需要修改页表项对应的一些数据</li>
+</ol>
+<p>ps:快表中有的页面一定是在内存中的。若某个页面被换出外存,则快表中的相应表项也要删除,否则可能访问错误的页面</p>
+<p>补充细节:</p>
+<ol>
+<li>只有“写指令”才需要修改“修改位”。并且，一般来说只需修改快表中的数据，只有要将快表项删除时才需要写回内存中的慢表。这样可以减少访存次数。</li>
+<li>和普通的中断处理一样，缺页中断处理依然需要保留CPU现场。</li>
+<li>需要用某种“页面置换算法”来决定一个换出页面(下节内容)</li>
+<li>换入/换出页面都需要启动慢速的I/O操作，可见，如果换入/换出太频繁，会有很大开销。</li>
+<li>页面调入内存后,需要修改慢表，同时也需要将表项复制到快表中。</li>
+</ol>
+<p>在具有快表机构的请求分页系统中，访问一个逻辑地址时，若发生缺页，则地址变换步骤是:<br>查快表(未命中) &gt;&gt;&gt; 查慢表(发现未调入内存) &gt;&gt;&gt; 调页(调入的页面对应的表项会直接加入快表) &gt;&gt;&gt; 查快表(命中) &gt;&gt;&gt; 访问目标内存单元</p>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><div style="width:70%;margin:auto"><img src="/2021/02/06/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/conclusion1.png" class title="This is an example image"></div>
+
+<h1 id="页面置换算法"><a href="#页面置换算法" class="headerlink" title="页面置换算法"></a>页面置换算法</h1><p>请求分页存储管理与基本分页存储管理的主要区别:<br>在程序执行过程中，当所访问的信息不在内存时，由操作系统负责将所需信息从外存调入内存，然后继续执行程序。<br>若内存空间不够，由操作系统负责将内存中暂时用不到的信息换出到外存。</p>
+<p>用页面置换算法决定应该换出哪个页面<br>页面的换入、换出需要磁盘I/O，会有较大的开销,因此好的页面置换算法应该追求更少的缺页率</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/06/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/" data-id="cknn1mv92002zcrup8rq19lvh" data-title="虚拟内存" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/02/09/Java-day15/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java day15
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/02/04/%E9%A1%B5%E8%A1%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">页表</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/issues/" rel="tag">issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start-here/" rel="tag">start here</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/" rel="tag">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/" rel="tag">writing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Internet/" style="font-size: 15px;">Internet</a> <a href="/tags/Programming-Language/" style="font-size: 17.5px;">Programming Language</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/start-here/" style="font-size: 12.5px;">start here</a> <a href="/tags/system/" style="font-size: 20px;">system</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/writing/" style="font-size: 10px;">writing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/18/network%20of%20computer2/">network of computer2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/Java%20day1/">Java day1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/Java-day19/">Java day19</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/23/Java-day18/">Java day18</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

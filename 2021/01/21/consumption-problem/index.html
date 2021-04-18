@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>consumption problem | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="生产者消者问题问题描述 系统中有一组生产者进程和一组消费者进程，生产者进程每次生产一个产品放入缓冲区，消费者进程每次从缓冲区中取出一个产品并使用。（注:这里的“产品”理解为某种数据) 生产者、消费者共享一个初始为空、大小为n的缓冲区。 只有缓冲区没满时，生产者才能把产品放入缓冲区，否则必须等待。 —&gt; 同步关系 只有缓冲区不空时，消费者才能从中取出产品，否则必须等待。 —&gt; 同步关系">
+<meta property="og:type" content="article">
+<meta property="og:title" content="consumption problem">
+<meta property="og:url" content="http://example.com/2021/01/21/consumption-problem/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="生产者消者问题问题描述 系统中有一组生产者进程和一组消费者进程，生产者进程每次生产一个产品放入缓冲区，消费者进程每次从缓冲区中取出一个产品并使用。（注:这里的“产品”理解为某种数据) 生产者、消费者共享一个初始为空、大小为n的缓冲区。 只有缓冲区没满时，生产者才能把产品放入缓冲区，否则必须等待。 —&gt; 同步关系 只有缓冲区不空时，消费者才能从中取出产品，否则必须等待。 —&gt; 同步关系">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/01/21/consumption-problem/relation.png">
+<meta property="og:image" content="http://example.com/2021/01/21/consumption-problem/plate.png">
+<meta property="og:image" content="http://example.com/2021/01/21/consumption-problem/event.png">
+<meta property="article:published_time" content="2021-01-21T06:46:43.000Z">
+<meta property="article:modified_time" content="2021-04-18T09:10:08.149Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="system">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/01/21/consumption-problem/relation.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-consumption-problem" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/21/consumption-problem/" class="article-date">
+  <time class="dt-published" datetime="2021-01-21T06:46:43.000Z" itemprop="datePublished">2021-01-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      consumption problem
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="生产者消者问题"><a href="#生产者消者问题" class="headerlink" title="生产者消者问题"></a>生产者消者问题</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><ul>
+<li>系统中有一组生产者进程和一组消费者进程，生产者进程每次生产一个产品放入缓冲区，消费者进程每次从缓冲区中取出一个产品并使用。（注:这里的“产品”理解为某种数据)</li>
+<li>生产者、消费者共享一个初始为空、大小为n的缓冲区。</li>
+<li>只有缓冲区没满时，生产者才能把产品放入缓冲区，否则必须等待。 —&gt; 同步关系</li>
+<li>只有缓冲区不空时，消费者才能从中取出产品，否则必须等待。 —&gt; 同步关系</li>
+<li>缓冲区是临界资源，各进程必须互斥地访问。 —&gt; 互斥关系</li>
+</ul>
+<h2 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h2><p>如何用信号量机制(P、V操作）实现生产者、消费者进程的这些功能呢?<br>信号量机制可实现互斥、同步、对一类系统资源的申请和释放。</p>
+<ul>
+<li>互斥 —&gt; 设置初值为1的互斥信号量</li>
+<li>同步 —&gt; 设置初值为0的同步信号量(实现一前一后)</li>
+<li>申请与释放 —&gt; 设置一个信号量,初始值即为资源的数量（本质上也属于“同步问题”，若无空闲资源，则申请资源的进程需要等待别的进程释放资源后才能继续往下执行)</li>
+</ul>
+<p><em><strong>PV操作题目分析步骤</strong></em></p>
+<ol>
+<li>关系分析。找出题目中描述的各个进程，分析它们之间的同步</li>
+<li>整理思路。根据各进程的操作流程确定P、V操作的大致顺序。</li>
+<li>设置信号量。设置需要的信号量，并根据题目条件确定信号量初值。(互斥信号量初值一般为1，同步信号量的初始值要看对应资源的初始值是多少)</li>
+</ol>
+<p>ps:生产者每次要消耗P)一个空闲缓冲区,并生产（V)一个产品。<br>消费者每次要消耗（P）一个产品,并释放一个空闲缓冲区（V).往缓冲区放入/取走产品需要互斥。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">semaphore mutex &#x3D; 1;		&#x2F;&#x2F;互斥信号量，实现对缓冲区的互斥访问</span><br><span class="line">semaphore empty &#x3D; n;		&#x2F;&#x2F;同步信号量，表示空闲缓存区的数量</span><br><span class="line">semaphore full &#x3D; 0;			&#x2F;&#x2F;同步信号量，表示产品的数量，也即非空缓冲区的数量</span><br><span class="line"></span><br><span class="line">producer ()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		生产一个产品;</span><br><span class="line">		P(empty);		1</span><br><span class="line">		P(mutex);		2</span><br><span class="line">		把一个产品放入缓冲区;</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(full);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">consumer()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(full);		3</span><br><span class="line">		P(mutex);		4</span><br><span class="line">		从缓冲区取出一个产品;</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(empty);</span><br><span class="line">		使用产品;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>ps:</p>
+<ol>
+<li>P操作放在动作之前;V操作放在动作之后;</li>
+<li>P操作代表消耗;V操作代表增加;</li>
+<li>对于互斥，先P后V，即先占用消耗，后释放增加;</li>
+<li>实现互斥的P操作一定要在实现同步的P操作之后 —&gt; 先确定能用，再占用</li>
+</ol>
+<h2 id="若改变相邻P、V顺序"><a href="#若改变相邻P、V顺序" class="headerlink" title="若改变相邻P、V顺序"></a>若改变相邻P、V顺序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">producer ()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		生产一个产品;	</span><br><span class="line">		P(mutex);		1</span><br><span class="line">		P(empty);		2</span><br><span class="line">		把一个产品放入缓冲区;</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(full);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">consumer()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(mutex);		3</span><br><span class="line">		P(full);		4</span><br><span class="line">		从缓冲区取出一个产品;</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(empty);</span><br><span class="line">		使用产品;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>若此时缓冲区内已经放满产品，则empty=o，full=n。</li>
+<li>则生产者进程执行1使mutex变为0，再执行2，由于已没有空闲缓冲区，因此生产者被阻塞。</li>
+<li>由于生产者阻塞，因此切换回消费者进程。消费者进程执行3，由于mutex为0，即生产者还没释放对临界资源的“锁”，因此消费者也被阻塞。</li>
+<li>这就造成了生产者等待消费者释放空闲缓冲区，而消费者又等待生产者释放临界区的情况，生产者和消费者循环等待被对方唤醒,出现“死锁”。</li>
+<li>同样的，若缓冲区中没有产品，即full=0，empty=n。按341的顺序执行就会发生死锁。</li>
+<li>因此， <em><strong>实现互斥的P操作一定要在实现同步的P操作之后</strong></em> 。</li>
+<li>V操作不会导致进程阻塞，因此两个v操作顺序可以交换。</li>
+</ul>
+<h2 id="知识点回顾"><a href="#知识点回顾" class="headerlink" title="知识点回顾"></a>知识点回顾</h2><ul>
+<li>生产者消费者问题是一个互斥、同步的综合问题。</li>
+<li>对于初学者来说最难的是发现题目中隐含的两对同步关系。</li>
+<li><em><strong>有时候是消费者需要等待生产者生产，有时候是生产者要等待消费者消费</strong></em> ，这是两个不同的“一前一后问题”，因此也需要设置两个同步信号量。</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/01/21/consumption-problem/relation.png" class title="This is an example image"></div>
+
+
+<h1 id="多生产者-多消费者"><a href="#多生产者-多消费者" class="headerlink" title="多生产者-多消费者"></a>多生产者-多消费者</h1><h2 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h2><p>&emsp;&emsp;桌子上有一只盘子，每次只能向其中放入一个水果。爸爸专向盘子中放苹果，妈妈专向盘子中放橘子，儿子专等着吃盘子中的橘子，女儿专等着吃盘子中的苹果。只有盘子空时，爸爸或妈妈才可向盘子中放一个水果。仅当盘子中有自己需要的水果时，儿子或女儿可以从盘子中取出水果。用PV操作实现上述过程。</p>
+<p>不同类别生产者与不同类别消费者，所生产与所消费不同</p>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><ol>
+<li><p>关系分析。找出题目中描述的各个进程，分析它们之间的同步、互斥关系。 —&gt; 盘子(互斥区)、有一前一后关系</p>
+</li>
+<li><p>整理思路。根据各进程的操作流程确定P、V操作的大致顺序。</p>
+<ul>
+<li>互斥:在临界区前后分别P</li>
+<li>同步:前V后P</li>
+</ul>
+</li>
+<li><p>设置信号量。设置需要的信号量，并根据题目条件确定信号量初值。(互斥信号量初值一般为1，同步信号量的初始值要看对应资源的初始值是多少)</p>
+</li>
+</ol>
+<p><em><strong>互斥关系</strong></em> :<br>对缓冲区（盘子）的访问要互斥地进行</p>
+<p><em><strong>同步关系（一前一后）</strong></em> :</p>
+<ol>
+<li>父亲将苹果放入盘子后，女儿才能取苹果</li>
+<li>母亲将橘子放入盘子后，儿子才能取橘子</li>
+<li>只有盘子为空时，父亲或母亲才能放入水果</li>
+</ol>
+<p>ps:”盘子为空”这个事件可以由儿子或女儿触发，事件发生后才允许父亲或母亲放水果</p>
+<h2 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现"></a>如何实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">semaphore mutex &#x3D; 1;		&#x2F;&#x2F;实现互斥访问盘子(缓冲区)</span><br><span class="line">semaphore apple &#x3D; 0;		&#x2F;&#x2F;盘子中有几个苹果</span><br><span class="line">semaphore orange &#x3D; 0;		&#x2F;&#x2F;盘子中有几个橘子</span><br><span class="line">semaphore plate &#x3D; 1;		&#x2F;&#x2F;盘子中还可以放多少个水果</span><br><span class="line"></span><br><span class="line">dad()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		准备一个苹果;</span><br><span class="line">		P(plate);</span><br><span class="line">		P(mutex);</span><br><span class="line">		把苹果放入盘子;</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(apple);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">mom()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">	准备一个橘子;</span><br><span class="line">	P(plate);</span><br><span class="line">	P(mutex);</span><br><span class="line">	把橘子放入盘子;</span><br><span class="line">	V(mutex);</span><br><span class="line">	V(orange);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">daughter()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(apple);		</span><br><span class="line">		P(mutex);</span><br><span class="line">		从盘子中取出苹果;</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(plate);</span><br><span class="line">		吃掉苹果;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">son()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(orange);		</span><br><span class="line">		P(metux);</span><br><span class="line">		从盘子中取出橘子;</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(plate);</span><br><span class="line">		吃掉橘子;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div style="width:70%;margin:auto"><img src="/2021/01/21/consumption-problem/plate.png" class title="This is an example image"></div>
+
+<h2 id="如果不设置互斥信号量"><a href="#如果不设置互斥信号量" class="headerlink" title="如果不设置互斥信号量"></a>如果不设置互斥信号量</h2><p><em><strong>分析</strong></em> :刚开始，儿子、女儿进程即使上处理机运行也会被阻塞。如果刚开始是父亲进程先上处理机运行，则:父亲P(plate)，可以访问盘子 –&gt; 母亲P(plate)，阻塞等待盘子 –&gt; 父亲放入苹果V(apple)，女儿进程被唤醒，其他进程即使运行也都会阻塞，暂时不可能访问临界资源（盘子) –&gt; 女儿P(apple)，访问盘子，V(plate)，等待盘子的母亲进程被唤醒 –&gt; 母亲进程访问盘子（其他进程暂时都无法进入临界区）之……</p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>本题中的缓冲区大小为1，在任何时刻,apple、 orange、 plate三个同步信号量中最多只有一个是1。因此在任何时刻,最多只有一个进程的P操作不会被阻塞，并<br>顺利地进入临界区…</p>
+<p><em><strong>如果缓冲区容量为2</strong></em> 可能引起覆盖现象</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在生产者-消费者问题中，如果缓冲区大小为1，那么 <em><strong>有可能</strong></em> 不需要设置互斥信号量就可以实现互斥访问缓冲区的功能。当然，这不是绝对的，要具体问题具体分析。</p>
+<p>建议:在考试中如果来不及仔细分析，可以加上互斥信号量，保证各进程一定会互斥地访问缓冲区。但需要注意的是，实现互斥的P操作一定要在实现同步的P操作之后，否则可能引起“死锁”。</p>
+<ul>
+<li><p>解决“多生产者-多消费者问题”的关键在于理清复杂的同步关系。</p>
+</li>
+<li><p>在分析同步问题（一前一后问题）的时候 <em><strong>不能从单个进程行为的角度</strong></em> 来分析，要把“一前一后”发生的事看做是两种“事件”的前后关系。</p>
+</li>
+<li><p>比如，如果从单个进程行为的角度来考虑的话，我们会有以下结论:</p>
+<ul>
+<li>如果盘子里装有苹果，那么一定要女儿取走苹果后父亲或母亲才能再放入水果</li>
+<li>如果盘子里装有橘子，那么一定要儿子取走橘子后父亲或母亲才能再放入水果</li>
+</ul>
+</li>
+<li><p>这么看是否就意味着要设置四个同步信号量分别实现这四个“一前一后”的关系了?</p>
+</li>
+<li><p>正确的分析方法应该从 <em><strong>“事件”</strong></em> 的角度来考虑，我们可以把上述四对“进程行为的前后关系”抽象为一对“事件的前后关系”</p>
+</li>
+<li><p>盘子变空事件 —&gt; 放入水果事件。“盘子变空事件”既可由儿子引发，也可由女儿引发:“放水果事件”既可能是父亲执行，也可能是母亲执行。这样的话，就可以用一个同步信号量解决问题了</p>
+</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/01/21/consumption-problem/event.png" class title="This is an example image"></div>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/21/consumption-problem/" data-id="cknn1mv7t001ocruph2tr3bqg" data-title="consumption problem" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/22/Java-day9/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java day9
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/20/Java-day8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java day8</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/issues/" rel="tag">issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start-here/" rel="tag">start here</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/" rel="tag">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/" rel="tag">writing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Internet/" style="font-size: 15px;">Internet</a> <a href="/tags/Programming-Language/" style="font-size: 17.5px;">Programming Language</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/start-here/" style="font-size: 12.5px;">start here</a> <a href="/tags/system/" style="font-size: 20px;">system</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/writing/" style="font-size: 10px;">writing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/18/network%20of%20computer2/">network of computer2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/Java%20day1/">Java day1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/Java-day19/">Java day19</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/23/Java-day18/">Java day18</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

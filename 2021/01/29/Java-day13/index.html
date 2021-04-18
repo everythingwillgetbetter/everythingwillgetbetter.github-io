@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Java day13 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="电脑整体环境  桌面上尽量不要放文件 除了系统组件以外，其他的软件尽量安装在D盘 每当新安装软件时，都要先准备一个新的文件夹 软件安装的路径中，应该尽量避免中文与空格 C盘装系统；D盘装应用软件；E盘装软件产生的数据；F盘存放长久保留的文件 Windows10 Windows7 尽量避免 Window8&#x2F;XP 尽量选择64位系统   JAVASE  Java300集 JDK java开发工具包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java day13">
+<meta property="og:url" content="http://example.com/2021/01/29/Java-day13/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="电脑整体环境  桌面上尽量不要放文件 除了系统组件以外，其他的软件尽量安装在D盘 每当新安装软件时，都要先准备一个新的文件夹 软件安装的路径中，应该尽量避免中文与空格 C盘装系统；D盘装应用软件；E盘装软件产生的数据；F盘存放长久保留的文件 Windows10 Windows7 尽量避免 Window8&#x2F;XP 尽量选择64位系统   JAVASE  Java300集 JDK java开发工具包">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/01/29/Java-day13/intro.png">
+<meta property="article:published_time" content="2021-01-29T13:07:33.000Z">
+<meta property="article:modified_time" content="2021-04-18T09:10:15.940Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Programming Language">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/01/29/Java-day13/intro.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Java-day13" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/29/Java-day13/" class="article-date">
+  <time class="dt-published" datetime="2021-01-29T13:07:33.000Z" itemprop="datePublished">2021-01-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Java day13
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>电脑整体环境</p>
+<ul>
+<li>桌面上尽量不要放文件</li>
+<li>除了系统组件以外，其他的软件尽量安装在D盘</li>
+<li>每当新安装软件时，都要先准备一个新的文件夹</li>
+<li>软件安装的路径中，应该尽量避免中文与空格</li>
+<li>C盘装系统；D盘装应用软件；E盘装软件产生的数据；F盘存放长久保留的文件</li>
+<li>Windows10 Windows7 尽量避免 Window8/XP 尽量选择64位系统</li>
+</ul>
+</li>
+<li><p>JAVASE</p>
+<ul>
+<li>Java300集</li>
+<li>JDK java开发工具包 推荐JDK8</li>
+<li>Notepad++ 一款灵巧的纯文本编辑工具</li>
+<li>idea 2019-2 java 集成开发环境 html &gt;&gt;&gt; hbuilder java &gt;&gt;&gt; idea</li>
+</ul>
+</li>
+</ol>
+<p>JDK安装时可以放在C盘，不会产生什么垃圾，而且运行更快一些</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Program Files\Java\jdk1.8.0_281\</span><br></pre></td></tr></table></figure>
+
+<p>测试JDK是否安装成功:win + r &gt;&gt;&gt; cmd &gt;&gt;&gt; java -version<br>Notepad++ 一路next即可</p>
+<h1 id="计算机知识"><a href="#计算机知识" class="headerlink" title="计算机知识"></a>计算机知识</h1><h2 id="计算机开机过程"><a href="#计算机开机过程" class="headerlink" title="计算机开机过程"></a>计算机开机过程</h2><ul>
+<li>核心计算元件 CPU</li>
+<li>运行内存 RAM &gt;&gt;&gt; 存储量小，断电后数据消失，数据读写速度飞快</li>
+<li>硬盘 DISK &gt;&gt;&gt; 磁盘一直处于转动状态，用探针在上面读取数据 &gt;&gt;&gt; 磁盘存储大量数据，断电后数据不会消失，容量大，但是数据读取速度慢</li>
+<li>显卡 GPU 图形架构器</li>
+</ul>
+<p>为了解决磁盘与CPU交互慢的问题，先预加载一部分数据进入RAM。<br>系统启动之前，就是磁盘中的数据，启动将一部分系统数据加载进入RAM，大约几个G的数据，这个过程耗费时间长。</p>
+<h2 id="程序启动过程"><a href="#程序启动过程" class="headerlink" title="程序启动过程"></a>程序启动过程</h2><p>没有启动之前，就是磁盘中的文件，启动就是磁盘中的文件进入RAM的过程</p>
+<ul>
+<li>电脑开启了一个进程:一个软件的启动 软件本身的文件从硬盘进入到内存</li>
+<li>进程代表了一个软件的启动，但是软件的启动不代表了有任务要进行。</li>
+<li>一个进程中可以同时开启多个任务，每个任务专业称呼线程</li>
+</ul>
+<p><em><strong>内存大小</strong></em> :内存越大，代表设备可以运行的程序就越多。</p>
+<ul>
+<li>内存满了，就会在磁盘上开辟一个小的虚拟内存，此处就当做内存使用，这是就会导致速度变慢，发生卡顿。 &gt;&gt;&gt; 内存大一些，就可以同时开启的任务多一些</li>
+<li>CPU的线程数:CPU可以同时执行的任务数量 &gt;&gt;&gt; 多核多线程CPU</li>
+<li>CPU的单线程运算能力，每个独立的线程的运算能力</li>
+<li>传统机械硬盘，温彻斯特硬盘 &gt;&gt;&gt; 内部有硬盘和磁头机械结构</li>
+<li>固态硬盘，读写速度非常快 &gt;&gt;&gt; 是一般机械硬盘读写速度的10倍，一些类似于内存的存储模块</li>
+<li>但是要想程序跑得快，还是要CPU的运算能力强一些才行</li>
+<li>如果电脑装了固态硬盘，内存尽量大些</li>
+<li>因为如果电脑要开辟虚拟内存，内存的读写时非常频繁的，至少上万次，会进行反复的擦写。而固态硬盘的读写能力远远低于传统硬盘，如果进行高频率的读写，会影响固态硬盘的寿命</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/01/29/Java-day13/intro.png" class title="This is an example image"></div>
+
+<p>查看设备:我的电脑属性 &gt;&gt;&gt; 设备管理器</p>
+<p>ps:因特尔CPU i3 i5 i7 的最重要差别区别是 线程数，核心数</p>
+<h1 id="计算机语言发展史"><a href="#计算机语言发展史" class="headerlink" title="计算机语言发展史"></a>计算机语言发展史</h1><ul>
+<li>人类语言 人类间沟通</li>
+<li>计算机语言 跟计算机说话</li>
+<li>计算机会思考 但是要教他 不会有自我意识</li>
+</ul>
+<h2 id="计算机语言"><a href="#计算机语言" class="headerlink" title="计算机语言"></a>计算机语言</h2><ul>
+<li>第一代 机器语言 二进制代码</li>
+<li>第二代 汇编语言 简单的英语单词 VB有点类似但是不一样</li>
+<li>第三代 高级语言 <ul>
+<li>面向对象 &gt;&gt;&gt; C/Fortran/COBOL/PASCAL/ADA</li>
+<li>面向过程 &gt;&gt;&gt; C++/C#/java</li>
+</ul>
+</li>
+</ul>
+<p>ps:从高级语言转为低级语言的过程称为 <em><strong>编译</strong></em></p>
+<h1 id="Java历史"><a href="#Java历史" class="headerlink" title="Java历史"></a>Java历史</h1><ul>
+<li>SUN公司</li>
+<li>Java为什么被发明</li>
+<li>Java的发明人</li>
+<li>经历阶段</li>
+<li>Java核心机制<ul>
+<li>垃圾回收机制</li>
+<li>跨平台机制</li>
+</ul>
+</li>
+</ul>
+<h2 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h2><p>方案一:手动移除数据<br>方案二:自动移除数据</p>
+<h2 id="跨平台机制"><a href="#跨平台机制" class="headerlink" title="跨平台机制"></a>跨平台机制</h2><p>Java的跨平台机制优越 同样的代码可以在不同的终端使用<br>互联网的发展 需要程序在多种不同的平台上 终端上运行 要求我们的程序在跨平台处理上有这非常方便的形式和优越的性能</p>
+<p>JAVA源代码 &gt;&gt;&gt; JAVA字节码 &gt;&gt;&gt; JVM(翻译)JAVA Virtual machine &gt;&gt;&gt; 各种系统<br>服务器系统 &gt;&gt;&gt; Windows/Linux/Unix<br>不同操作系统的内核算法是不一样的 使用的指令集是有差异的 甚至硬件上都有一些差异 编译之后的JAVA字节码不能够直接在各个系统上运行 需要在各个系统上安装虚拟机 通过虚拟机向平台解释JAVA字节码的含义<br>JAVA源代码 需要编译1次 有虚拟机向每个平台去解释 要想实现跨平台 必须要有虚拟机 虚拟机由oracle公司开发的<br>目前市场上主要的操作系统 都有对应的虚拟机<br>JAVA的核心优势 跨平台性能<br>JAVA的核心技术 虚拟机技术<br>JAVA技术的瓶颈 虚拟机技术</p>
+<ul>
+<li>C语言编译 直接生成各个系统可识别 可直接运行的代码文件</li>
+<li>C语言更快</li>
+</ul>
+<p>JAVA的字节是一种中立的二进制代码文件<br>宏观上的程序 &gt;&gt;&gt; 靠近用户要求的功能<br>系统工具 如驱动程序 &gt;&gt;&gt; 用C语言实现更快<br>虚拟机已经在JDK中安装了</p>
+<h1 id="常用计算机指令"><a href="#常用计算机指令" class="headerlink" title="常用计算机指令"></a>常用计算机指令</h1><h2 id="DOS命令"><a href="#DOS命令" class="headerlink" title="DOS命令"></a>DOS命令</h2><h3 id="DOS操作系统"><a href="#DOS操作系统" class="headerlink" title="DOS操作系统"></a>DOS操作系统</h3><ul>
+<li>Disk Operating system 磁盘操作系统</li>
+<li>DOS是单用户 单任务的操作系统</li>
+</ul>
+<h3 id="DOS命令-1"><a href="#DOS命令-1" class="headerlink" title="DOS命令"></a>DOS命令</h3><ul>
+<li>在windows中 通过鼠标键盘来操作系统 要通过dos命令来实现操作系统</li>
+<li>DOS命令 是一种面向磁盘的操作命令</li>
+</ul>
+<h3 id="命令学习"><a href="#命令学习" class="headerlink" title="命令学习"></a>命令学习</h3><p>win + r &gt;&gt;&gt; cmd</p>
+<p><em><strong>掌握的命令</strong></em></p>
+<ul>
+<li><p>DIR(directory) :显示目录详细信息</p>
+<ul>
+<li>dir代表了该文件是一个文件夹(目录)</li>
+<li>一些文件都用英文翻译了</li>
+<li>创建时间 + 修改时间 + 文件类型 + 文件大小 + 文件名</li>
+<li>.代表本层目录 ..代表上层目录</li>
+<li>dir /s 查看各个层级的子文件和子目录</li>
+<li>显示当前层次所有文件和目录 包含隐藏的  dir /a</li>
+</ul>
+</li>
+<li><p>CD(change directory) :改变程序显示当前目录</p>
+<ul>
+<li>切换硬盘 d:</li>
+<li>进入文件夹 cd &lt;文件夹名&gt;</li>
+<li>进入上一层目录 cd ..</li>
+<li>进入根目录 cd /</li>
+</ul>
+</li>
+<li><p>CLS(clear screen) :清除屏幕 但历史记录还在 按向上键查看</p>
+</li>
+<li><p>切换盘符:快速切换盘符 d:</p>
+</li>
+<li><p>Tab:自动补充键</p>
+</li>
+<li><p>MD(make directory) :建立目录</p>
+</li>
+<li><p>RD(remove directory) :删除目录</p>
+</li>
+<li><p>copy :复制文件</p>
+</li>
+<li><p>DEL(delete) ：删除文件</p>
+<ul>
+<li>del a 删除文件夹下内容</li>
+<li>del a.txt 删除文件</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/29/Java-day13/" data-id="cknn1mv6x000ccrupchc6b3ud" data-title="Java day13" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/30/Overlay-and-swap/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Overlay and swap
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/28/memory-management/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">memory management</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/issues/" rel="tag">issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start-here/" rel="tag">start here</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/" rel="tag">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/" rel="tag">writing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Internet/" style="font-size: 15px;">Internet</a> <a href="/tags/Programming-Language/" style="font-size: 17.5px;">Programming Language</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/start-here/" style="font-size: 12.5px;">start here</a> <a href="/tags/system/" style="font-size: 20px;">system</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/writing/" style="font-size: 10px;">writing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/18/network%20of%20computer2/">network of computer2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/Java%20day1/">Java day1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/Java-day19/">Java day19</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/23/Java-day18/">Java day18</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

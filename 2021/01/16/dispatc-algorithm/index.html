@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>dispatc-algorithm | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="调度算法的评价指标CPU利用率指CPU”忙碌”的时间占总时间的比例   通常会考察多道程序并发执行的情况，可以用”甘特图”来辅助计算 系统吞吐量对于计算机来说，希望用尽可能少的时间处理完尽可能多的作业指单位时间内完成作业的数量   周转时间对于计算机的用户来说，他很关心自己的作业从提交到完成共花了多少时间。周转时间 ，是指从作业被提交给系统开始，到作业完成为止的这段时间间隔。它包括四个部分:  作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dispatc-algorithm">
+<meta property="og:url" content="http://example.com/2021/01/16/dispatc-algorithm/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="调度算法的评价指标CPU利用率指CPU”忙碌”的时间占总时间的比例   通常会考察多道程序并发执行的情况，可以用”甘特图”来辅助计算 系统吞吐量对于计算机来说，希望用尽可能少的时间处理完尽可能多的作业指单位时间内完成作业的数量   周转时间对于计算机的用户来说，他很关心自己的作业从提交到完成共花了多少时间。周转时间 ，是指从作业被提交给系统开始，到作业完成为止的这段时间间隔。它包括四个部分:  作">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/01/16/dispatc-algorithm/formula.png">
+<meta property="og:image" content="http://example.com/2021/01/16/dispatc-algorithm/formula2.png">
+<meta property="og:image" content="http://example.com/2021/01/16/dispatc-algorithm/formula3.png">
+<meta property="og:image" content="http://example.com/2021/01/16/dispatc-algorithm/formula4.png">
+<meta property="og:image" content="http://example.com/2021/01/16/dispatc-algorithm/waiting.png">
+<meta property="og:image" content="http://example.com/2021/01/16/dispatc-algorithm/back.png">
+<meta property="article:published_time" content="2021-01-16T06:32:59.000Z">
+<meta property="article:modified_time" content="2021-04-18T09:10:10.110Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="system">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/01/16/dispatc-algorithm/formula.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-dispatc-algorithm" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/16/dispatc-algorithm/" class="article-date">
+  <time class="dt-published" datetime="2021-01-16T06:32:59.000Z" itemprop="datePublished">2021-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      dispatc-algorithm
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="调度算法的评价指标"><a href="#调度算法的评价指标" class="headerlink" title="调度算法的评价指标"></a>调度算法的评价指标</h1><h2 id="CPU利用率"><a href="#CPU利用率" class="headerlink" title="CPU利用率"></a>CPU利用率</h2><p>指CPU”忙碌”的时间占总时间的比例</p>
+<div style="width:70%;margin:auto"><img src="/2021/01/16/dispatc-algorithm/formula.png" class title="This is an example image"></div>
+
+<p>通常会考察多道程序并发执行的情况，可以用”甘特图”来辅助计算</p>
+<h2 id="系统吞吐量"><a href="#系统吞吐量" class="headerlink" title="系统吞吐量"></a>系统吞吐量</h2><p>对于计算机来说，希望用尽可能少的时间处理完尽可能多的作业<br>指单位时间内完成作业的数量</p>
+<div style="width:70%;margin:auto"><img src="/2021/01/16/dispatc-algorithm/formula2.png" class title="This is an example image"></div>
+
+<h2 id="周转时间"><a href="#周转时间" class="headerlink" title="周转时间"></a>周转时间</h2><p>对于计算机的用户来说，他很关心自己的作业从提交到完成共花了多少时间。<br><em><strong>周转时间</strong></em> ，是指从作业被提交给系统开始，到作业完成为止的这段时间间隔。<br>它包括四个部分:</p>
+<ul>
+<li>作业在外存后备队列上等待作业调度(高级调度)的时间</li>
+<li>进程在就绪队列上等待进程调度(低级调度)的时间</li>
+<li>进程在CPU上执行的时间</li>
+<li>进程等待I/O操作完成的时间。</li>
+</ul>
+<p>后三项在一个作业的整个处理过程中可能多次发生</p>
+<ul>
+<li>周转时间 –&gt; 对于用户来说，更关心自己的单个作业的周转时间</li>
+<li>平均周转时间 –&gt; 对于操作系统来说，更关心系统的整体表现，因此更关心所有作业周转时间的平均值</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/01/16/dispatc-algorithm/formula3.png" class title="This is an example image"></div>
+
+<ul>
+<li><p>带权周转时间 –&gt; 必然大于等于1，带权周转时间与周转时间都是越小越好</p>
+<ol>
+<li>对于周转时间相同的两个作业，实际运行时间长的作业在相同时间内被服务的时间更多，带权周转时间更小，用户满意度更高，</li>
+<li>对于实际运行时间相同的两个作业，周转时间短的带权周转时间更小，用户满意度更高</li>
+</ol>
+</li>
+<li><p>平均带权周转时间</p>
+</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/01/16/dispatc-algorithm/formula4.png" class title="This is an example image"></div>
+
+<h2 id="等待时间"><a href="#等待时间" class="headerlink" title="等待时间"></a>等待时间</h2><p>对于计算机用户来说，希望自己的作业尽可能少的等待处理机<br>等待时间，指进程/作业 <em><strong>处于等待处理机状态时间之和</strong></em> ，等待时间越长，用户满意度越低。</p>
+<div style="width:70%;margin:auto"><img src="/2021/01/16/dispatc-algorithm/waiting.png" class title="This is an example image"></div>
+
+<p>对于 <em><strong>进程</strong></em> 来说，等待时间就是指进程建立后 <em><strong>等待别服务的时间之和</strong></em> ，在等待I/O完成的期间其实进程也是在被服务的，所以不计入等待时间<br>对于 <em><strong>作业</strong></em> 来说，不仅要考虑建立进程后的等待时间，还要加上作业在外存后备队列中等待时间。</p>
+<p>一个作业总共需要被CPU服务多久，被I/O设备服务多久一般是确定不变的，因此调度算法其实只会影响作业/进程的等待时间。当然，与前面指标类似，也会有”平均等待时间”来评价整体的性能。</p>
+<h2 id="相应时间"><a href="#相应时间" class="headerlink" title="相应时间"></a>相应时间</h2><p>对计算机用户来说，会希望自己提交的请求(比如通过键盘输入了一个调试命令)尽可能早的开始被系统服务、回应。<br><em><strong>响应时间</strong></em> ，指从用户 <em><strong>提交请求</strong></em> 到首次产生响应所用的时间。</p>
+<h1 id="时间片轮转调度算法-RR"><a href="#时间片轮转调度算法-RR" class="headerlink" title="时间片轮转调度算法 (RR)"></a>时间片轮转调度算法 (RR)</h1><p>Round-Robin</p>
+<h2 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h2><p>公平、轮流地为各个进程服务，让每个进程在一定时间间隔内都可以得到轮流响应</p>
+<h2 id="算法规则"><a href="#算法规则" class="headerlink" title="算法规则"></a>算法规则</h2><p>按照各进程到达就绪队列的顺序，轮流让各个进程执行一个时间片(如100ms)。若进程未在一个时间片内执行完，则剥夺处理机，将进程重新放到就绪队列队尾重新排序</p>
+<h2 id="用于作业-高级-进程-低级-调度"><a href="#用于作业-高级-进程-低级-调度" class="headerlink" title="用于作业(高级)/进程(低级)调度"></a>用于作业(高级)/进程(低级)调度</h2><p><em><strong>区别</strong></em></p>
+<ol>
+<li>作业调度按一定的算法从磁盘上的”输入井”中选择资源能得到满足的作业装入内存，使作业有机会去占用处理器执行。</li>
+<li>但是，一个作业能否占用处理器，什么时间能够占用处理器，必须由进程调度来决定。</li>
+<li>所以，作业调度选中了一个作业且把它装入内存时，就应为该作业创建一个进程，若有多个作业被装入内存，则内存中同时存在多个进程，这些进程的初始状态为就绪状态，然后，由进程调度来选择当前可占用处理器的进程</li>
+<li>进程运行中由于某种原因状态发生变化，当它让出处理器时，进程调度就再选另一个作业的进程运行。</li>
+<li>因此，作业调度与进程调度相互配合才能实现多道作业的并行执行</li>
+</ol>
+<p>—&gt;用于进程调度(只有作业放入内存建立了相应的进程后，才能被分配处理机时间片)</p>
+<h2 id="是否可抢占"><a href="#是否可抢占" class="headerlink" title="是否可抢占"></a>是否可抢占</h2><p>若进程未能在时间片内运行完，将被强行剥夺处理机使用权，因此时间片轮转调度算法属于 <em><strong>抢占式</strong></em> 的算法。由时钟装置发出时钟中断来通知CPU时间片已到</p>
+<p>ps:时间片轮转常用于分时操作系统，更注重”响应时间”，因而此处不计算周转时间</p>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>轮流让就绪队列中的进程依次执行一个时间片(每次选择的都是排在就绪队列对头的进程)</p>
+<p>若在2时刻，P1下处理机，同一时刻新进程P2到达，则默认新到达进程先进入就绪队列。</p>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><ul>
+<li><p>优点:</p>
+<ul>
+<li>公平</li>
+<li>响应快，适用于分时操作系统</li>
+</ul>
+</li>
+<li><p>缺点:</p>
+<ul>
+<li>由于高频率的进程切换，因此有一定开销;</li>
+<li>不区分任务的紧急程度</li>
+</ul>
+</li>
+</ul>
+<h2 id="是否会导致饥饿"><a href="#是否会导致饥饿" class="headerlink" title="是否会导致饥饿"></a>是否会导致饥饿</h2><p>不会 —&gt; 一定是轮流的被服务</p>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p><em><strong>时间片太小太大的影响</strong></em></p>
+<ol>
+<li>如果时间片太大，使得每个进程都可以在一个时间片内完成，则时间片轮转算法 <em><strong>退化为先来先服务</strong></em> 算法，并且会增大进程响应时间。因此时间片不能太大。</li>
+</ol>
+<p><em><strong>eg</strong></em> ：系统有10个进程在并发执行，如果时间片为1s，则一个进程被响应可能需要等待9s，如果用户在自己进程时间片外，通过键盘发出调试指令，可能需要等待9s才能被系统响应</p>
+<ol start="2">
+<li>另一方面，进程调度、切换是有时间代价的(保存、恢复运行环境)，因此如果时间片太小，会导致进程切换过于频繁，系统会化大量的时间来处理进程切换，从而导致实际用于进程执行的时间比例减少，可见时间片也不能小</li>
+</ol>
+<p>ps:一般来说，设计时间片时要让切换进程的开销占比不超过1%</p>
+<h1 id="优先级调度算法"><a href="#优先级调度算法" class="headerlink" title="优先级调度算法"></a>优先级调度算法</h1><h2 id="算法思想-1"><a href="#算法思想-1" class="headerlink" title="算法思想"></a>算法思想</h2><p>随着计算机的发展，特别是实时操作系统的出现，越来越多的应用场景需要根据任务的紧急程度来决定处理顺序</p>
+<h2 id="算法规则-1"><a href="#算法规则-1" class="headerlink" title="算法规则"></a>算法规则</h2><p>每个作业/进程有各自的优先级，调度时选择优先级最高的作业/进程</p>
+<h2 id="用于作业-进程调度"><a href="#用于作业-进程调度" class="headerlink" title="用于作业/进程调度"></a>用于作业/进程调度</h2><p>既可以用于作业调度 外存–&gt;内存，也可用于进程调度 就绪–&gt;处理机。甚至，还会用于在之后学习的I/O调度中。</p>
+<h2 id="是否可抢占？"><a href="#是否可抢占？" class="headerlink" title="是否可抢占？"></a>是否可抢占？</h2><p>抢占式、非抢占式都有。做题时的区别在于:非抢占式只需在进程主动放弃处理机时进行调度即可，而抢占式还需要在就绪队列变化时，检查是否会发生抢占。</p>
+<h2 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h2><h3 id="非抢占式优先级调度算法"><a href="#非抢占式优先级调度算法" class="headerlink" title="非抢占式优先级调度算法"></a>非抢占式优先级调度算法</h3><p>每次调度时选择当前已到达且优先级最高的进程。当前进程主动放弃处理机时发生调度。</p>
+<p>ps:注意区分抢占还是非抢占、优先数越小优先级越高，还是优先数越大优先级越高<br>ps:优先级相同，先到先服务</p>
+<h3 id="抢占式优先级调度算法"><a href="#抢占式优先级调度算法" class="headerlink" title="抢占式优先级调度算法"></a>抢占式优先级调度算法</h3><p><em><strong>每次调度时</strong></em> 选择当前已到达且优先级最高的进程。当前进程主动放弃处理机时发生调度。另外，当 <em><strong>就绪队列发生改变时</strong></em> 也需要检查是否会发生抢占。</p>
+<h2 id="补充-1"><a href="#补充-1" class="headerlink" title="补充"></a>补充</h2><p>就绪队列未必只有一个，可以按照不同优先级来组织。另外，也可以把优先级高的进程排在更靠近队头的位置。<br>根据优先级是否可以动态改变，可将优先级分为静态优先级和动态优先级两种。<br><em><strong>静态优先级</strong></em> :创建进程时确定，之后一直不变<br><em><strong>动态优先级</strong></em> :创建进程时有一个初始值，之后会根据情况动态地调整优先级</p>
+<h3 id="如何合理地设置各类进程优先级"><a href="#如何合理地设置各类进程优先级" class="headerlink" title="如何合理地设置各类进程优先级"></a>如何合理地设置各类进程优先级</h3><p><em><strong>通常</strong></em></p>
+<ul>
+<li>系统进程优先级 <em><strong>高于</strong></em> 用户进程</li>
+<li>前台进程优先级 <em><strong>高于</strong></em> 后台进程</li>
+<li>操作系统会更偏好I/O型(或称为I/O繁忙型进程)<ul>
+<li>I/O设备和CPU可以 <em><strong>并行</strong></em> 工作。如果优先级让I/O繁忙型进程优先级运行的话，则越有可能让I/O设备尽早地投入工作，则资源利用率、系统吞吐量都会得到提升</li>
+</ul>
+</li>
+</ul>
+<p>ps:与I/O型进程相对的是 <em><strong>计算型进程</strong></em> (或称为CPU繁忙型进程)</p>
+<h3 id="如何采用的是动态进程优先级，什么时候应该调整"><a href="#如何采用的是动态进程优先级，什么时候应该调整" class="headerlink" title="如何采用的是动态进程优先级，什么时候应该调整"></a>如何采用的是动态进程优先级，什么时候应该调整</h3><p>可以从追求公平、提高资源利用率等角度考虑</p>
+<ul>
+<li>如果某进程在就绪队列中等待了很长时间，则可以适当提升其优先级 —&gt; 高响应比优先算法也是如此</li>
+<li>如果某进程占用处理机运行了很长时间，则可以适当降低其优先级</li>
+<li>如果发现一个进程频繁地进行I/O操作，则可以适当提升其优先级</li>
+</ul>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>用优先级区分紧急程度、重要程度，适用于实时操作系统。可以灵活地调整对各种作业/进程的偏好程度。</p>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>若源源不断地有高优先级进程到来，则可能导致饥饿</p>
+<h2 id="是否会发生饥饿"><a href="#是否会发生饥饿" class="headerlink" title="是否会发生饥饿"></a>是否会发生饥饿</h2><p>会</p>
+<h1 id="多级反馈队列调度算法"><a href="#多级反馈队列调度算法" class="headerlink" title="多级反馈队列调度算法"></a>多级反馈队列调度算法</h1><h2 id="各类算法"><a href="#各类算法" class="headerlink" title="各类算法"></a>各类算法</h2><p>FCFS算法 —&gt; 优点是公平<br>SIF算法 —&gt; 优点是尽快处理完短作业，平均等待/周转时间等参数很优秀<br>时间片轮转调度算法 —&gt; 可以让各个进程得到及时的响应<br>优先级调度算法 —&gt; 可以灵活地调整各种进程被服务的机会</p>
+<h2 id="算法思想-2"><a href="#算法思想-2" class="headerlink" title="算法思想"></a>算法思想</h2><p>对其他调度算法的折中</p>
+<h2 id="算法规则-2"><a href="#算法规则-2" class="headerlink" title="算法规则"></a>算法规则</h2><ol>
+<li>设置多级就绪队列，各级队列优先级从高到低，时间片从小到大</li>
+<li>新进程到达时先进入第1队列，按照FCFS原则排队等待被分配时间片，若用完时间片进程还未结束，则进程进入下一级队列队尾。如果此时已经在最下级的队列，则重新放回该队列队尾</li>
+<li>只有第k级队列为空时，才会为k+1级对头的进程分配时间片</li>
+</ol>
+<h2 id="用于进程调度-作业调度"><a href="#用于进程调度-作业调度" class="headerlink" title="用于进程调度/作业调度"></a>用于进程调度/作业调度</h2><p>进程调度</p>
+<h2 id="是否可抢占-1"><a href="#是否可抢占-1" class="headerlink" title="是否可抢占"></a>是否可抢占</h2><p><em><strong>抢占式算法</strong></em> 。在k级队列的进程运行过程中，若更上一级队列(1 -&gt; k-1级)中进入了一个新进，则由于新进程处于优先级更高的队列中，因此新进程会抢占处理机，原来运行进程放回k级队列队尾</p>
+<h2 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h2><ul>
+<li>设置多级就绪队列，各级队列优先级从小到大</li>
+<li>新进程到达时进入第1级队列，按FCFS(先来先服务)原则排队等待被分配时间片。若用时间片进程还未结束，则进程进入下一级队列队尾。如果此时已经在最下级的队列，则重新放回最下级队列队尾</li>
+<li>只有第k级队列为空，才会为k+1级队头的进程分配时间片</li>
+<li>被抢占处理机的进程重新放回队列队尾</li>
+</ul>
+<h2 id="优缺点-1"><a href="#优缺点-1" class="headerlink" title="优缺点"></a>优缺点</h2><ul>
+<li>对各类型进程相对公平(FCFS的优点)；</li>
+<li>每个新到达的进程都可以很快就得到响应(RR优点);</li>
+<li>短进程只用较小的时间就可以完成(SPF的优点);</li>
+<li>不必实现估计进程的运行时间(避免用户作假);</li>
+<li>可灵活地调整对各类进程的偏好程度，比如CPU密集型进程、I/O密集型进程</li>
+<li>扩展:可以将因I/O而阻塞的进程重新放回原队列，这样I/O型进程就可以保持较高优先级</li>
+</ul>
+<p>ps:实际可能会有非抢占式版本</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><div style="width:70%;margin:auto"><img src="/2021/01/16/dispatc-algorithm/back.png" class title="This is an example image"></div>
+
+<p>注:比起早期的批处理操作系统来说，由于计算机造价大幅降低，因此之后出现的交互式操作系统（包括分时操作系统、实时操作系统等）更注重系统的响应时间、公平性平衡性等指标。而这几种算法恰好也能较好地满足交互式系统的需求。因此这三种算法适合用于 <em><strong>交互式系统</strong></em> 。(比如UNIX使用的就是多级反馈队列调度算法)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/16/dispatc-algorithm/" data-id="cknn1mv80001vcrup984ugf3v" data-title="dispatc-algorithm" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/16/Java-day6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java-day6
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/16/process-scheduling/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">process scheduling</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/issues/" rel="tag">issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start-here/" rel="tag">start here</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/" rel="tag">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/" rel="tag">writing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Internet/" style="font-size: 15px;">Internet</a> <a href="/tags/Programming-Language/" style="font-size: 17.5px;">Programming Language</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/start-here/" style="font-size: 12.5px;">start here</a> <a href="/tags/system/" style="font-size: 20px;">system</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/writing/" style="font-size: 10px;">writing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/18/network%20of%20computer2/">network of computer2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/Java%20day1/">Java day1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/Java-day19/">Java day19</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/23/Java-day18/">Java day18</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

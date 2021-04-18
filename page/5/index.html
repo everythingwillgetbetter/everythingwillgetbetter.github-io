@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/5/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Java-day4" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/11/Java-day4/" class="article-date">
+  <time class="dt-published" datetime="2021-01-11T13:01:19.000Z" itemprop="datePublished">2021-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/11/Java-day4/">Java day4</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>ps：让字体多变 <code>&lt;font&gt;</code> 标签 &gt;&gt;&gt; 字体<br>ps： 借助css样式进行进一步处理，任何一个body中的标签，都会有一个stye属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;p style&#x3D;&quot;样式名:样式值;样式名:样式值&quot;&gt;我们不一样&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p style&#x3D;&quot;font-size:60px;font-family:新宋体;color: gold;text-decoration: underline;&quot;&gt;我们不一样&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="字符实体"><a href="#字符实体" class="headerlink" title="字符实体"></a>字符实体</h1><p>例如 <code>&lt;br /&gt;</code> 浏览器自动识别为换行，需要进行转义才能在浏览器中显示出来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt; br &#x2F; &gt;   &#x2F;&#x2F;尖角号</span><br><span class="line">武汉&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;加油   &#x2F;&#x2F;空格</span><br><span class="line">&amp;lt;  &#x2F;&#x2F;&amp;符号</span><br><span class="line">&amp;copy;   &#x2F;&#x2F;版权符</span><br></pre></td></tr></table></figure>
+
+<p>对于html没有特殊含义，但是不好打出来</p>
+<p>&emsp;&emsp;对于html有特殊含义的字符符号，想以普通文本的形式展示出来，那么就需要使用字符实体进行转义处理。</p>
+<p><em><strong>字符实体列表</strong></em></p>
+<div style="width:70%;margin:auto"><img src="/2021/01/11/Java-day4/character-list.png" class title="This is a list"></div>
+
+<p>&emsp;&emsp;其他的一些特殊符号，与html没有特殊含义，但是有不好打出来的符号</p>
+<p><em><strong>关于URL特殊符号</strong></em></p>
+<div style="width:70%;margin:auto"><img src="/2021/01/11/Java-day4/URL.png" class title="This is a list"></div>
+
+<p><em><strong>关于 html 的一些特殊符号</strong></em><br><code>https://www.w3school.com.cn/tags/html_ref_symbols.html</code></p>
+<p>ps:字符实体 – 有特殊含义  特殊符号 – 没有特殊含义</p>
+<h1 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h1><p>超链接标签也叫作 <em><strong>a标签</strong></em> ，可以给文字、图片、音乐、甚至其他的一些标签添加超链接功能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;www.baidu.com&quot;&gt;百度&lt;&#x2F;a&gt;  &#x2F;&#x2F;外部地址</span><br><span class="line">&lt;a href&#x3D;&quot;01titletag.html&quot;&gt;我自己的网页&lt;&#x2F;a&gt; &#x2F;&#x2F;内部地址，都在day2目录下</span><br></pre></td></tr></table></figure>
+
+<div style="width:70%;margin:auto"><img src="/2021/01/11/Java-day4/catalog.png" class title="This is an example image"></div>
+
+
+<p>ps:a标签默认效果，改变字体颜色，加上下划线<br><em><strong>href</strong></em> 属性设置超链接地址 – 可以是本地资源，也可以是网络资源</p>
+<h2 id="a标签其他属性"><a href="#a标签其他属性" class="headerlink" title="a标签其他属性"></a>a标签其他属性</h2><h3 id="target属性"><a href="#target属性" class="headerlink" title="target属性"></a>target属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;www.baidu.com&quot; target&#x3D;&quot;_blank&quot;&gt;百度&lt;&#x2F;a&gt;  &#x2F;&#x2F;新建一个网页打开地址</span><br><span class="line">&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;www.baidu.com&quot; target&#x3D;&quot;_self&quot;&gt;百度&lt;&#x2F;a&gt; &#x2F;&#x2F;当前页面打开，不会新建页面</span><br></pre></td></tr></table></figure>
+
+<p>ps: <em><strong>target</strong></em> 属性，设置打开方式  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_blank新建一个网页    </span><br><span class="line">_self当前页打开</span><br></pre></td></tr></table></figure>
+
+<h3 id="锚点"><a href="#锚点" class="headerlink" title="锚点"></a>锚点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;hr &#x2F;&gt;   &#x2F;&#x2F;下划线</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>快捷键操作</strong></em> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入： br*100 </span><br><span class="line">按下tab键 --&gt; 复制出100个&lt;br &#x2F;&gt;标签</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>设置锚点</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a name&#x3D;&quot;middle&quot;&gt;中部&lt;&#x2F;a&gt; &#x2F;&#x2F; 埋下锚点&quot;middle&quot;</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>跳转至锚点</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href&#x3D;&quot;#middle&quot;&gt;跳转至中部&lt;&#x2F;a&gt;   &#x2F;&#x2F;&quot;#&quot;代表当前页面，跳转至&quot;middle&quot;锚点</span><br></pre></td></tr></table></figure>
+
+<h1 id="多媒体标签-–-gt-图片、声音、视频"><a href="#多媒体标签-–-gt-图片、声音、视频" class="headerlink" title="多媒体标签 –&gt; 图片、声音、视频"></a>多媒体标签 –&gt; 图片、声音、视频</h1><h2 id="图片-–-gt-img"><a href="#图片-–-gt-img" class="headerlink" title="图片 –&gt; img"></a>图片 –&gt; img</h2><p><em><strong>img</strong></em> 可以写成双标签，但一般用单标签<br><em><strong>src</strong></em> 是source的缩写，表示图片的路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot;&#x2F;&gt;  &#x2F;&#x2F;要加上拓展名</span><br><span class="line">&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot; width&#x3D;&quot;400px&quot; height&#x3D;&quot;200px&quot;&#x2F;&gt;  &#x2F;&#x2F;控制图片的宽与高</span><br></pre></td></tr></table></figure>
+<p>ps: <em><strong>.html</strong></em> 与 <em><strong>img文件夹</strong></em> 是在同一个根目录下</p>
+<p><em><strong>也可以是网络资源</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src&#x3D;&quot;网络中的地址&quot; &#x2F;&gt; &#x2F;&#x2F;复制图片地址</span><br></pre></td></tr></table></figure>
+
+<div style="width:70%;margin:auto"><img src="/2021/01/11/Java-day4/address.png" class title="This is an example image"></div>
+
+<p><em><strong>title属性</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot; width&#x3D;&quot;400px&quot; height&#x3D;&quot;200px&quot; title&#x3D;&quot;我是白色的&quot;&#x2F;&gt;  &#x2F;&#x2F;鼠标悬停图片上的文字</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>alt属性</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot; width&#x3D;&quot;400px&quot; height&#x3D;&quot;200px&quot; title&#x3D;&quot;我是白色的&quot; alt&#x3D;&quot;我真的不知道她是谁&quot;&#x2F;&gt;  </span><br></pre></td></tr></table></figure>
+
+<p>如果图片没有加载出来 –&gt; 断网了/路径错了… –&gt;显示出alt的值</p>
+<p><em><strong>图片添加超链接</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;bebetternow.github.io&quot;&gt;</span><br><span class="line">	&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot; width&#x3D;&quot;400px&quot; height&#x3D;&quot;200px&quot; title&#x3D;&quot;我是白色的&quot; alt&#x3D;&quot;我真的不知道她是谁&quot;&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;a&gt;</span><br></pre></td></tr></table></figure>
+
+<p>ps:跳转至博客 –&gt; 要加上 <em><strong>http://</strong></em> </p>
+<h2 id="声音-–-gt-audio"><a href="#声音-–-gt-audio" class="headerlink" title="声音 –&gt; audio"></a>声音 –&gt; audio</h2><p><em><strong>src</strong></em> 用法与上一个一致<br><em><strong>controls</strong></em> 在页面上显示功能控件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio src&#x3D;&quot;audio&#x2F;Joy.mp3&quot; controls&#x3D;&quot;controls&quot;&gt;&lt;&#x2F;audio&gt;</span><br><span class="line"></span><br><span class="line">&lt;audio src&#x3D;&quot;audio&#x2F;Joy.mp3&quot; controls&#x3D;&quot;controls&quot; autoplay&#x3D;&quot;autoplay&quot;&gt;&lt;&#x2F;audio&gt; &#x2F;&#x2F; autoplay 自动播放 谷歌上不好使，但是edge上可以用</span><br><span class="line"></span><br><span class="line">&lt;audio src&#x3D;&quot;audio&#x2F;Joy.mp3&quot; loop&#x3D;&quot;loop&quot; controls&#x3D;&quot;controls&quot; autoplay&#x3D;&quot;autoplay&quot;&gt;&lt;&#x2F;audio&gt; &#x2F;&#x2F;自动循环播放</span><br><span class="line"></span><br><span class="line">&lt;audio controls&#x3D;&quot;controls&quot;&gt;</span><br><span class="line">	&lt;source src&#x3D;&quot;audio&#x2F;Joy.mp3&quot;&gt;&lt;&#x2F;source&gt;</span><br><span class="line">	&lt;source src&#x3D;&quot;audio&#x2F;Joy.mp3&quot;&gt;&lt;&#x2F;source&gt;</span><br><span class="line">	&lt;source src&#x3D;&quot;audio&#x2F;Joy.mp3&quot;&gt;&lt;&#x2F;source&gt;</span><br><span class="line">	&lt;source src&#x3D;&quot;audio&#x2F;Joy.mp3&quot;&gt;&lt;&#x2F;source&gt;</span><br><span class="line">&lt;&#x2F;audio&gt;</span><br><span class="line">&#x2F;&#x2F; 识别第一个可以播放的文件</span><br><span class="line"></span><br><span class="line">&lt;audio controls loop autoplay&gt;</span><br><span class="line">	&lt;source src&#x3D;&quot;audio&#x2F;Joy.mp3&quot;&gt;&lt;&#x2F;source&gt;</span><br><span class="line">	不支持</span><br><span class="line">	&lt;source src&#x3D;&quot;audio&#x2F;Joy.mp3&quot;&gt;&lt;&#x2F;source&gt;</span><br><span class="line">	&lt;source src&#x3D;&quot;audio&#x2F;Joy.mp3&quot;&gt;&lt;&#x2F;source&gt;</span><br><span class="line">	&lt;source src&#x3D;&quot;audio&#x2F;Joy.mp3&quot;&gt;&lt;&#x2F;source&gt;</span><br><span class="line">&lt;&#x2F;audio&gt; &#x2F;&#x2F; 也可以不加属性值</span><br></pre></td></tr></table></figure>
+
+<h2 id="视频-–-gt-video"><a href="#视频-–-gt-video" class="headerlink" title="视频 –&gt; video"></a>视频 –&gt; video</h2><p>与音频文件相似</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;video controls loop autoplay width&#x3D;&quot;30%&quot;&gt;</span><br><span class="line">	&lt;source src&#x3D;&quot;video&#x2F;Joy.mkv&quot;&gt;&lt;&#x2F;source&gt;</span><br><span class="line">&lt;&#x2F;video&gt;</span><br></pre></td></tr></table></figure>
+
+<p>ps:img文件不会换行<br>ps:互联网图片文件类型： .jpg  .gif  .png<br>ps:audio标签html5才开始支持，之前播放视频音频都是 <em><strong>使用第三方插件</strong></em> ，比如flash player，而H5不再需要插件，而浏览器自己提供功能<br>ps:audio 支持: mp3 wav  Ogg Vorbls<br>ps:video 支持: mp4 Ogg</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/11/Java-day4/" data-id="cknn1mv76000qcrup0utk34e2" data-title="Java day4" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-system-call" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/11/system-call/" class="article-date">
+  <time class="dt-published" datetime="2021-01-11T08:55:01.000Z" itemprop="datePublished">2021-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/11/system-call/">system call</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="什么是系统调用，有何作用？"><a href="#什么是系统调用，有何作用？" class="headerlink" title="什么是系统调用，有何作用？"></a>什么是系统调用，有何作用？</h1><p>操作系统提供两种服务</p>
+<ul>
+<li><p>面向用户的 命令接口 — 允许用户直接使用</p>
+<ul>
+<li>联机命令接口：用户说一句，系统做一句</li>
+<li>脱机命令接口：用户说一堆，系统做一堆</li>
+</ul>
+</li>
+<li><p>面向程序的 程序接口：由一组系统调用组成</p>
+</li>
+</ul>
+<p>“系统调用”是操作系统提供给应用程序（程序员/编程人员）使用的接口，可以理解为一种可借应用程序调用的特殊函数， <em><strong>应用程序可以发出系统调用请求来获得操作系统的服务。</strong></em> </p>
+<p><em><strong>总结：</strong></em></p>
+<ol>
+<li>系统调用时操作系统提供给应用程序使用的接口</li>
+<li>应用程序通过系统调用来请求获得操作系统的服务</li>
+<li>系统调用会使处理器从用户态进入核心态</li>
+</ol>
+<p><em><strong>问题：</strong></em> 操作系统为什么要提供”系统调用”功能？<br><em><strong>答：</strong></em>打印论文并没有混在一起，而是顺序打印</p>
+<p><em><strong>问题：</strong></em> 如果各个进程可以随意的使用打印机会怎么样？<br><em><strong>答：</strong></em> 后半段将混合在一起</p>
+<p><em><strong>解决方法：</strong></em>操作系统提供”系统调用”功能，用户进程想要使用打印机这种共享资源，只能通过系统调用向操作系统发出请求。操作系统会对各个请求进行协调管理。</p>
+<p>应用程序通过系统调用请求操作系统的服务，系统中的各种共享资源都有操作系统统一掌管，因此在用户程序中，凡是与资源有关的操作（如存储分配、I/O操作、文件管理等），都必须通过系统调用的方式向操作系统提出服务请求，由操作系统代为完成。这样可以保证系统的稳定性和安全性，防止用户进行非法操作。</p>
+<h2 id="系统调用（按功能分类）"><a href="#系统调用（按功能分类）" class="headerlink" title="系统调用（按功能分类）"></a>系统调用（按功能分类）</h2><ul>
+<li>设备管理 - 完成设备的 请求/释放/启动 等功能</li>
+<li>文件管理 - 完成文件的 读/写/创建/删除 等功能</li>
+<li>进程控制 - 完成进程的 创建/撤销/阻塞/唤醒 等功能</li>
+<li>进程通信 - 完成进程间的 消息传递/信号传递 等功能</li>
+<li>内存管理 - 完成内存的 分配/回收 等功能呢</li>
+</ul>
+<p>ps:系统调用相关处理涉及到对系统资源的管理、对进程的控制。这些功能需要执行一些特权指令才能够完成，因此系统调用的相关处理需要在核心态下进行。</p>
+<p>ps:凡是与资源有关的操作、会直接影响到其他进程的操作，一定需要操作系统介入，即需要通过系统调用来实现</p>
+<h1 id="系统调用和库函数的区别"><a href="#系统调用和库函数的区别" class="headerlink" title="系统调用和库函数的区别"></a>系统调用和库函数的区别</h1><p>&emsp;&emsp;理论上应用程序可以通过汇编语言直接调用硬件系统。但是现在的程序中一般来说都是使用高级语言提供的库函数。但是这些高级语言的低层会封装一些相应的系统调用，只不过细节被库函数屏蔽了，所以使用库函数比较方便，不需要复杂的系统调用。<br>&emsp;&emsp;系统调用的相关处理在核心态进行。</p>
+<table>
+<thead>
+<tr>
+<th align="center">普通应用程序</th>
+<th align="center">编程语言</th>
+<th align="center">操作系统</th>
+<th align="center">裸机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">可直接进行系统调用，也可以使用库函数。有的库函数涉及系统调用，有的不涉及</td>
+<td align="center">向上提供库函数。有时会将系统调用封装成库函数，以隐藏系统调用的一些细节，使上层进行系统调用更加方便</td>
+<td align="center">向上提供系统调用</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<div style="width:70%;margin:auto"><img src="/2021/01/11/system-call/Stracture.png" class title="This is an Stracture system"></div>
+
+<p><em><strong>不涉及系统调用的库函数：</strong></em> 如取绝对值的函数<br><em><strong>设计系统调用的函数：</strong></em> 如创建一个新的文件函数</p>
+<p>ps:系统调用屏蔽了一些对硬件的操作细节，而库函数由进一步屏蔽了一部分的系统调用细节。</p>
+<p><em><strong>总结：</strong></em></p>
+<ol>
+<li>系统调用是操作系统向上层提供的接口</li>
+<li>有的库函数是对系统调用的进一步封装</li>
+<li>当今编写的应用程序大部分是通过高级语言提供的库函数间接地进行系统调用</li>
+</ol>
+<h1 id="系统调用背后的过程"><a href="#系统调用背后的过程" class="headerlink" title="系统调用背后的过程"></a>系统调用背后的过程</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int $0*80  &#x2F;&#x2F; 执行陷入指令，将CPU操作权交给操作系统，之后由操作系统的相关程序，根据指令提供的参数进行相应的处理</span><br><span class="line">movl $4,%eax &#x2F;&#x2F; 将参数放入寄存器</span><br></pre></td></tr></table></figure>
+
+<div style="width:70%;margin:auto"><img src="/2021/01/11/system-call/back.png" class title="This is what in the back"></div>
+
+
+<p>高级语言视角：调用了一行行的代码，比如说库函数write(“abc”)该库函数内部封装了系统调用的复杂细节<br>汇编语言视角（运行在用户态）：前期处理相关指令 -&gt; movl指令（将”abc”作为系统调用参数放到某个通用寄存器中）-&gt; int x 指令（trap/陷入/访管指令） -&gt; 后续处理相关指令（运行在核心态）</p>
+<p>ps: <em><strong>int</strong></em> 指令的参数x指明了系统调用号。此处的int不是整数的意思，其实是interrupt的缩写。不同系统有不同的系统调用号对应不同的指令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#define_NR_exit   1</span><br><span class="line">#define_NR_fork   2   &#x2F;&#x2F;创建一个进程</span><br><span class="line">#define_NR_read   3   &#x2F;&#x2F;进行一个读操作</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>过程：</strong></em></p>
+<ol>
+<li>传递系统调用参数</li>
+<li>执行陷入指令（用户态）</li>
+<li>执行系统调用相应服务程序（核心态）</li>
+<li>返回用户程序</li>
+</ol>
+<p><em><strong>注意：</strong></em></p>
+<ol>
+<li>陷入指令是在用户态执行，执行陷入指令之后立刻引发一个内中断，从而CPU进入核心态</li>
+<li>发出系统调用请求是在用户态，而对系统调用的相关处理在核心态下进行</li>
+<li>陷入指令是唯一一个只能在用户态下执行，而不可在核心态执行的指令</li>
+</ol>
+<p>ps：系统调用发生在用户态，对系统调用的处理发生在核心态、执行陷入指令会产生内中断，使处理器从用户态进入核心态。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/11/system-call/" data-id="cknn1mv8w002ncrupgxb09rgk" data-title="system call" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-terminals-and-exceptions" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/11/terminals-and-exceptions/" class="article-date">
+  <time class="dt-published" datetime="2021-01-11T08:08:40.000Z" itemprop="datePublished">2021-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/11/terminals-and-exceptions/">terminals and exceptions</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="中断机制的诞生"><a href="#中断机制的诞生" class="headerlink" title="中断机制的诞生"></a>中断机制的诞生</h1><p>&emsp;&emsp;早期计算机只能串行的进行工作，同一时刻最多一道程序。为了解决这个问题，人们发明了操作系统作为计算机的管理者，引入中断机制，实现了多道程序并发执行。</p>
+<p><em><strong>本质，</strong></em> 发生中断意味着需要操作系统介入，并展开管理工作。</p>
+<ol>
+<li>进程1正在进行，CPU收到计时部件发出的 <em><strong>中断信号</strong></em> ，切换为 <em><strong>核心态</strong></em> 对中断进行处理</li>
+<li>操作系统内核负责对中断信号进行处理 -&gt; 进程1时间片已用完，换为进程2运行</li>
+<li>进程2发出系统调用（内中断信号），请求输出。CPU切换为 <em><strong>核心态</strong></em> ，对中断进行处理。</li>
+<li>操作系统内核负责对中断信号进行处理</li>
+<li>进程2要等待I/O设备运行，换进程3运行</li>
+<li>I/O完成，设备向CPU发出 <em><strong>中断信号</strong></em> </li>
+<li>CPU收到I/O设备发来的中断信号，切换为核心态，对中断进行处理</li>
+<li>操作系统内核负责对中断信号进行处理</li>
+<li>进程2的I/O已经完成，让进程2 恢复运行，以完成后续工作</li>
+</ol>
+<h1 id="中断的概念和作用"><a href="#中断的概念和作用" class="headerlink" title="中断的概念和作用"></a>中断的概念和作用</h1><ol>
+<li>当中断发生时，CPU立即进入核心态</li>
+<li>当中断发生以后，当前运行的进程暂停运行，并且由操作系统内核对中断进行处理</li>
+<li>对于不同的中断信号，会进行不同的处理</li>
+</ol>
+<p>&emsp;&emsp;发生了中断，就意味着需要操作系统介入，开展管理工作。由于操作系统的管理工作（比如进程切换、分配I/O设备等）需要使用特权指令，因此CPU要从用户态转为核心态。中断可以是CPU从用户态切换为核心态，是操作系统获得计算机的控制权。有了中断，才能实现多道程序的并发执行。</p>
+<p>ps:用户态、核心态之间的切换是怎么实现的？<br>答：”用户态 -&gt; 核心态” 是通过中断实现的，并且中断是唯一途径。<br>“核心态 -&gt; 用户态” 的切换是通过执行一个特权指令，将程序状态字（PSW）的标志位设置为”用户态”。</p>
+<h1 id="中断（广义）的分类"><a href="#中断（广义）的分类" class="headerlink" title="中断（广义）的分类"></a>中断（广义）的分类</h1><h2 id="内中断-（异常、例外。陷入）-与当前程序有关"><a href="#内中断-（异常、例外。陷入）-与当前程序有关" class="headerlink" title="内中断 - （异常、例外。陷入）- 与当前程序有关"></a>内中断 - （异常、例外。陷入）- 与当前程序有关</h2><p>信号来源：CPU内部   与当前执行的指令有关</p>
+<ul>
+<li>自愿中断 — 指令中断  如：系统调用时使用的访管指令（又叫陷入指令、trap指令）</li>
+<li>强迫中断 <ul>
+<li>硬件故障  如：缺页</li>
+<li>软件中断  如：整数除0</li>
+</ul>
+</li>
+</ul>
+<h2 id="外中断-中断（狭义）-与当前程序无关"><a href="#外中断-中断（狭义）-与当前程序无关" class="headerlink" title="外中断 - 中断（狭义）- 与当前程序无关"></a>外中断 - 中断（狭义）- 与当前程序无关</h2><p>信号来源：CPU外部<br>与当前执行程序无关</p>
+<ul>
+<li>外设请求  如：I/O操作完成发出的中断信号</li>
+<li>人工干预  如：用户强行终止一个进程</li>
+</ul>
+<h1 id="另一种分类方式"><a href="#另一种分类方式" class="headerlink" title="另一种分类方式"></a>另一种分类方式</h1><ul>
+<li><p>内中断</p>
+<ul>
+<li>陷阱、陷入（trap） – 有意而为的异常，如系统调用</li>
+<li>故障 （flaut） – 由错误条件引起的，可能被故障处理程序修复，如缺页</li>
+<li>终止 （abort） – 不可修复的致命错误造成的结果，终止处理程序不再将控制返回给引发终止的应用程序，如整数除0</li>
+</ul>
+</li>
+<li><p>外中断</p>
+<ul>
+<li>I/O中断</li>
+<li>人工干预</li>
+</ul>
+</li>
+</ul>
+<h1 id="外中断的处理过程"><a href="#外中断的处理过程" class="headerlink" title="外中断的处理过程"></a>外中断的处理过程</h1><ol>
+<li>执行完每个指令之后，CPU都要检查当前是否有外部中断信号</li>
+<li>如果检测到外部中断信号，则需要保护中断进程的CPU环境（如程序状态字PSW、程序计数器PC、各种通用寄存器） – 详见 <em><strong>计算机组成原理</strong></em></li>
+<li>根据中断信号类型转入相应的中断处理程序 – 属于核心态</li>
+<li>恢复原进程的CPU环境并退出中断，返回原进程继续往下执行</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/11/terminals-and-exceptions/" data-id="cknn1mv8x002pcrupbxfx49qv" data-title="terminals and exceptions" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-methods-of-show-your-photo" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/11/methods-of-show-your-photo/" class="article-date">
+  <time class="dt-published" datetime="2021-01-11T07:30:47.000Z" itemprop="datePublished">2021-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/11/methods-of-show-your-photo/">methods of show your photo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>&emsp;&emsp;为了解决做笔记时无法插入图片的问题，今天特地花了一点时间。</p>
+<h1 id="插件安装与配置"><a href="#插件安装与配置" class="headerlink" title="插件安装与配置"></a>插件安装与配置</h1><p>首先我们要安装一个图片路径转换的插件，这个插件的名字是 <em><strong>hexo-asset-image</strong></em> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https:&#x2F;&#x2F;github.com&#x2F;CodeFalling&#x2F;hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+<p>可以用淘宝源换源使用cnpm来进行安装。<br>但是这个插件有内容需要修改，可能会出bug<br>打开<code>/node_modules/hexo-asset-image/index.js</code>,将其中的内容换为以下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">&#39;use strict&#39;;</span><br><span class="line">var cheerio &#x3D; require(&#39;cheerio&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; http:&#x2F;&#x2F;stackoverflow.com&#x2F;questions&#x2F;14480345&#x2F;how-to-get-the-nth-occurrence-in-a-string</span><br><span class="line">function getPosition(str, m, i) &#123;</span><br><span class="line">  return str.split(m, i).join(m).length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var version &#x3D; String(hexo.version).split(&#39;.&#39;);</span><br><span class="line">hexo.extend.filter.register(&#39;after_post_render&#39;, function(data)&#123;</span><br><span class="line">  var config &#x3D; hexo.config;</span><br><span class="line">  if(config.post_asset_folder)&#123;</span><br><span class="line">    	var link &#x3D; data.permalink;</span><br><span class="line">	if(version.length &gt; 0 &amp;&amp; Number(version[0]) &#x3D;&#x3D; 3)</span><br><span class="line">	   var beginPos &#x3D; getPosition(link, &#39;&#x2F;&#39;, 1) + 1;</span><br><span class="line">	else</span><br><span class="line">	   var beginPos &#x3D; getPosition(link, &#39;&#x2F;&#39;, 3) + 1;</span><br><span class="line">	&#x2F;&#x2F; In hexo 3.1.1, the permalink of &quot;about&quot; page is like &quot;...&#x2F;about&#x2F;index.html&quot;.</span><br><span class="line">	var endPos &#x3D; link.lastIndexOf(&#39;&#x2F;&#39;) + 1;</span><br><span class="line">    link &#x3D; link.substring(beginPos, endPos);</span><br><span class="line"></span><br><span class="line">    var toprocess &#x3D; [&#39;excerpt&#39;, &#39;more&#39;, &#39;content&#39;];</span><br><span class="line">    for(var i &#x3D; 0; i &lt; toprocess.length; i++)&#123;</span><br><span class="line">      var key &#x3D; toprocess[i];</span><br><span class="line"> </span><br><span class="line">      var $ &#x3D; cheerio.load(data[key], &#123;</span><br><span class="line">        ignoreWhitespace: false,</span><br><span class="line">        xmlMode: false,</span><br><span class="line">        lowerCaseTags: false,</span><br><span class="line">        decodeEntities: false</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      $(&#39;img&#39;).each(function()&#123;</span><br><span class="line">		if ($(this).attr(&#39;src&#39;))&#123;</span><br><span class="line">			&#x2F;&#x2F; For windows style path, we replace &#39;\&#39; to &#39;&#x2F;&#39;.</span><br><span class="line">			var src &#x3D; $(this).attr(&#39;src&#39;).replace(&#39;\\&#39;, &#39;&#x2F;&#39;);</span><br><span class="line">			if(!&#x2F;http[s]*.*|\&#x2F;\&#x2F;.*&#x2F;.test(src) &amp;&amp;</span><br><span class="line">			   !&#x2F;^\s*\&#x2F;&#x2F;.test(src)) &#123;</span><br><span class="line">			  &#x2F;&#x2F; For &quot;about&quot; page, the first part of &quot;src&quot; can&#39;t be removed.</span><br><span class="line">			  &#x2F;&#x2F; In addition, to support multi-level local directory.</span><br><span class="line">			  var linkArray &#x3D; link.split(&#39;&#x2F;&#39;).filter(function(elem)&#123;</span><br><span class="line">				return elem !&#x3D; &#39;&#39;;</span><br><span class="line">			  &#125;);</span><br><span class="line">			  var srcArray &#x3D; src.split(&#39;&#x2F;&#39;).filter(function(elem)&#123;</span><br><span class="line">				return elem !&#x3D; &#39;&#39; &amp;&amp; elem !&#x3D; &#39;.&#39;;</span><br><span class="line">			  &#125;);</span><br><span class="line">			  if(srcArray.length &gt; 1)</span><br><span class="line">				srcArray.shift();</span><br><span class="line">			  src &#x3D; srcArray.join(&#39;&#x2F;&#39;);</span><br><span class="line">			  $(this).attr(&#39;src&#39;, config.root + link + src);</span><br><span class="line">			  console.info&amp;&amp;console.info(&quot;update link as:--&gt;&quot;+config.root + link + src);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			console.info&amp;&amp;console.info(&quot;no src attr, skipped...&quot;);</span><br><span class="line">			console.info&amp;&amp;console.info($(this));</span><br><span class="line">		&#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      data[key] &#x3D; $.html();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>打开<code>_config.yum</code>文件，修改下述内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+
+<p>建议 ctrl + f 快速查找</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n &quot;photo&quot;</span><br></pre></td></tr></table></figure>
+<p>可以发现，在<code>source/_posts</code>中不仅生成了.md文件，也生成了同名的文件夹</p>
+<div style="width:70%;margin:auto"><img src="/2021/01/11/methods-of-show-your-photo/picture1.png" class title="This is an example image"></div>
+
+<p>将用到的图片放入文件夹，正确的引用图片方式是使用下列的标签，而不是markdown：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img your-picture-name.jpg This is an example image %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后就成功了，可以添加格式，如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style&#x3D;&quot;width:70%;margin:auto&quot;&gt;&#123;% asset_img picture1.jpg This is an example image %&#125;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/11/methods-of-show-your-photo/" data-id="cknn1mv830021crupendyfez9" data-title="methods of show your photo" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/issues/" rel="tag">issues</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-photo" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/11/photo/" class="article-date">
+  <time class="dt-published" datetime="2021-01-11T03:38:16.000Z" itemprop="datePublished">2021-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/11/photo/">photo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <div style="width:70%;margin:auto"><img src="/2021/01/11/photo/godjob.jpg" class title="This is an example image"></div>
+
+<p>！<a href="godjob.jpg">测试</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/11/photo/" data-id="cknn1mv8r002ccruphlt63tmv" data-title="photo" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/" rel="tag">test</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-thread/photo" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/11/thread/photo/" class="article-date">
+  <time class="dt-published" datetime="2021-01-11T03:38:16.000Z" itemprop="datePublished">2021-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/11/thread/photo/">photo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <div style="width:70%;margin:auto"></div>
+
+<p>！<a href="./photo/godjob.jpg">测试</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/11/thread/photo/" data-id="cknn1mv940033cruphv0rdbum" data-title="photo" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/" rel="tag">test</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Operation System day2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/10/Operation%20System%20day2/" class="article-date">
+  <time class="dt-published" datetime="2021-01-10T02:43:12.000Z" itemprop="datePublished">2021-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/10/Operation%20System%20day2/">Operating System day2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="操作系统的发展与分类"><a href="#操作系统的发展与分类" class="headerlink" title="操作系统的发展与分类"></a>操作系统的发展与分类</h1><p>ps:理解各个阶段优缺点</p>
+<h2 id="手工操作阶段"><a href="#手工操作阶段" class="headerlink" title="手工操作阶段"></a>手工操作阶段</h2><ul>
+<li>没有操作系统</li>
+<li>计算机处理速度快</li>
+<li>输入/输出速度较慢</li>
+</ul>
+<p><em><strong>主要缺点：</strong></em></p>
+<ol>
+<li>用户独占全机</li>
+<li>人机速度矛盾导致资源利用率极低</li>
+</ol>
+<h2 id="批处理阶段"><a href="#批处理阶段" class="headerlink" title="批处理阶段"></a>批处理阶段</h2><h3 id="单道批处理系统"><a href="#单道批处理系统" class="headerlink" title="单道批处理系统"></a>单道批处理系统</h3><p>&emsp;&emsp;引入脱机输入/输出技术（磁带完成），并监督程序负责控制作业的输入、输出 -&gt; 操作系统雏形</p>
+<ul>
+<li>磁带速度比纸袋机快很多</li>
+<li>纸带 -&gt; 外围机 -&gt; 磁带 -&gt; 处理器 -&gt; ···</li>
+</ul>
+<p><em><strong>主要优点：</strong></em></p>
+<ol>
+<li>缓解了一定程度的人机速度矛盾</li>
+<li>资源利用率有所提升</li>
+</ol>
+<p><em><strong>主要缺点：</strong></em></p>
+<ol>
+<li>内存中仅能够有一道程序运行，只有该程序运行结束之后才能调入下一道程序</li>
+<li>CPU有大量的时间是在空闲等待I/O完成</li>
+<li>资源利用率依然很低</li>
+</ol>
+<h3 id="多道批处理系统-（操作系统开始出现）"><a href="#多道批处理系统-（操作系统开始出现）" class="headerlink" title="多道批处理系统 （操作系统开始出现）"></a>多道批处理系统 （操作系统开始出现）</h3><p>&emsp;&emsp;依然是磁带，每次往内存中输入多道程序。操作系统正式诞生，并引入 <em><strong>中断技术</strong></em> ，由操作系统负责管理这些程序的运行。各阶段并发执行。</p>
+<p><em><strong>主要优点:</strong></em></p>
+<ol>
+<li>多道程序并发执行</li>
+<li>共享计算机资源</li>
+<li>资源利用率大幅度提升</li>
+<li>CPU和其他资源保持”忙碌”状态，系统吞吐量增大</li>
+</ol>
+<p><em><strong>主要缺点:</strong></em></p>
+<ol>
+<li>用户响应时间长</li>
+<li>没有人机交互功能 （用户提交自己的作业之后就只能等待计算机处理完成，中间不能控制自己的作业执行）</li>
+</ol>
+<h2 id="分时操作系统"><a href="#分时操作系统" class="headerlink" title="分时操作系统"></a>分时操作系统</h2><p>&emsp;&emsp;计算机以时间片为单位轮流为各个用户/作业服务，各个用户可通过终端与计算机进行交互。</p>
+<p><em><strong>主要优点:</strong></em></p>
+<ol>
+<li>用户请求可以被即时响应，解决了人机交互问题。</li>
+<li>允许多个用户同时使用一台计算机</li>
+<li>用户对计算机的操作相互独立，感受不到别人的存在</li>
+</ol>
+<p><em><strong>主要缺点:</strong></em></p>
+<ol>
+<li>不能优先处理一些紧急任务，操作系统对各个用户/作业都是完全公平的</li>
+<li>循环地为每个用户/作业服务一个时间片，不区分任务的紧急性</li>
+</ol>
+<h2 id="实时操作系统"><a href="#实时操作系统" class="headerlink" title="实时操作系统"></a>实时操作系统</h2><p><em><strong>主要优点:</strong></em></p>
+<ol>
+<li>能够优先响应一些紧急任务，某些紧急任务不需时间片排队</li>
+</ol>
+<p>&emsp;&emsp;在实时操作系统的控制下，计算机系统接收外部信号后及时进行处理，并且要在严格的时限内处理完事件。实时操作系统的主要特点是 <em><strong>及时性和可靠性</strong></em> 。</p>
+<ul>
+<li>硬实时系统 必须在绝对严格的规定时间内完成处理  — 导弹控制系统 、 自动驾驶系统</li>
+<li>软实时系统 能接受偶尔违反时间规定 — 火车订票系统</li>
+</ul>
+<h2 id="网络操作系统"><a href="#网络操作系统" class="headerlink" title="网络操作系统"></a>网络操作系统</h2><p>实现网络中各种资源的共享和各台计算机之间的通信</p>
+<h2 id="分布式操作系统"><a href="#分布式操作系统" class="headerlink" title="分布式操作系统"></a>分布式操作系统</h2><ul>
+<li>分布性和并行性</li>
+<li>任何工作都可以分布在这些计算机上，由它们并行、协同完成这个任务</li>
+</ul>
+<h2 id="个人计算机操作系统"><a href="#个人计算机操作系统" class="headerlink" title="个人计算机操作系统"></a>个人计算机操作系统</h2><h1 id="OS的运行机制和体系结构"><a href="#OS的运行机制和体系结构" class="headerlink" title="OS的运行机制和体系结构"></a>OS的运行机制和体系结构</h1><h2 id="运行机制"><a href="#运行机制" class="headerlink" title="运行机制"></a>运行机制</h2><h3 id="两种指令"><a href="#两种指令" class="headerlink" title="两种指令"></a>两种指令</h3><ul>
+<li>什么是指令<ul>
+<li>一条高级语言的代码翻译过来可能会对应多条指令</li>
+<li>指令指处理器CPU能够识别、执行的最基本命令（二进制语言）</li>
+<li>有的程序有很高的权限 如内存数据清零<ul>
+<li>特权指令    不允许用户程序使用</li>
+<li>非特权指令  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="两种处理器状态"><a href="#两种处理器状态" class="headerlink" title="两种处理器状态"></a>两种处理器状态</h3><p>&emsp;&emsp;用户状态字寄存器（PSW）中的某标志位来识别当前处理器处于什么状态。如0为用户态、1为核心态</p>
+<ul>
+<li><p>核心态 目态</p>
+<ul>
+<li>CPU只能执行非特权指令</li>
+</ul>
+</li>
+<li><p>用户态 管态</p>
+<ul>
+<li>特权指令、非特权指令都可以执行</li>
+</ul>
+</li>
+</ul>
+<h3 id="两种程序"><a href="#两种程序" class="headerlink" title="两种程序"></a>两种程序</h3><ul>
+<li><p>内核程序</p>
+<ul>
+<li>操作系统的内核程序是系统的管理者，既可以执行特权指令，也可以执行非特权指令，运行在核心态</li>
+</ul>
+</li>
+<li><p>应用程序</p>
+<ul>
+<li>为了保证系统能安全运行，普通应用程序只能执行非特权指令、运行在用户态</li>
+</ul>
+</li>
+</ul>
+<h2 id="操作系统内核"><a href="#操作系统内核" class="headerlink" title="操作系统内核"></a>操作系统内核</h2><p>&emsp;&emsp;那些属于内核程序？</p>
+<ul>
+<li><p>离纯硬件最近的部分</p>
+<ol>
+<li><p>时钟管理</p>
+<ul>
+<li>实现计时功能。</li>
+</ul>
+</li>
+<li><p>中断处理</p>
+</li>
+<li><p>原语</p>
+<ul>
+<li>原语是一种特殊的程序</li>
+<li>是最接近硬件的部分，中程序的运行具有原子性。</li>
+<li>运行时间较短、调用频繁</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p>ps:这种程序要么不执行，要么执行就必须一次执行到底，不可被打断</p>
+<ul>
+<li>此外也是内核 对系统资源进行管理的功能<ol>
+<li>进程管理</li>
+<li>存储器管理</li>
+<li>设备管理</li>
+</ol>
+</li>
+</ul>
+<p>ps:有的操作系统不把这部分功能归为”内核功能”。也就是说不同的操作系统，对内核功能的划分可能并不一样</p>
+<ul>
+<li><p>大内核 - 包含的部分比较多</p>
+<ul>
+<li><p>将操作系统的主要功能模块都作为系统内核，运行在核心态</p>
+</li>
+<li><p>优点</p>
+<ol>
+<li>高性能</li>
+</ol>
+</li>
+<li><p>缺点</p>
+<ol>
+<li>内核代码庞大</li>
+<li>结构混乱</li>
+<li>难以维护</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>微内核 - 包含的部分比较少</p>
+<ul>
+<li><p>只把最基本的功能保留在内核</p>
+</li>
+<li><p>优点</p>
+<ol>
+<li>内核功能少</li>
+<li>结构清晰</li>
+<li>方便维护</li>
+</ol>
+</li>
+<li><p>缺点</p>
+<ol>
+<li>需要频繁地在核心态和用户态之间切换</li>
+<li>性能低</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p>ps:内核是计算机上配置的低层软件，是操作系统最基本、最核心的部分。<br>ps:实现操作系统内核的那些程序就是内核程序。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/10/Operation%20System%20day2/" data-id="cknn1mv7k0014crup6dibhl8r" data-title="Operating System day2" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Java day3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/09/Java%20day3/" class="article-date">
+  <time class="dt-published" datetime="2021-01-09T12:14:18.000Z" itemprop="datePublished">2021-01-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/09/Java%20day3/">Java day3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="http与https"><a href="#http与https" class="headerlink" title="http与https"></a>http与https</h1><ul>
+<li>https -&gt; 安全处理升级</li>
+</ul>
+<h1 id="HTML-常见基础标签"><a href="#HTML-常见基础标签" class="headerlink" title="HTML 常见基础标签"></a>HTML 常见基础标签</h1><h2 id="标签-–-tag"><a href="#标签-–-tag" class="headerlink" title="标签 – tag"></a>标签 – tag</h2><p>Tag <code>&lt;html&gt; &lt;head&gt; &lt;meta&gt;</code><br>分为单标签 <code>&lt;meta&gt;</code>   双标签<code>&lt;html&gt; &lt;head&gt; &lt;body&gt; &lt;title&gt;</code></p>
+<ol>
+<li>标签是HTML语言基本组成部分</li>
+<li>标签是分层的；多标签总是成对出现，包括开始标签和结束标签</li>
+<li>根标签是html，包括两个子标签<code>head</code> 和 <code>body</code></li>
+<li>标签与属性不区分大小写 如 <code>&lt;html&gt; &lt;HTML&gt;</code> 都可以</li>
+</ol>
+<h2 id="属性与属性值-–-attribute"><a href="#属性与属性值-–-attribute" class="headerlink" title="属性与属性值 – attribute"></a>属性与属性值 – attribute</h2><ol>
+<li>附属于标签，对标签的特征进行设置</li>
+<li>属性的值可以用双引号引起来 （单引号也可以）</li>
+<li>属性和属性值不区分大小写</li>
+<li>属性之间无先后次序，属性也可以省略 -&gt; 默认</li>
+<li>属性都是写在开始标签中</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;hr width&#x3D;&quot;50%&quot; align&#x3D;&quot;right&quot; size&#x3D;&quot;5&quot; color&#x3D;&quot;red&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>hr是单标签 — 一条横线</li>
+<li>px – 像素</li>
+<li>分辨率 1366 * 766 -&gt; 横向有1366个像素点 纵向有766个像素点</li>
+<li>width -&gt; 长度 size -&gt; 粗细 align -&gt; 位置</li>
+<li>忘记属性 <code>www.w3school.com.cn</code> -&gt; 线上帮助文档</li>
+</ul>
+<h2 id="文本-–-text"><a href="#文本-–-text" class="headerlink" title="文本 – text"></a>文本 – text</h2><ul>
+<li>标签的内容可以是子标签或者普通文本</li>
+<li>最内层标签的内容称为文本</li>
+<li>外层标签的内容也可以称为文本</li>
+<li>包括空格与换行</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;font color&#x3D;&quot;blue&quot;&gt;哈哈&lt;&#x2F;font&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="元素-–-elemen"><a href="#元素-–-elemen" class="headerlink" title="元素 – elemen"></a>元素 – elemen</h2><ul>
+<li>开始标记+中间内容+结束标记</li>
+<li><code>&lt;p align=&quot;center&quot;&gt;&lt;/p&gt;</code> HTML文档包括两部分：头部部分和主体部分</li>
+<li>一个<em><strong>完整的</strong></em>标签我们也称之为网页上的一个元素</li>
+</ul>
+<h2 id="标题标签和段落标签"><a href="#标题标签和段落标签" class="headerlink" title="标题标签和段落标签"></a>标题标签和段落标签</h2><h3 id="标题标签"><a href="#标题标签" class="headerlink" title="标题标签"></a>标题标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;&lt;&#x2F;h1&gt; --- 一级标题</span><br></pre></td></tr></table></figure>
+<ul>
+<li>h1-6 一共有六级标题</li>
+</ul>
+<h3 id="段落标签"><a href="#段落标签" class="headerlink" title="段落标签"></a>段落标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;br&#x2F;&gt;</span><br><span class="line">&lt;p&gt;这样啊！&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>&lt;br&gt;</code> 放在哪里就在哪里换行 -&gt; 放在<code>&lt;p&gt;&lt;/p&gt;</code>内帮助其换行</li>
+<li><code>&lt;p&gt;&lt;/p&gt;</code> paragraph 段落标签 被p包含的文字是一段 内部无换行 每一对独立占一行</li>
+</ul>
+<h3 id="格式化标签"><a href="#格式化标签" class="headerlink" title="格式化标签"></a>格式化标签</h3><p><code>https://www.w3school.com.cn/html/html_formatting.asp</code> – 文档地址</p>
+<ul>
+<li><code>&lt;b&gt;&lt;/b&gt;</code> 变粗</li>
+<li><code>&lt;big&gt;&lt;/big&gt;</code> 变大</li>
+<li><code>&lt;small&gt;&lt;/small&gt;</code> 变小</li>
+<li><code>&lt;em&gt;&lt;/em&gt;</code> 着重 -&gt; 倾斜</li>
+<li><code>&lt;i&gt;&lt;/i&gt;</code> 倾斜</li>
+<li><code>&lt;strong&gt;&lt;/strong&gt;</code> </li>
+<li><code>&lt;sub&gt;&lt;/sub&gt;</code> 下标签</li>
+<li><code>&lt;sup&gt;&lt;/sup&gt;</code> 上标签</li>
+<li><code>&lt;del&gt;&lt;/del&gt;</code> 删除标签</li>
+<li>复合标签，效果叠加  <ul>
+<li>注意嵌套格式，谁包谁无所谓，但是开始结束后要对应</li>
+<li>合理嵌套</li>
+</ul>
+</li>
+</ul>
+<h1 id="超链接和多媒体标签"><a href="#超链接和多媒体标签" class="headerlink" title="超链接和多媒体标签"></a>超链接和多媒体标签</h1><h1 id="列表标签"><a href="#列表标签" class="headerlink" title="列表标签"></a>列表标签</h1><h1 id="表格标签（重点）"><a href="#表格标签（重点）" class="headerlink" title="表格标签（重点）"></a>表格标签（重点）</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/09/Java%20day3/" data-id="cknn1mv6q0004crup51ew02g4" data-title="Java day3" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-network of computer4" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/09/network%20of%20computer4/" class="article-date">
+  <time class="dt-published" datetime="2021-01-09T07:42:46.000Z" itemprop="datePublished">2021-01-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/09/network%20of%20computer4/">network of computer4</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="多少层次恰当"><a href="#多少层次恰当" class="headerlink" title="多少层次恰当"></a>多少层次恰当</h1><ul>
+<li>太少，协议太复杂</li>
+<li>太多，描述和综合各层功能系统任务是遇到较多的困难</li>
+</ul>
+<h1 id="各层主要功能"><a href="#各层主要功能" class="headerlink" title="各层主要功能"></a>各层主要功能</h1><ol>
+<li>差错控制 -&gt; 使相应层次对等方的通信更加可靠</li>
+<li>流量控制 -&gt; 发送端的发送速率必须使接收端来得及接收，不要太快</li>
+<li>分段和重组 -&gt; 发送端将要发送的数据块划分为更小的单位，在接收端将其还原</li>
+<li>复用和分用 -&gt; 发送端几个高层会话复用一条低层的连接，接收端再进行分用</li>
+<li>连接建立和释放 -&gt; 交换数据前先建立一条逻辑连接，数据传输结束后释放连接</li>
+</ol>
+<h1 id="计算机网络的体系结构"><a href="#计算机网络的体系结构" class="headerlink" title="计算机网络的体系结构"></a>计算机网络的体系结构</h1><ul>
+<li>architecture 是计算机网络各层及其协议的集合。</li>
+<li>体系结构就是这个计算机网络机器部件所应完成的功能精确定义</li>
+</ul>
+<h1 id="具有五层协议的体系结构"><a href="#具有五层协议的体系结构" class="headerlink" title="具有五层协议的体系结构"></a>具有五层协议的体系结构</h1><ul>
+<li><p>OSI 七层协议体系结构</p>
+</li>
+<li><p>TCP/IP 四层体系结构</p>
+<ul>
+<li>应用层</li>
+<li>运输层</li>
+<li>网际层</li>
+<li>网络接口层</li>
+</ul>
+</li>
+<li><p>往往采用折中办法，采用一种只有 <em><strong>五层协议</strong></em> 的体系结构</p>
+</li>
+</ul>
+<h2 id="OSI"><a href="#OSI" class="headerlink" title="OSI"></a>OSI</h2><ol start="7">
+<li>应用层</li>
+<li>表示层</li>
+<li>会话层</li>
+<li>运输层</li>
+<li>网络层</li>
+<li>数据链路层</li>
+<li>物理层</li>
+</ol>
+<h2 id="TCP-IP体系结构"><a href="#TCP-IP体系结构" class="headerlink" title="TCP/IP体系结构"></a>TCP/IP体系结构</h2><ul>
+<li>应用层 -&gt; (7.6.5) 各种应用层协议，如DNS、HTTP、SMTP等</li>
+<li>运输层 -&gt; 4 TCP或UDP</li>
+<li>网际层 IP -&gt; 3</li>
+<li>网络接口层 -&gt; 1 没有具体内容 </li>
+</ul>
+<h2 id="五层协议内容"><a href="#五层协议内容" class="headerlink" title="五层协议内容"></a>五层协议内容</h2><ul>
+<li>application layer 应用层 -&gt; 7.6.5</li>
+<li>transport layer 运输层 -&gt; 4</li>
+<li>network layer 网络层 -&gt; 3</li>
+<li>data link layer 数据链路层 -&gt; 2</li>
+<li>physical layer 物理层 -&gt; 1</li>
+</ul>
+<p>ps: <em><strong>运输层、网络层</strong></em> 重点<br>ps: 协议是 <em><strong>水平的</strong></em> ，即协议是控制对等实体之间通信的规则<br>ps: 服务是 <em><strong>垂直的</strong></em> ，即服务是由下层向上层通过层间接口提供的<br>本层服务用户只能看见服务而无法看见下面的协议。</p>
+<h1 id="服务访问点"><a href="#服务访问点" class="headerlink" title="服务访问点"></a>服务访问点</h1><p>&emsp;&emsp;同一系统相邻两层的实体进行交互的地方称为 <em><strong>服务访问点 SAP(Service Access Point)</strong></em> 是一个抽象的概念，实际上就是一个逻辑接口。<br>&emsp;&emsp;OSI 把层与层之间交换的数据单位称为 <em><strong>服务数据单元 SDU(Service Data Unit)</strong></em> 。</p>
+<h1 id="协议复杂性"><a href="#协议复杂性" class="headerlink" title="协议复杂性"></a>协议复杂性</h1><ul>
+<li>协议必须把所有不利的条件事先都估计到</li>
+<li>看一个协议是否正确，不光是正常情况下是否正确，还必须检查能否应对各种异常情况。</li>
+</ul>
+<h1 id="TCP-IP-体系结构"><a href="#TCP-IP-体系结构" class="headerlink" title="TCP/IP 体系结构"></a>TCP/IP 体系结构</h1><p>&emsp;&emsp;路由器在转发分组时，最高只用到网际层，而没有使用运输层和应用层。（网络接口层与网际层）</p>
+<h2 id="TCP-IP协议族"><a href="#TCP-IP协议族" class="headerlink" title="TCP/IP协议族"></a>TCP/IP协议族</h2><ul>
+<li>应用层 -&gt; HTTP···SMTP···DNS···    RTP</li>
+<li>运输层 -&gt; TCP与UDP</li>
+<li>网际层 -&gt; IP</li>
+<li>网络接口层 -&gt; 网络接口 </li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/09/network%20of%20computer4/" data-id="cknn1mv8q002acrup2hvw3zxo" data-title="network of computer4" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Operating System day1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/09/Operating%20System%20day1/" class="article-date">
+  <time class="dt-published" datetime="2021-01-09T01:48:12.000Z" itemprop="datePublished">2021-01-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/09/Operating%20System%20day1/">Operating System day1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="日常操作系统"><a href="#日常操作系统" class="headerlink" title="日常操作系统"></a>日常操作系统</h1><ul>
+<li>Windows </li>
+<li>android</li>
+<li>IOS</li>
+<li>Mac OS</li>
+<li>Linux</li>
+</ul>
+<h1 id="知识总览"><a href="#知识总览" class="headerlink" title="知识总览"></a>知识总览</h1><ul>
+<li>操作系统的<ul>
+<li>概念</li>
+<li>功能和目标<ul>
+<li>资源的管理者     -&gt; 安全、高效</li>
+<li>向用户提供服务   -&gt; 使用方便</li>
+<li>对硬件机器的扩展 -&gt; 扩展能力</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="操作系统的概念"><a href="#操作系统的概念" class="headerlink" title="操作系统的概念"></a>操作系统的概念</h2><h3 id="计算机系统的层次结构"><a href="#计算机系统的层次结构" class="headerlink" title="计算机系统的层次结构"></a>计算机系统的层次结构</h3><p>裸机（纯硬件） -&gt; 操作系统 -&gt; 应用程序（软件）-&gt; 用户</p>
+<h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h3><ol>
+<li>负责管理协调硬件、软件等计算机资源的工作</li>
+<li>为上层的应用程序、用户提供简单易用的服务</li>
+<li>操作系统是系统软件，而不是硬件</li>
+</ol>
+<p><em><strong>定义</strong></em> Operating System(OS) 是指控制和管理整个计算机系统的硬件和软件资源，并合理的组织调度计算机的工作和资源分配，以提供给用户和其他软件方便的接口和环境，它是计算机系统中最基本的系统软件。</p>
+<h2 id="操作系统的功能和目标"><a href="#操作系统的功能和目标" class="headerlink" title="操作系统的功能和目标"></a>操作系统的功能和目标</h2><h3 id="作为系统资源的管理者"><a href="#作为系统资源的管理者" class="headerlink" title="作为系统资源的管理者"></a>作为系统资源的管理者</h3><p>ps: <em><strong>进程</strong></em> 是一个程序的执行过程。执行前 <em><strong>需要将该程序放到内存中</strong></em> ，才能被CPU处理。</p>
+<ul>
+<li>提供的功能<ul>
+<li>文件管理 -&gt; 打开文件夹，知道.exe文件位置</li>
+<li>存储器管理 -&gt; 需要把该程序相关的数据放入内存</li>
+<li>处理机管理 -&gt; 对应的进程被处理机（CPU）处理</li>
+<li>设备管理 -&gt; 需要将摄像头等分配给进程</li>
+</ul>
+</li>
+</ul>
+<p>+目标 </p>
+<ul>
+<li>安全高效</li>
+</ul>
+<h3 id="作为用户和计算机硬件之间的接口"><a href="#作为用户和计算机硬件之间的接口" class="headerlink" title="作为用户和计算机硬件之间的接口"></a>作为用户和计算机硬件之间的接口</h3><ul>
+<li><p>提供的功能 </p>
+<ul>
+<li><p>命令接口 -&gt; 允许用户直接使用</p>
+<ul>
+<li>联机命令接口</li>
+<li>脱机命令接口</li>
+</ul>
+</li>
+<li><p>程序接口 -&gt; 允许用户通过程序间接使用</p>
+</li>
+<li><p>GUI (图形用户界面) -&gt; 现代操作系统中最流行的图形用户接口</p>
+</li>
+</ul>
+</li>
+<li><p>目标</p>
+<ul>
+<li>方便用户使用 </li>
+</ul>
+</li>
+</ul>
+<p><em><strong>联机命令接口</strong></em> 用户说一句，系统做一句 = 交互式命令接口<br><em><strong>脱机命令接口</strong></em> 用户说一堆，系统做一堆 = 批处理命令接口<br>ps: <code>.bat</code> 文件，里面有一系列所需要做的任务清单，操作系统根据此，逐条执行 -&gt; 脱机命令接口<br><em><strong>程序接口</strong></em> 如<code>C:\\Windos\System32\user32.dll</code> 程序员在程序中调用 user32.dll （该过程即为 <em><strong>系统调用</strong></em> ）即可实现创建窗口等功能，只能通过用户程序 <em><strong>间接使用</strong></em> 。<br>ps:系统调用 = 系统命令调用 = 广义指令<br><em><strong>GUI(Graphical User Interface)</strong></em> 用户可以使用形象的图形界面进行操作</p>
+<h3 id="作为最接近硬件的层次"><a href="#作为最接近硬件的层次" class="headerlink" title="作为最接近硬件的层次"></a>作为最接近硬件的层次</h3><p>功能与目标 -&gt; 实现对硬件机器的扩展。<br>没有任何软件支持的计算机称为裸机。在裸机上安装的操作系统可以提供资源管理功能和方便用户的服务功能，将裸机改造成为功能更强、使用更方便的机器<br>通常把覆盖了软件的机器称为扩展机，又称为 <em><strong>虚拟机</strong></em> 。</p>
+<h1 id="操作系统的四个特征"><a href="#操作系统的四个特征" class="headerlink" title="操作系统的四个特征"></a>操作系统的四个特征</h1><ul>
+<li>并发</li>
+<li>共享</li>
+<li>虚拟</li>
+<li>异步</li>
+</ul>
+<p>ps:并发与共享是最基本的特征，互为存在条件</p>
+<h2 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h2><ul>
+<li><em><strong>并发</strong></em> 是指两个或多个事件在同一时间间隔内发生。这些事件宏观上是同时发生的，但是微观上是交替发生的。</li>
+<li><em><strong>并行</strong></em> 是指两个或多个事件在同一时刻同时发生</li>
+</ul>
+<p>&emsp;&emsp;操作系统的并发性指计算机系统中同时存在着多个运行着的程序。<br>&emsp;&emsp;一个单核处理机（CPU）同一时间只能执行一个程序，因此操作系统会负责协调多个程序交替执行（这些程序微观上交替，宏观上同时执行）<br>ps:当今的4核CPU意味着同一时刻可以有4个程序并行执行，但是并发也不可缺少。</p>
+<h2 id="共享"><a href="#共享" class="headerlink" title="共享"></a>共享</h2><ul>
+<li><em><strong>共享</strong></em> 即资源共享，是指系统中的资源可供内存中多个并发执行的进程共同使用。<ul>
+<li>互斥共享 -&gt; 虽然可以提供给多个进程使用，但是同一时间内，只允许一个进程访问该资源 -&gt; qq视频聊天</li>
+<li>同时共享 -&gt; 允许一个时间段内由多个进程”同时”对它们进行访问 -&gt; 同时发送文件</li>
+</ul>
+</li>
+</ul>
+<p>ps:此处 <em><strong>同时</strong></em> 往往是微观上交替，宏观上并行。（TDM）</p>
+<ul>
+<li><em><strong>并发性</strong></em>指计算机系统中同时存在着多个运行着的程序</li>
+<li><em><strong>共享性</strong></em>指系统中的资源可供内存中多个并发执行的进程共同使用</li>
+</ul>
+<p>ps:失去并发性，共享性失去意义。失去共享性，无法并发。</p>
+<h2 id="虚拟"><a href="#虚拟" class="headerlink" title="虚拟"></a>虚拟</h2><p>把一个物理上的实体变为若干逻辑上的对应物。物理实体是实际存在的，而逻辑上对应物是用户感受到的。<br>ps:一个程序需要放入内存并给它分配CPU才能执行。</p>
+<h3 id="虚拟存储技术"><a href="#虚拟存储技术" class="headerlink" title="虚拟存储技术"></a>虚拟存储技术</h3><p>将运行时所需远大于运行内存的程序，可以同时运行，利用空分复用技术。</p>
+<h3 id="虚拟技术"><a href="#虚拟技术" class="headerlink" title="虚拟技术"></a>虚拟技术</h3><p>实际上只有一个CPU，但是可以有多个程序同时服务，利用时分复用技术。</p>
+<p>可以看出如果失去并发性，虚拟性也就没有存在意义。</p>
+<h2 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h2><p>指多道程序环境下，允许多个程序并发执行，但由于资源有限，进程的执行 <em><strong>不是一贯到底的，而是走走停停，一不可预知的速度向前推进</strong></em> ，这就是进程异步性。<br>ps：一个资源被一个程序调用，此时其他资源就无法调用它，必须等这个程序结束之后，才能对此资源进行调用。 -&gt; 说明并发时，不是一贯到底的，而是走走停停。 -&gt; 只有有了并发性，才可能导致异步性。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/09/Operating%20System%20day1/" data-id="cknn1mv7j0012crupdnq07zo1" data-title="Operating System day1" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/issues/" rel="tag">issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start-here/" rel="tag">start here</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/" rel="tag">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/" rel="tag">writing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Internet/" style="font-size: 15px;">Internet</a> <a href="/tags/Programming-Language/" style="font-size: 17.5px;">Programming Language</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/start-here/" style="font-size: 12.5px;">start here</a> <a href="/tags/system/" style="font-size: 20px;">system</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/writing/" style="font-size: 10px;">writing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/18/network%20of%20computer2/">network of computer2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/Java%20day1/">Java day1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/Java-day19/">Java day19</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/23/Java-day18/">Java day18</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

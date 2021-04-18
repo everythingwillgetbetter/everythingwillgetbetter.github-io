@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Java day14 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="写一个Java程序安装JDKJVM&#x2F;JRE&#x2F;JVM &gt;&gt;&gt; 虚拟机 翻译功能JRE &gt;&gt;&gt; Java Runtime Environment 包含JVM、库函数、运行Java所必须的文件JDK &gt;&gt;&gt; Development Kit 包含JRE，以及增加编译器和调试器等用于程序开发的文件 编写代码 编写源代码   创建一个文件 创建一个类 定义">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java day14">
+<meta property="og:url" content="http://example.com/2021/02/02/Java-day14/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="写一个Java程序安装JDKJVM&#x2F;JRE&#x2F;JVM &gt;&gt;&gt; 虚拟机 翻译功能JRE &gt;&gt;&gt; Java Runtime Environment 包含JVM、库函数、运行Java所必须的文件JDK &gt;&gt;&gt; Development Kit 包含JRE，以及增加编译器和调试器等用于程序开发的文件 编写代码 编写源代码   创建一个文件 创建一个类 定义">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/02/02/Java-day14/pref.png">
+<meta property="article:published_time" content="2021-02-02T09:22:34.000Z">
+<meta property="article:modified_time" content="2021-04-18T09:10:17.260Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Programming Language">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/02/02/Java-day14/pref.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Java-day14" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/02/02/Java-day14/" class="article-date">
+  <time class="dt-published" datetime="2021-02-02T09:22:34.000Z" itemprop="datePublished">2021-02-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Java day14
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="写一个Java程序"><a href="#写一个Java程序" class="headerlink" title="写一个Java程序"></a>写一个Java程序</h1><h2 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h2><h2 id="JVM-JRE"><a href="#JVM-JRE" class="headerlink" title="JVM/JRE/"></a>JVM/JRE/</h2><p>JVM &gt;&gt;&gt; 虚拟机 翻译功能<br>JRE &gt;&gt;&gt; Java Runtime Environment 包含JVM、库函数、运行Java所必须的文件<br>JDK &gt;&gt;&gt; Development Kit 包含JRE，以及增加编译器和调试器等用于程序开发的文件</p>
+<h2 id="编写代码"><a href="#编写代码" class="headerlink" title="编写代码"></a>编写代码</h2><ul>
+<li><p>编写源代码 </p>
+<ul>
+<li>创建一个文件</li>
+<li>创建一个类</li>
+<li>定义主方法</li>
+<li>在主方法中添加功能代码</li>
+</ul>
+</li>
+<li><p>编译源代码 &gt;&gt;&gt; 将源代码编译成中立的字节码</p>
+</li>
+<li><p>解释源代码 &gt;&gt;&gt; 让虚拟机向平台解释字节码</p>
+</li>
+</ul>
+<p>1.创建一个文件 &gt;&gt;&gt; Java代码文件就是纯文本文件 文件名的扩展名叫.java<br>文件名首字母必须大写 不能以数字为开头 不能有空格和特殊符号<br>标准写法 大写字母 数字放后面</p>
+<p>2.创建一个类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Text1&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;public (公开的) class(类) + Text1(类名 &gt;&gt;&gt;必须是文件名同名，包括大小写)</span><br><span class="line">在大括号中写代码</span><br></pre></td></tr></table></figure>
+
+<p>3.定义主方法<br>程序的起点 程序的开始 在一个类中 只能有一个主代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Text1&#123;</span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.在主方法中定义功能代码<br>功能 向DOS 控制台输出一段文字 “hello world”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Text1&#123;</span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">		System.out.println(&quot;hello world&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="编译、解释文件"><a href="#编译、解释文件" class="headerlink" title="编译、解释文件"></a>编译、解释文件</h2><ul>
+<li><p>先配置环境变量</p>
+<ol>
+<li>先找jdk中bin目录 C:\Program Files\Java\jdk1.8.0_281\bin</li>
+<li>找其中的java.exe 和 javac.exe 两个文件</li>
+<li>配置环境变量就是告诉DOS窗口这两个文件在这里</li>
+<li>复制上诉路径 主电脑 &gt;&gt;&gt; 属性 &gt;&gt;&gt; 高级系统设置 &gt;&gt;&gt; 高级 &gt;&gt;&gt; 环境变量 &gt;&gt;&gt; 系统变量 &gt;&gt;&gt; PATH</li>
+<li>将上述路径加入即可</li>
+</ol>
+</li>
+<li><p>生成字节码</p>
+<ol>
+<li>打开CMD</li>
+<li>进入.java文件的目录</li>
+<li>输入 javac Text1.java</li>
+<li>发现该文件夹下出现 .class 文件则环境变量配置成功</li>
+<li>此时已将java源代码转换为字节码</li>
+</ol>
+</li>
+<li><p>用Java指令将字节码交给虚拟机，让虚拟机解释执行</p>
+<ol>
+<li>仍然在文件目录里</li>
+<li>输入 java Text1 此处不写.class也是默认寻找.class文件</li>
+<li>解释成功 出现 hello world</li>
+</ol>
+</li>
+</ul>
+<p>ps:第二天突然javac不能用，只能用java,但是重启电脑之后就好了，不明所以。</p>
+<h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><ul>
+<li><p>Java的核心机制</p>
+<ol>
+<li><p>垃圾回收机制</p>
+</li>
+<li><p>跨平台机制 互联网发展要求有一款语言跨平台性能优越 Java的核心优势</p>
+<ul>
+<li><p>Java核心技术 虚拟机</p>
+</li>
+<li><p>Java的跨平台原理</p>
+<ol>
+<li><p>Java源代码 &gt;&gt;&gt;&gt; 扩展名为.java的纯文本文件</p>
+<ul>
+<li>定义一个类</li>
+<li>在类中定义主方法</li>
+<li>在主方法中定义功能代码</li>
+</ul>
+</li>
+<li><p>Java源代码 &gt;&gt; 编译.javac &gt;&gt; 中立的二进制的字节码 扩展名为.class的文件</p>
+</li>
+<li><p>调用虚拟机平台解释JAVA字节码 java指令</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>为了让DOS系统识别到javac和java指令 可以在指定的目录中找到这两个指令 在环境变量中添该路径</p>
+</li>
+<li><p>DOS</p>
+<ul>
+<li>DIR 查看当前目录下的子文件和子目录</li>
+<li>cd 切换目录 cd.. cd / cd 目录名/目录名</li>
+<li>cls 清空命令</li>
+</ul>
+</li>
+<li><p>掌握的三个操作</p>
+<ul>
+<li>tab 自动补全目录名/文件名</li>
+<li>上下键 翻阅历史记录</li>
+<li>盘符: 切换磁盘</li>
+</ul>
+</li>
+<li><p>了解其他操作</p>
+<ul>
+<li>rd 删除目录</li>
+<li>md 创建目录</li>
+<li>copy 复制文件</li>
+<li>del 删除文件</li>
+</ul>
+</li>
+</ul>
+<h1 id="配置JAVA-HOME-必须掌握"><a href="#配置JAVA-HOME-必须掌握" class="headerlink" title="配置JAVA_HOME(必须掌握)"></a>配置JAVA_HOME(必须掌握)</h1><p>此电脑 &gt;&gt;&gt; 属性 &gt;&gt;&gt; 高级系统设置 &gt;&gt;&gt; 高级 &gt;&gt;&gt; 环境变量<br>为了降低Java环境发生变动时，对环境变量的修改量，添加JAVA_HOME</p>
+<ol>
+<li>新建系统变量 变量名JAVA_HOME 名字不允许丝毫改变</li>
+<li>将几个路径的共同部分放入变量值</li>
+<li>此时该变量与之前配的变量之间没有联系</li>
+<li>将之前配的变量路径中，共同的部分换位 %JAVA_HOME% 代表了对其他变量的引用 必须加百分号</li>
+<li>注意 JAVA_HOME 的路径末尾没有斜线 而对其引用之后要加斜线 (只能有一处有)</li>
+</ol>
+<p><em><strong>作用：</strong></em></p>
+<ul>
+<li>可以降低环境变量维护工作量</li>
+<li>后续其他技术可以使用的必要条件<ul>
+<li>Tomcat 的启动要依赖系统中的 JAVA_HOME </li>
+</ul>
+</li>
+</ul>
+<h1 id="配置-classpath"><a href="#配置-classpath" class="headerlink" title="配置 classpath"></a>配置 classpath</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">javac f:&#x2F;program4it&#x2F;Java&#x2F;myJava&#x2F;Text1.java</span><br><span class="line">&#x2F;&#x2F;但是java不能这么用</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>java指令会把后面的全部文字当成类名，不会识别其中的盘符和各层级的目录</li>
+<li>classpath作用就是告诉java指令到指定的目录中去寻找字节码文件</li>
+</ul>
+<p>系统变量中 添加 变量名classpath 变量值F:\program4it\Java\myJava<br>ps:注意配置完之后，全部确认退出，重新打开cmd命令窗口才生效<br>ps:此时java指令只在该文件夹下找.class文件，其他文件夹下皆不生效</p>
+<p>因此将变量值改为 .;F:\program4it\Java\myJava &gt;&gt;&gt; 先在DOS目前指定的目录中寻找字节码 如果找不到 再到 F:\program4it\Java\myJava中寻找</p>
+<p>ps:试一下就可以了，实际的意义不大</p>
+<h1 id="JAVA的API帮助文档"><a href="#JAVA的API帮助文档" class="headerlink" title="JAVA的API帮助文档"></a>JAVA的API帮助文档</h1><ul>
+<li>JDK API 帮助文档</li>
+<li>SUN公司为JDK工具包提供的一整套文档资料</li>
+<li>JAVA中的各种技术详细资料 1.6版的比较好</li>
+</ul>
+<h1 id="JAVA编程风格"><a href="#JAVA编程风格" class="headerlink" title="JAVA编程风格"></a>JAVA编程风格</h1><ul>
+<li><p>注意缩进</p>
+</li>
+<li><p>成对编程</p>
+</li>
+<li><p>注意命名</p>
+</li>
+<li><p>区分大小写</p>
+</li>
+<li><p>驼峰式命名</p>
+<ul>
+<li>标识符命名时，当多个单词拼接时，每个单词的首字母大写，其他小写</li>
+</ul>
+</li>
+<li><p>Java中注释方式</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">单行注释 &#x2F;&#x2F;</span><br><span class="line">多行注释 &#x2F;* *&#x2F; 可以一次性注释多行</span><br><span class="line">文档注释 </span><br><span class="line">&#x2F;**</span><br><span class="line">一般注释方法和类</span><br><span class="line">*&#x2F;  可以将文档注释中的内容生成自己的API帮助文档</span><br></pre></td></tr></table></figure>
+
+<p>ps:生成API方法 </p>
+<ol>
+<li>用notepad++ 将编码转换为“使用ANSI格式编码”</li>
+<li>注意，先全选复制，删除原来代码，再将编码格式设置为”使用ANSI格式编码”,然后将源文件再粘贴出来</li>
+<li>在cmd运行 Javadoc Test1.java 即可在当前文件夹下生成API文档</li>
+</ol>
+<h1 id="notepad-的使用"><a href="#notepad-的使用" class="headerlink" title="notepad++ 的使用"></a>notepad++ 的使用</h1><p>按住 Ctrl 上下拨动滑轮 调整大小<br>可以直接保存Java source file</p>
+<ol>
+<li><p>乱码问题 原因</p>
+<ol>
+<li><p>文件的写入和读取使用的字符集不一致</p>
+<ul>
+<li>文件字符集 和 DOS窗口所使用的默认字符集不一致</li>
+<li>Notepad++创建文件时 一般默认保存时使用 utf-8 国际通用字符集</li>
+<li>DOS 系统默认使用 本地系统字符集 ANSI –&gt; 中文系统GBK   </li>
+<li>一般世界上所有字符集 对于英文字母的处理都是一样的</li>
+</ul>
+</li>
+<li><p>使用了不支持中文的字符</p>
+</li>
+<li><p>设置 notepad++ 在新建文件时候的首选项</p>
+</li>
+<li><p>再次用 notepad++ 新建java，输出中文测试</p>
+</li>
+</ol>
+</li>
+</ol>
+<div style="width:70%;margin:auto"><img src="/2021/02/02/Java-day14/pref.png" class title="This is an example image"></div>
+
+<h1 id="反编译"><a href="#反编译" class="headerlink" title="反编译"></a>反编译</h1><p>jd-gui.exe</p>
+<ul>
+<li>因为编译的时候不会对注释进行处理，所以反编译时不可能的得到注释</li>
+</ul>
+<h1 id="第二个-java小程序"><a href="#第二个-java小程序" class="headerlink" title="第二个 java小程序"></a>第二个 java小程序</h1><ul>
+<li>演示一些常见的错误</li>
+<li>输出一段文字<ul>
+<li>可以在搜狗输入法勾选 中文时使用英文标点</li>
+</ul>
+</li>
+</ul>
+<h1 id="标识符，关键字，字符集"><a href="#标识符，关键字，字符集" class="headerlink" title="标识符，关键字，字符集"></a>标识符，关键字，字符集</h1><h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2><ul>
+<li>Java中用于区分数据需要我们自己定义的名称</li>
+<li>允许使用 字母 数字 _ $</li>
+<li>不允许使用 数字不能开头 不可以是java的关键字</li>
+<li>驼峰式命名 StudentAge</li>
+<li>见名知意</li>
+<li>常见表示符:包名 类名 方法名 变量名 参数名</li>
+<li>除了类名首字母大写 其他标识符首字母都要小写</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;标志在代码中的目录名 &gt;&gt;&gt; 包名</span><br><span class="line">&#x2F;&#x2F;受保护的资源文件夹</span><br><span class="line">&#x2F;&#x2F;区分多个不同目录下的同名文件</span><br><span class="line">package myJava;</span><br><span class="line">         &#x2F;&#x2F;类名</span><br><span class="line">public class Demo2&#123;</span><br><span class="line">                  &#x2F;&#x2F;方法名</span><br><span class="line">   public static void main(String[] args)&#123;</span><br><span class="line">      &#x2F;&#x2F;变量名</span><br><span class="line">      int i &#x3D; 10;</span><br><span class="line">      System.out.println(i);</span><br><span class="line">   &#125;</span><br><span class="line">                  &#x2F;&#x2F;方法名  a b 参数名</span><br><span class="line">   public static void add(int a,int b)&#123;</span><br><span class="line">      </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在cmd中，上一级目录录下就可以执行 javac myJava/Demo2.java<br>此时需要加上包名</p>
+<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><ul>
+<li>关键字就是对java有特殊含义的词汇，比如: public,static,int,class等</li>
+<li>java关键字是java语言保留供内部使用的，如class定义类，关键字也可以成为保留字</li>
+</ul>
+<h2 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h2><p>编码是信息从一种形式转换成另一种形式的过程，也称为计算机编程语言</p>
+<ul>
+<li>ASCII &gt;&gt;&gt; 英文字符集 1个字节 &gt;&gt; 8bit &gt;&gt; 8位10 &gt;&gt; 256个</li>
+<li>ISO-8859-1 &gt;&gt;&gt; 西欧字符集 1个字节</li>
+<li>BIG5 &gt;&gt;&gt; 台湾的五大码，表示繁体汉字 2个字节 16位</li>
+<li>GB2312 &gt;&gt;&gt; 大陆使用最早，最广的简体中文字符集 2个字节</li>
+<li>GBK &gt;&gt;&gt; GB2312的扩展 可以表示繁体汉字 2个字节</li>
+<li>GB18090 &gt;&gt;&gt; 最新GBK的扩展，可以表示汉字，维吾尔文、藏文等中华名族字符 2个字节</li>
+<li>Unicode &gt;&gt;&gt; 国际通用字符集 2个字节 (JAVA中使用的字符集就是Unicode)</li>
+</ul>
+<p>ps:</p>
+<ul>
+<li>Unicode 是字符集，UTF-32/UTF-16/UTF-8 是三种字符编码方案</li>
+<li>ANSI:获取你当前操作系统的编码格式 &gt;&gt;&gt; 一般我们用GBK</li>
+<li>1位 1/0 &gt;&gt;&gt; bit 比特</li>
+<li>1字节 8比特 &gt;&gt;&gt; byte 字节</li>
+<li>千字节 1024byte 兆字节 1024kB</li>
+<li>GB = 1024MB; TB = 1024GB; PB = 1024TB</li>
+<li>字符 &gt;&gt;&gt; 代表一个文字 可以是一个字母 中文 空格 标点符号</li>
+</ul>
+<h1 id="变量和常量"><a href="#变量和常量" class="headerlink" title="变量和常量"></a>变量和常量</h1><ul>
+<li>变量 &gt;&gt;&gt; 可以变化的量</li>
+<li>常量 &gt;&gt;&gt; 不会变量的量<ul>
+<li>字面常量 &gt;&gt;&gt; 就是具体的值 5 -&gt; 6 变得是年龄而不是5变成6</li>
+<li>符号常量 &gt;&gt;&gt; 类似于π</li>
+</ul>
+</li>
+</ul>
+<h2 id="变量的声明和使用"><a href="#变量的声明和使用" class="headerlink" title="变量的声明和使用"></a>变量的声明和使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">public class Test1&#123;</span><br><span class="line">   public static void main(String[] args)&#123;      </span><br><span class="line">      &#x2F;*变量的声明(我要创建一个变量) &gt;&gt;&gt; 数据类型 变量名; </span><br><span class="line">      java 强类型的编程语言 JAVA中的任何一个变量都必须明确指明其数据类型</span><br><span class="line">      int 整数</span><br><span class="line">      变量的声明 仅仅是一种声明 不会在内存上实际开辟内存存储数据</span><br><span class="line">      *&#x2F;</span><br><span class="line">      int i;   &#x2F;&#x2F;不会在字节码中有任何处理</span><br><span class="line">      &#x2F;*</span><br><span class="line">      给变量赋值 才会在内存中 开辟一个空间 这个空间存储一个值 10;</span><br><span class="line">      *&#x2F;</span><br><span class="line">      i &#x3D; 10;  &#x2F;&#x2F;才会在字节码中 正式声明一个变量</span><br><span class="line">      int t &#x3D; 10; &#x2F;&#x2F;声明变量同时赋值</span><br><span class="line">      System.out.println(i);</span><br><span class="line">      </span><br><span class="line">      &#x2F;&#x2F;可以一次性声明多个变量</span><br><span class="line">      int a&#x3D;1,b&#x3D;2,c&#x3D;3,d&#x3D;4;</span><br><span class="line">      System.out.println(a);</span><br><span class="line">      System.out.println(b);</span><br><span class="line">      System.out.println(c);</span><br><span class="line">      System.out.println(d);</span><br><span class="line">      </span><br><span class="line">      &#x2F;&#x2F;变量的值是可以反复修改的</span><br><span class="line">      int x &#x3D; 11;</span><br><span class="line">      System.out.println(x);</span><br><span class="line">      &#x2F;&#x2F;变量只要声明一次类型即可 后面直接使用变量 不需要反复声明</span><br><span class="line">      x&#x3D;12;</span><br><span class="line">      System.out.println(x);</span><br><span class="line">   &#125;</span><br><span class="line">            </span><br><span class="line">   public static void add(int a,int b)&#123;</span><br><span class="line">      </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="变量的作用范围"><a href="#变量的作用范围" class="headerlink" title="变量的作用范围"></a>变量的作用范围</h1><ul>
+<li><p>局部变量</p>
+<ul>
+<li>方法内/代码块内/多条件分支或者循环内声明的变量，仅能够在当前方法内/代码块内/多条件分支或循环内</li>
+</ul>
+</li>
+<li><p>成员变量(全局变量)</p>
+<ul>
+<li>声明在方法之外的变量 可以通过访问修饰符控制访问范围，但至少可以在当前内部可见</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class Test2&#123;</span><br><span class="line"></span><br><span class="line">   &#x2F;&#x2F;成员变量 至少可以在当前类所有的方法中使用</span><br><span class="line">   static int z &#x3D; 20;</span><br><span class="line"></span><br><span class="line">   public static void main(String[] args)&#123;      </span><br><span class="line">      &#x2F;&#x2F;局部变量 当前方法内 声明在方法中</span><br><span class="line">      int i &#x3D; 10;</span><br><span class="line">      System.out.println(i);</span><br><span class="line"></span><br><span class="line">      for(int x &#x3D; 1;x&lt;&#x3D;10;x++)&#123;</span><br><span class="line">         &#x2F;&#x2F;局部变量 声明在循环结构内部 仅仅在当前循环内部可以使用</span><br><span class="line">         int y &#x3D; 10;</span><br><span class="line">         System.out.println(y);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      System.out.println(z);</span><br><span class="line">      a();</span><br><span class="line">   &#125;</span><br><span class="line">      </span><br><span class="line">   public static void a()&#123;</span><br><span class="line">      System.out.println(z);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><ul>
+<li>字面值常量 1 2 3 4</li>
+<li>符号常量 圆周率</li>
+<li>不可修改的变量 &gt;&gt;&gt; 常量</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Test3&#123;</span><br><span class="line"></span><br><span class="line">   public static void main(String[] args)&#123;      </span><br><span class="line">      &#x2F;&#x2F;final 修饰的变量叫做常量 只能赋值一次 不可以修改值</span><br><span class="line">      final int i &#x3D; 10;</span><br><span class="line">      System.out.println(i);</span><br><span class="line">      i &#x3D; 11;</span><br><span class="line">      System.out.println(i);</span><br><span class="line">   &#125;</span><br><span class="line">      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="java中的数据类型"><a href="#java中的数据类型" class="headerlink" title="java中的数据类型"></a>java中的数据类型</h1><h2 id="进制及其转换"><a href="#进制及其转换" class="headerlink" title="进制及其转换"></a>进制及其转换</h2><p>十进制 逢十进一 &gt;&gt;&gt; 人类喜欢的进制<br>二进制 逢二进一 &gt;&gt;&gt; 计算机底层的进制 运算快 不容易出错 运算准确</p>
+<p>转换:顺序分解 逆序取余</p>
+<ul>
+<li>十进制 D</li>
+<li>二进制 B</li>
+<li>八进制 Q</li>
+<li>十六进制 H</li>
+</ul>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
+<li>基本数据类型 (primitive data type):最基础的数据类型 八种<ul>
+<li>整数型 tyte short int long</li>
+<li>浮点型 float double 小数</li>
+<li>字符型 chair</li>
+<li>布尔型 boolean  true false 做逻辑判断</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class Test4&#123;</span><br><span class="line"></span><br><span class="line">   public static void main(String[] args)&#123;      </span><br><span class="line">      &#x2F;*</span><br><span class="line">      字节型整数 8比特 8位 1字节 存储一个整数 </span><br><span class="line">      00000000 -- 11111111 即256个整数 -128 --127</span><br><span class="line">      *&#x2F;</span><br><span class="line">      byte b &#x3D; -128;</span><br><span class="line">      &#x2F;*</span><br><span class="line">      短整型整数 16位 2字节 65536 -32768 -- 23767</span><br><span class="line">      *&#x2F;</span><br><span class="line">      short c &#x3D; 10;</span><br><span class="line">      &#x2F;*</span><br><span class="line">      整数型 32位 4字节 -21亿 -- 21亿 默认存储整数常量的类型</span><br><span class="line">      *&#x2F;</span><br><span class="line">      int i &#x3D; 10;</span><br><span class="line">      &#x2F;*</span><br><span class="line">      长整型整数 64位 8字节 后面接L</span><br><span class="line">      *&#x2F;</span><br><span class="line">      long l &#x3D; 11111111111L;</span><br><span class="line">      </span><br><span class="line">      System.out.println(b);</span><br><span class="line">      System.out.println(c);</span><br><span class="line">      System.out.println(i);</span><br><span class="line">      System.out.println(l);</span><br><span class="line">   &#125;</span><br><span class="line">      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如何写各种进制</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class Test5&#123;</span><br><span class="line"></span><br><span class="line">   public static void main(String[] args)&#123;      </span><br><span class="line">      &#x2F;&#x2F;十进制整数 如:99 -599 0</span><br><span class="line">      int a &#x3D; 55;</span><br><span class="line">      &#x2F;&#x2F;八进制整数 要求以0开头 如:015 &gt;&gt;&gt; 15</span><br><span class="line">      int b &#x3D; 015;</span><br><span class="line">      &#x2F;&#x2F;十六进制整数 要求以0x或0X开头 如:0x15 &gt;&gt;&gt; 21</span><br><span class="line">      int c &#x3D; 0x15;</span><br><span class="line">      &#x2F;&#x2F;二进制 要求以0b或0B开头 如:0b11</span><br><span class="line">      int d &#x3D; 0b11;</span><br><span class="line">      </span><br><span class="line">      System.out.println(a);</span><br><span class="line">      System.out.println(b);</span><br><span class="line">      System.out.println(c);</span><br><span class="line">      System.out.println(d);</span><br><span class="line">   &#125;</span><br><span class="line">      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>引用数据类型 (reference data type):类 抽象类 接口 枚举 …</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/02/Java-day14/" data-id="cknn1mv6z000ecrupdzeu8gp2" data-title="Java day14" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/02/04/%E9%A1%B5%E8%A1%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          页表
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/02/01/supervisor-mode/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">supervisor mode</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/issues/" rel="tag">issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start-here/" rel="tag">start here</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/" rel="tag">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/" rel="tag">writing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Internet/" style="font-size: 15px;">Internet</a> <a href="/tags/Programming-Language/" style="font-size: 17.5px;">Programming Language</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/start-here/" style="font-size: 12.5px;">start here</a> <a href="/tags/system/" style="font-size: 20px;">system</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/writing/" style="font-size: 10px;">writing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/18/network%20of%20computer2/">network of computer2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/Java%20day1/">Java day1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/Java-day19/">Java day19</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/23/Java-day18/">Java day18</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

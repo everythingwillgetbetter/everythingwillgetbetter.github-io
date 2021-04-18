@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>thread | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="什么是线程，为什么引入线程还没引入进程之前，系统中各个程序只能串行执行。&amp;emsp;&amp;emsp;进程是程序的一次执行。但这些功能显然不可能是由一个程序顺序处理就能实现的。 有的进程可能需要”同时”做很多事情，而传统的进程只能串行地执行一系列程序。为此，引入了”线程”，来增加并发度。  传统的进程是程序执行的最小单位。 现在，一个进程中可能包含多个线程，CPU轮流的为线程服务。  –&gt; 线程称">
+<meta property="og:type" content="article">
+<meta property="og:title" content="thread">
+<meta property="og:url" content="http://example.com/2021/01/14/thread/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="什么是线程，为什么引入线程还没引入进程之前，系统中各个程序只能串行执行。&amp;emsp;&amp;emsp;进程是程序的一次执行。但这些功能显然不可能是由一个程序顺序处理就能实现的。 有的进程可能需要”同时”做很多事情，而传统的进程只能串行地执行一系列程序。为此，引入了”线程”，来增加并发度。  传统的进程是程序执行的最小单位。 现在，一个进程中可能包含多个线程，CPU轮流的为线程服务。  –&gt; 线程称">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/01/14/thread/combination.png">
+<meta property="article:published_time" content="2021-01-14T01:57:11.000Z">
+<meta property="article:modified_time" content="2021-04-18T09:10:51.039Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="system">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/01/14/thread/combination.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-thread" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/14/thread/" class="article-date">
+  <time class="dt-published" datetime="2021-01-14T01:57:11.000Z" itemprop="datePublished">2021-01-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      thread
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="什么是线程，为什么引入线程"><a href="#什么是线程，为什么引入线程" class="headerlink" title="什么是线程，为什么引入线程"></a>什么是线程，为什么引入线程</h1><p>还没引入进程之前，系统中各个程序只能串行执行。<br>&emsp;&emsp;进程是程序的一次执行。但这些功能显然不可能是由一个程序顺序处理就能实现的。</p>
+<p>有的进程可能需要”同时”做很多事情，而传统的进程只能串行地执行一系列程序。为此，引入了”线程”，来增加并发度。</p>
+<ul>
+<li>传统的进程是程序执行的最小单位。</li>
+<li>现在，一个进程中可能包含多个线程，CPU轮流的为线程服务。  –&gt; 线程称为程序执行流的最小单位，是一个基本的CPU执行单元，可以把线程理解为”轻量级进程”。</li>
+</ul>
+<p>引入线程后，进程只作为除CPU之外的系统资源的分配单元(如打印机、内存地址空间等都是分配给进程的)。</p>
+<h1 id="引入线程机制后，有什么变化？"><a href="#引入线程机制后，有什么变化？" class="headerlink" title="引入线程机制后，有什么变化？"></a>引入线程机制后，有什么变化？</h1><ul>
+<li><p>资源分配、调度</p>
+<ul>
+<li>传统进程机制中，进程是资源分配、调度的基本单位</li>
+<li>引入线程后，进程是资源分配的基本单元，线程是调度的基本单位</li>
+</ul>
+</li>
+<li><p>并发性</p>
+<ul>
+<li>传统进程机制中，只能进程间并发</li>
+<li>引入线程后，各线程也能并发，提高了并发度</li>
+</ul>
+</li>
+<li><p>系统开销</p>
+<ul>
+<li>传统的进程间并发，需要切换进程的运行环境，系统开销很大</li>
+<li>线程间并发，如果是统一进程内的线程切换，则不需要切换进程环境，系统开销小</li>
+<li>引入线程后，并发所带来的系统开销减小</li>
+</ul>
+</li>
+</ul>
+<h1 id="线程有哪些重要的属性"><a href="#线程有哪些重要的属性" class="headerlink" title="线程有哪些重要的属性"></a>线程有哪些重要的属性</h1><ul>
+<li>线程是处理机调度的单位</li>
+<li>多CPU计算机中，各个线程可以占用不同的CPU</li>
+<li>每个线程都有一个线程ID、线程控制块(TCB) –&gt; 类似PCB</li>
+<li>线程也有就绪、阻塞、运行三种基本状态</li>
+<li>线程几乎不拥有系统资源</li>
+<li>同一进程的不同线程共享进程的资源</li>
+<li>由于共享内存地址空间，同一进程中的线程间通信甚至无需系统干预</li>
+<li>同一进程中的线程切换，不会引起进程切换</li>
+<li>不同进程中的线程切换，会引起进程切换</li>
+<li>切换同进程内的线程，系统开销很小</li>
+<li>切换进程，系统开销较大</li>
+</ul>
+<h1 id="线程的实现方式"><a href="#线程的实现方式" class="headerlink" title="线程的实现方式"></a>线程的实现方式</h1><h2 id="用户级线程"><a href="#用户级线程" class="headerlink" title="用户级线程"></a>用户级线程</h2><div style="width:70%;margin:auto"></div>
+
+<ul>
+<li>用户级线程(User-Level Thread,ULT) –&gt; 用户级线程由应用程序通过线程库实现。</li>
+<li>所有的线程管理工作都由应用程序负责(包括线程切换)</li>
+<li>用户线程中，线程切换可以在用户态下即可完成，无需操作系统干预</li>
+<li>在 <em><strong>用户</strong></em> 看来，是有多个线程。但是 <em><strong>在操作系统内核</strong></em> 看来，并意识不到线程的存在。(用户级线程对用户不透明，对操作系统透明) </li>
+</ul>
+<p>ps:透明意味着看不见</p>
+<h2 id="内核级线程"><a href="#内核级线程" class="headerlink" title="内核级线程"></a>内核级线程</h2><div style="width:70%;margin:auto"></div>
+
+<ul>
+<li>内核级线程 –&gt; (Kernel-Level Thread,KLT,又称”内核支持的线程”)</li>
+<li>内核级线程的管理工作由操作系统内核完成。线程调度、切换等工作都由内核负责，因此内核级线程的切换必然需要在核心态下才能完成。</li>
+<li>可以这样理解，”内核级线程”就是”从操作系统内核视角看能看到的线程”</li>
+</ul>
+<p><em><strong>总结</strong></em><br>在同时支持用户级线程和内核级线程的系统中，可采用二者组合的方式:将n个用户级线程映射到m个内核级线程上 (n&gt;=m)</p>
+<div style="width:70%;margin:auto"><img src="/2021/01/14/thread/combination.png" class title="This is an example image"></div>
+
+<p><em><strong>重点</strong></em><br>操作系统只看得见内核级线程，因此只有内核级线程才是处理机分配的单位。<br>所以该进程即使在一个四核处理机的计算机上运行，也最多只能被分配到两个核，最多只能有两个用户线程并行执行。</p>
+<h1 id="多线程模型"><a href="#多线程模型" class="headerlink" title="多线程模型"></a>多线程模型</h1><p>在同时支持用户级线程和内核级线程的操作系统中，由几个用户级线程映射到几个内核级线程的问题引发出了”多线程模型”问题。</p>
+<h2 id="多对一模型"><a href="#多对一模型" class="headerlink" title="多对一模型"></a>多对一模型</h2><p>多个用户及线程映射到一个内核级线程。每个用户进程只能对应一个内核级进程。</p>
+<p><em><strong>优点</strong></em><br>用户级线程的切换在用户空间即可完成，不需要切换到核心态，线程管理的系统开销小，效率高</p>
+<p><em><strong>缺点</strong></em><br>当一个用户级线程被阻塞后，整个进程都会被阻塞，并发度不高。多个线程不可在多核处理机上并行运行</p>
+<h2 id="一对一模型"><a href="#一对一模型" class="headerlink" title="一对一模型"></a>一对一模型</h2><p>一个用户级线程映射到一个内核级线程。每个用户进程有用户级线程同数量的内核级线程。</p>
+<p><em><strong>优点</strong></em><br>当一个线程被阻塞后，别的线程还可以继续执行，并发能力强。多线程可在多核处理机上并行执行。</p>
+<p><em><strong>缺点</strong></em><br>一个用户级线程会占用多个内核级线程，线程切换由操作系统内核完成，需要切换到核心态，因此线程管理的成本高，开销大。</p>
+<h2 id="多对多模型"><a href="#多对多模型" class="headerlink" title="多对多模型"></a>多对多模型</h2><p>n 用户级线程映射到 m 个内核级线程( n &gt;= m )。每个用户级进程对应 m 个内核级线程。</p>
+<p>克服了多对一模型并发度不高的缺点，又克服了一对一模型中一个用户进程占用太多内核级线程，开销太大的缺点。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/14/thread/" data-id="cknn1mv8z002tcrupbeex9j9j" data-title="thread" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/14/processor-dispatching/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          processor-dispatching
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/13/Java-day5/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java-day5</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/issues/" rel="tag">issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start-here/" rel="tag">start here</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/" rel="tag">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/" rel="tag">writing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Internet/" style="font-size: 15px;">Internet</a> <a href="/tags/Programming-Language/" style="font-size: 17.5px;">Programming Language</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/start-here/" style="font-size: 12.5px;">start here</a> <a href="/tags/system/" style="font-size: 20px;">system</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/writing/" style="font-size: 10px;">writing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/18/network%20of%20computer2/">network of computer2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/Java%20day1/">Java day1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/Java-day19/">Java day19</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/23/Java-day18/">Java day18</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

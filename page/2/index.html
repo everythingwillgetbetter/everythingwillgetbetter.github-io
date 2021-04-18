@@ -1,0 +1,1828 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Java-day14" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/02/02/Java-day14/" class="article-date">
+  <time class="dt-published" datetime="2021-02-02T09:22:34.000Z" itemprop="datePublished">2021-02-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/02/02/Java-day14/">Java day14</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="写一个Java程序"><a href="#写一个Java程序" class="headerlink" title="写一个Java程序"></a>写一个Java程序</h1><h2 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h2><h2 id="JVM-JRE"><a href="#JVM-JRE" class="headerlink" title="JVM/JRE/"></a>JVM/JRE/</h2><p>JVM &gt;&gt;&gt; 虚拟机 翻译功能<br>JRE &gt;&gt;&gt; Java Runtime Environment 包含JVM、库函数、运行Java所必须的文件<br>JDK &gt;&gt;&gt; Development Kit 包含JRE，以及增加编译器和调试器等用于程序开发的文件</p>
+<h2 id="编写代码"><a href="#编写代码" class="headerlink" title="编写代码"></a>编写代码</h2><ul>
+<li><p>编写源代码 </p>
+<ul>
+<li>创建一个文件</li>
+<li>创建一个类</li>
+<li>定义主方法</li>
+<li>在主方法中添加功能代码</li>
+</ul>
+</li>
+<li><p>编译源代码 &gt;&gt;&gt; 将源代码编译成中立的字节码</p>
+</li>
+<li><p>解释源代码 &gt;&gt;&gt; 让虚拟机向平台解释字节码</p>
+</li>
+</ul>
+<p>1.创建一个文件 &gt;&gt;&gt; Java代码文件就是纯文本文件 文件名的扩展名叫.java<br>文件名首字母必须大写 不能以数字为开头 不能有空格和特殊符号<br>标准写法 大写字母 数字放后面</p>
+<p>2.创建一个类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Text1&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;public (公开的) class(类) + Text1(类名 &gt;&gt;&gt;必须是文件名同名，包括大小写)</span><br><span class="line">在大括号中写代码</span><br></pre></td></tr></table></figure>
+
+<p>3.定义主方法<br>程序的起点 程序的开始 在一个类中 只能有一个主代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Text1&#123;</span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.在主方法中定义功能代码<br>功能 向DOS 控制台输出一段文字 “hello world”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Text1&#123;</span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">		System.out.println(&quot;hello world&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="编译、解释文件"><a href="#编译、解释文件" class="headerlink" title="编译、解释文件"></a>编译、解释文件</h2><ul>
+<li><p>先配置环境变量</p>
+<ol>
+<li>先找jdk中bin目录 C:\Program Files\Java\jdk1.8.0_281\bin</li>
+<li>找其中的java.exe 和 javac.exe 两个文件</li>
+<li>配置环境变量就是告诉DOS窗口这两个文件在这里</li>
+<li>复制上诉路径 主电脑 &gt;&gt;&gt; 属性 &gt;&gt;&gt; 高级系统设置 &gt;&gt;&gt; 高级 &gt;&gt;&gt; 环境变量 &gt;&gt;&gt; 系统变量 &gt;&gt;&gt; PATH</li>
+<li>将上述路径加入即可</li>
+</ol>
+</li>
+<li><p>生成字节码</p>
+<ol>
+<li>打开CMD</li>
+<li>进入.java文件的目录</li>
+<li>输入 javac Text1.java</li>
+<li>发现该文件夹下出现 .class 文件则环境变量配置成功</li>
+<li>此时已将java源代码转换为字节码</li>
+</ol>
+</li>
+<li><p>用Java指令将字节码交给虚拟机，让虚拟机解释执行</p>
+<ol>
+<li>仍然在文件目录里</li>
+<li>输入 java Text1 此处不写.class也是默认寻找.class文件</li>
+<li>解释成功 出现 hello world</li>
+</ol>
+</li>
+</ul>
+<p>ps:第二天突然javac不能用，只能用java,但是重启电脑之后就好了，不明所以。</p>
+<h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><ul>
+<li><p>Java的核心机制</p>
+<ol>
+<li><p>垃圾回收机制</p>
+</li>
+<li><p>跨平台机制 互联网发展要求有一款语言跨平台性能优越 Java的核心优势</p>
+<ul>
+<li><p>Java核心技术 虚拟机</p>
+</li>
+<li><p>Java的跨平台原理</p>
+<ol>
+<li><p>Java源代码 &gt;&gt;&gt;&gt; 扩展名为.java的纯文本文件</p>
+<ul>
+<li>定义一个类</li>
+<li>在类中定义主方法</li>
+<li>在主方法中定义功能代码</li>
+</ul>
+</li>
+<li><p>Java源代码 &gt;&gt; 编译.javac &gt;&gt; 中立的二进制的字节码 扩展名为.class的文件</p>
+</li>
+<li><p>调用虚拟机平台解释JAVA字节码 java指令</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>为了让DOS系统识别到javac和java指令 可以在指定的目录中找到这两个指令 在环境变量中添该路径</p>
+</li>
+<li><p>DOS</p>
+<ul>
+<li>DIR 查看当前目录下的子文件和子目录</li>
+<li>cd 切换目录 cd.. cd / cd 目录名/目录名</li>
+<li>cls 清空命令</li>
+</ul>
+</li>
+<li><p>掌握的三个操作</p>
+<ul>
+<li>tab 自动补全目录名/文件名</li>
+<li>上下键 翻阅历史记录</li>
+<li>盘符: 切换磁盘</li>
+</ul>
+</li>
+<li><p>了解其他操作</p>
+<ul>
+<li>rd 删除目录</li>
+<li>md 创建目录</li>
+<li>copy 复制文件</li>
+<li>del 删除文件</li>
+</ul>
+</li>
+</ul>
+<h1 id="配置JAVA-HOME-必须掌握"><a href="#配置JAVA-HOME-必须掌握" class="headerlink" title="配置JAVA_HOME(必须掌握)"></a>配置JAVA_HOME(必须掌握)</h1><p>此电脑 &gt;&gt;&gt; 属性 &gt;&gt;&gt; 高级系统设置 &gt;&gt;&gt; 高级 &gt;&gt;&gt; 环境变量<br>为了降低Java环境发生变动时，对环境变量的修改量，添加JAVA_HOME</p>
+<ol>
+<li>新建系统变量 变量名JAVA_HOME 名字不允许丝毫改变</li>
+<li>将几个路径的共同部分放入变量值</li>
+<li>此时该变量与之前配的变量之间没有联系</li>
+<li>将之前配的变量路径中，共同的部分换位 %JAVA_HOME% 代表了对其他变量的引用 必须加百分号</li>
+<li>注意 JAVA_HOME 的路径末尾没有斜线 而对其引用之后要加斜线 (只能有一处有)</li>
+</ol>
+<p><em><strong>作用：</strong></em></p>
+<ul>
+<li>可以降低环境变量维护工作量</li>
+<li>后续其他技术可以使用的必要条件<ul>
+<li>Tomcat 的启动要依赖系统中的 JAVA_HOME </li>
+</ul>
+</li>
+</ul>
+<h1 id="配置-classpath"><a href="#配置-classpath" class="headerlink" title="配置 classpath"></a>配置 classpath</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">javac f:&#x2F;program4it&#x2F;Java&#x2F;myJava&#x2F;Text1.java</span><br><span class="line">&#x2F;&#x2F;但是java不能这么用</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>java指令会把后面的全部文字当成类名，不会识别其中的盘符和各层级的目录</li>
+<li>classpath作用就是告诉java指令到指定的目录中去寻找字节码文件</li>
+</ul>
+<p>系统变量中 添加 变量名classpath 变量值F:\program4it\Java\myJava<br>ps:注意配置完之后，全部确认退出，重新打开cmd命令窗口才生效<br>ps:此时java指令只在该文件夹下找.class文件，其他文件夹下皆不生效</p>
+<p>因此将变量值改为 .;F:\program4it\Java\myJava &gt;&gt;&gt; 先在DOS目前指定的目录中寻找字节码 如果找不到 再到 F:\program4it\Java\myJava中寻找</p>
+<p>ps:试一下就可以了，实际的意义不大</p>
+<h1 id="JAVA的API帮助文档"><a href="#JAVA的API帮助文档" class="headerlink" title="JAVA的API帮助文档"></a>JAVA的API帮助文档</h1><ul>
+<li>JDK API 帮助文档</li>
+<li>SUN公司为JDK工具包提供的一整套文档资料</li>
+<li>JAVA中的各种技术详细资料 1.6版的比较好</li>
+</ul>
+<h1 id="JAVA编程风格"><a href="#JAVA编程风格" class="headerlink" title="JAVA编程风格"></a>JAVA编程风格</h1><ul>
+<li><p>注意缩进</p>
+</li>
+<li><p>成对编程</p>
+</li>
+<li><p>注意命名</p>
+</li>
+<li><p>区分大小写</p>
+</li>
+<li><p>驼峰式命名</p>
+<ul>
+<li>标识符命名时，当多个单词拼接时，每个单词的首字母大写，其他小写</li>
+</ul>
+</li>
+<li><p>Java中注释方式</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">单行注释 &#x2F;&#x2F;</span><br><span class="line">多行注释 &#x2F;* *&#x2F; 可以一次性注释多行</span><br><span class="line">文档注释 </span><br><span class="line">&#x2F;**</span><br><span class="line">一般注释方法和类</span><br><span class="line">*&#x2F;  可以将文档注释中的内容生成自己的API帮助文档</span><br></pre></td></tr></table></figure>
+
+<p>ps:生成API方法 </p>
+<ol>
+<li>用notepad++ 将编码转换为“使用ANSI格式编码”</li>
+<li>注意，先全选复制，删除原来代码，再将编码格式设置为”使用ANSI格式编码”,然后将源文件再粘贴出来</li>
+<li>在cmd运行 Javadoc Test1.java 即可在当前文件夹下生成API文档</li>
+</ol>
+<h1 id="notepad-的使用"><a href="#notepad-的使用" class="headerlink" title="notepad++ 的使用"></a>notepad++ 的使用</h1><p>按住 Ctrl 上下拨动滑轮 调整大小<br>可以直接保存Java source file</p>
+<ol>
+<li><p>乱码问题 原因</p>
+<ol>
+<li><p>文件的写入和读取使用的字符集不一致</p>
+<ul>
+<li>文件字符集 和 DOS窗口所使用的默认字符集不一致</li>
+<li>Notepad++创建文件时 一般默认保存时使用 utf-8 国际通用字符集</li>
+<li>DOS 系统默认使用 本地系统字符集 ANSI –&gt; 中文系统GBK   </li>
+<li>一般世界上所有字符集 对于英文字母的处理都是一样的</li>
+</ul>
+</li>
+<li><p>使用了不支持中文的字符</p>
+</li>
+<li><p>设置 notepad++ 在新建文件时候的首选项</p>
+</li>
+<li><p>再次用 notepad++ 新建java，输出中文测试</p>
+</li>
+</ol>
+</li>
+</ol>
+<div style="width:70%;margin:auto"><img src="/2021/02/02/Java-day14/pref.png" class title="This is an example image"></div>
+
+<h1 id="反编译"><a href="#反编译" class="headerlink" title="反编译"></a>反编译</h1><p>jd-gui.exe</p>
+<ul>
+<li>因为编译的时候不会对注释进行处理，所以反编译时不可能的得到注释</li>
+</ul>
+<h1 id="第二个-java小程序"><a href="#第二个-java小程序" class="headerlink" title="第二个 java小程序"></a>第二个 java小程序</h1><ul>
+<li>演示一些常见的错误</li>
+<li>输出一段文字<ul>
+<li>可以在搜狗输入法勾选 中文时使用英文标点</li>
+</ul>
+</li>
+</ul>
+<h1 id="标识符，关键字，字符集"><a href="#标识符，关键字，字符集" class="headerlink" title="标识符，关键字，字符集"></a>标识符，关键字，字符集</h1><h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2><ul>
+<li>Java中用于区分数据需要我们自己定义的名称</li>
+<li>允许使用 字母 数字 _ $</li>
+<li>不允许使用 数字不能开头 不可以是java的关键字</li>
+<li>驼峰式命名 StudentAge</li>
+<li>见名知意</li>
+<li>常见表示符:包名 类名 方法名 变量名 参数名</li>
+<li>除了类名首字母大写 其他标识符首字母都要小写</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;标志在代码中的目录名 &gt;&gt;&gt; 包名</span><br><span class="line">&#x2F;&#x2F;受保护的资源文件夹</span><br><span class="line">&#x2F;&#x2F;区分多个不同目录下的同名文件</span><br><span class="line">package myJava;</span><br><span class="line">         &#x2F;&#x2F;类名</span><br><span class="line">public class Demo2&#123;</span><br><span class="line">                  &#x2F;&#x2F;方法名</span><br><span class="line">   public static void main(String[] args)&#123;</span><br><span class="line">      &#x2F;&#x2F;变量名</span><br><span class="line">      int i &#x3D; 10;</span><br><span class="line">      System.out.println(i);</span><br><span class="line">   &#125;</span><br><span class="line">                  &#x2F;&#x2F;方法名  a b 参数名</span><br><span class="line">   public static void add(int a,int b)&#123;</span><br><span class="line">      </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在cmd中，上一级目录录下就可以执行 javac myJava/Demo2.java<br>此时需要加上包名</p>
+<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><ul>
+<li>关键字就是对java有特殊含义的词汇，比如: public,static,int,class等</li>
+<li>java关键字是java语言保留供内部使用的，如class定义类，关键字也可以成为保留字</li>
+</ul>
+<h2 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h2><p>编码是信息从一种形式转换成另一种形式的过程，也称为计算机编程语言</p>
+<ul>
+<li>ASCII &gt;&gt;&gt; 英文字符集 1个字节 &gt;&gt; 8bit &gt;&gt; 8位10 &gt;&gt; 256个</li>
+<li>ISO-8859-1 &gt;&gt;&gt; 西欧字符集 1个字节</li>
+<li>BIG5 &gt;&gt;&gt; 台湾的五大码，表示繁体汉字 2个字节 16位</li>
+<li>GB2312 &gt;&gt;&gt; 大陆使用最早，最广的简体中文字符集 2个字节</li>
+<li>GBK &gt;&gt;&gt; GB2312的扩展 可以表示繁体汉字 2个字节</li>
+<li>GB18090 &gt;&gt;&gt; 最新GBK的扩展，可以表示汉字，维吾尔文、藏文等中华名族字符 2个字节</li>
+<li>Unicode &gt;&gt;&gt; 国际通用字符集 2个字节 (JAVA中使用的字符集就是Unicode)</li>
+</ul>
+<p>ps:</p>
+<ul>
+<li>Unicode 是字符集，UTF-32/UTF-16/UTF-8 是三种字符编码方案</li>
+<li>ANSI:获取你当前操作系统的编码格式 &gt;&gt;&gt; 一般我们用GBK</li>
+<li>1位 1/0 &gt;&gt;&gt; bit 比特</li>
+<li>1字节 8比特 &gt;&gt;&gt; byte 字节</li>
+<li>千字节 1024byte 兆字节 1024kB</li>
+<li>GB = 1024MB; TB = 1024GB; PB = 1024TB</li>
+<li>字符 &gt;&gt;&gt; 代表一个文字 可以是一个字母 中文 空格 标点符号</li>
+</ul>
+<h1 id="变量和常量"><a href="#变量和常量" class="headerlink" title="变量和常量"></a>变量和常量</h1><ul>
+<li>变量 &gt;&gt;&gt; 可以变化的量</li>
+<li>常量 &gt;&gt;&gt; 不会变量的量<ul>
+<li>字面常量 &gt;&gt;&gt; 就是具体的值 5 -&gt; 6 变得是年龄而不是5变成6</li>
+<li>符号常量 &gt;&gt;&gt; 类似于π</li>
+</ul>
+</li>
+</ul>
+<h2 id="变量的声明和使用"><a href="#变量的声明和使用" class="headerlink" title="变量的声明和使用"></a>变量的声明和使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">public class Test1&#123;</span><br><span class="line">   public static void main(String[] args)&#123;      </span><br><span class="line">      &#x2F;*变量的声明(我要创建一个变量) &gt;&gt;&gt; 数据类型 变量名; </span><br><span class="line">      java 强类型的编程语言 JAVA中的任何一个变量都必须明确指明其数据类型</span><br><span class="line">      int 整数</span><br><span class="line">      变量的声明 仅仅是一种声明 不会在内存上实际开辟内存存储数据</span><br><span class="line">      *&#x2F;</span><br><span class="line">      int i;   &#x2F;&#x2F;不会在字节码中有任何处理</span><br><span class="line">      &#x2F;*</span><br><span class="line">      给变量赋值 才会在内存中 开辟一个空间 这个空间存储一个值 10;</span><br><span class="line">      *&#x2F;</span><br><span class="line">      i &#x3D; 10;  &#x2F;&#x2F;才会在字节码中 正式声明一个变量</span><br><span class="line">      int t &#x3D; 10; &#x2F;&#x2F;声明变量同时赋值</span><br><span class="line">      System.out.println(i);</span><br><span class="line">      </span><br><span class="line">      &#x2F;&#x2F;可以一次性声明多个变量</span><br><span class="line">      int a&#x3D;1,b&#x3D;2,c&#x3D;3,d&#x3D;4;</span><br><span class="line">      System.out.println(a);</span><br><span class="line">      System.out.println(b);</span><br><span class="line">      System.out.println(c);</span><br><span class="line">      System.out.println(d);</span><br><span class="line">      </span><br><span class="line">      &#x2F;&#x2F;变量的值是可以反复修改的</span><br><span class="line">      int x &#x3D; 11;</span><br><span class="line">      System.out.println(x);</span><br><span class="line">      &#x2F;&#x2F;变量只要声明一次类型即可 后面直接使用变量 不需要反复声明</span><br><span class="line">      x&#x3D;12;</span><br><span class="line">      System.out.println(x);</span><br><span class="line">   &#125;</span><br><span class="line">            </span><br><span class="line">   public static void add(int a,int b)&#123;</span><br><span class="line">      </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="变量的作用范围"><a href="#变量的作用范围" class="headerlink" title="变量的作用范围"></a>变量的作用范围</h1><ul>
+<li><p>局部变量</p>
+<ul>
+<li>方法内/代码块内/多条件分支或者循环内声明的变量，仅能够在当前方法内/代码块内/多条件分支或循环内</li>
+</ul>
+</li>
+<li><p>成员变量(全局变量)</p>
+<ul>
+<li>声明在方法之外的变量 可以通过访问修饰符控制访问范围，但至少可以在当前内部可见</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class Test2&#123;</span><br><span class="line"></span><br><span class="line">   &#x2F;&#x2F;成员变量 至少可以在当前类所有的方法中使用</span><br><span class="line">   static int z &#x3D; 20;</span><br><span class="line"></span><br><span class="line">   public static void main(String[] args)&#123;      </span><br><span class="line">      &#x2F;&#x2F;局部变量 当前方法内 声明在方法中</span><br><span class="line">      int i &#x3D; 10;</span><br><span class="line">      System.out.println(i);</span><br><span class="line"></span><br><span class="line">      for(int x &#x3D; 1;x&lt;&#x3D;10;x++)&#123;</span><br><span class="line">         &#x2F;&#x2F;局部变量 声明在循环结构内部 仅仅在当前循环内部可以使用</span><br><span class="line">         int y &#x3D; 10;</span><br><span class="line">         System.out.println(y);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      System.out.println(z);</span><br><span class="line">      a();</span><br><span class="line">   &#125;</span><br><span class="line">      </span><br><span class="line">   public static void a()&#123;</span><br><span class="line">      System.out.println(z);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><ul>
+<li>字面值常量 1 2 3 4</li>
+<li>符号常量 圆周率</li>
+<li>不可修改的变量 &gt;&gt;&gt; 常量</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Test3&#123;</span><br><span class="line"></span><br><span class="line">   public static void main(String[] args)&#123;      </span><br><span class="line">      &#x2F;&#x2F;final 修饰的变量叫做常量 只能赋值一次 不可以修改值</span><br><span class="line">      final int i &#x3D; 10;</span><br><span class="line">      System.out.println(i);</span><br><span class="line">      i &#x3D; 11;</span><br><span class="line">      System.out.println(i);</span><br><span class="line">   &#125;</span><br><span class="line">      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="java中的数据类型"><a href="#java中的数据类型" class="headerlink" title="java中的数据类型"></a>java中的数据类型</h1><h2 id="进制及其转换"><a href="#进制及其转换" class="headerlink" title="进制及其转换"></a>进制及其转换</h2><p>十进制 逢十进一 &gt;&gt;&gt; 人类喜欢的进制<br>二进制 逢二进一 &gt;&gt;&gt; 计算机底层的进制 运算快 不容易出错 运算准确</p>
+<p>转换:顺序分解 逆序取余</p>
+<ul>
+<li>十进制 D</li>
+<li>二进制 B</li>
+<li>八进制 Q</li>
+<li>十六进制 H</li>
+</ul>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
+<li>基本数据类型 (primitive data type):最基础的数据类型 八种<ul>
+<li>整数型 tyte short int long</li>
+<li>浮点型 float double 小数</li>
+<li>字符型 chair</li>
+<li>布尔型 boolean  true false 做逻辑判断</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class Test4&#123;</span><br><span class="line"></span><br><span class="line">   public static void main(String[] args)&#123;      </span><br><span class="line">      &#x2F;*</span><br><span class="line">      字节型整数 8比特 8位 1字节 存储一个整数 </span><br><span class="line">      00000000 -- 11111111 即256个整数 -128 --127</span><br><span class="line">      *&#x2F;</span><br><span class="line">      byte b &#x3D; -128;</span><br><span class="line">      &#x2F;*</span><br><span class="line">      短整型整数 16位 2字节 65536 -32768 -- 23767</span><br><span class="line">      *&#x2F;</span><br><span class="line">      short c &#x3D; 10;</span><br><span class="line">      &#x2F;*</span><br><span class="line">      整数型 32位 4字节 -21亿 -- 21亿 默认存储整数常量的类型</span><br><span class="line">      *&#x2F;</span><br><span class="line">      int i &#x3D; 10;</span><br><span class="line">      &#x2F;*</span><br><span class="line">      长整型整数 64位 8字节 后面接L</span><br><span class="line">      *&#x2F;</span><br><span class="line">      long l &#x3D; 11111111111L;</span><br><span class="line">      </span><br><span class="line">      System.out.println(b);</span><br><span class="line">      System.out.println(c);</span><br><span class="line">      System.out.println(i);</span><br><span class="line">      System.out.println(l);</span><br><span class="line">   &#125;</span><br><span class="line">      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如何写各种进制</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class Test5&#123;</span><br><span class="line"></span><br><span class="line">   public static void main(String[] args)&#123;      </span><br><span class="line">      &#x2F;&#x2F;十进制整数 如:99 -599 0</span><br><span class="line">      int a &#x3D; 55;</span><br><span class="line">      &#x2F;&#x2F;八进制整数 要求以0开头 如:015 &gt;&gt;&gt; 15</span><br><span class="line">      int b &#x3D; 015;</span><br><span class="line">      &#x2F;&#x2F;十六进制整数 要求以0x或0X开头 如:0x15 &gt;&gt;&gt; 21</span><br><span class="line">      int c &#x3D; 0x15;</span><br><span class="line">      &#x2F;&#x2F;二进制 要求以0b或0B开头 如:0b11</span><br><span class="line">      int d &#x3D; 0b11;</span><br><span class="line">      </span><br><span class="line">      System.out.println(a);</span><br><span class="line">      System.out.println(b);</span><br><span class="line">      System.out.println(c);</span><br><span class="line">      System.out.println(d);</span><br><span class="line">   &#125;</span><br><span class="line">      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>引用数据类型 (reference data type):类 抽象类 接口 枚举 …</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/02/Java-day14/" data-id="cknn1mv6z000ecrupdzeu8gp2" data-title="Java day14" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-supervisor-mode" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/02/01/supervisor-mode/" class="article-date">
+  <time class="dt-published" datetime="2021-02-01T07:48:53.000Z" itemprop="datePublished">2021-02-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/02/01/supervisor-mode/">supervisor mode</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="内存管理的概念"><a href="#内存管理的概念" class="headerlink" title="内存管理的概念"></a>内存管理的概念</h1><p>ps: <em><strong>连续分配</strong></em> 指为用户进程分配的必须是一个连续的内存空间。</p>
+<h2 id="单一连续分配"><a href="#单一连续分配" class="headerlink" title="单一连续分配"></a>单一连续分配</h2><ul>
+<li>在单一连续分配方式中，内存被分为 <em><strong>系统区</strong></em> 和 <em><strong>用户区</strong></em> 。</li>
+<li>系统区通常位于内存的低地址部分，用于存放操作系统相关数据:用户区用于存放用户进程相关数据。</li>
+<li>内存中只能有 <em><strong>一道用户程序</strong></em> ，用户程序独占整个用户区空间。</li>
+</ul>
+<p><em><strong>优点</strong></em> :</p>
+<ol>
+<li>实现简单: <em><strong>无外部碎片</strong></em> ;</li>
+<li>可以采用覆盖技术扩充内存:</li>
+<li>不一定需要采取内存保护（eg:早期的PC操作系统MS-DOS)。</li>
+</ol>
+<p><em><strong>缺点</strong></em> :</p>
+<ol>
+<li>只能用于单用户、单任务的操作系统中;</li>
+<li>有内部碎片;</li>
+<li>存储器利用率极低。</li>
+</ol>
+<p>ps：分配给某进程的内存区域中，如果有些部分没有用上，就是“内部碎片”</p>
+<h2 id="固定分区分配"><a href="#固定分区分配" class="headerlink" title="固定分区分配"></a>固定分区分配</h2><p>20世纪60年代出现了支持多道程序的系统，为了能在内存中装入多道程序，且这些程序之间又不会相互干扰，于是将整个用户空间划分为 <em><strong>若千个固定大小的分区，在每个分区中只装入一道作业</strong></em> ，这样就形成了最早的、最简单的一种可运行多道程序的内存管理方式。</p>
+<ul>
+<li><p>分区大小相等</p>
+<ol>
+<li>缺乏灵活性;</li>
+<li>但是很适合用于用一台计算机控制多个 <em><strong>相同对象</strong></em> 的场合（比如:钢铁广有n个相同的炼钢炉，就可把内存分为n个大小相等的区域存放n个炼钢炉控制程序)</li>
+</ol>
+</li>
+<li><p>分区大小不等</p>
+<ol>
+<li>增加了灵活性;</li>
+<li>可以满足不同大小的进程需求。根据常在系统中运行的作业大小情况进行划分(比如:划分多个小分区、适量中等分区、少量大分区)</li>
+</ol>
+</li>
+<li><p>操作系统需要建立一个数据结构 &gt;&gt;&gt; <em><strong>分区说明表</strong></em> ，来实现各个分区的分配与回收。每个表项对应一个分区，通常按分区大小排列。每个表项包括对应分区的大小、 <em><strong>起始地址</strong></em> 、 <em><strong>状态</strong></em> （是否已分配）。</p>
+</li>
+<li><p>用数据结构的数组(或链表)即可表示这个表。</p>
+</li>
+<li><p>当某用户程序要装入内存时，由操作系统内核程序根据用户程序大小检索该表，从中找到一个能满足大小的、未分配的分区，将之分配给该程序，然后修改状态为“已分配”。</p>
+</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/table.png" class title="This is an example image"></div>
+
+<p><em><strong>优点</strong></em> :实现简单，无 <em><strong>外部</strong></em> 碎片。<br><em><strong>缺点</strong></em> : </p>
+<ol>
+<li>当用户程序太大时，可能所有的分区都不能满足需求，此时不得不采用覆盖技术来解决，但这又会降低性能;</li>
+<li>会产生 <em><strong>内部</strong></em> 碎片，内存利用率低。</li>
+</ol>
+<h2 id="动态分区分配"><a href="#动态分区分配" class="headerlink" title="动态分区分配"></a>动态分区分配</h2><p><em><strong>动态分区分配</strong></em> 又称为 <em><strong>可变分区分配</strong></em> 。这种分配方式 <em><strong>不会预先划分内存分区</strong></em> ，而是在进程装入内存时，根据进程的大小动态地建立分区，并使分区的大小正好适合进程的需要。因此系统分区的大小和数目是可变的。(eg:假设某计算机内存大小为64MB，系统区8MB，用户区共56 MB.….)</p>
+<p><em><strong>问题:</strong></em> </p>
+<ol>
+<li>系统要用什么样的数据结构记录内存的使用情况?</li>
+<li>当很多个空闲分区都能满足需求时,应该选择哪个分区进行分配?</li>
+<li>如何进行分区的分配与回收操作?</li>
+</ol>
+<h3 id="系统要用什么样的数据结构记录内存的使用情况"><a href="#系统要用什么样的数据结构记录内存的使用情况" class="headerlink" title="系统要用什么样的数据结构记录内存的使用情况?"></a>系统要用什么样的数据结构记录内存的使用情况?</h3><ul>
+<li>两种常用的数据结构<ul>
+<li>空闲分区表：空闲分区表:每个空闲分区对应个表项。表项中包含分区号、分区大小、分区起始地址等信息</li>
+<li>空想分区链：每个分区的起始部分和末尾部分分别设置前向指针和后向指针。起始部分处还可记录分区大小等信息</li>
+</ul>
+</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/speration.png" class title="This is an example image"></div>
+
+<h3 id="当很多个空闲分区都能满足需求时-应该选择哪个分区进行分配"><a href="#当很多个空闲分区都能满足需求时-应该选择哪个分区进行分配" class="headerlink" title="当很多个空闲分区都能满足需求时,应该选择哪个分区进行分配?"></a>当很多个空闲分区都能满足需求时,应该选择哪个分区进行分配?</h3><p>&emsp;&emsp;应该用最大的分区进行分配?还是用最小的分区进行分配?又或是用地址最低的部分进行分配?<br>&emsp;&emsp;把一个新作业装入内存时，须按照一定的 <em><strong>动态分区分配算法</strong></em> ，从空闲分区表（或空闲分区链）中选出一个分区分配给该作业。由于分配算法算法对系统性能有很天的影响，因此人们对它进行了广泛的研究。</p>
+<h3 id="如何进行分区的分配与回收操作"><a href="#如何进行分区的分配与回收操作" class="headerlink" title="如何进行分区的分配与回收操作?"></a>如何进行分区的分配与回收操作?</h3><p>如果足够分配：</p>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/eg1.png" class title="This is an example image"></div>
+
+<p>如果刚好分配完：</p>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/eg2.png" class title="This is an example image"></div>
+
+<p>接下来讨论回收，<br>情况一:回收区的后面有一个相邻的空闲分区，两个相邻的空闲分区合并为一个</p>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/eg3.png" class title="This is an example image"></div>
+
+<p>情况二:回收区的前面有一个相邻的空闲分区，两个相邻的空闲分区合并为一个</p>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/eg4.png" class title="This is an example image"></div>
+
+<p>情况三:回收区的前、后各有一个相邻的空闲分区，三个相邻的空闲分区合并为一个</p>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/eg5.png" class title="This is an example image"></div>
+
+<p>情况四:回收区的前、后都没有相邻的空闲分区，新增一个表项<br>注:各表项的顺序不一定按照地址递增顺序排列，具体的排列方式需要依据动态分区分配算法来确定。</p>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/eg6.png" class title="This is an example image"></div>
+
+<h2 id="动态分区分配-1"><a href="#动态分区分配-1" class="headerlink" title="动态分区分配"></a>动态分区分配</h2><p>动态分区分配没有 <em><strong>内部碎片</strong></em> ，但是有 <em><strong>外部碎片</strong></em> 。</p>
+<ul>
+<li>内部碎片，分配给某进程的内存区域中，如果有些部分没有用上</li>
+<li>外部碎片，是指内存中的某些空闲分区 <em><strong>由于太小而难以利用</strong></em> 。</li>
+</ul>
+<p>&emsp;&emsp;如果内存中空闲空间的总和本来可以满足某进程的要求,但由于进程需要的是一整块连续的内存空间，因此这些“碎片”不能满足进程的需求。<br>&emsp;&emsp;可以通过紧凑(拼凑，Compaction）技术来解决外部碎片。 &gt;&gt;&gt; 将已分配的内存进行挪位，腾出一个大空间<br>&emsp;&emsp;动态重定位装入方式最适合这里的紧凑技术，紧凑之后需要将各个进程的起始地址修改，一般存放在进程对应的PCB中，进程上CPU之前会把进程起始地址放到重定位寄存器中。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/conclusion.png" class title="This is an example image"></div>
+
+<p>总之,相邻的空闲分区要合并<br>另外，需要对用于管理空闲分区的数据结构有印象 –&gt; 空闲分区表、空闲分区链</p>
+<h1 id="动态分区分配算法"><a href="#动态分区分配算法" class="headerlink" title="动态分区分配算法"></a>动态分区分配算法</h1><p>动态分区分配算法:在动态分区分配方式中，当很多个空闲分区都能满足需求时，应该选择哪个分区进行分配?</p>
+<ul>
+<li>首次适应算法(First Fit)</li>
+<li>最佳适应算法(Best Fit)</li>
+<li>最坏适应算法(Worst Fit)</li>
+<li>邻近适应算法(Next Fit)</li>
+</ul>
+<h2 id="首次适应算法"><a href="#首次适应算法" class="headerlink" title="首次适应算法"></a>首次适应算法</h2><p><em><strong>算法思想</strong></em> :每次都从低地址开始查找，找到第一个能满足大小的空闲分区。<br><em><strong>如何实现</strong></em> :空闲分区以 <em><strong>地址递增</strong></em> 的次序排列。每次分配内存时 <em><strong>顺序查找</strong></em> 空闲分区链（或空闲分区表)，找到大小能满足要求的第一个空闲分区。</p>
+<h2 id="最佳适应算法"><a href="#最佳适应算法" class="headerlink" title="最佳适应算法"></a>最佳适应算法</h2><p><em><strong>算法思想</strong></em> :由于动态分区分配是一种连续分配方式，为各进程分配的空间必须是连续的一整片区域。因此为了保证当“大进程”到来时能有连续的大片空间，可以 <em><strong>尽可能多地留下大片的空闲区</strong></em> ，即， <em><strong>优先使用更小</strong></em> 的空闲区。<br><em><strong>如何实现</strong></em> :空闲分区 <em><strong>按容量递增次序链接</strong></em> 。每次分配内存时顺序查找 <em><strong>空闲分区链</strong></em> （或空闲分区表），找到大小能满足要求的第一个空闲分区。</p>
+<p><em><strong>缺点:</strong></em><br>每次都选最小的分区进行分配，会留下越来越多的、很小的、难以利用的内存块。因此这种方法会产生很多的 <em><strong>外部碎片</strong></em> 。</p>
+<h2 id="最坏适应算法"><a href="#最坏适应算法" class="headerlink" title="最坏适应算法"></a>最坏适应算法</h2><p>又称最大适应算法（Largest Fit)<br><em><strong>算法思想</strong></em> :为了解决最佳适应算法的问题――即留下太多难以利用的小碎片，可以在每次分配时优先使用最大的连续空闲区，这样分配后剩余的空闲区就不会太小，更方便使用。<br><em><strong>如何实现</strong></em> :空闲分区 <em><strong>按容量递减次序</strong></em> 链接。每次分配内存时顺序查找 <em><strong>空闲分区链</strong></em> （或空闲分区表），找到大小能满足要求的第一个空闲分区。重写表后，重新排序。</p>
+<p><em><strong>缺点:</strong></em><br>每次都选最大的分区进行分配，虽然可以让分配后留下的空闲区更大，更可用，但是这种方式会导致较大的连续空闲区被迅速用完。如果之后有“大进程”到达，就没有内存分区可用了。</p>
+<h2 id="邻近适应算法"><a href="#邻近适应算法" class="headerlink" title="邻近适应算法"></a>邻近适应算法</h2><p><em><strong>算法思想</strong></em> :首次适应算法每次都从链头开始查找的。这可能会导致低地址部分出现很多小的空闲分区，而每次分配查找时，都要经过这些分区，因此也增加了查找的开销。如果每次都从上次查找结束的位置开始检索，就能解决上述问题。<br><em><strong>如何实现</strong></em> :空闲分区 <em><strong>以地址递增</strong></em> 的顺序排列（可排成一个循环链表)。每次分配内存时 <em><strong>从上次查找结束的位置</strong></em> 开始查找 <em><strong>空闲分区链</strong></em> （或空闲分区表），找到大小能满足要求的第一个空闲分区。</p>
+<ul>
+<li>好处是，算法开销较小，不需要重新排列列表。</li>
+<li>首次适应算法每次都要从头查找，每次都需要检索低地址的小分区。但是这种规则也决定了当低地址部分有更小的分区可以满足需求时，会更有可能用到低地址部分的小分区，也会更有可能把高地址部分的天分区保留下来（最佳适应算法的优点)</li>
+<li>邻近适应算法的规则可能会导致无论低地址、高地址部分的空闲分区都有相同的概率被使用，也就导致了高地址部分的大分区更可能被使用，划分为小分区，最后导致无大分区可用（最大适应算法的缺点)<br>综合来看,四种算法中, <em><strong>首次适应算法</strong></em> 的效果反而更好</li>
+</ul>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/conclusion1.png" class title="This is an example image"></div>
+
+<p>开销 &gt;&gt;&gt; 每次都需要重新排序</p>
+<h1 id="连续分配方式的缺点"><a href="#连续分配方式的缺点" class="headerlink" title="连续分配方式的缺点"></a>连续分配方式的缺点</h1><p>考虑支持多道程序的两种连续分配方式:</p>
+<ol>
+<li>固定分区分配:缺乏灵活性，会产生大量的内部碎片，内存的利用率很低。</li>
+<li>动态分区分配:会产生很多外部碎片，虽然可以用“紧淡”技术来处理，但是“紧凑”的时间代价很高</li>
+</ol>
+<p>原因是，连续分配方式必须要求占用一块连续的区域。<br>如果允许将一个述程分散地装入到许多不相邻的分区中,便可充分地利用内存，而无需再进行“紧凌”<br>基于这一思想，产生了“非连续分配方式”，或者称为“离散分配方式”。</p>
+<p><em><strong>连续分配</strong></em> :为用户进程分配的必须是一个 <em><strong>连续的内存空间</strong></em> 。<br><em><strong>非连续分配</strong></em> :为用户进程分配的可以是一些 <em><strong>分散的内存空间</strong></em> 。</p>
+<h1 id="非连续分配"><a href="#非连续分配" class="headerlink" title="非连续分配"></a>非连续分配</h1><h2 id="把固定分区分配改造为非连续分配版本"><a href="#把固定分区分配改造为非连续分配版本" class="headerlink" title="把固定分区分配改造为非连续分配版本"></a>把固定分区分配改造为非连续分配版本</h2><ul>
+<li>假设进程A大小为23MB，但是每个分区大小只有10MB，如果进程只能占用一个分区，那显然放不下。</li>
+<li>解决思路:如果允许进程占用多个分区，那么可以把进程拆分成 10MB + 10MB + 3MB三个部分，再把这三个部分分别放到三个分区中(这些分区不要求连续）…</li>
+<li>进程A的最后一个部分是3MB，放入分区后会产生7MB的内部碎片。</li>
+<li>如果每个分区大小为 2MB，那么进程A可以拆分成11 * 2能B+1MB共 12个部分，只有最后一部分1MB占不满分区，会产生1MB的内部碎片。</li>
+<li>显然，如果把分区大小设置的更小一些，内部碎片会更小，内存利用率会更高。</li>
+</ul>
+<p>基本分页存储管理的思想 — 把内存分为一个个相等的小分区,再按照分区大小把进程拆分成一个个小部分</p>
+<h2 id="分配存储管理的基本概念"><a href="#分配存储管理的基本概念" class="headerlink" title="分配存储管理的基本概念"></a>分配存储管理的基本概念</h2><ul>
+<li>将内存空间分为一个个大小相等的分区（比如:每个分区4KB)，每个分区就是一个 <em><strong>“页框”</strong></em> ，或称 <em><strong>“页帧”</strong></em> 、 <em><strong>“内存块”</strong></em> 、 <em><strong>“物理块”</strong></em> 。每个页框有一个编号，即 <em><strong>“页框号”</strong></em> (或者 <em><strong>“内存块号”、“页帧号”、“物理块号”</strong></em> ）页框号 <em><strong>从0开始</strong></em> 。</li>
+<li>将用户进程的地址空间也分为 <em><strong>与页框大小相等</strong></em> 的一个个区域，称为 <em><strong>“页”或“页面”</strong></em> 。每个页面也有一个编号，即“页号”，页号也是从0开始。( <em><strong>注:进程的最后一个页面可能没有一个页框那么大。因此，页框不能太大，否则可能产生过大的内部碎片</strong></em> )</li>
+<li>操作系统以 <em><strong>页框</strong></em> 为单位为各个进程分配内存空间。进程的每个页面分别放入一个页框中。也就是说，进程的 <em><strong>页面与内存</strong></em> 的页框有 <em><strong>一一对应</strong></em> 的关系。</li>
+<li>各个页面不必连续存放，也不必按先后顺序来，可以放到不相邻的各个页框中。</li>
+</ul>
+<h2 id="如何实现地址转换"><a href="#如何实现地址转换" class="headerlink" title="如何实现地址转换"></a>如何实现地址转换</h2><p>将进程地址空间分页之后,操作系统该如何实现逻辑地址到物理地址的转换?</p>
+<h3 id="动态重定位"><a href="#动态重定位" class="headerlink" title="动态重定位"></a>动态重定位</h3><p>重定位寄存器:存放装入模块存放的起始位置<br>思想:模块在内存中的的 <em><strong>“起始地址”</strong></em> ＋目标内存单元相对于起始位置的 <em><strong>“偏移量”</strong></em> </p>
+<p>如果采用分页技术,应该如何实现地址转换?<br>CPU执行指令1，需要访问逻辑地址为80的内存单元，如何转化为物理地址?</p>
+<ul>
+<li>逻辑地址为80的内存单元:</li>
+<li>应该在 <em><strong>1号页</strong></em> ，该页在内存中的 <em><strong>起始位置为450</strong></em> ，逻辑地址为80的内存单元相对于该页的起始地址而言， <em><strong>“偏移量”应该是30</strong></em> 。</li>
+<li>实际物理地址=450 + 30 = 480</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/change.png" class title="This is an example image"></div>
+
+<ol>
+<li>要算出逻辑地址对应的 <em><strong>页号</strong></em> </li>
+<li>要知道该页号对应页面在内存中的 <em><strong>起始地址</strong></em> </li>
+<li>要算出逻辑地址 <em><strong>在页面内的“偏移量”</strong></em> </li>
+<li>物理地址 = 页面始址 ＋页内偏移量</li>
+</ol>
+<p>如何计算:</p>
+<ul>
+<li>页号 = 逻辑地址 / 页面长度(取除法的整数部分)</li>
+<li>页内偏移量 = 逻辑地址 % (页面长度取除法的余数部分) <em><strong>页面在内存中的起始位置</strong></em> :操作系统需要用某种数据结构记录进程各个页面的起始位置。</li>
+</ul>
+<p>eg:</p>
+<ul>
+<li>页号= 80 / 50 = 1</li>
+<li>页内偏移量 = 80 % 50 = 30</li>
+<li><em><strong>1号页</strong></em> 在内存中存放的 <em><strong>起始位置</strong></em> 450</li>
+</ul>
+<p>在计算机中，为了方便计算页号、页内偏移量，页面大小一般设为2的整数幂</p>
+<p>如何计算:</p>
+<ul>
+<li>页号 = 逻辑地址 / 页面长度(取除法的整数部分)</li>
+<li>页内偏移量 = 逻辑地址 % 页面长度（取除法的余数部分)</li>
+<li>假设用32个二进制位表示逻辑地址，页面大小为2<sup>12</sup>B = 4096B = 4KB</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/eg7.png" class title="This is an example image"></div>
+
+<p>Eg:逻辑地址2，用二进制表示应该是00000000000000000000 <em><strong>000000000010</strong></em><br>若0号页在内存中的起始地址为x，则逻辑地址2对应的物理地址应该是X+000000000010<br>Eg:逻辑地址4097，用二进制表示应该是00000000000000000001 <em><strong>000000000001</strong></em><br>若1号页在内存中的起始地址为x，则逻辑地址4097对应的物理地址应该是X+000000000001</p>
+<p>与另一种算法的结果对比:<br>页号 = 逻辑地址 / 页面长度<br>页内偏移量 = 逻辑地址 % 页面长度</p>
+<p>结论:如果每个页面大小为2<sup>k</sup>B，用二进制数表示逻辑地址，则末尾K位即为 <em><strong>页内偏移量</strong></em> ，其余部分就是 <em><strong>页号</strong></em><br>因此，如果让每个页面的大小为2的整数幂，计算机就可以很方便地得出一个逻辑地址对应的页号和页内偏移量。</p>
+<h2 id="逻辑地址"><a href="#逻辑地址" class="headerlink" title="逻辑地址"></a>逻辑地址</h2><p>分页存储管理的逻辑地址结构如下所示:</p>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/strature.png" class title="This is an example image"></div>
+
+<p>地址结构包含两个部分:前一部分为页号，后一部分为页内偏移量W。在上图所示的例子中，地址长度为32位，其中0 ~ 11位为 <em><strong>“页内偏移量”</strong></em> ，或称 <em><strong>“页内地址”</strong></em> ;12 ~ 31位为 <em><strong>“页号”</strong></em> 。</p>
+<ul>
+<li>如果有K位表示“页内偏移量”，则说明该系统中一个页面的大小是2<sup>k</sup>个内存单元</li>
+<li>如果有M位表示“页号”，则说明在该系统中，一个进程最多允许有2<sup>M</sup>个页面</li>
+</ul>
+<p>分页存储管理中，如何实现地址转换?</p>
+<ol>
+<li>要算出逻辑地址对应的页号</li>
+<li>要知道该页号对应页面在内存中的起始地址</li>
+<li>要算出逻辑地址在页面内的“偏移量”</li>
+<li>物理地址 = 页面始址 + 页内偏移量</li>
+</ol>
+<p>注:如果题目中是用十进制数表示逻辑地址，则</p>
+<ul>
+<li>页号 = 逻辑地址 / 页面长度(取除法的整数部分)</li>
+<li>页内偏移量 = 逻辑地址 % 页面长度（取除法的余数部分)</li>
+</ul>
+<h2 id="页表"><a href="#页表" class="headerlink" title="页表"></a>页表</h2><p>为了能知道进程的每个页面在内存中存放的位置，操作系统要为每个进程建立一张页表。</p>
+<ol>
+<li>一个进程对应一张页表</li>
+<li>进程的每一页对应一个页表项</li>
+<li>每个页表项由“页号”和“块号”组成</li>
+<li>页表记录进程页面和实际存放的内存块之间的对应关系</li>
+</ol>
+<div style="width:70%;margin:auto"></div>
+
+<p>M号内存块的起始地址 = M * 内存块大小</p>
+<p>为什么每个页表项的长度是相同的，页号是“隐含”的? &gt;&gt;&gt; 页表项中不用记录页号<br>Eg:假设某系统物理内存大小为4GB，页面大小为4KB，则每个页表项至少应该为多少字节?<br>4GB = 2<sup>32</sup>B，4KB = 2<sup>12</sup>B<br>因此4GB 的内存总共会被分为 2<sup>32</sup> / 2<sup>12</sup> = 2<sup>20</sup>个内存块，因此内存块号的范围应该是0 ~ 2<sup>20</sup> - 1因此至少要20个二进制位才能表示这么多的内存块号，因此至少要3个字节才够（每个字节8个二进制位，3个字节共24个二进制位&gt;</p>
+<ul>
+<li>各页表项会按顺序连续地存放在内存中</li>
+<li>如果该页表在内存中存放的起始地址为×，则M号页对应的页表项一定是存放在内存地址为×＋3 * M因此,页表中的“页号”可以是“隐含”的。</li>
+<li>只需要知道页表存放的起始地址和页表项长度，即可找到各个页号对应的页表项存放的位置</li>
+</ul>
+<p>在本例中，一个页表项占3B，如果进程由n个页面，则该进程的页表总共会占3 * n个字节</p>
+<h2 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h2><div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/conclusion2.png" class title="This is an example image"></div>
+
+<h1 id="非连续分配管理方式"><a href="#非连续分配管理方式" class="headerlink" title="非连续分配管理方式"></a>非连续分配管理方式</h1><p>重点理解、记忆基本地址变换机构（用于实现逻辑地址到物理地址转换的一组硬件机构）的原理和流程</p>
+<h2 id="基本地址变换机构"><a href="#基本地址变换机构" class="headerlink" title="基本地址变换机构"></a>基本地址变换机构</h2><ul>
+<li>基本地址变换机构可以借助进程的页表将逻辑地址转换为物理地址。</li>
+<li>通常会在系统中设置一个 <em><strong>页表寄存器</strong></em> （PTR），存放 <em><strong>页表在内存中的起始地址F和页表长度M</strong></em> 。进程未执行时，页表的始址和页表长度放在 <em><strong>进程控制块</strong></em> （PCB）中，当进程被调度时，操作系统内核会把它们放到页表寄存器中。</li>
+<li>注意:页面大小是2的整数幂</li>
+<li>设页面大小为L，逻辑地址A到物理地址E的变换过程如下:</li>
+</ul>
+<p>设页面大小为L，逻辑地址A到物理地址E的变换过程如下:</p>
+<ol>
+<li>计算页号 Р 和页内偏移量 w （如果用十进制数手算，则 P = A / L，W = A % L:但是在计算机实际运行时，逻辑地址结构是固定不变的，因此计算机硬件可以更快地得到二进制表示的页号、页内偏移量）</li>
+<li>比较页号 P 和页表长度 M ，若 P ≥ M ，则产生越界中断，否则继续执行。(注意:页号是从0开始的，而页表长度至少是1，因此P=M时也会越界）</li>
+<li>页表中页号P对应的页表项地址 = 页表起始地址 F + 页号 P * 页表项长度，取出该页表项内容 b ,即为内存块号。（注意区 <em><strong>分页表项长度、页表长度、页面大小</strong></em> 的区别。 <em><strong>页表长度</strong></em> 指的是这个页表中总共有几个页表项，即总共有几个页; <em><strong>页表项长度</strong></em> 指的是每个页表项占多大的存储空间; <em><strong>页面大小</strong></em> 指的是一个页面占多大的存储空间)</li>
+<li>计算E = b * L + W，用得到的物理地址 E 去访存。(如果内存块号、页面偏移量是用二进制表示的，那么把二者拼接起来就是最终的物理地址了)</li>
+</ol>
+<p>操作系统将内存分为系统区和用户区</p>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/PROCESS.png" class title="This is an example image"></div>
+
+<p><em><strong>动手验证:</strong></em><br>假设页面大小 L= 1KB，最终要访问的内存块号b = 2，页内偏移量W= 1023。</p>
+<ol>
+<li>尝试用E= b * L + W 计算目标物理地址。</li>
+<li>尝试把内存块号、页内偏移量用二进制表示，并把它们拼接起来得到物理地址。对比1、2的结果是否一致</li>
+</ol>
+<p>例:若页面大小L为1K字节，页号2对应的内存块号b=8，将逻辑地址A=2500转换为物理地址E。</p>
+<ul>
+<li>等价描述:某系统按字节寻址，逻辑地址结构中，页内偏移量占10位，页号2对应的内存块号b=8，将逻辑地址A=2500转换为物理地址E。</li>
+<li>说明一个页面的大小为2<sup>10</sup>sup&gt;B = 1KB</li>
+</ul>
+<p>在分页存储管理（页式管理）的系统中，只要确定了每个页面的大小，逻辑地址结构就确定了。因此，页式管理中地址是一维的。即，只要给出一个逻辑地址，系统就可以自动地算出页号、页内偏移量两个部分，并不需要显式地告诉系统这个逻辑地址中，页内偏移量占多少位。</p>
+<h2 id="对页表项大小的进一步探讨"><a href="#对页表项大小的进一步探讨" class="headerlink" title="对页表项大小的进一步探讨"></a>对页表项大小的进一步探讨</h2><p>每个页表项的长度是相同的，页号是“隐含”的<br>Eg:假设某系统物理内存大小为4GB，页面大小为4KB，的内存总共会被分为2<sup>32</sup>/2<sup>12</sup>=2<sup>20</sup>个内存块，因此内存块号的范围应该是0 ~ 2<sup>20</sup>-1<br>因此至少要20个二进制位才能表示这么多的内存块号，因此至少要3个字节才够（每个字节8个二进制位，3个字节共24个二进制位)</p>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/table3.png" class title="This is an example image"></div>
+
+<ul>
+<li>各页表项会按顺序连续地存放在内存中</li>
+<li>如果该页表在内存中存放的起始地址为 × ，则 M 号页对应的页表项是存放在内存地址为 × ＋ 3 * M</li>
+<li>一个页面为4KB，则每个页框可以存放4096/3 = 1365个页表项，但是这个页框会剩余4096 % 3 = 1B页内碎片因此，1365号页表项存放的地址为X＋3 * 1365 + 1</li>
+<li>如果每个页表项占4字节，则每个页框刚好可存放1024个页表项</li>
+<li>1024号页表项虽然是存放在下一个页框中的，但是它的地址依然可以用 X + 4 * 1024得出</li>
+</ul>
+<p>结论:理论上，页表项长度为3B即可表示内存块号的范围，但是，为了方便页表的查询，常常会让一个页表项占更多的字节，使得每个页面恰好可以装得下整数个页表项。<br>进程页表通常是装在连续的内存块中的</p>
+<h2 id="总结-3"><a href="#总结-3" class="headerlink" title="总结"></a>总结</h2><div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/conclusion3.png" class title="This is an example image"></div>
+
+<p>第一次访问内存:查页表<br>第二次访问内存:访问目标内存单元</p>
+<h1 id="具有快表的地址变换机构"><a href="#具有快表的地址变换机构" class="headerlink" title="具有快表的地址变换机构"></a>具有快表的地址变换机构</h1><p>是基本地址变换机构的改进版本</p>
+<h2 id="局部性原理"><a href="#局部性原理" class="headerlink" title="局部性原理"></a>局部性原理</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int i &#x3D; 0;</span><br><span class="line">int a[100];</span><br><span class="line">while (i &lt; 100)&#123;</span><br><span class="line">	a[i] &#x3D; i;</span><br><span class="line">	i++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/part.png" class title="This is an example image"></div>
+
+<p>这个程序执行时,会很频繁地访问10号、23号内存块。<br><em><strong>时间局部性</strong></em> :如果执行了程序中的某条指令，那么不久后这条指令很有可能再次执行;如果某个数据被访问过，不久之后该数据很可能再次被访问。（因为程序中存在大量的循环)<br><em><strong>空间局部性</strong></em> :一旦程序访问了某个存储单元，在不久之后，其附近的存储单元也很有可能被访问。（因为很多数据在内存中都是连续存放的)</p>
+<p>上小节介绍的基本地址变换机构中，每次要访问一个逻辑地址，都需要查询内存中的页表。由于局部性原理， <em><strong>可能连续很多次查到的都是同一个页表项</strong></em> 。既然如此，能否利用这个特性减少访问页表的次数呢?</p>
+<h2 id="什么是快表-TLB"><a href="#什么是快表-TLB" class="headerlink" title="什么是快表(TLB)"></a>什么是快表(TLB)</h2><p>快表，又称联想寄存器（TLB），是一种访问速度比内存快很多的高速缓冲存储器，用来存放当前访问的若干页表项，以加速地址变换的过程。与此对应，内存中的页表常称为慢表。</p>
+<div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/proccess.png" class title="This is an example image"></div>
+
+<ul>
+<li>若快表命中，就不需要再访问内存了</li>
+<li>若快表没有目标页表项，则需要查询内存中的页表</li>
+<li>快表存放的是页表的一部分副本</li>
+</ul>
+<h2 id="引入快表后，地址的变换过程"><a href="#引入快表后，地址的变换过程" class="headerlink" title="引入快表后，地址的变换过程"></a>引入快表后，地址的变换过程</h2><ol>
+<li>CPU给出逻辑地址，由某个硬件算得页号、页内偏移量，将页号与快表中的所有页号进行比较。</li>
+<li>如果找到匹配的页号，说明要访问的页表项在快表中有副本，则直接从中取出该页对应的内存块号，再将内存块号与页内偏移量拼接形成物理地址，最后，访问该物理地址对应的 <em><strong>内存单元</strong></em> 。因此，若 <em><strong>快表命中</strong></em> ，则访问某个逻辑地址仅需 <em><strong>一次访存</strong></em> 即可。</li>
+<li>如果没有找到匹配的页号，则需要 <em><strong>访问内存中的页表</strong></em> ，找到对应页表项，得到页面存放的内存块号，再将内存块号与页内偏移量拼接形成物理地址，最后， <em><strong>访问</strong></em> 该物理地址对应的 <em><strong>内存单元</strong></em> 。因此,若快表未命中，则访问某个逻辑地址需要 <em><strong>两次访存</strong></em> （注意: <em><strong>在找到页表项后</strong></em> ，应 <em><strong>同时将其存入快表</strong></em> ，以便后面可能的再次访问。但若快表已满，则必须按照一定的算法对旧的页表项进行替换)</li>
+</ol>
+<p>由于查询快表的速度比查询页表的速度快很多，因此只要快表命中，就可以节省很多时间。因为局部性原理，一般来说快表的命中率可以达到90%以上。<br>例:某系统使用基本分页存储管理，并采用了具有快表的地址变换机构。访问一次快表耗时1us，访问一次内存耗时100us。若快表的命中率为90%，那么访问一个逻辑地址的平均耗时是多少?<br>(1 + 100) * 0.9 +(1 + 100 + 100) * 0.1 = 111 us<br>有的系统支持快表和慢表同时查找，如果是这样，平均耗时应该是(1 + 100) * 0.9 + (100 + 100) * 0.1 = 110.9 us<br>若未采用快表机制，则访问一个逻辑地址需要 100 + 100  = 200us</p>
+<h2 id="总结-4"><a href="#总结-4" class="headerlink" title="总结"></a>总结</h2><div style="width:70%;margin:auto"><img src="/2021/02/01/supervisor-mode/conclusion4.png" class title="This is an example image"></div>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/01/supervisor-mode/" data-id="cknn1mv9c003ccrupd5bkg2z7" data-title="supervisor mode" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Overlay-and-swap" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/30/Overlay-and-swap/" class="article-date">
+  <time class="dt-published" datetime="2021-01-30T08:34:24.000Z" itemprop="datePublished">2021-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/30/Overlay-and-swap/">Overlay and swap</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="内存管理的概念"><a href="#内存管理的概念" class="headerlink" title="内存管理的概念"></a>内存管理的概念</h1><h2 id="覆盖技术"><a href="#覆盖技术" class="headerlink" title="覆盖技术"></a>覆盖技术</h2><ul>
+<li>早期的计算机内存很小，比如IBM推出的第一台PC机最大只支持1MB大小的内存因此经常会出现内存大小不够的情况。</li>
+<li>后来人们引入了 <em><strong>覆盖技术</strong></em> ，用来解决“ <em><strong>程序大小超过物理内存总和</strong></em> ”的问题</li>
+</ul>
+<p><em><strong>覆盖技术的思想:</strong></em></p>
+<ul>
+<li>将程序分为多个段（多个模块)常用的段常驻内存，不常用的段在需要时调入内存。</li>
+<li>内存中分为一个“固定区”和若干个“覆盖区”。</li>
+<li>需要常驻内存的段放在“固定区”中，调入后就不再调出（除非运行结束)</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/01/30/Overlay-and-swap/cover.png" class title="This is an example image"></div>
+
+<p><em><strong>缺点</strong></em> :<br>必须由程序员声明覆盖结构，操作系统完成自动覆盖。缺点:对用户不透明，增加了用户编程负担。覆盖技术只用于早期的操作系统中，现在已成为历史。</p>
+<h2 id="交换技术"><a href="#交换技术" class="headerlink" title="交换技术"></a>交换技术</h2><ul>
+<li>交换（对换）技术的设计思想:内存空间紧张时，系统将内存中某些进程暂时换出外存，把外存中某些已具备运行条件的进程换入内存（进程在内存与磁盘间动态调度)</li>
+<li>将PCB保留在内存中，并且插入挂起队列。 &gt;&gt;&gt; 记录进程存放外存的位置</li>
+<li>暂时换出外存等待的进程状态为挂起状态(挂起态，suspend)挂起态又可以进一步细分为就绪挂起、阻塞挂起两种状态</li>
+</ul>
+<p>ps:中级调度就是为了实现交换技术而是用的调度策略。中级调度（内存调度)，就是要决定将哪个处于挂起状态的进程重新调入内存。</p>
+<div style="width:70%;margin:auto"><img src="/2021/01/30/Overlay-and-swap/model.png" class title="This is an example image"></div>
+
+<h2 id="三个问题"><a href="#三个问题" class="headerlink" title="三个问题"></a>三个问题</h2><ol>
+<li>应该在外存（磁盘）的什么位置保存被换出的进程?</li>
+<li>什么时候应该交换?</li>
+<li>应该换出哪些进程?</li>
+</ol>
+<p><em><strong>答：</strong></em></p>
+<ol>
+<li>具有对换功能的操作系统中，通常把磁盘空间分为 <em><strong>文件区</strong></em> 和 <em><strong>对换区</strong></em> 两部分。文件区主要用于存放文件，主要 <em><strong>追求存储空间的利用率</strong></em> ，因此对文件区空间的管理采用 <em><strong>离散分配方式</strong></em> ; <em><strong>对换区</strong></em> 空间只占磁盘空间的小部分， <em><strong>被换出的进程数据就存放在对换区</strong></em> 。由于对换的速度直接影响到系统的整体速度，因此对换区空间的管理主要 <em><strong>追求换入换出速度</strong></em> ，因此通常对换区 <em><strong>采用连续分配方式</strong></em> （学过文件管理章节后即可理解）。总之， <em><strong>对换区的I/o速度比文件区的更快</strong></em> 。 &gt;&gt;&gt; 数据换出存放在对换区，换入也是从对换区换回</li>
+<li>交换通常在许多进程运行且内存吃紧时进行，而系统负荷降低就暂停。例如:在发现许多进程运行时经常发生缺页，就说明内存紧张，此时可以换出一些进程;如果缺页率明显下降，就可以暂停换出。</li>
+<li>可优先换出阻塞进程;可换出优先级低的进程;为了防止优先级低的进程在被调入内存后很快又被换出，有的系统还会考虑进程在内存的驻留时间..</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><div style="width:70%;margin:auto"><img src="/2021/01/30/Overlay-and-swap/conclusion.png" class title="This is an example image"></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/30/Overlay-and-swap/" data-id="cknn1mv7l0017cruph4io34qx" data-title="Overlay and swap" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Java-day13" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/29/Java-day13/" class="article-date">
+  <time class="dt-published" datetime="2021-01-29T13:07:33.000Z" itemprop="datePublished">2021-01-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/29/Java-day13/">Java day13</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>电脑整体环境</p>
+<ul>
+<li>桌面上尽量不要放文件</li>
+<li>除了系统组件以外，其他的软件尽量安装在D盘</li>
+<li>每当新安装软件时，都要先准备一个新的文件夹</li>
+<li>软件安装的路径中，应该尽量避免中文与空格</li>
+<li>C盘装系统；D盘装应用软件；E盘装软件产生的数据；F盘存放长久保留的文件</li>
+<li>Windows10 Windows7 尽量避免 Window8/XP 尽量选择64位系统</li>
+</ul>
+</li>
+<li><p>JAVASE</p>
+<ul>
+<li>Java300集</li>
+<li>JDK java开发工具包 推荐JDK8</li>
+<li>Notepad++ 一款灵巧的纯文本编辑工具</li>
+<li>idea 2019-2 java 集成开发环境 html &gt;&gt;&gt; hbuilder java &gt;&gt;&gt; idea</li>
+</ul>
+</li>
+</ol>
+<p>JDK安装时可以放在C盘，不会产生什么垃圾，而且运行更快一些</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Program Files\Java\jdk1.8.0_281\</span><br></pre></td></tr></table></figure>
+
+<p>测试JDK是否安装成功:win + r &gt;&gt;&gt; cmd &gt;&gt;&gt; java -version<br>Notepad++ 一路next即可</p>
+<h1 id="计算机知识"><a href="#计算机知识" class="headerlink" title="计算机知识"></a>计算机知识</h1><h2 id="计算机开机过程"><a href="#计算机开机过程" class="headerlink" title="计算机开机过程"></a>计算机开机过程</h2><ul>
+<li>核心计算元件 CPU</li>
+<li>运行内存 RAM &gt;&gt;&gt; 存储量小，断电后数据消失，数据读写速度飞快</li>
+<li>硬盘 DISK &gt;&gt;&gt; 磁盘一直处于转动状态，用探针在上面读取数据 &gt;&gt;&gt; 磁盘存储大量数据，断电后数据不会消失，容量大，但是数据读取速度慢</li>
+<li>显卡 GPU 图形架构器</li>
+</ul>
+<p>为了解决磁盘与CPU交互慢的问题，先预加载一部分数据进入RAM。<br>系统启动之前，就是磁盘中的数据，启动将一部分系统数据加载进入RAM，大约几个G的数据，这个过程耗费时间长。</p>
+<h2 id="程序启动过程"><a href="#程序启动过程" class="headerlink" title="程序启动过程"></a>程序启动过程</h2><p>没有启动之前，就是磁盘中的文件，启动就是磁盘中的文件进入RAM的过程</p>
+<ul>
+<li>电脑开启了一个进程:一个软件的启动 软件本身的文件从硬盘进入到内存</li>
+<li>进程代表了一个软件的启动，但是软件的启动不代表了有任务要进行。</li>
+<li>一个进程中可以同时开启多个任务，每个任务专业称呼线程</li>
+</ul>
+<p><em><strong>内存大小</strong></em> :内存越大，代表设备可以运行的程序就越多。</p>
+<ul>
+<li>内存满了，就会在磁盘上开辟一个小的虚拟内存，此处就当做内存使用，这是就会导致速度变慢，发生卡顿。 &gt;&gt;&gt; 内存大一些，就可以同时开启的任务多一些</li>
+<li>CPU的线程数:CPU可以同时执行的任务数量 &gt;&gt;&gt; 多核多线程CPU</li>
+<li>CPU的单线程运算能力，每个独立的线程的运算能力</li>
+<li>传统机械硬盘，温彻斯特硬盘 &gt;&gt;&gt; 内部有硬盘和磁头机械结构</li>
+<li>固态硬盘，读写速度非常快 &gt;&gt;&gt; 是一般机械硬盘读写速度的10倍，一些类似于内存的存储模块</li>
+<li>但是要想程序跑得快，还是要CPU的运算能力强一些才行</li>
+<li>如果电脑装了固态硬盘，内存尽量大些</li>
+<li>因为如果电脑要开辟虚拟内存，内存的读写时非常频繁的，至少上万次，会进行反复的擦写。而固态硬盘的读写能力远远低于传统硬盘，如果进行高频率的读写，会影响固态硬盘的寿命</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/01/29/Java-day13/intro.png" class title="This is an example image"></div>
+
+<p>查看设备:我的电脑属性 &gt;&gt;&gt; 设备管理器</p>
+<p>ps:因特尔CPU i3 i5 i7 的最重要差别区别是 线程数，核心数</p>
+<h1 id="计算机语言发展史"><a href="#计算机语言发展史" class="headerlink" title="计算机语言发展史"></a>计算机语言发展史</h1><ul>
+<li>人类语言 人类间沟通</li>
+<li>计算机语言 跟计算机说话</li>
+<li>计算机会思考 但是要教他 不会有自我意识</li>
+</ul>
+<h2 id="计算机语言"><a href="#计算机语言" class="headerlink" title="计算机语言"></a>计算机语言</h2><ul>
+<li>第一代 机器语言 二进制代码</li>
+<li>第二代 汇编语言 简单的英语单词 VB有点类似但是不一样</li>
+<li>第三代 高级语言 <ul>
+<li>面向对象 &gt;&gt;&gt; C/Fortran/COBOL/PASCAL/ADA</li>
+<li>面向过程 &gt;&gt;&gt; C++/C#/java</li>
+</ul>
+</li>
+</ul>
+<p>ps:从高级语言转为低级语言的过程称为 <em><strong>编译</strong></em></p>
+<h1 id="Java历史"><a href="#Java历史" class="headerlink" title="Java历史"></a>Java历史</h1><ul>
+<li>SUN公司</li>
+<li>Java为什么被发明</li>
+<li>Java的发明人</li>
+<li>经历阶段</li>
+<li>Java核心机制<ul>
+<li>垃圾回收机制</li>
+<li>跨平台机制</li>
+</ul>
+</li>
+</ul>
+<h2 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h2><p>方案一:手动移除数据<br>方案二:自动移除数据</p>
+<h2 id="跨平台机制"><a href="#跨平台机制" class="headerlink" title="跨平台机制"></a>跨平台机制</h2><p>Java的跨平台机制优越 同样的代码可以在不同的终端使用<br>互联网的发展 需要程序在多种不同的平台上 终端上运行 要求我们的程序在跨平台处理上有这非常方便的形式和优越的性能</p>
+<p>JAVA源代码 &gt;&gt;&gt; JAVA字节码 &gt;&gt;&gt; JVM(翻译)JAVA Virtual machine &gt;&gt;&gt; 各种系统<br>服务器系统 &gt;&gt;&gt; Windows/Linux/Unix<br>不同操作系统的内核算法是不一样的 使用的指令集是有差异的 甚至硬件上都有一些差异 编译之后的JAVA字节码不能够直接在各个系统上运行 需要在各个系统上安装虚拟机 通过虚拟机向平台解释JAVA字节码的含义<br>JAVA源代码 需要编译1次 有虚拟机向每个平台去解释 要想实现跨平台 必须要有虚拟机 虚拟机由oracle公司开发的<br>目前市场上主要的操作系统 都有对应的虚拟机<br>JAVA的核心优势 跨平台性能<br>JAVA的核心技术 虚拟机技术<br>JAVA技术的瓶颈 虚拟机技术</p>
+<ul>
+<li>C语言编译 直接生成各个系统可识别 可直接运行的代码文件</li>
+<li>C语言更快</li>
+</ul>
+<p>JAVA的字节是一种中立的二进制代码文件<br>宏观上的程序 &gt;&gt;&gt; 靠近用户要求的功能<br>系统工具 如驱动程序 &gt;&gt;&gt; 用C语言实现更快<br>虚拟机已经在JDK中安装了</p>
+<h1 id="常用计算机指令"><a href="#常用计算机指令" class="headerlink" title="常用计算机指令"></a>常用计算机指令</h1><h2 id="DOS命令"><a href="#DOS命令" class="headerlink" title="DOS命令"></a>DOS命令</h2><h3 id="DOS操作系统"><a href="#DOS操作系统" class="headerlink" title="DOS操作系统"></a>DOS操作系统</h3><ul>
+<li>Disk Operating system 磁盘操作系统</li>
+<li>DOS是单用户 单任务的操作系统</li>
+</ul>
+<h3 id="DOS命令-1"><a href="#DOS命令-1" class="headerlink" title="DOS命令"></a>DOS命令</h3><ul>
+<li>在windows中 通过鼠标键盘来操作系统 要通过dos命令来实现操作系统</li>
+<li>DOS命令 是一种面向磁盘的操作命令</li>
+</ul>
+<h3 id="命令学习"><a href="#命令学习" class="headerlink" title="命令学习"></a>命令学习</h3><p>win + r &gt;&gt;&gt; cmd</p>
+<p><em><strong>掌握的命令</strong></em></p>
+<ul>
+<li><p>DIR(directory) :显示目录详细信息</p>
+<ul>
+<li>dir代表了该文件是一个文件夹(目录)</li>
+<li>一些文件都用英文翻译了</li>
+<li>创建时间 + 修改时间 + 文件类型 + 文件大小 + 文件名</li>
+<li>.代表本层目录 ..代表上层目录</li>
+<li>dir /s 查看各个层级的子文件和子目录</li>
+<li>显示当前层次所有文件和目录 包含隐藏的  dir /a</li>
+</ul>
+</li>
+<li><p>CD(change directory) :改变程序显示当前目录</p>
+<ul>
+<li>切换硬盘 d:</li>
+<li>进入文件夹 cd &lt;文件夹名&gt;</li>
+<li>进入上一层目录 cd ..</li>
+<li>进入根目录 cd /</li>
+</ul>
+</li>
+<li><p>CLS(clear screen) :清除屏幕 但历史记录还在 按向上键查看</p>
+</li>
+<li><p>切换盘符:快速切换盘符 d:</p>
+</li>
+<li><p>Tab:自动补充键</p>
+</li>
+<li><p>MD(make directory) :建立目录</p>
+</li>
+<li><p>RD(remove directory) :删除目录</p>
+</li>
+<li><p>copy :复制文件</p>
+</li>
+<li><p>DEL(delete) ：删除文件</p>
+<ul>
+<li>del a 删除文件夹下内容</li>
+<li>del a.txt 删除文件</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/29/Java-day13/" data-id="cknn1mv6x000ccrupchc6b3ud" data-title="Java day13" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-memory-management" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/28/memory-management/" class="article-date">
+  <time class="dt-published" datetime="2021-01-28T07:48:29.000Z" itemprop="datePublished">2021-01-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/28/memory-management/">memory management</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="内存相关的基础知识"><a href="#内存相关的基础知识" class="headerlink" title="内存相关的基础知识"></a>内存相关的基础知识</h1><h2 id="什么是内存，有何作用"><a href="#什么是内存，有何作用" class="headerlink" title="什么是内存，有何作用"></a>什么是内存，有何作用</h2><p>内存是用于存放数据的硬件。程序执行前需要先放到内存中才能被CPU处理。</p>
+<p>ps:外存是慢速设备，CPU是高速设备</p>
+<h3 id="存储单元"><a href="#存储单元" class="headerlink" title="存储单元"></a>存储单元</h3><p><em><strong>思考</strong></em> :在多道程序环境下，系统中会有多个程序并发执行，也就是说会有多个程序的数据需要同时放到内存中。那么，如何区分各个程序的数据是放在什么地方的呢?</p>
+<p><em><strong>方案一:给内存的存储单元编地址</strong></em></p>
+<ul>
+<li>内存中也有一个一个的“小房间”，每个小房间就是一个“ <em><strong>存储单元</strong></em> ”</li>
+<li>内存地址从0开始,每个地址对应一个存储单元</li>
+<li>如果计算机“ <em><strong>按字节编址</strong></em> ”则每个存储单完大小为1字节，即1B，即8个二进制位</li>
+<li>如果字长为16位的计算机“ <em><strong>按字编址</strong></em> ”，则每个存储单元大小为1个字;每个字的大小为16个二进制位</li>
+</ul>
+<p>ps:一个存储单元多大，要看是按什么编址，如果按字编址，还要看该计算机字长是多少位</p>
+<h3 id="几个常用的数量单位"><a href="#几个常用的数量单位" class="headerlink" title="几个常用的数量单位"></a>几个常用的数量单位</h3><p>2<sup>10</sup> = 1K<br>2<sup>20</sup> = 1M<br>2<sup>30</sup> = 1G</p>
+<p><em><strong>注</strong></em> :有的题目会告诉我们内存的大小，让我们确定地址长度应该是多少(即要多少个二进制位才能表示相应数目的存储单元)</p>
+<h2 id="进程运行的基本原理"><a href="#进程运行的基本原理" class="headerlink" title="进程运行的基本原理"></a>进程运行的基本原理</h2><h3 id="指令工作原理"><a href="#指令工作原理" class="headerlink" title="指令工作原理"></a>指令工作原理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;x &#x3D; x + 1;</span><br><span class="line">指令1 (00101100,00000011,01001111) 数据传输指令 &#x2F;&#x2F;前几位判断要做什么，是操作码;后面是两个参数，将内存单元为第三串数字的数据取出，放在内存单元为第二串数字的地址里</span><br><span class="line">指令2 加法指令</span><br><span class="line">指令3 数据传输指令</span><br></pre></td></tr></table></figure>
+
+<p>进程 = 程序段 + 数据段 + PCB</p>
+<ul>
+<li>将指令放在程序段</li>
+<li>将变量放在数据段 –&gt; 存储地址(二进制数表示)</li>
+</ul>
+<p>可见，我们写的代码要翻译成CPU能识别的指令。这些指令会告诉CPU应该去内存的哪个地址存/取数据，这个数据应该做什么样的处理。在这个例子中，指令中直接给出了变量x的实际存放地址（物理地址）。但实际在生成机器指令的时候并不知道该进程的数据会被放到什么位置。所以编译生成的指令中一般是使用 <em><strong>逻辑地址（相对地址）</strong></em></p>
+<h3 id="逻辑地址-vs-物理地址"><a href="#逻辑地址-vs-物理地址" class="headerlink" title="逻辑地址 vs 物理地址"></a>逻辑地址 vs 物理地址</h3><ul>
+<li>宿舍四个人一起出去旅行，四个人的学号尾号分别是0、1、2、3。</li>
+<li>住酒店时酒店给你们安排了4个房号相连的房间。四个人按学号递增次序入住房间。比如0、1、2、3号同学分别入住了5、6、7、8号房间。</li>
+<li>四个人的编号0、1、2、3其实是一个“相对位置”，而各自入住的房间号是一个“绝对位置”。</li>
+<li>只要知道0号同学住的是房号为N的房间，那么M号同学的房号一定是N+M。</li>
+</ul>
+<p>指令中的地址也可以采用这种思想。编译时产生的指令只关心“相对地址”，实际放入内存中时再想办法根据起始位置得到“绝对地址”。</p>
+<p><em><strong>Eg</strong></em> :编译时只需确定变量x存放的相对地址是100（也就是说相对于进程在内存中的起始地址而言的地址)。CPU 想要找到x在内存中的实际存放位置，只需要用进程的起始地址+100即可。</p>
+<p><em><strong>ps</strong></em> :相对地址又称逻辑地址，绝对地址又称物理地址。</p>
+<h3 id="从写程序到程序运行-编辑-编译-链接-装入"><a href="#从写程序到程序运行-编辑-编译-链接-装入" class="headerlink" title="从写程序到程序运行:编辑-编译-链接-装入"></a>从写程序到程序运行:编辑-编译-链接-装入</h3><p>程序员编写源代码文件(如.c文件)，经过编译器编译之后形成与他们相对应的若干个目标模块(如.o文件，其实是用机器语言表示的一系列等价语言集合)。之后经过链接程序的链接，会将目标模块组装成一个完整的装入模块，并且形成完整的逻辑地址空间。最后有由装入程序将装入模块，放到相应的位置当中，形成最终的物理地址。之后CPU可以正式的执行这个程序。</p>
+<div style="width:70%;margin:auto"><img src="/2021/01/28/memory-management/proccess.png" class title="This is an example image"></div>
+
+<ul>
+<li>编译:由编译程序将用户源代码编译成若干个目标模块（编译就是把 <em><strong>高级语言</strong></em> 翻译为 <em><strong>机器语言</strong></em> )</li>
+<li>链接:由链接程序将编译后形成的一组目标模块，以及所需库函数链接在一起，形成一个完整的装入模块</li>
+<li>装入(装载):由装入程序将装入模块装入内存运行</li>
+</ul>
+<p>ps:目标模块包含的一系列指令地址使用的是逻辑地址，每个目标模块的逻辑地址都是从零开始的。</p>
+<h3 id="装入模块装入内存"><a href="#装入模块装入内存" class="headerlink" title="装入模块装入内存"></a>装入模块装入内存</h3><p>c语言程序翻译成机器语言指令后:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int a &#x3D; 1;</span><br><span class="line">int x &#x3D; a + 1;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>装入模块装入内存时,需要对指今中的地址进行处理</li>
+<li>如果不处理可能会指向错误的地址</li>
+<li>装入模块中的指令地址指的是“相对地址”，即:相对于开始地址而言的地址。相对地址又称逻辑地址。</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/01/28/memory-management/address.png" class title="This is an example image"></div>
+
+<h3 id="三种装入方式"><a href="#三种装入方式" class="headerlink" title="三种装入方式"></a>三种装入方式</h3><p>装入的三种方式(用三种不同的方法完成 <em><strong>逻辑地址</strong></em> 到 <em><strong>物理地址</strong></em> 的转换）:</p>
+<ol>
+<li>绝对装入</li>
+<li>静态重定位</li>
+<li>动态重定位</li>
+</ol>
+<p><em><strong>绝对装入</strong></em> :在编译时，如果知道程序将放到内存中的哪个位置，编译程序将产生绝对地址的目标代码。装入程序按照装入模块中的地址，将程序和数据装入内存。</p>
+<ul>
+<li>编译、链接后得到的装入模块的指令直接就使用了绝对地址</li>
+<li>绝对装入只适用于单道程序环境(同一时刻只有一道程序运行，每道程序要从什么位置开始存放可以从刚开始约定好)。</li>
+<li>程序中使用的绝对地址，可在编译或汇编时给出，也可由程序员直接赋予。通常情况下都是编译或汇编时再转换为绝对地址。</li>
+</ul>
+<p><em><strong>静态重定位</strong></em> :又称可重定位装入。编译、链接后的装入模块的地址都是从0开始的，指令中使用的地址、数据存放的地址都是相对于起始地址而言的逻辑地址。可根据内存的当前情况，将装入模块装入到内存的适当位置。装入时对地址进行“ <em><strong>重定位</strong></em> ”，将逻辑地址变换为物理地址（地址变换是在装入时一次完成的）。</p>
+<ul>
+<li>静态重定位的特点是在一个作业装入内存时，必须 <em><strong>分配其要求的全部内存空间</strong></em> ，如果没有足够的内存，就不能装入该作业。</li>
+<li>作业一旦进入内存后，在 <em><strong>运行期间就不能再移动</strong></em> ，也不能再申请内存空间。</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/01/28/memory-management/change.png" class title="This is an example image"></div>
+
+<p><em><strong>动态重定位</strong></em> :又称动态运行时装入。编译、链接后的装入模块的地址都是从0开始的。装入程序把装入模块装入内存后，并不会立即把逻辑地址转换为物理地址，而是把地址转换推迟到程序真正要执行时才进行。因此 <em><strong>装入内存后所有的地址依然是逻辑地址</strong></em> 。这种方式需要一个重定位寄存器的支持。</p>
+<ul>
+<li>系统设置一个重定位寄存器存放，存放装入模块的 <em><strong>起始位置</strong></em></li>
+<li>采用动态重定位时允许程序在内存中发生移动。</li>
+<li>并且可将程序分配到不连续的存储区中;</li>
+<li>在程序运行前只需装入它的部分代码即可投入运行，然后在程序运行期间，根据需要动态申请分配内存;</li>
+<li>便于程序段的共享,可以向用户提供一个比存储空间大得多的地址空间。</li>
+</ul>
+<h3 id="三种链接方式"><a href="#三种链接方式" class="headerlink" title="三种链接方式"></a>三种链接方式</h3><ol>
+<li><em><strong>静态链接</strong></em> :在程序运行之前,先将各目标模块及它们所需的库函数连接成一个完整的可执行文件(装入模块)，之后不再拆开。(主要要在链接时，将独立的逻辑地址合并为完整的逻辑地址)</li>
+<li><em><strong>装入时动态链接</strong></em> :将各目标模块装入内存时，边装入边链接的链接方式。</li>
+<li><em><strong>运行时动态链接</strong></em> :在程序执行中需要该目标模块时，才对它进行链接。其优点是便于修改和更新，便于实现对目标模块的共享。</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><div style="width:70%;margin:auto"><img src="/2021/01/28/memory-management/conclusion.png" class title="This is an example image"></div>
+
+<h1 id="内存管理概念"><a href="#内存管理概念" class="headerlink" title="内存管理概念"></a>内存管理概念</h1><h2 id="内存空间的分配与回收"><a href="#内存空间的分配与回收" class="headerlink" title="内存空间的分配与回收"></a>内存空间的分配与回收</h2><p>操作系统作为系统资源的管理者，当然也需要对内存进行管理，要管些什么呢?</p>
+<ol>
+<li><p>操作系统负责 <em><strong>内存空间的分配与回收</strong></em></p>
+<ul>
+<li>操作系统要怎么记录哪些内存区域已经被分配出去了，那些又还空闲?</li>
+<li>当进程运行结束之后，如何将进程占用的内存空间回收?</li>
+<li>很多位置都可以放，那应该放在哪里?</li>
+</ul>
+</li>
+<li><p>操作系统需要提供某种技术从逻辑上 <em><strong>对内存空间进行扩充</strong></em></p>
+</li>
+<li><p>操作系统需要提供地址转换功能，负责程序的 <em><strong>逻辑地址</strong></em> 与 <em><strong>物理地址</strong></em> 的转换。</p>
+<ul>
+<li>为了使编程更方便，程序员写程序时应该只需要关注指令、数据的逻辑地址。而逻辑地址到物理地址的转换（这个过程称为 <em><strong>地址重定位</strong></em> ）应该由操作系统负责，这样就保证了程序员写程序时不需要关注物理内存的实际情况。 —&gt; 三种装入方式<ol>
+<li>绝对装入 –&gt; 编译时产生绝对地址 &gt;&gt; 单道程序阶段，此时还没有产生操作系统</li>
+<li>可重定位装入 –&gt; 装入时将逻辑地址转化为物理地址 &gt;&gt; 用于早期的多道批处理操作系统</li>
+<li>动态运行时装入 –&gt; 运行时将逻辑地址转换为物理地址，需要定位寄存器 &gt;&gt; 现代操作系统</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>操作系统需要提供内存保护功能。保证各进程在各自存储空间内运行，互不干扰</p>
+</li>
+</ol>
+<h2 id="内存保护"><a href="#内存保护" class="headerlink" title="内存保护"></a>内存保护</h2><p>进程1只能访问进程1的内存空间，不能更改操作系统或者其他进程。<br>假设进程的逻辑地址空间为0-179；实际物理地址空间为100-279。</p>
+<p><em><strong>内存保护可采取两种方法:</strong></em></p>
+<ol>
+<li>在CPU中设置一对上、下限寄存器，存放进程的上、下限地址。进程的指令要访问某个地址时，CPU检查是否越界。</li>
+<li>采用 <em><strong>重定位寄存器</strong></em> (又称基址寄存器)和 <em><strong>界地址寄存器</strong></em> (又称限长寄存器）进行越界检查。重定位寄存器中存放的是进程的 <em><strong>起始物理地址</strong></em> 。界地址寄存器中存放的是进程的 <em><strong>最大逻辑地址</strong></em> 。</li>
+</ol>
+<div style="width:70%;margin:auto"><img src="/2021/01/28/memory-management/ways.png" class title="This is an example image"></div>
+
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><div style="width:70%;margin:auto"><img src="/2021/01/28/memory-management/conclusion1.png" class title="This is an example image"></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/28/memory-management/" data-id="cknn1mv82001zcrupcgn8gdwp" data-title="memory management" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Java-day12" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/27/Java-day12/" class="article-date">
+  <time class="dt-published" datetime="2021-01-27T11:39:48.000Z" itemprop="datePublished">2021-01-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/27/Java-day12/">Java day12</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="整合网页"><a href="#整合网页" class="headerlink" title="整合网页"></a>整合网页</h1><h2 id="html"><a href="#html" class="headerlink" title="html"></a>html</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;css&#x2F;12306CSS.css&quot;&#x2F;&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;!-- 导航栏 --&gt;</span><br><span class="line">		&lt;div class&#x3D;&quot;navi&quot;&gt;</span><br><span class="line">		&lt;!-- ul&gt;li*8&gt;span --&gt;</span><br><span class="line">			&lt;ul&gt;</span><br><span class="line">				&lt;li class&#x3D;&quot;navi_item1&quot;&gt;&lt;span&gt;首页&lt;&#x2F;span&gt;&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;li class&#x3D;&quot;navi_item&quot;&gt;&lt;span&gt;车票&amp;nbsp;&amp;nbsp;&amp;or;&lt;&#x2F;span&gt;&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;li class&#x3D;&quot;navi_item&quot;&gt;&lt;span&gt;团购服务&amp;nbsp;&amp;nbsp;&amp;or;&lt;&#x2F;span&gt;&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;li class&#x3D;&quot;navi_item&quot;&gt;&lt;span&gt;会员服务&amp;nbsp;&amp;nbsp;&amp;or;&lt;&#x2F;span&gt;&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;li class&#x3D;&quot;navi_item&quot;&gt;&lt;span&gt;站车服务&amp;nbsp;&amp;nbsp;&amp;or;&lt;&#x2F;span&gt;&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;li class&#x3D;&quot;navi_item&quot;&gt;&lt;span&gt;商旅服务&amp;nbsp;&amp;nbsp;&amp;or;&lt;&#x2F;span&gt;&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;li class&#x3D;&quot;navi_item&quot;&gt;&lt;span&gt;出行指南&amp;nbsp;&amp;nbsp;&amp;or;&lt;&#x2F;span&gt;&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;li class&#x3D;&quot;navi_item&quot;&gt;&lt;span&gt;信息查询&amp;nbsp;&amp;nbsp;&amp;or;&lt;&#x2F;span&gt;&lt;&#x2F;li&gt;</span><br><span class="line">			&lt;&#x2F;ul&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;br &#x2F;&gt;</span><br><span class="line">		&lt;!-- 服务栏 --&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;service&quot;&gt;</span><br><span class="line">			&lt;dl class&#x3D;&quot;service_item&quot;&gt;</span><br><span class="line">				&lt;dd&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot; &#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dd&gt;</span><br><span class="line">				&lt;dt&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;font&gt;重点旅客预约&lt;&#x2F;font&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dt&gt;</span><br><span class="line">			&lt;&#x2F;dl&gt;</span><br><span class="line">			&lt;dl class&#x3D;&quot;service_item&quot;&gt;</span><br><span class="line">				&lt;dd&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot; &#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dd&gt;</span><br><span class="line">				&lt;dt&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;font&gt;遗失物品查找&lt;&#x2F;font&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dt&gt;</span><br><span class="line">			&lt;&#x2F;dl&gt;</span><br><span class="line">			&lt;dl class&#x3D;&quot;service_item&quot;&gt;</span><br><span class="line">				&lt;dd&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot; &#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dd&gt;</span><br><span class="line">				&lt;dt&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;font&gt;共享汽车&lt;&#x2F;font&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dt&gt;</span><br><span class="line">			&lt;&#x2F;dl&gt;</span><br><span class="line">			&lt;dl class&#x3D;&quot;service_item&quot;&gt;</span><br><span class="line">				&lt;dd&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot; &#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dd&gt;</span><br><span class="line">				&lt;dt&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;font&gt;便民托运&lt;&#x2F;font&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dt&gt;</span><br><span class="line">			&lt;&#x2F;dl&gt;</span><br><span class="line">			&lt;dl class&#x3D;&quot;service_item&quot;&gt;</span><br><span class="line">				&lt;dd&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot; &#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dd&gt;</span><br><span class="line">				&lt;dt&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;font&gt;车站引导&lt;&#x2F;font&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dt&gt;</span><br><span class="line">			&lt;&#x2F;dl&gt;</span><br><span class="line">			&lt;dl class&#x3D;&quot;service_item&quot;&gt;</span><br><span class="line">				&lt;dd&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot; &#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dd&gt;</span><br><span class="line">				&lt;dt&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;font&gt;站车风采&lt;&#x2F;font&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dt&gt;</span><br><span class="line">			&lt;&#x2F;dl&gt;</span><br><span class="line">			&lt;dl class&#x3D;&quot;service_item&quot;&gt;</span><br><span class="line">				&lt;dd&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot; &#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dd&gt;</span><br><span class="line">				&lt;dt&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;font&gt;用户反馈&lt;&#x2F;font&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dt&gt;</span><br><span class="line">			&lt;&#x2F;dl&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;br &#x2F;&gt;</span><br><span class="line">		&lt;hr &#x2F;&gt;</span><br><span class="line">		&lt;br &#x2F;&gt;</span><br><span class="line">		&lt;!-- 广告栏位 --&gt;</span><br><span class="line">		&lt;div class&#x3D;&quot;ad&quot;&gt;</span><br><span class="line">			&lt;div id&#x3D;&quot;ad1&quot; class&#x3D;&quot;ad_item&quot;&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;cx.12306.cn&#x2F;tlcx&#x2F;index.html&quot; target&#x3D;&quot;_blank&quot;&gt;</span><br><span class="line">					&lt;img src&#x3D;&quot;https:&#x2F;&#x2F;www.12306.cn&#x2F;index&#x2F;images&#x2F;abanner01.jpg&quot; &#x2F;&gt;</span><br><span class="line">				&lt;&#x2F;a&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;div id&#x3D;&quot;ad2&quot; class&#x3D;&quot;ad_item&quot;&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;exservice.12306.cn&#x2F;excater&#x2F;index.html&quot; target&#x3D;&quot;_blank&quot;&gt;</span><br><span class="line">					&lt;img src&#x3D;&quot;https:&#x2F;&#x2F;www.12306.cn&#x2F;index&#x2F;images&#x2F;abanner02.jpg&quot; &#x2F;&gt;</span><br><span class="line">				&lt;&#x2F;a&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;div id&#x3D;&quot;ad3&quot; class&#x3D;&quot;ad_item&quot;&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;view&#x2F;my_insurance.html&quot; target&#x3D;&quot;_blank&quot;&gt;</span><br><span class="line">					&lt;img src&#x3D;&quot;https:&#x2F;&#x2F;www.12306.cn&#x2F;index&#x2F;images&#x2F;abanner03.jpg&quot; &#x2F;&gt;</span><br><span class="line">				&lt;&#x2F;a&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;div id&#x3D;&quot;ad4&quot; class&#x3D;&quot;ad_item&quot;&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;view&#x2F;commutation_index.html&quot; target&#x3D;&quot;_blank&quot;&gt;</span><br><span class="line">					&lt;img src&#x3D;&quot;https:&#x2F;&#x2F;www.12306.cn&#x2F;index&#x2F;images&#x2F;abanner04.jpg&quot; &#x2F;&gt;</span><br><span class="line">				&lt;&#x2F;a&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">			</span><br><span class="line">		&lt;!-- 旅游栏位 --&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;travel&quot;&gt;</span><br><span class="line">			&lt;dl class&#x3D;&quot;travel_item&quot;&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;travel.12306.cn&#x2F;portal&#x2F;travel&#x2F;detail&#x2F;ff80808157df83c201644427880112ae&quot;&gt;</span><br><span class="line">					&lt;dd&gt;</span><br><span class="line">						&lt;img src&#x3D;&quot;img&#x2F;travel.png&quot; &#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;dd&gt;</span><br><span class="line">					&lt;dt&gt;</span><br><span class="line">						&lt;p&gt;&quot;环西部火车游&quot; 青海游&lt;&#x2F;p&gt;</span><br><span class="line">						&lt;span&gt;&lt;font&gt;&amp;yen;&lt;&#x2F;font&gt;&amp;nbsp;880&lt;&#x2F;span&gt;</span><br><span class="line">					&lt;&#x2F;dt&gt;</span><br><span class="line">				&lt;&#x2F;a&gt;</span><br><span class="line">			&lt;&#x2F;dl&gt;</span><br><span class="line">			&lt;dl class&#x3D;&quot;travel_item&quot;&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;travel.12306.cn&#x2F;portal&#x2F;travel&#x2F;detail&#x2F;ff80808157df83c201644427880112ae&quot;&gt;</span><br><span class="line">					&lt;dd&gt;</span><br><span class="line">						&lt;img src&#x3D;&quot;img&#x2F;travel.png&quot; &#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;dd&gt;</span><br><span class="line">					&lt;dt&gt;</span><br><span class="line">						&lt;p&gt;&quot;环西部火车游&quot; 青海游&lt;&#x2F;p&gt;</span><br><span class="line">						&lt;span&gt;&lt;font&gt;&amp;yen;&lt;&#x2F;font&gt;&amp;nbsp;880&lt;&#x2F;span&gt;</span><br><span class="line">					&lt;&#x2F;dt&gt;</span><br><span class="line">				&lt;&#x2F;a&gt;</span><br><span class="line">			&lt;&#x2F;dl&gt;</span><br><span class="line">			&lt;dl class&#x3D;&quot;travel_item&quot;&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;travel.12306.cn&#x2F;portal&#x2F;travel&#x2F;detail&#x2F;ff80808157df83c201644427880112ae&quot;&gt;</span><br><span class="line">					&lt;dd&gt;</span><br><span class="line">						&lt;img src&#x3D;&quot;img&#x2F;travel.png&quot; &#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;dd&gt;</span><br><span class="line">					&lt;dt&gt;</span><br><span class="line">						&lt;p&gt;&quot;环西部火车游&quot; 青海游&lt;&#x2F;p&gt;</span><br><span class="line">						&lt;span&gt;&lt;font&gt;&amp;yen;&lt;&#x2F;font&gt;&amp;nbsp;880&lt;&#x2F;span&gt;</span><br><span class="line">					&lt;&#x2F;dt&gt;</span><br><span class="line">				&lt;&#x2F;a&gt;</span><br><span class="line">			&lt;&#x2F;dl&gt;</span><br><span class="line">			&lt;dl class&#x3D;&quot;travel_item&quot;&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;travel.12306.cn&#x2F;portal&#x2F;travel&#x2F;detail&#x2F;ff80808157df83c201644427880112ae&quot;&gt;</span><br><span class="line">					&lt;dd&gt;</span><br><span class="line">						&lt;img src&#x3D;&quot;img&#x2F;travel.png&quot; &#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;dd&gt;</span><br><span class="line">					&lt;dt&gt;</span><br><span class="line">						&lt;p&gt;&quot;环西部火车游&quot; 青海游&lt;&#x2F;p&gt;</span><br><span class="line">						&lt;span&gt;&lt;font&gt;&amp;yen;&lt;&#x2F;font&gt;&amp;nbsp;880&lt;&#x2F;span&gt;</span><br><span class="line">					&lt;&#x2F;dt&gt;</span><br><span class="line">				&lt;&#x2F;a&gt;</span><br><span class="line">			&lt;&#x2F;dl&gt;</span><br><span class="line">			&lt;dl class&#x3D;&quot;travel_item&quot;&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;travel.12306.cn&#x2F;portal&#x2F;travel&#x2F;detail&#x2F;ff80808157df83c201644427880112ae&quot;&gt;</span><br><span class="line">					&lt;dd&gt;</span><br><span class="line">						&lt;img src&#x3D;&quot;img&#x2F;travel.png&quot; &#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;dd&gt;</span><br><span class="line">					&lt;dt&gt;</span><br><span class="line">						&lt;p&gt;&quot;环西部火车游&quot; 青海游&lt;&#x2F;p&gt;</span><br><span class="line">						&lt;span&gt;&lt;font&gt;&amp;yen;&lt;&#x2F;font&gt;&amp;nbsp;880&lt;&#x2F;span&gt;</span><br><span class="line">					&lt;&#x2F;dt&gt;</span><br><span class="line">				&lt;&#x2F;a&gt;</span><br><span class="line">			&lt;&#x2F;dl&gt;</span><br><span class="line">			&lt;dl class&#x3D;&quot;travel_item&quot;&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;travel.12306.cn&#x2F;portal&#x2F;travel&#x2F;detail&#x2F;ff80808157df83c201644427880112ae&quot;&gt;</span><br><span class="line">					&lt;dd&gt;</span><br><span class="line">						&lt;img src&#x3D;&quot;img&#x2F;travel.png&quot; &#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;dd&gt;</span><br><span class="line">					&lt;dt&gt;</span><br><span class="line">						&lt;p&gt;&quot;环西部火车游&quot; 青海游&lt;&#x2F;p&gt;</span><br><span class="line">						&lt;span&gt;&lt;font&gt;&amp;yen;&lt;&#x2F;font&gt;&amp;nbsp;880&lt;&#x2F;span&gt;</span><br><span class="line">					&lt;&#x2F;dt&gt;</span><br><span class="line">				&lt;&#x2F;a&gt;</span><br><span class="line">			&lt;&#x2F;dl&gt;</span><br><span class="line">			&lt;dl class&#x3D;&quot;travel_item&quot;&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;travel.12306.cn&#x2F;portal&#x2F;travel&#x2F;detail&#x2F;ff80808157df83c201644427880112ae&quot;&gt;</span><br><span class="line">					&lt;dd&gt;</span><br><span class="line">						&lt;img src&#x3D;&quot;img&#x2F;travel.png&quot; &#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;dd&gt;</span><br><span class="line">					&lt;dt&gt;</span><br><span class="line">						&lt;p&gt;&quot;环西部火车游&quot; 青海游&lt;&#x2F;p&gt;</span><br><span class="line">						&lt;span&gt;&lt;font&gt;&amp;yen;&lt;&#x2F;font&gt;&amp;nbsp;880&lt;&#x2F;span&gt;</span><br><span class="line">					&lt;&#x2F;dt&gt;</span><br><span class="line">				&lt;&#x2F;a&gt;</span><br><span class="line">			&lt;&#x2F;dl&gt;</span><br><span class="line">			&lt;dl class&#x3D;&quot;travel_item&quot;&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;travel.12306.cn&#x2F;portal&#x2F;travel&#x2F;detail&#x2F;ff80808157df83c201644427880112ae&quot;&gt;</span><br><span class="line">					&lt;dd&gt;</span><br><span class="line">						&lt;img src&#x3D;&quot;img&#x2F;travel.png&quot; &#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;dd&gt;</span><br><span class="line">					&lt;dt&gt;</span><br><span class="line">						&lt;p&gt;&quot;环西部火车游&quot; 青海游&lt;&#x2F;p&gt;</span><br><span class="line">						&lt;span&gt;&lt;font&gt;&amp;yen;&lt;&#x2F;font&gt;&amp;nbsp;880&lt;&#x2F;span&gt;</span><br><span class="line">					&lt;&#x2F;dt&gt;</span><br><span class="line">				&lt;&#x2F;a&gt;</span><br><span class="line">			&lt;&#x2F;dl&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;!-- 介绍栏 --&gt;</span><br><span class="line">		&lt;div class&#x3D;&quot;outerintroduce&quot;&gt;</span><br><span class="line">			&lt;div id&#x3D;&quot;in1&quot; class&#x3D;&quot;introduce&quot;&gt;</span><br><span class="line">				&lt;h3&gt;最新发布&lt;&#x2F;h3&gt;</span><br><span class="line">				&lt;ul&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;202101&#x2F;t20210113_32704.html&quot;&gt;</span><br><span class="line">							关于铁路部门调整预售期及退票费率规则的公告</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;202101&#x2F;t20210106_32657.html&quot;&gt;</span><br><span class="line">							铁路部门推出免费退票措施</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;201905&#x2F;t20190521_22980.html&quot;&gt;</span><br><span class="line">							候补购票操作说明</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;201411&#x2F;t20141126_2316.html&quot;&gt;</span><br><span class="line">							关于调整互联网、电话订票起售时间的公告</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt_news&#x2F;202101&#x2F;t20210121_32772.html&quot;&gt;</span><br><span class="line">							中国铁路广州局集团有限公司关于2021年1月31日至2月28日...</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;&#x2F;ul&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">			</span><br><span class="line">			&lt;div id&#x3D;&quot;in2&quot; class&#x3D;&quot;introduce&quot;&gt;</span><br><span class="line">				&lt;h3&gt;最新发布&lt;&#x2F;h3&gt;</span><br><span class="line">				&lt;ul&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;202101&#x2F;t20210113_32704.html&quot;&gt;</span><br><span class="line">							关于铁路部门调整预售期及退票费率规则的公告</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;202101&#x2F;t20210106_32657.html&quot;&gt;</span><br><span class="line">							铁路部门推出免费退票措施</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;201905&#x2F;t20190521_22980.html&quot;&gt;</span><br><span class="line">							候补购票操作说明</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;201411&#x2F;t20141126_2316.html&quot;&gt;</span><br><span class="line">							关于调整互联网、电话订票起售时间的公告</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt_news&#x2F;202101&#x2F;t20210121_32772.html&quot;&gt;</span><br><span class="line">							中国铁路广州局集团有限公司关于2021年1月31日至2月28日...</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;&#x2F;ul&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;div class&#x3D;&quot;introduce&quot;&gt;</span><br><span class="line">				&lt;h3&gt;最新发布&lt;&#x2F;h3&gt;</span><br><span class="line">				&lt;ul&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;202101&#x2F;t20210113_32704.html&quot;&gt;</span><br><span class="line">							关于铁路部门调整预售期及退票费率规则的公告</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;202101&#x2F;t20210106_32657.html&quot;&gt;</span><br><span class="line">							铁路部门推出免费退票措施</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;201905&#x2F;t20190521_22980.html&quot;&gt;</span><br><span class="line">							候补购票操作说明</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;201411&#x2F;t20141126_2316.html&quot;&gt;</span><br><span class="line">							关于调整互联网、电话订票起售时间的公告</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt_news&#x2F;202101&#x2F;t20210121_32772.html&quot;&gt;</span><br><span class="line">							中国铁路广州局集团有限公司关于2021年1月31日至2月28日...</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;&#x2F;ul&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;!--  --&gt;</span><br><span class="line">		&lt;!-- 提示栏 --&gt;</span><br><span class="line">		&lt;div class&#x3D;&quot;note_item&quot;&gt;</span><br><span class="line">			&lt;div class&#x3D;&quot;note_item1&quot;&gt;</span><br><span class="line">				&lt;img src&#x3D;&quot;img&#x2F;note1.png&quot; &#x2F;&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;div class&#x3D;&quot;note_item1&quot;&gt;</span><br><span class="line">				&lt;img src&#x3D;&quot;img&#x2F;note2.png&quot; &#x2F;&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;div class&#x3D;&quot;note_item1&quot;&gt;</span><br><span class="line">				&lt;img src&#x3D;&quot;img&#x2F;note3.png&quot; &#x2F;&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;div class&#x3D;&quot;note_item2&quot;&gt;</span><br><span class="line">				&lt;img src&#x3D;&quot;img&#x2F;note4.png&quot; &#x2F;&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="CCS"><a href="#CCS" class="headerlink" title="CCS"></a>CCS</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* 导航栏样式 *&#x2F;</span><br><span class="line">*&#123;</span><br><span class="line">	border: 0px;</span><br><span class="line">	margin: 0px;</span><br><span class="line">	padding: 0px;</span><br><span class="line">&#125;</span><br><span class="line">.navi&#123;</span><br><span class="line">	height: 40px;</span><br><span class="line">	&#x2F;* border: 1px solid red; *&#x2F;</span><br><span class="line">	background-color: #3B99FC;</span><br><span class="line">&#125;</span><br><span class="line">.navi .navi_item,.navi_item1&#123;</span><br><span class="line">	float: left;</span><br><span class="line">	&#x2F;* border: 1px solid green; *&#x2F;</span><br><span class="line">	width: 145px;</span><br><span class="line">	height: 40px;</span><br><span class="line">	list-style: none;</span><br><span class="line">	text-align: center;&#x2F;* 左右居中 *&#x2F;</span><br><span class="line">	line-height: 40px;&#x2F;* 上下居中 *&#x2F;</span><br><span class="line">	color: white;</span><br><span class="line">&#125;</span><br><span class="line">.navi ul&#123;</span><br><span class="line">	&#x2F;* border: 1px solid red; *&#x2F;</span><br><span class="line">	margin: 0px auto;</span><br><span class="line">	width: 1160px;</span><br><span class="line">	height: 40px;</span><br><span class="line">&#125;</span><br><span class="line">.navi .navi_item:hover&#123;</span><br><span class="line">	background-color: #3685EC;</span><br><span class="line">&#125; </span><br><span class="line">.navi .navi_item1&#123;</span><br><span class="line">	background-color: #2676E3;</span><br><span class="line">&#125;</span><br><span class="line">.navi ul li&#123;</span><br><span class="line">	font-size: 14px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;* 服务栏样式 *&#x2F;</span><br><span class="line">dl dd img&#123;</span><br><span class="line">	height: 50px;</span><br><span class="line">	width: 50px;</span><br><span class="line">&#125;</span><br><span class="line">.service_item&#123;</span><br><span class="line">	width: 170px;</span><br><span class="line">	height: 80px;</span><br><span class="line">	float: left;</span><br><span class="line">&#125;</span><br><span class="line">.service_item dt&#123;</span><br><span class="line">	text-align: center;</span><br><span class="line">&#125;</span><br><span class="line">.service_item dd&#123;</span><br><span class="line">	text-align: center;</span><br><span class="line">&#125;</span><br><span class="line">.service_item font&#123;</span><br><span class="line">	&#x2F;* 下划线是由于a标签产生 *&#x2F;</span><br><span class="line">	text-decoration: none;</span><br><span class="line">	font-size: 14px;</span><br><span class="line">	color: black;</span><br><span class="line">&#125;</span><br><span class="line">.service_item a&#123;</span><br><span class="line">	text-decoration: none;</span><br><span class="line">&#125;</span><br><span class="line">#service&#123;</span><br><span class="line">	width: 1190px;</span><br><span class="line">	height: 70px;</span><br><span class="line">	margin: 0px auto;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;* 介绍栏样式 *&#x2F;</span><br><span class="line">&#x2F;* 选中body中的所有标签 *&#x2F;</span><br><span class="line">*&#123;</span><br><span class="line">	&#x2F;* border: 1px solid orangered; *&#x2F;</span><br><span class="line">	&#x2F;* 去掉所有留白 避免内外边距干扰 *&#x2F;</span><br><span class="line">	margin: 0px;</span><br><span class="line">	padding: 0px;</span><br><span class="line">&#125;</span><br><span class="line">.introduce&#123;</span><br><span class="line">	width: 388px;</span><br><span class="line">	height: 298px;</span><br><span class="line">	border: 1px solid #3B99FC;</span><br><span class="line">	float: left;</span><br><span class="line">&#125;</span><br><span class="line">.introduce h3&#123;</span><br><span class="line">	height: 40px;</span><br><span class="line">	background-color: #3B99FC;</span><br><span class="line">	color: white;</span><br><span class="line">	text-align: center;</span><br><span class="line">	line-height: 40px;	&#x2F;* 文字高度与行高一致则居中 *&#x2F;</span><br><span class="line">&#125;</span><br><span class="line">.introduce ul&#123;</span><br><span class="line">	&#x2F;* border: 1px solid orange; *&#x2F;</span><br><span class="line">	margin-left: 50px;</span><br><span class="line">	margin-top: 30px;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;* a标签 导致下划线 *&#x2F;</span><br><span class="line">.introduce a&#123;</span><br><span class="line">	text-decoration: none;</span><br><span class="line">	font-size: 14px;</span><br><span class="line">	color: darkslategray;</span><br><span class="line">&#125;</span><br><span class="line">.introduce li&#123;</span><br><span class="line">	height: 40px;</span><br><span class="line">	list-style: none;</span><br><span class="line">	&#x2F;* </span><br><span class="line">	 路径问题</span><br><span class="line">	 相对路径 相对于当前文件本身的路径</span><br><span class="line">	 day5案例开发&#x2F;css</span><br><span class="line">	 day5案例开发&#x2F;css&#x2F;img&#x2F;dot.png</span><br><span class="line">	 day5案例开发&#x2F;img&#x2F;dot.png</span><br><span class="line">	 ..向上一层目录(文件夹)</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	list-style-image: url(..&#x2F;img&#x2F;dot.png);</span><br><span class="line">&#125;</span><br><span class="line">.introduce a:hover&#123;</span><br><span class="line">	color: black;</span><br><span class="line">&#125;</span><br><span class="line">.outerintroduce&#123;</span><br><span class="line">	width: 1190px;</span><br><span class="line">	height: 300px;</span><br><span class="line">	&#x2F;* border: 1px solid green; *&#x2F;</span><br><span class="line">	margin: 0px auto;</span><br><span class="line">&#125;</span><br><span class="line">#in1,#in2&#123;</span><br><span class="line">	margin-right: 10px;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;* 提示栏 *&#x2F;</span><br><span class="line">.note_item1,.note_item2&#123;</span><br><span class="line">	width: 50px;</span><br><span class="line">&#125;</span><br><span class="line">.note_item1&#123;</span><br><span class="line">	height: 86px;</span><br><span class="line">&#125;</span><br><span class="line">.note_item2&#123;</span><br><span class="line">	height: 123px;</span><br><span class="line">&#125;</span><br><span class="line">.note_item&#123;</span><br><span class="line">	width: 50px;</span><br><span class="line">	height: 396px;</span><br><span class="line">	position: fixed;</span><br><span class="line">	right: 0px;</span><br><span class="line">	top: 150px;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;* 旅游栏位样式 *&#x2F;</span><br><span class="line">.travel_item&#123;</span><br><span class="line">	width: 288px;</span><br><span class="line">	height: 242px;</span><br><span class="line">	border: 1px solid #3B99FC;</span><br><span class="line">	float: left;</span><br><span class="line">	margin: 5px;</span><br><span class="line">&#125;</span><br><span class="line">.travel_item a&#123;</span><br><span class="line">	text-decoration: none;</span><br><span class="line">&#125;</span><br><span class="line">.travel_item p&#123;</span><br><span class="line">	border: black;</span><br><span class="line">	font-size: 14px;</span><br><span class="line">	line-height: 40px;</span><br><span class="line">&#125;</span><br><span class="line">.travel_item p:hover&#123;</span><br><span class="line">	color: #3B99FC;</span><br><span class="line">&#125;</span><br><span class="line">.travel_item span&#123;</span><br><span class="line">	color: #FF8201;</span><br><span class="line">	font-size: 20px;	</span><br><span class="line">&#125;</span><br><span class="line">.travel_item font&#123;</span><br><span class="line">	font-size: 14px;</span><br><span class="line">&#125;</span><br><span class="line">.travel_item dt&#123;</span><br><span class="line">	padding: 10px;</span><br><span class="line">&#125;</span><br><span class="line">#travel&#123;</span><br><span class="line">	width: 1200px;</span><br><span class="line">	height: 500px;</span><br><span class="line">	&#x2F;* border: 1px solid red; *&#x2F;</span><br><span class="line">	margin: 0px auto;</span><br><span class="line">&#125;</span><br><span class="line">.travel_item img&#123;</span><br><span class="line">	width: 288px;</span><br><span class="line">	height: 160px;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;* 广告栏位 *&#x2F;</span><br><span class="line">.ad_item&#123;</span><br><span class="line">	width: 590px;</span><br><span class="line">	height: 160px;</span><br><span class="line">	float: left;</span><br><span class="line">&#125;</span><br><span class="line">.ad_item img&#123;</span><br><span class="line">	width: 590px;</span><br><span class="line">	height: 160px;</span><br><span class="line">&#125;</span><br><span class="line">.ad&#123;</span><br><span class="line">	width: 1190px;</span><br><span class="line">	height: 360px;</span><br><span class="line">	margin: 0px auto;</span><br><span class="line">&#125;</span><br><span class="line">#ad1&#123;</span><br><span class="line">	margin-right: 10px;</span><br><span class="line">	margin-bottom: 20px;</span><br><span class="line">&#125;</span><br><span class="line">#ad2&#123;</span><br><span class="line">	margin-bottom: 20px;</span><br><span class="line">&#125;</span><br><span class="line">#ad3&#123;</span><br><span class="line">	margin-right: 10px;</span><br><span class="line">	margin-bottom: 20px;</span><br><span class="line">&#125;</span><br><span class="line">#ad4&#123;</span><br><span class="line">	margin-bottom: 20px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/27/Java-day12/" data-id="cknn1mv6u0009crup53d1e1r7" data-title="Java day12" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Java-day11" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/25/Java-day11/" class="article-date">
+  <time class="dt-published" datetime="2021-01-25T11:15:22.000Z" itemprop="datePublished">2021-01-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/25/Java-day11/">Java day11</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="导航栏案例开发"><a href="#导航栏案例开发" class="headerlink" title="导航栏案例开发"></a>导航栏案例开发</h1><h2 id="符号"><a href="#符号" class="headerlink" title="符号"></a>符号</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;www.w3school.com.cn&#x2F;tags&#x2F;html_ref_symbols.html</span><br></pre></td></tr></table></figure>
+<p>ps: ol –&gt; 有序列表  ul –&gt; 无序列表 li –&gt; 列表项</p>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot; &#x2F;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;style&gt;</span><br><span class="line">			&#x2F;* 去掉所有边距 *&#x2F;</span><br><span class="line">			*&#123;</span><br><span class="line">				border: 0px;</span><br><span class="line">				margin: 0px;</span><br><span class="line">				padding: 0px;</span><br><span class="line">			&#125;</span><br><span class="line">			.navi&#123;</span><br><span class="line">				height: 40px;</span><br><span class="line">				&#x2F;* border: 1px solid red; *&#x2F;</span><br><span class="line">				background-color: #3B99FC;</span><br><span class="line">			&#125;</span><br><span class="line">			.navi .navi_item,.navi_item1&#123;</span><br><span class="line">				float: left;</span><br><span class="line">				&#x2F;* border: 1px solid green; *&#x2F;</span><br><span class="line">				width: 145px;</span><br><span class="line">				height: 40px;</span><br><span class="line">				list-style: none;</span><br><span class="line">				text-align: center;&#x2F;* 左右居中 *&#x2F;</span><br><span class="line">				line-height: 40px;&#x2F;* 上下居中 *&#x2F;</span><br><span class="line">				color: white;</span><br><span class="line">			&#125;</span><br><span class="line">			.navi ul&#123;</span><br><span class="line">				&#x2F;* border: 1px solid red; *&#x2F;</span><br><span class="line">				margin: 0px auto;</span><br><span class="line">				width: 1160px;</span><br><span class="line">				height: 40px;</span><br><span class="line">			&#125;</span><br><span class="line">			.navi .navi_item:hover&#123;</span><br><span class="line">				background-color: #3685EC;</span><br><span class="line">			&#125; </span><br><span class="line">			.navi .navi_item1&#123;</span><br><span class="line">				background-color: #2676E3;</span><br><span class="line">			&#125;</span><br><span class="line">			.navi ul li&#123;</span><br><span class="line">				font-size: 14px;</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;&#x2F;style&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div class&#x3D;&quot;navi&quot;&gt;</span><br><span class="line">		&lt;!-- ul&gt;li*8&gt;span --&gt;</span><br><span class="line">			&lt;ul&gt;</span><br><span class="line">				&lt;li class&#x3D;&quot;navi_item1&quot;&gt;&lt;span&gt;首页&lt;&#x2F;span&gt;&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;li class&#x3D;&quot;navi_item&quot;&gt;&lt;span&gt;车票&amp;nbsp;&amp;nbsp;&amp;or;&lt;&#x2F;span&gt;&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;li class&#x3D;&quot;navi_item&quot;&gt;&lt;span&gt;团购服务&amp;nbsp;&amp;nbsp;&amp;or;&lt;&#x2F;span&gt;&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;li class&#x3D;&quot;navi_item&quot;&gt;&lt;span&gt;会员服务&amp;nbsp;&amp;nbsp;&amp;or;&lt;&#x2F;span&gt;&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;li class&#x3D;&quot;navi_item&quot;&gt;&lt;span&gt;站车服务&amp;nbsp;&amp;nbsp;&amp;or;&lt;&#x2F;span&gt;&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;li class&#x3D;&quot;navi_item&quot;&gt;&lt;span&gt;商旅服务&amp;nbsp;&amp;nbsp;&amp;or;&lt;&#x2F;span&gt;&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;li class&#x3D;&quot;navi_item&quot;&gt;&lt;span&gt;出行指南&amp;nbsp;&amp;nbsp;&amp;or;&lt;&#x2F;span&gt;&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;li class&#x3D;&quot;navi_item&quot;&gt;&lt;span&gt;信息查询&amp;nbsp;&amp;nbsp;&amp;or;&lt;&#x2F;span&gt;&lt;&#x2F;li&gt;</span><br><span class="line">			&lt;&#x2F;ul&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><div style="width:70%;margin:auto"><img src="/2021/01/25/Java-day11/result.png" class title="This is an example image"></div>
+
+
+<h1 id="服务栏目制作实战"><a href="#服务栏目制作实战" class="headerlink" title="服务栏目制作实战"></a>服务栏目制作实战</h1><p>主要用 dl + dd + dt 进行规划</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;style&gt;</span><br><span class="line">			*&#123;</span><br><span class="line">				&#x2F;* border: 1px solid red; *&#x2F;</span><br><span class="line">				margin: 0px;</span><br><span class="line">				padding: 0px;</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">			dl dd img&#123;</span><br><span class="line">				height: 50px;</span><br><span class="line">				width: 50px;</span><br><span class="line">			&#125;</span><br><span class="line">			.service_item&#123;</span><br><span class="line">				width: 170px;</span><br><span class="line">				height: 80px;</span><br><span class="line">				float: left;</span><br><span class="line">			&#125;</span><br><span class="line">			.service_item dt&#123;</span><br><span class="line">				text-align: center;</span><br><span class="line">			&#125;</span><br><span class="line">			.service_item dd&#123;</span><br><span class="line">				text-align: center;</span><br><span class="line">			&#125;</span><br><span class="line">			.service_item font&#123;</span><br><span class="line">				&#x2F;* 下划线是由于a标签产生 *&#x2F;</span><br><span class="line">				text-decoration: none;</span><br><span class="line">				font-size: 14px;</span><br><span class="line">				color: black;</span><br><span class="line">			&#125;</span><br><span class="line">			.service_item a&#123;</span><br><span class="line">				text-decoration: none;</span><br><span class="line">			&#125;</span><br><span class="line">			#service&#123;</span><br><span class="line">				width: 1190px;</span><br><span class="line">				height: 70px;</span><br><span class="line">				margin: 0px auto;</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;&#x2F;style&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;service&quot;&gt;</span><br><span class="line">			&lt;dl class&#x3D;&quot;service_item&quot;&gt;</span><br><span class="line">				&lt;dd&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot; &#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dd&gt;</span><br><span class="line">				&lt;dt&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;font&gt;重点旅客预约&lt;&#x2F;font&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dt&gt;</span><br><span class="line">			&lt;&#x2F;dl&gt;</span><br><span class="line">			&lt;dl class&#x3D;&quot;service_item&quot;&gt;</span><br><span class="line">				&lt;dd&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot; &#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dd&gt;</span><br><span class="line">				&lt;dt&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;font&gt;遗失物品查找&lt;&#x2F;font&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dt&gt;</span><br><span class="line">			&lt;&#x2F;dl&gt;</span><br><span class="line">			&lt;dl class&#x3D;&quot;service_item&quot;&gt;</span><br><span class="line">				&lt;dd&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot; &#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dd&gt;</span><br><span class="line">				&lt;dt&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;font&gt;共享汽车&lt;&#x2F;font&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dt&gt;</span><br><span class="line">			&lt;&#x2F;dl&gt;</span><br><span class="line">			&lt;dl class&#x3D;&quot;service_item&quot;&gt;</span><br><span class="line">				&lt;dd&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot; &#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dd&gt;</span><br><span class="line">				&lt;dt&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;font&gt;便民托运&lt;&#x2F;font&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dt&gt;</span><br><span class="line">			&lt;&#x2F;dl&gt;</span><br><span class="line">			&lt;dl class&#x3D;&quot;service_item&quot;&gt;</span><br><span class="line">				&lt;dd&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot; &#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dd&gt;</span><br><span class="line">				&lt;dt&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;font&gt;车站引导&lt;&#x2F;font&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dt&gt;</span><br><span class="line">			&lt;&#x2F;dl&gt;</span><br><span class="line">			&lt;dl class&#x3D;&quot;service_item&quot;&gt;</span><br><span class="line">				&lt;dd&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot; &#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dd&gt;</span><br><span class="line">				&lt;dt&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;font&gt;站车风采&lt;&#x2F;font&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dt&gt;</span><br><span class="line">			&lt;&#x2F;dl&gt;</span><br><span class="line">			&lt;dl class&#x3D;&quot;service_item&quot;&gt;</span><br><span class="line">				&lt;dd&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;img src&#x3D;&quot;img&#x2F;1023.jpg&quot; &#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dd&gt;</span><br><span class="line">				&lt;dt&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;resources&#x2F;login.html&quot;&gt;</span><br><span class="line">						&lt;font&gt;用户反馈&lt;&#x2F;font&gt;</span><br><span class="line">					&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;dt&gt;</span><br><span class="line">			&lt;&#x2F;dl&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="网页整合"><a href="#网页整合" class="headerlink" title="网页整合"></a>网页整合</h1><h2 id="路径问题"><a href="#路径问题" class="headerlink" title="路径问题"></a>路径问题</h2><ul>
+<li>相对路径 相对于当前文件本身的路径<ul>
+<li>day5案例开发/css</li>
+<li>day5案例开发/css/img/dot.png</li>
+<li>day5案例开发/img/dot.png</li>
+<li>..向上一层目录(文件夹)</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/25/Java-day11/" data-id="cknn1mv6t0008cruph2rn1p7u" data-title="Java day11" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-The-deadlock-problem" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/25/The-deadlock-problem/" class="article-date">
+  <time class="dt-published" datetime="2021-01-25T07:39:59.000Z" itemprop="datePublished">2021-01-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/25/The-deadlock-problem/">The deadlock problem</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h1><h2 id="什么是死锁"><a href="#什么是死锁" class="headerlink" title="什么是死锁"></a>什么是死锁</h2><p><em><strong>例1</strong></em><br>哲学家进餐问题中，如果5位哲学家进程并发执行，都拿起了左手边的筷子…</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">semaphore chopstick[5] &#x3D; &#123;1,1,1,1,1&#125;;</span><br><span class="line">Pi() &#123;		&#x2F;&#x2F;i号哲学家的进程</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(chopstick[i]);	&#x2F;&#x2F;拿左</span><br><span class="line">		P(chopstick[(i+1)%5]);	&#x2F;&#x2F;拿右</span><br><span class="line">		吃饭..</span><br><span class="line">		V(chopstick[i]);		&#x2F;&#x2F;放左</span><br><span class="line">		V(chopstick[(i+1)%5]);	&#x2F;&#x2F;放右</span><br><span class="line">		思考...</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>每位哲学家都在等待自己右边的人放下筷子，这些哲学家进程都因等待筷子资源而被阻塞。即发生“死锁”</p>
+<p><em><strong>例2</strong></em><br>有一首歌的歌词:我爱你，你爱他，他爱她，她爱我……这世界每个人都爱别人….</p>
+<p><em><strong>综上</strong></em><br>每个人都占有一个资源,同时又在等待另一个人手里的资源。发生“死锁”<br>在 <em><strong>并发环境下</strong></em> ，各进程因竞争资源而造成的一种 <em><strong>互相等待对方手里的资源，导致各进程都阻塞,都无法向前推进</strong></em> 的现象，就是“死锁”发生死锁后若无外力干涉，这些进程都将无法向前推进。</p>
+<h2 id="进程死锁、饥饿、死循环"><a href="#进程死锁、饥饿、死循环" class="headerlink" title="进程死锁、饥饿、死循环"></a>进程死锁、饥饿、死循环</h2><ul>
+<li><em><strong>死锁</strong></em> :各进程互相等待对方手里的资源，导致各进程都阻塞，无法向前推进的现象。</li>
+<li><em><strong>饥饿</strong></em> :由于长期得不到想要的资源，某进程无法向前推进的现象。比如:在短进程优先（SPF）算法中，若有源源不断的短进程到来，则长进程将一直得不到处理机，从而发生长进程“饥饿”。</li>
+<li><em><strong>死循环</strong></em> :某进程执行过程中一直跳不出某个循环的现象。有时是因为程序逻辑bug导致的，有时是程序员故意设计的。</li>
+</ul>
+<p><em><strong>共同点</strong></em><br>都是进程发生了某种异常的状况而无法继续往下推进</p>
+<p>如图所示：</p>
+<div style="width:70%;margin:auto"><img src="/2021/01/25/The-deadlock-problem/difference.png" class title="This is an example image"></div>
+
+<p>ps:死循环可以是运行态，即可以上处理机，但是饥饿和死锁一定不会是运行态 —&gt; 死循环不是操作系统能解决的问题</p>
+<h2 id="死锁产生的必要条件"><a href="#死锁产生的必要条件" class="headerlink" title="死锁产生的必要条件"></a>死锁产生的必要条件</h2><p>产生死锁必须同时满足一下四个条件，只要其中任一条件不成立，死锁就不会发生。</p>
+<ol>
+<li>互斥条件:只有对 <em><strong>必须互斥使用的资源</strong></em> 的争抢才会导致死锁（如哲学家的筷子、打印机设备）。像内存、扬声器这样可以同时让多个进程使用的资源是不会导致死锁的（因为进程不用阻塞等待这种资源）。</li>
+<li>不剥夺条件:进程所获得的资源在未使用完之前， <em><strong>不能由其他进程强行夺走</strong></em> ，只能主动释放。</li>
+<li>请求和保持条件:进程 <em><strong>已经保持了至少一个资源</strong></em> ，但又提出了新的资源请求，而该资源又被其他进程占有，此时请求进程被阻塞，但又对自己己有的资源保持不放。</li>
+<li>循环等待条件:存在一种进程资源的 <em><strong>循环等待链</strong></em> ，链中的每一个进程己获得的资源同时被下一个进程所请求。</li>
+</ol>
+<ul>
+<li>注意!发生死锁时一定有循环等待,但是 <em><strong>发生循环等待时未必死锁</strong></em> (循环等待是死锁的必要不充分条件)</li>
+<li>如果同类资源数大于1，则即使有循环等待，也未必发生死锁。但如果系统中每类资源都只有一个，那循环等待就是死锁的充分必要条件了。</li>
+</ul>
+<h2 id="什么时候回发生死锁"><a href="#什么时候回发生死锁" class="headerlink" title="什么时候回发生死锁"></a>什么时候回发生死锁</h2><ol>
+<li>对系统资源的竞争。各进程对 <em><strong>不可剥夺的资源</strong></em> （如打印机）的竞争可能引起死锁，对可剥夺的资源(CPU）的竞争是不会引起死锁的。</li>
+<li>进程推进顺序非法。请求和释放资源的 <em><strong>顺序不当</strong></em> ，也同样会导致死锁。例如，并发执行的进程P1、P2分别申请并占有了资源R1、R2，之后进程p1又紧接着申请资源R2，而进程P2又申请资源R1，两者会因为申请的资源被对方占有而阻塞，从而发生死锁。</li>
+<li>信号量的使用不当也会造成死锁。如生产者-消费者问题中，如果实现互斥的P操柞在实现同步的P操作之前，就有可能导致死锁。(可以把互斥信号量、同步信号量也看做是一种抽象的系统资源)</li>
+</ol>
+<p><em><strong>总之</strong></em> ，对不可剥夺资源的不合理分配，可能导致死锁。</p>
+<h2 id="死锁的处理策略"><a href="#死锁的处理策略" class="headerlink" title="死锁的处理策略"></a>死锁的处理策略</h2><ol>
+<li>预防死锁。破坏死锁产生的四个必要条件中的一个或几个。</li>
+<li>避免死锁。用某种方法防止系统进入不安全状态，从而避免死锁（银行家算法)</li>
+<li>死锁的检测和解除。允许死锁的发生，不过操作系统会负责检测出死锁的发生，然后采取某种措施解除死锁。</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><div style="width:70%;margin:auto"><img src="/2021/01/25/The-deadlock-problem/conclusion.png" class title="This is an example image"></div>
+
+
+<h1 id="死锁处理策略"><a href="#死锁处理策略" class="headerlink" title="死锁处理策略"></a>死锁处理策略</h1><div style="width:70%;margin:auto"><img src="/2021/01/25/The-deadlock-problem/prevent.png" class title="This is an example image"></div>
+
+<p>死锁的产生必须满足四个必要条件，只要其中一个或者几个条件不满足，死锁就不会发生。</p>
+<h2 id="破坏互斥条件"><a href="#破坏互斥条件" class="headerlink" title="破坏互斥条件"></a>破坏互斥条件</h2><p>互斥条件:只有对必须互斥使用的资源的争抢才会导致死锁。<br>&emsp;&emsp;如果把只能互斥使用的资源改造为允许共享使用，则系统不会进入死锁状态。比如: SPOOLing技术。操作系统可以采用SPOOLing 技术把独占设备 <em><strong>在逻辑上改造成共享设备</strong></em> 。比如用SPOOLing技术将打印机改造为共享设备…</p>
+<ul>
+<li>使用了SPOOLing技术后，在各进程看来,自己对打印机资源的使用请求立即就被接收处理了，不需要再阻塞等待</li>
+<li>资源由输出设备暂时保管</li>
+<li>该策略的缺点:并不是所有的资源都可以改造成可共享使用的资源。并且为了系统安全，很多地方还必须保护这种互斥性。因此，很多时候都无法破坏互斥条件。</li>
+</ul>
+<h2 id="破坏不剥夺条件"><a href="#破坏不剥夺条件" class="headerlink" title="破坏不剥夺条件"></a>破坏不剥夺条件</h2><p>不剥夺条件:进程所获得的资源在未使用完之前，不能由其他进程强行夺走，只能主动释放。</p>
+<ul>
+<li>方案一:当某个进程请求新的资源得不到满足时，它必须立即释放保持的所有资源，待以后需要时再重新申请。也就是说，即使某些资源尚未使用完，也需要主动释放，从而破坏了不可剥夺条件。</li>
+<li>方案二:当某个进程需要的资源被其他进程所占有的时候，可以由操作系统协助，将想要的资源强行剥夺。这种方式一般需要考虑各进程的 <em><strong>优先级</strong></em> （比如:剥夺调度方式，就是将处理机资源强行剥夺给优先级更高的进程使用)</li>
+</ul>
+<p><em><strong>该策略的缺点:</strong></em></p>
+<ol>
+<li>实现起来比较复杂。</li>
+<li>释放已获得的资源可能造成前一阶段工作的失效。因此这种方法一般只适用于易保存和恢复状态的资源，如CPU。</li>
+<li>反复地电请和释放资源会增加系统开销，降低系统吞吐量。</li>
+<li>若采用方案一，意味着只要暂时得不到某个资源，之前获得的那些资源就都需要放弃，以后再重新申请。如果一直发生这样的情况，就会导致进程饥饿。</li>
+</ol>
+<h2 id="破坏请求和保持条件"><a href="#破坏请求和保持条件" class="headerlink" title="破坏请求和保持条件"></a>破坏请求和保持条件</h2><p>请求和保持条件:进程 <em><strong>已经保持了至少一个资源</strong></em> ，但又提出了新的资源请求，而该资源又被其他进程占有，此时请求进程被阻塞，但又对自己已有的资源 <em><strong>保持</strong></em> 不放。</p>
+<p>可以采用 <em><strong>静态分配方法</strong></em> ，即进程在运行前一次申请完它所需要的全部资源，在它的资源未满足前， <em><strong>不让</strong></em> 它投入运行。一旦投入运行后，这些资源就<em><strong>一直</strong></em> 归它所有，该进程就不会再请求别的任何资源了。</p>
+<p>该策略实现起来简单，但也有明显的 <em><strong>缺点</strong></em> :</p>
+<ul>
+<li>有些资源可能只需要用很短的时间，因此如果进程的整个运行期间都一直保持着所有资源，就会造成严重的资源浪费，资源利用率极低。</li>
+<li>另外，该策略也有可能导致某些 <em><strong>进程饥饿</strong></em> 。</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/01/25/The-deadlock-problem/example.png" class title="This is an example image"></div>
+
+<h2 id="破坏循环等待条件"><a href="#破坏循环等待条件" class="headerlink" title="破坏循环等待条件"></a>破坏循环等待条件</h2><p>循环等待条件:存在一种进程资源的 <em><strong>循环等待链</strong></em> ，链中的每一个进程已获得的资源同时被下一个进程所请求。</p>
+<ul>
+<li>可采用顺序资源分配法。首先给系统中的资源编号，规定每个进程 <em><strong>必须按编号递增的顺序请求资源</strong></em> ，同类资源（即编号相同的资源）一次申请完。</li>
+<li>原理分析:一个进程只有 <em><strong>已占有小编号</strong></em> 的资源时，才有资格申请更大编号的资源。按此规则，已持有大编号资源的进程 <em><strong>不可能逆向</strong></em> 地回来申请小编号的资源，从而就不会产生循环等待的现象。</li>
+<li>在任何一个时刻，总有一个进程拥有的资源编号是最大的,那这个进程申请之后的资源必然畅通无阻。因此,不可能出现所有进程都阻塞的死锁现象</li>
+</ul>
+<p><em><strong>该策略的缺点</strong></em> :</p>
+<ol>
+<li>不方便增加新的设备，因为可能需要重新分配所有的编号;</li>
+<li>进程实际使用资源的顺序可能和编号递增顺序不一致,会导致资源浪费;</li>
+<li>必须按规定次序申请资源，用户编程麻烦。</li>
+</ol>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><div style="width:70%;margin:auto"><img src="/2021/01/25/The-deadlock-problem/conclusion1.png" class title="This is an example image"></div>
+
+<h1 id="避免死锁"><a href="#避免死锁" class="headerlink" title="避免死锁"></a>避免死锁</h1><div style="width:70%;margin:auto"><img src="/2021/01/25/The-deadlock-problem/void.png" class title="This is an example image"></div>
+
+<h2 id="什么是安全序列"><a href="#什么是安全序列" class="headerlink" title="什么是安全序列"></a>什么是安全序列</h2><ul>
+<li>你是一位成功的银行家，手里掌握着100个亿的资金…</li>
+<li>有三个企业想找你贷款，分别是企业B、企业A、企业T，为描述方便，简称BAT。B表示:“大哥，我最多会跟你借70亿..”</li>
+<li>A表示:“大哥，我最多会跟你借40亿…”T表示:“大哥，我最多会跟你借50亿…”</li>
+<li>然而…江湖中有个不成文的规矩:如果你借给企业的钱总数达不到企业提出的最大要求，那么不管你之前给企业借了多少钱，那些钱都拿不回来了…</li>
+<li>刚开始，BAT三个企业分别从你这儿借了20、10、30亿…</li>
+</ul>
+<p><em><strong>由此可以看出</strong></em> </p>
+<ol>
+<li>给B借30亿是不安全的…之后手里只剩10亿，如果BAT都提出再借20亿的请求，那么任何一个企业的需求都得不到满足…</li>
+<li>给A借20亿是安全的,因为存在T→B&gt;A这样的安全序列。</li>
+</ol>
+<ul>
+<li>所谓 <em><strong>安全序列</strong></em> ，就是指如果系统按照这种序列分配资源，则每个进程都能顺利完成。只要能找出一个安全序列，系统就是安全状态。当然， <em><strong>安全序列可能有多个</strong></em> 。</li>
+<li>如果分配了资源之后，系统中找不出任何一个安全序列，系统就进入了 <em><strong>不安全状态</strong></em> 。这就意味着之后可能所有进程都无法顺利的执行下去。当然，如果有进程提前归还了一些资源，那 <em><strong>系统也有可能重新回到安全状态</strong></em> ，不过我们在分配资源之前总是要考虑到最坏的情况。</li>
+<li>如果系统处于安全状态，就一定不会发生死锁.如果系统进入不安全状态，就可能发生死锁〈处于不安全状态未必就是发生了死锁，但发生死锁时一定是在不安全状态)</li>
+<li>因此可以在资源分配之前预先判断这次分配是否会导致系统进入不安全状态，以此决定是否答应资源分配请求。这也是“银行家算法”的核心思想。</li>
+</ul>
+<h2 id="银行家算法"><a href="#银行家算法" class="headerlink" title="银行家算法"></a>银行家算法</h2><ul>
+<li>银行家算法是荷兰学者Dijkstra为银行系统设计的，以确保银行在发放现金贷款时，不会发生不能满足所有客户需要的情况。后来该算法被用在操作系统中，用于 <em><strong>避免死锁</strong></em> 。</li>
+<li>核心思想:在进程提出资源申请时，先预判此次分配是否会导致系统进入不安全状态。如果会进入不安全状态，就暂时不答应这次请求，让该进程先阻塞等待。</li>
+</ul>
+<p><em><strong>思考:</strong></em></p>
+<ul>
+<li>BAT的例子中，只有一种类型的资源――钱，但是在计算机系统中会有多种多样的资源，应该怎么把算法拓展为多种资源的情况呢?</li>
+<li>可以把单维的数字拓展为多维的向量。比如:系统中有5个进程PO<del>P4，3种资源 RO</del>R2，初始数量为(10,5,7)</li>
+<li>此时系统是否处于安全状态? </li>
+<li>思路:尝试找出一个安全序列…依次检查剩余可用资源(3,3,2)是否能满足各进程的需求</li>
+</ul>
+<h2 id="系统中"><a href="#系统中" class="headerlink" title="系统中"></a>系统中</h2><ol>
+<li>可满足P1需求，将P1加入安全序列，并更新剩余可用资源值为(5,3,2)</li>
+<li>依次检查剩余可用资源(5,3,2)是否能满足剩余进程（不包括已加入安全序列的进程）的需求可满足P3需求，将P3加入安全序列，并更新剩余可用资源值为(7,4,3)</li>
+<li>依次检查剩余可用资源(7,4,3)是否能满足剩余进程（不包括已加入安全序列的进程〉的需求…..</li>
+<li>以此类推，共五次循环检查即可将5个进程都加入安全序列中，最终可得一个安全序列。该算法称为 <em><strong>安全性算法</strong></em> 。可以很方便地用代码实现以上流程，每一轮检查都从编号较小的进程开始检查。实际做题时可以更快速的得到安全序列。</li>
+</ol>
+<h2 id="手算做题"><a href="#手算做题" class="headerlink" title="手算做题"></a>手算做题</h2><ol>
+<li>经对比发现，（3,3,2）可满足P1、P3，说明无论如何，这两个进程的资源需求一定是可以依次被满足的，因此P1、P3一定可以顺利的执行完，并归还资源。可把P1、P3先加入安全序列。(2,0,0)+(2,1,1)+(3,3,2)= (7,4,3)</li>
+<li>剩下的PO、P2、P4都可被满足。向理，这些进程都可以加入安全序列。</li>
+<li>于是，5个进程全部加入安全序列，说明此时系统处于安全状态，暂不可能发生死锁。</li>
+</ol>
+<h2 id="用代码实现"><a href="#用代码实现" class="headerlink" title="用代码实现"></a>用代码实现</h2><ol>
+<li>假设系统中有n个进程,m种资源</li>
+<li>每个进程在运行前先声明对各种资源的最大需求数，则可用一个n * m的矩阵（可用二维数组实现)表示所有进程对各种资源的最大需求数。不妨称为最大需求矩阵 Max ，Max [i,j] = K 表示进程Pi最多需要K个资源Rj。</li>
+<li>同理,系统可以用一个n * m 的分配矩阵 Allocation 表示对所有进程的资源分配情况。 Max - Allocation = Need 矩阵，表示各进程最多还需要多少各类资源。</li>
+<li>另外，还要用一个长度为 m 的一维数组 Available 表示当前系统中还有多少可用资源。</li>
+<li>某进程Pi向系统申请资源，可用一个长度为 m 的一维数组 Request ,表示本次申请的各种资源量。</li>
+</ol>
+<p><em><strong>可用银行家算法预判本次分配是否会导致系统进入不安全状态:</strong></em></p>
+<ol>
+<li><p>如果 Requesti[j] ≤ Need[i,j]  (0&lt;=j&lt;=m)便转向2;否则认为出错。</p>
+<ul>
+<li>因为它所需要的资源数已超过它所宣布的最大值。</li>
+</ul>
+</li>
+<li><p>如果Requesti[j] ≤ Available[i]  (0≤j≤m)，便转向3﹔否则表示尚无足够资源，Pi必须等待。</p>
+</li>
+<li><p>系统试探着把资源分配给进程Pi，并修改相应的数据（并非真的分配，修改数值只是为了做预判):</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Available &#x3D; Available - Requesti;</span><br><span class="line">Allocation[i,j] &#x3D; Allocation[i, j] + Request[0]i;</span><br><span class="line">Need[i, j]&#x3D; Need[i, j] - Requesti[j];</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>操作系统执行安全性算法,检查此次资源分配后，系统是否处于安全状态。若安全，才正式分配;否则，恢复相应数据，让进程阻塞等待。</li>
+</ol>
+<div style="width:70%;margin:auto"><img src="/2021/01/25/The-deadlock-problem/example2.png" class title="This is an example image"></div>
+
+<h2 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h2><h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构:"></a>数据结构:</h3><ul>
+<li>长度为m的一维数组Available表示还有多少可用资源n * m矩阵 Max 表示各进程对资源的最大需求数</li>
+<li>n * m矩阵Allocation表示已经给各进程分配了多少资源</li>
+<li>Max - Allocation = Need矩阵表示各进程最多还需要多少资源</li>
+<li>用长度为 m 的一位数组 Request 表示进程此次申请的各种资源数</li>
+</ul>
+<h3 id="银行家算法步骤"><a href="#银行家算法步骤" class="headerlink" title="银行家算法步骤:"></a>银行家算法步骤:</h3><ol>
+<li>检查此次申请是否超过了之前声明的最大需求数</li>
+<li>检查此时系统剩余的可用资源是否还能满足这次请求</li>
+<li>试探着分配，更改各数据结构</li>
+<li>用安全性算法检查此次分配是否会导致系统进入不安全状态</li>
+</ol>
+<h3 id="安全性算法步骤"><a href="#安全性算法步骤" class="headerlink" title="安全性算法步骤:"></a>安全性算法步骤:</h3><ul>
+<li>检查当前的剩余可用资源是否能满足某个进程的最大需求，如果可以，就把该进程加入安全序列，并把该进程持有的资源全部回收。</li>
+<li>不断重复上述过程，看最终是否能让所有进程都加入安全序列。</li>
+</ul>
+<h1 id="死锁的检测与解除"><a href="#死锁的检测与解除" class="headerlink" title="死锁的检测与解除"></a>死锁的检测与解除</h1><div style="width:70%;margin:auto"><img src="/2021/01/25/The-deadlock-problem/address.png" class title="This is an example image"></div>
+
+<p>如果系统中既不采取预防死锁的措施，也不采取避免死锁的措施，系统就很可能发生死锁。在这种情况下，系统应当提供两个算法:</p>
+<ol>
+<li>死锁检测算法:用于检测系统状态，以确定系统中是否发生了死锁。</li>
+<li>死锁解除算法:当认定系统中已经发生了死锁，利用该算法可将系统从死锁状态中解脱出来</li>
+</ol>
+<h2 id="死锁的检测"><a href="#死锁的检测" class="headerlink" title="死锁的检测"></a>死锁的检测</h2><p>为了能对系统是否已发生了死锁进行检测，必须:</p>
+<ol>
+<li>用某种数据结构来保存资源的请求和分配信息;</li>
+<li>提供一种算法，利用上述信息来检测系统是否已进入死锁状态。</li>
+</ol>
+<div style="width:70%;margin:auto"><img src="/2021/01/25/The-deadlock-problem/examine.png" class title="This is an example image"></div>
+
+<ul>
+<li>分配边 –&gt; 表示已经分配几个资源给某个进程</li>
+<li>请求边 –&gt; 表示进程想要请求几个资源</li>
+</ul>
+<p>ps:一般用矩形表示资源结点，矩形中的小圆表示该类资源的数量</p>
+<ol>
+<li>如果系统中剩余的可用资源数足够满足进程的需求，那么这个进程暂时是不会阻塞的，可以顺利地执行下去。</li>
+<li>如果这个进程执行结束了把资源归还系统，就可能使某些正在等待资源的进程被激活，并顺利地执行下去。</li>
+<li>相应的，这些被激活的进程执行完了之后又会归还一些资源，这样可能又会激活另外一些阻塞的进程…</li>
+</ol>
+<ul>
+<li>如果按上述过程分析，最终能消除所有边，就称这个图是 <em><strong>可完全简化的</strong></em> 。此时一定没有发生死锁(相当于能找到一个安全序列)</li>
+<li>如果最终不能消除所有边，那么此时就是发生了死锁</li>
+<li>最终还连着边的那些进程就是处于死锁状态的进程。</li>
+</ul>
+<h2 id="检测死锁的算法"><a href="#检测死锁的算法" class="headerlink" title="检测死锁的算法"></a>检测死锁的算法</h2><ol>
+<li>在资源分配图中，找出既 <em><strong>不阻塞</strong></em> 又 <em><strong>不是孤点</strong></em> 的进程Pi(即找出一条有向边与它相连，且该有向边对应资源的申请数量小于等于系统中已有空闲资源数量。如下图中，R1没有空闲资源，R2有一个空闲资源。若所有的连接该进程的边均满足上述条件，则这个进程 <em><strong>能继续运行直至完成</strong></em> ，然后释放它所占有的所有资源）。消去它所有的请求边和分配变，使之称为 <em><strong>孤立的结点</strong></em> 。在下图中，P1是满足这一条件的进程结点，于是将P1的所有边消去。</li>
+<li>进程Pi所释放的资源，可以唤醒某些因等待这些资源而阻塞的进程，原来的阻塞进程可能变为非阻塞进程。在下图中，P2就满足这样的条件。根据1中的方法进行一系列简化后，若能消去途中所有的边，则称该图是 <em><strong>可完全简化</strong></em> 的。</li>
+</ol>
+<div style="width:70%;margin:auto"><img src="/2021/01/25/The-deadlock-problem/test.png" class title="This is an example image"></div>
+
+<p>ps:死锁定理:如果某时刻系统的资源分配图是不可完全简化的，那么此时系统死锁</p>
+<h2 id="死锁的解除"><a href="#死锁的解除" class="headerlink" title="死锁的解除"></a>死锁的解除</h2><p>一旦检测出死锁的发生，就应该立即解除死锁。</p>
+<p><em><strong>补充</strong></em> :并不是系统中所有的进程都是死锁状态，用死锁检测算法化简资源分配图后，还连着边的那些进程就是死锁进程</p>
+<p><em><strong>解除死锁的主要方法</strong></em> 有:</p>
+<ol>
+<li><em><strong>资源剥夺法</strong></em> 。挂起（暂时放到外存上)某些死锁进程，并抢占它的资源，将这些资源分配给其他的死锁进程。但是应防止被挂起的进程长时间得不到资源而饥饿。</li>
+<li><em><strong>撤销进程法</strong></em> （或称 <em><strong>终止进程法</strong></em> ）。强制撤销部分、甚至全部死锁进程，并剥夺这些进程的资<br>源。这种方式的优点是实现简单，但所付出的代价可能会很大。因为有些进程可能已经运行了很长时间，已经接近结束了，一旦被终止可谓功亏一镇，以后还得从头再来。</li>
+<li><em><strong>进程回退法</strong></em> 。让一个或多个死锁进程回退到足以避免死锁的地步。这就要求系统要记录进程的历史信息，设置还原点。</li>
+</ol>
+<h2 id="如何决定对谁动手"><a href="#如何决定对谁动手" class="headerlink" title="如何决定对谁动手"></a>如何决定对谁动手</h2><ol>
+<li>进程优先级</li>
+<li>已执行多长时间</li>
+<li>还要多久能完成</li>
+<li>进程已经使用了多少资源(优先牺牲拥有较多资源的进程)</li>
+<li>进程是交互式的还是批处理式的(优先牺牲批处理式的)</li>
+</ol>
+<h2 id="总结-3"><a href="#总结-3" class="headerlink" title="总结"></a>总结</h2><div style="width:70%;margin:auto"><img src="/2021/01/25/The-deadlock-problem/conclusion2.png" class title="This is an example image"></div>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/25/The-deadlock-problem/" data-id="cknn1mv9a003acrup8onmbvyl" data-title="The deadlock problem" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Java-day10" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/24/Java-day10/" class="article-date">
+  <time class="dt-published" datetime="2021-01-24T09:39:00.000Z" itemprop="datePublished">2021-01-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/24/Java-day10/">Java day10</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="介绍栏位实战"><a href="#介绍栏位实战" class="headerlink" title="介绍栏位实战"></a>介绍栏位实战</h1><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>取色器 &gt;&gt;&gt; takecolor</p>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;style&gt;</span><br><span class="line">			&#x2F;* 选中body中的所有标签 *&#x2F;</span><br><span class="line">			*&#123;</span><br><span class="line">				&#x2F;* border: 1px solid orangered; *&#x2F;</span><br><span class="line">				&#x2F;* 去掉所有留白 避免内外边距干扰 *&#x2F;</span><br><span class="line">				margin: 0px;</span><br><span class="line">				padding: 0px;</span><br><span class="line">			&#125;</span><br><span class="line">			.introduce&#123;</span><br><span class="line">				width: 388px;</span><br><span class="line">				height: 298px;</span><br><span class="line">				border: 1px solid #3B99FC;</span><br><span class="line">				float: left;</span><br><span class="line">			&#125;</span><br><span class="line">			.introduce h3&#123;</span><br><span class="line">				height: 40px;</span><br><span class="line">				background-color: #3B99FC;</span><br><span class="line">				color: white;</span><br><span class="line">				text-align: center;</span><br><span class="line">				line-height: 40px;	&#x2F;* 文字高度与行高一致则居中 *&#x2F;</span><br><span class="line">			&#125;</span><br><span class="line">			.introduce ul&#123;</span><br><span class="line">				&#x2F;* border: 1px solid orange; *&#x2F;</span><br><span class="line">				margin-left: 50px;</span><br><span class="line">				margin-top: 30px;</span><br><span class="line">			&#125;</span><br><span class="line">			&#x2F;* a标签 导致下划线 *&#x2F;</span><br><span class="line">			.introduce a&#123;</span><br><span class="line">				text-decoration: none;</span><br><span class="line">				font-size: 14px;</span><br><span class="line">				color: darkslategray;</span><br><span class="line">			&#125;</span><br><span class="line">			.introduce li&#123;</span><br><span class="line">				height: 40px;</span><br><span class="line">				list-style: none;</span><br><span class="line">				&#x2F;* 用url引入图片 *&#x2F;</span><br><span class="line">				list-style-image: url(img&#x2F;dot.png);</span><br><span class="line">			&#125;</span><br><span class="line">			.introduce a:hover&#123;</span><br><span class="line">				color: black;</span><br><span class="line">			&#125;</span><br><span class="line">			.outerintroduce&#123;</span><br><span class="line">				width: 1190px;</span><br><span class="line">				height: 300px;</span><br><span class="line">				&#x2F;* border: 1px solid green; *&#x2F;</span><br><span class="line">				margin: 0px auto;</span><br><span class="line">			&#125;</span><br><span class="line">			#in1,#in2&#123;</span><br><span class="line">				margin-right: 10px;</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;&#x2F;style&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div class&#x3D;&quot;outerintroduce&quot;&gt;</span><br><span class="line">			&lt;div id&#x3D;&quot;in1&quot; class&#x3D;&quot;introduce&quot;&gt;</span><br><span class="line">				&lt;h3&gt;最新发布&lt;&#x2F;h3&gt;</span><br><span class="line">				&lt;ul&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;202101&#x2F;t20210113_32704.html&quot;&gt;</span><br><span class="line">							关于铁路部门调整预售期及退票费率规则的公告</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;202101&#x2F;t20210106_32657.html&quot;&gt;</span><br><span class="line">							铁路部门推出免费退票措施</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;201905&#x2F;t20190521_22980.html&quot;&gt;</span><br><span class="line">							候补购票操作说明</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;201411&#x2F;t20141126_2316.html&quot;&gt;</span><br><span class="line">							关于调整互联网、电话订票起售时间的公告</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt_news&#x2F;202101&#x2F;t20210121_32772.html&quot;&gt;</span><br><span class="line">							中国铁路广州局集团有限公司关于2021年1月31日至2月28日...</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;&#x2F;ul&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">			</span><br><span class="line">			&lt;div id&#x3D;&quot;in2&quot; class&#x3D;&quot;introduce&quot;&gt;</span><br><span class="line">				&lt;h3&gt;最新发布&lt;&#x2F;h3&gt;</span><br><span class="line">				&lt;ul&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;202101&#x2F;t20210113_32704.html&quot;&gt;</span><br><span class="line">							关于铁路部门调整预售期及退票费率规则的公告</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;202101&#x2F;t20210106_32657.html&quot;&gt;</span><br><span class="line">							铁路部门推出免费退票措施</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;201905&#x2F;t20190521_22980.html&quot;&gt;</span><br><span class="line">							候补购票操作说明</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;201411&#x2F;t20141126_2316.html&quot;&gt;</span><br><span class="line">							关于调整互联网、电话订票起售时间的公告</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt_news&#x2F;202101&#x2F;t20210121_32772.html&quot;&gt;</span><br><span class="line">							中国铁路广州局集团有限公司关于2021年1月31日至2月28日...</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;&#x2F;ul&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;div class&#x3D;&quot;introduce&quot;&gt;</span><br><span class="line">				&lt;h3&gt;最新发布&lt;&#x2F;h3&gt;</span><br><span class="line">				&lt;ul&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;202101&#x2F;t20210113_32704.html&quot;&gt;</span><br><span class="line">							关于铁路部门调整预售期及退票费率规则的公告</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;202101&#x2F;t20210106_32657.html&quot;&gt;</span><br><span class="line">							铁路部门推出免费退票措施</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;201905&#x2F;t20190521_22980.html&quot;&gt;</span><br><span class="line">							候补购票操作说明</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt&#x2F;201411&#x2F;t20141126_2316.html&quot;&gt;</span><br><span class="line">							关于调整互联网、电话订票起售时间的公告</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">					&lt;li&gt;</span><br><span class="line">						&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.12306.cn&#x2F;mormhweb&#x2F;zxdt_news&#x2F;202101&#x2F;t20210121_32772.html&quot;&gt;</span><br><span class="line">							中国铁路广州局集团有限公司关于2021年1月31日至2月28日...</span><br><span class="line">						&lt;&#x2F;a&gt;</span><br><span class="line">					&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;&#x2F;ul&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><div style="width:70%;margin:auto"><img src="/2021/01/24/Java-day10/result.png" class title="This is an example image"></div>
+
+<h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><p>做网页的布局</p>
+<ul>
+<li><p>盒子模型</p>
+<ul>
+<li><p>处理的是具有包含关系的块标签的位置关系</p>
+</li>
+<li><p>内边距样式 padding</p>
+<ul>
+<li>padding: 10px; 设置上下左右四个内边距都是10像素</li>
+<li>padding: 10px 20px; 上下内边距10ps 左右内边距20px</li>
+<li>padding: 10px 20px 30px 40px; 上 右 下 左 四个内边距为 10 20 30 40px</li>
+<li>padding-right 右内边距</li>
+<li>padding-top 上内边距</li>
+<li>padding-left 左内边距</li>
+<li>padding-bottom 下内边距</li>
+</ul>
+</li>
+<li><p>外边距样式 margin</p>
+<ul>
+<li>margin: 10px; 设置上下左右四个外边距都是10像素</li>
+<li>margin: 10px 20px; 上下外边距10ps 左右外边距20px</li>
+<li>margin: 10px 20px 30px 40px; 上 右 下 左 四个内边距为 10 20 30 40px</li>
+<li>margin-right 右外边距</li>
+<li>margin-top 上外边距</li>
+<li>margin-left 左外边距</li>
+<li>margin-bottom 下外边距</li>
+</ul>
+</li>
+<li><p>通过外边距可以设置一个块标签居父级标签的中间位置</p>
+<ul>
+<li>margin: 0px auto;</li>
+</ul>
+</li>
+<li><p>块标签和行内元素的转换</p>
+<ul>
+<li>通过CSS中的 display:block(行内转块)/inline(块转行内)</li>
+<li>一般只有块标签才有盒子模型</li>
+<li>一般的行内元素设置宽和高是不生效的</li>
+<li>块元素设置宽和高的样式都是有效的</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>ps:内边距设置不会侵占块标签的内部容量</p>
+<ul>
+<li><p>浮动</p>
+<ul>
+<li>如何让多个块标签在处于同一行同时又保留块标签的盒子模型特征<ul>
+<li>CSS中 float: left(向左浮动)/right(向右浮动)</li>
+<li>让多个块标签在父级块标签中浮动，不是整个网页上浮动</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>定位</p>
+<ul>
+<li>通过给定的坐标值 让块标签出现在网页上指定的位置</li>
+<li>CSS中 position:absolute(绝对定位)，relative(相对定位)，fixed(相对窗口定位)<ul>
+<li>absolute 相对网页原点位置 会释放坐标原定 后续标签会占用该标签原来位置</li>
+<li>relative 相对于标签原有位置定位 不会释放坐标原点 后续标签不可以占用原来位置</li>
+<li>fixed 相对浏览器窗口定位 和页面上的任何位置都没有关系(广告)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/24/Java-day10/" data-id="cknn1mv6r0005crupahmf2qkz" data-title="Java day10" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-dining-philosopher-problem" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/24/dining-philosopher-problem/" class="article-date">
+  <time class="dt-published" datetime="2021-01-24T06:33:28.000Z" itemprop="datePublished">2021-01-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/24/dining-philosopher-problem/">dining philosopher problem</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="哲学家就餐问题"><a href="#哲学家就餐问题" class="headerlink" title="哲学家就餐问题"></a>哲学家就餐问题</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>&emsp;&emsp;一张圆桌上坐着5名哲学家，每两个哲学家之间的桌上摆一根筷子，桌子的中间是一碗米饭。哲学家们倾注毕生的精力用于思考和进餐，哲学家在思考时，并不影响他人。只有当哲学家饥饿时，才试图拿起左、右两根筷子(一根一根地拿起）。如果筷子已在他人手上，则需等待。饥饿的哲学家只有同时拿起两根筷子才可以开始进餐，当进餐完毕后，放下筷子继续思考。</p>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><ol>
+<li>关系分析。系统中有5个哲学家进程，5位哲学家与左右邻居对其中间筷子的访问是互斥关系。</li>
+<li>整理思路。这个问题中只有互斥关系，但与之前遇到的问题不同的事，每个哲学家进程需要同时持有 <em><strong>两个临界资源</strong></em> 才能开始吃饭。如何避免临界资源分配不当造成的 <em><strong>死锁现象</strong></em> ，是哲学家问题的精髓。</li>
+<li>信号量设置。定义互斥信号量数组<br>chopstick[5]={1,1,1,1,1}用于实现对5个筷子的互诉访问。并对哲学家按0 ~ 4编号，哲学家i左边的筷子编号为i，右边的筷子编号为(i+1)%5。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">semaphore chopstick[5] &#x3D; &#123;1,1,1,1,1&#125;;</span><br><span class="line">Pi() &#123;			&#x2F;&#x2F;i号哲学家的进程</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(chopstick[i]);		&#x2F;&#x2F;拿左</span><br><span class="line">		P(chopstick[(i＋1)%5]);	&#x2F;&#x2F;拿右</span><br><span class="line">		吃饭..</span><br><span class="line">		V(chopstick[i]);		&#x2F;&#x2F;放左</span><br><span class="line">		V(chopstick[(i+1)%5]);	&#x2F;&#x2F;放右</span><br><span class="line">		思考....</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果5个哲学家并发地拿起了自己左手边的筷子…</li>
+<li>每位哲学家循环等待右边的人放下筷子（阻塞)发生“死锁”</li>
+</ul>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol>
+<li>可以对哲学家进程施加一些限制条件，比如最多允许四个哲学家同时进餐。这样可以保证至少有一个哲学家是可以拿到左右两只筷子的</li>
+<li>要求奇数号哲学家先拿左边的筷子，然后再拿右边的筷子，而偶数号哲学家刚好相反。用这种方法可以保证如果相邻的两个奇偶号哲学家都想吃饭,那么只会有其中一个可以拿起第一只筷子,另一个会直接阻寨。这就避免了占有一支后再等待另一只的情况。</li>
+<li>仅当一个哲学家左右两支筷子都可用时才允许他抓起筷子。</li>
+</ol>
+<h2 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现"></a>如何实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">semaphore chopstick[5] &#x3D; &#123;1,1,1,1,1&#125;;</span><br><span class="line">semaphore mutex &#x3D; 1;		&#x2F;&#x2F;互斥地取筷子</span><br><span class="line">Pi() &#123;			&#x2F;&#x2F;i号哲学家的进程</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(mutex);</span><br><span class="line">		P(chopstick[i]);		&#x2F;&#x2F;拿左</span><br><span class="line">		P(chopstick[(i＋1)%5]);	&#x2F;&#x2F;拿右</span><br><span class="line">		V(mutex);</span><br><span class="line">		吃饭..</span><br><span class="line">		V(chopstick[i]);		&#x2F;&#x2F;放左</span><br><span class="line">		V(chopstick[(i+1)%5]);	&#x2F;&#x2F;放右</span><br><span class="line">		思考....</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因此这种方法并不能保证只有两边的筷子都可用时，才允许哲学家拿起筷子。<br>&emsp;&emsp;更准确的说法应该是:各哲学家拿筷子这件事必须互斥的执行。这就保证了即使一个哲学家在拿筷子拿到一半时被阻塞，也不会有别的哲学家会继续尝试拿筷子。这样的话,当前正在吃饭的哲学家放下筷子后，被阻塞的哲学家就可以获得等待的筷子了。<br>–&gt; 可行不会死锁</p>
+<h2 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h2><ul>
+<li>哲学家进餐问题的关键在于解决进程死锁。</li>
+<li>这些进程之间只存在互斥关系，但是与之前接触到的互斥关系不同的是，每个进程都需要同时持有两个临界资源，因此就有“死锁”问题的隐患。</li>
+<li>如果在考试中遇到了一个进程需要同时持有多个临界资源的情况，应该参考哲学家问题的思想，分析题中给出的进程之间是否会发生循环等待，是否会发生死锁。</li>
+<li>可以参考哲学家就餐问题解决死锁的三种思路。</li>
+</ul>
+<h1 id="管程"><a href="#管程" class="headerlink" title="管程"></a>管程</h1><h2 id="为什么要引入管程"><a href="#为什么要引入管程" class="headerlink" title="为什么要引入管程"></a>为什么要引入管程</h2><ul>
+<li>信号量机制存在的问题，编写程序困难、易出错</li>
+<li>如:错了P操作顺序，会发生死锁</li>
+</ul>
+<p>–&gt; 能不能设计一种机制,让程序员写程序时不需要再关注复杂的PV操作，让写代码更轻松呢?</p>
+<p>1973年，Brinch Hansen首次在程序设计语言(Pascal)中引入了“管程”成分—―一种高级同步机制</p>
+<h2 id="管程的定义和基本特征"><a href="#管程的定义和基本特征" class="headerlink" title="管程的定义和基本特征"></a>管程的定义和基本特征</h2><p>管程是一种特殊的软件模块，有这些部分组成:</p>
+<ol>
+<li>局部于管程的共享数据结构说明;</li>
+<li>对该数据结构进行操作的一组过程;</li>
+<li>对局部于管程的共享数据设置初始值的语句;</li>
+<li>管程有一个名字。</li>
+</ol>
+<p>跨考Tips:“过程”其实就是“函数”</p>
+<p>管程的基本特征:</p>
+<ol>
+<li>局部于管程的数据只能被局部于管程的过程所访问;</li>
+<li>一个进程只有通过调用管程内的过程才能进入管程访问共享数据;</li>
+<li><em><strong>每次仅允许一个进程在管程内执行某个内部过程。</strong></em></li>
+</ol>
+<h2 id="拓展1-用管程解决生产者消费者问题"><a href="#拓展1-用管程解决生产者消费者问题" class="headerlink" title="拓展1:用管程解决生产者消费者问题"></a>拓展1:用管程解决生产者消费者问题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">monitor ProducerConsumer</span><br><span class="line">	condition full,empty;	&#x2F;&#x2F;条件变量用来实现同步(排队) 编程中设置条件变量和等待唤醒操作，以解决同步问题</span><br><span class="line">	int count&#x3D;0;				&#x2F;&#x2F;缓冲区中的产品数</span><br><span class="line">	void insert (Item item)&#123;	&#x2F;&#x2F;把产品item放入缓冲区 由编译器负责实现各进程互斥地进入管程中的过程</span><br><span class="line">		if (count &#x3D;&#x3D; N)</span><br><span class="line">			wait (full);</span><br><span class="line">		count++;</span><br><span class="line">		insert_item (item);</span><br><span class="line">		if ( count &#x3D;&#x3D; 1)</span><br><span class="line">			signal(empty);</span><br><span class="line">	&#125;</span><br><span class="line">	Item remove()&#123;	&#x2F;&#x2F;从缓冲区中取出一个产品</span><br><span class="line">		if (count &#x3D;&#x3D; 0)</span><br><span class="line">			wait (empty) ;</span><br><span class="line">		count--;</span><br><span class="line">		if (count &#x3D;&#x3D; N-1)</span><br><span class="line">			signal(full);</span><br><span class="line">		return remove_item();</span><br><span class="line">	&#125;</span><br><span class="line">end monitor;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;生产者进程</span><br><span class="line">producer()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		item &#x3D; 生产一个产品;</span><br><span class="line">		ProdecerConsumer.insert (item);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;清费者进程</span><br><span class="line">consumer ()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		item &#x3D; Prodecerconsumer. remove ();</span><br><span class="line">		消费产品item;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>每次仅允许一个进程在管程内执行某个内部过程。<br>例1:两个生产者进程并发执行，依次调用了insert过程…<br>例2:两个消费者进程先执行，生产者进程后执行…</p>
+<ul>
+<li>只需要调用方法，本身就能保证是互斥进行的</li>
+<li>若消费者进程count = 0,则发送等待，排在empty队列中</li>
+<li>第二个开始时，也会插入empty队尾</li>
+<li>生产者将产品放入缓冲区，并检查自己的产品是不是缓冲区中的第一个产品</li>
+<li>如果是第一个产品，就有可能有消费者进程在等待这个产品，执行唤醒操作signal(empty)</li>
+<li>一般唤醒排在对头的第一个消费者进程</li>
+<li>消费者进程执行count–,使之返回为0</li>
+<li>检查自己取走产品之前缓冲区是否已经满了，如果缓冲区是满的，意味着有生产者进程需要被唤醒，则调用signal(full)</li>
+<li>最后remove()会返回一个消费者进程想要的产品的指针</li>
+<li>其他消费者都不需要处理，由管程解决</li>
+</ul>
+<p>引入管程的目的无非就是要更方便地实现进程互斥和同步。</p>
+<ol>
+<li>需要在管程中定义共享数据（如生产者消费者问题的缓冲区）</li>
+<li>需要在管程中定义用于访问这些共享数据的“入口”—―其实就是一些函数（如生产者消费者问题中，可以定交一个函数用于将产品放入缓冲区，再定义一个函数用于从缓冲区取出产品)</li>
+<li>只有 <em><strong>通过这些特定的“入口”才能访问共享数据</strong></em></li>
+<li>管程中有很多“入口”，但是每次只能开放其中一个“入口”，并且只能让 <em><strong>一个进程或线程进入</strong></em> （如生产者消费者问题中，各进程需要互斥地访问共享缓冲区。管程的这种特性即可保证一个时间段内最多只会有一个进程在访问缓冲区。 <em><strong>注意:这种互斥特性是由编译器负责实现的，程序员不用关心)</strong></em></li>
+<li>可在管程中设置 <em><strong>条件变量及等待/唤醒操作</strong></em> 以解决同步问题。可以让一个进程或线程在条件变量上等待（ <em><strong>此时，该进程应先释放誓程的使用权，也就是让出“入口”</strong></em> )﹔可以通过唤醒操作将等待在条件变量上的进程或线程唤醒。</li>
+</ol>
+<p>程序员可以用某种特殊的语法定义一个管程（比如: monitor ProducerConsumer …end monitor;),之后其他程序员就可以使用这个管程提供的特定“入口”很方便地使用实现进程同步/互斥了。</p>
+<p>—&gt;封装思想</p>
+<h2 id="拓展2-Java中类似于管程的机制"><a href="#拓展2-Java中类似于管程的机制" class="headerlink" title="拓展2:Java中类似于管程的机制"></a>拓展2:Java中类似于管程的机制</h2><p>Java中，如果用关键字synchronized来描述一个函数，那么这个函数同一时间段内只能被一个线程调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">static class monitor &#123;</span><br><span class="line">	private Item buffer[] &#x3D; new Item[N] ;</span><br><span class="line">	private int count &#x3D; 0;</span><br><span class="line">	public synchronized void insert (Item item) &#123;</span><br><span class="line">		...</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>每次只能有一个线程进入insert函数,如果多个线程同时调用insert函数,则后来者需要排队等待</p>
+<ul>
+<li>Tips:不熟悉Java的同学看不懂也没关系，不会考，仅作为思维拓展。</li>
+<li>熟悉Java的同学在时间充裕的情况下可以动手尝试用synchronized实现生产者消费者问题的“管程”</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><div style="width:70%;margin:auto"><img src="/2021/01/24/dining-philosopher-problem/conclusion.png" class title="This is an example image"></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/24/dining-philosopher-problem/" data-id="cknn1mv7w001tcrup15tw2qrf" data-title="dining philosopher problem" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/issues/" rel="tag">issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start-here/" rel="tag">start here</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/" rel="tag">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/" rel="tag">writing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Internet/" style="font-size: 15px;">Internet</a> <a href="/tags/Programming-Language/" style="font-size: 17.5px;">Programming Language</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/start-here/" style="font-size: 12.5px;">start here</a> <a href="/tags/system/" style="font-size: 20px;">system</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/writing/" style="font-size: 10px;">writing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/18/network%20of%20computer2/">network of computer2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/Java%20day1/">Java day1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/Java-day19/">Java day19</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/23/Java-day18/">Java day18</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>terminals and exceptions | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="中断机制的诞生&amp;emsp;&amp;emsp;早期计算机只能串行的进行工作，同一时刻最多一道程序。为了解决这个问题，人们发明了操作系统作为计算机的管理者，引入中断机制，实现了多道程序并发执行。 本质， 发生中断意味着需要操作系统介入，并展开管理工作。  进程1正在进行，CPU收到计时部件发出的 中断信号 ，切换为 核心态 对中断进行处理 操作系统内核负责对中断信号进行处理 -&gt; 进程1时间片已用完，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="terminals and exceptions">
+<meta property="og:url" content="http://example.com/2021/01/11/terminals-and-exceptions/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="中断机制的诞生&amp;emsp;&amp;emsp;早期计算机只能串行的进行工作，同一时刻最多一道程序。为了解决这个问题，人们发明了操作系统作为计算机的管理者，引入中断机制，实现了多道程序并发执行。 本质， 发生中断意味着需要操作系统介入，并展开管理工作。  进程1正在进行，CPU收到计时部件发出的 中断信号 ，切换为 核心态 对中断进行处理 操作系统内核负责对中断信号进行处理 -&gt; 进程1时间片已用完，">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-11T08:08:40.000Z">
+<meta property="article:modified_time" content="2021-04-18T09:10:46.644Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="system">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-terminals-and-exceptions" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/11/terminals-and-exceptions/" class="article-date">
+  <time class="dt-published" datetime="2021-01-11T08:08:40.000Z" itemprop="datePublished">2021-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      terminals and exceptions
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="中断机制的诞生"><a href="#中断机制的诞生" class="headerlink" title="中断机制的诞生"></a>中断机制的诞生</h1><p>&emsp;&emsp;早期计算机只能串行的进行工作，同一时刻最多一道程序。为了解决这个问题，人们发明了操作系统作为计算机的管理者，引入中断机制，实现了多道程序并发执行。</p>
+<p><em><strong>本质，</strong></em> 发生中断意味着需要操作系统介入，并展开管理工作。</p>
+<ol>
+<li>进程1正在进行，CPU收到计时部件发出的 <em><strong>中断信号</strong></em> ，切换为 <em><strong>核心态</strong></em> 对中断进行处理</li>
+<li>操作系统内核负责对中断信号进行处理 -&gt; 进程1时间片已用完，换为进程2运行</li>
+<li>进程2发出系统调用（内中断信号），请求输出。CPU切换为 <em><strong>核心态</strong></em> ，对中断进行处理。</li>
+<li>操作系统内核负责对中断信号进行处理</li>
+<li>进程2要等待I/O设备运行，换进程3运行</li>
+<li>I/O完成，设备向CPU发出 <em><strong>中断信号</strong></em> </li>
+<li>CPU收到I/O设备发来的中断信号，切换为核心态，对中断进行处理</li>
+<li>操作系统内核负责对中断信号进行处理</li>
+<li>进程2的I/O已经完成，让进程2 恢复运行，以完成后续工作</li>
+</ol>
+<h1 id="中断的概念和作用"><a href="#中断的概念和作用" class="headerlink" title="中断的概念和作用"></a>中断的概念和作用</h1><ol>
+<li>当中断发生时，CPU立即进入核心态</li>
+<li>当中断发生以后，当前运行的进程暂停运行，并且由操作系统内核对中断进行处理</li>
+<li>对于不同的中断信号，会进行不同的处理</li>
+</ol>
+<p>&emsp;&emsp;发生了中断，就意味着需要操作系统介入，开展管理工作。由于操作系统的管理工作（比如进程切换、分配I/O设备等）需要使用特权指令，因此CPU要从用户态转为核心态。中断可以是CPU从用户态切换为核心态，是操作系统获得计算机的控制权。有了中断，才能实现多道程序的并发执行。</p>
+<p>ps:用户态、核心态之间的切换是怎么实现的？<br>答：”用户态 -&gt; 核心态” 是通过中断实现的，并且中断是唯一途径。<br>“核心态 -&gt; 用户态” 的切换是通过执行一个特权指令，将程序状态字（PSW）的标志位设置为”用户态”。</p>
+<h1 id="中断（广义）的分类"><a href="#中断（广义）的分类" class="headerlink" title="中断（广义）的分类"></a>中断（广义）的分类</h1><h2 id="内中断-（异常、例外。陷入）-与当前程序有关"><a href="#内中断-（异常、例外。陷入）-与当前程序有关" class="headerlink" title="内中断 - （异常、例外。陷入）- 与当前程序有关"></a>内中断 - （异常、例外。陷入）- 与当前程序有关</h2><p>信号来源：CPU内部   与当前执行的指令有关</p>
+<ul>
+<li>自愿中断 — 指令中断  如：系统调用时使用的访管指令（又叫陷入指令、trap指令）</li>
+<li>强迫中断 <ul>
+<li>硬件故障  如：缺页</li>
+<li>软件中断  如：整数除0</li>
+</ul>
+</li>
+</ul>
+<h2 id="外中断-中断（狭义）-与当前程序无关"><a href="#外中断-中断（狭义）-与当前程序无关" class="headerlink" title="外中断 - 中断（狭义）- 与当前程序无关"></a>外中断 - 中断（狭义）- 与当前程序无关</h2><p>信号来源：CPU外部<br>与当前执行程序无关</p>
+<ul>
+<li>外设请求  如：I/O操作完成发出的中断信号</li>
+<li>人工干预  如：用户强行终止一个进程</li>
+</ul>
+<h1 id="另一种分类方式"><a href="#另一种分类方式" class="headerlink" title="另一种分类方式"></a>另一种分类方式</h1><ul>
+<li><p>内中断</p>
+<ul>
+<li>陷阱、陷入（trap） – 有意而为的异常，如系统调用</li>
+<li>故障 （flaut） – 由错误条件引起的，可能被故障处理程序修复，如缺页</li>
+<li>终止 （abort） – 不可修复的致命错误造成的结果，终止处理程序不再将控制返回给引发终止的应用程序，如整数除0</li>
+</ul>
+</li>
+<li><p>外中断</p>
+<ul>
+<li>I/O中断</li>
+<li>人工干预</li>
+</ul>
+</li>
+</ul>
+<h1 id="外中断的处理过程"><a href="#外中断的处理过程" class="headerlink" title="外中断的处理过程"></a>外中断的处理过程</h1><ol>
+<li>执行完每个指令之后，CPU都要检查当前是否有外部中断信号</li>
+<li>如果检测到外部中断信号，则需要保护中断进程的CPU环境（如程序状态字PSW、程序计数器PC、各种通用寄存器） – 详见 <em><strong>计算机组成原理</strong></em></li>
+<li>根据中断信号类型转入相应的中断处理程序 – 属于核心态</li>
+<li>恢复原进程的CPU环境并退出中断，返回原进程继续往下执行</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/11/terminals-and-exceptions/" data-id="cknn1mv8x002pcrupbxfx49qv" data-title="terminals and exceptions" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/11/system-call/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          system call
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/11/methods-of-show-your-photo/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">methods of show your photo</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/issues/" rel="tag">issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start-here/" rel="tag">start here</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/" rel="tag">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/" rel="tag">writing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Internet/" style="font-size: 15px;">Internet</a> <a href="/tags/Programming-Language/" style="font-size: 17.5px;">Programming Language</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/start-here/" style="font-size: 12.5px;">start here</a> <a href="/tags/system/" style="font-size: 20px;">system</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/writing/" style="font-size: 10px;">writing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/18/network%20of%20computer2/">network of computer2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/Java%20day1/">Java day1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/Java-day19/">Java day19</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/23/Java-day18/">Java day18</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Java day1 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="互联网技术概念入门CS&#x2F;BS模式-互联网软件的两种模式ps:CS - Client&#x2F;Server  客户端&#x2F;服务器模式–所下载的软件即是客户端 需要下载安装客户端 软件有客户端和服务端两部分组成 软件更新比较麻烦 所有客户端都需要更新 运算压力可以分摊给各个终端 服务器压力大大减少    ps:BS - Browser&#x2F;Severe  浏览器&#x2F;服务器模式(各种网站) 不需要下载安装客户端，只需要有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java day1">
+<meta property="og:url" content="http://example.com/2021/04/18/Java%20day1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="互联网技术概念入门CS&#x2F;BS模式-互联网软件的两种模式ps:CS - Client&#x2F;Server  客户端&#x2F;服务器模式–所下载的软件即是客户端 需要下载安装客户端 软件有客户端和服务端两部分组成 软件更新比较麻烦 所有客户端都需要更新 运算压力可以分摊给各个终端 服务器压力大大减少    ps:BS - Browser&#x2F;Severe  浏览器&#x2F;服务器模式(各种网站) 不需要下载安装客户端，只需要有">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-04-18T09:10:13.780Z">
+<meta property="article:modified_time" content="2021-04-18T09:10:13.780Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Programming Language">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Java day1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/18/Java%20day1/" class="article-date">
+  <time class="dt-published" datetime="2021-04-18T09:10:13.780Z" itemprop="datePublished">2021-04-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Java day1
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="互联网技术概念入门"><a href="#互联网技术概念入门" class="headerlink" title="互联网技术概念入门"></a>互联网技术概念入门</h1><h2 id="CS-BS模式-互联网软件的两种模式"><a href="#CS-BS模式-互联网软件的两种模式" class="headerlink" title="CS/BS模式-互联网软件的两种模式"></a>CS/BS模式-互联网软件的两种模式</h2><p>ps:CS - Client/Server</p>
+<ul>
+<li>客户端/服务器模式–所下载的软件即是客户端<ol>
+<li>需要下载安装客户端</li>
+<li>软件有客户端和服务端两部分组成</li>
+<li>软件更新比较麻烦 所有客户端都需要更新</li>
+<li>运算压力可以分摊给各个终端 服务器压力大大减少</li>
+</ol>
+</li>
+</ul>
+<p>ps:BS - Browser/Severe</p>
+<ul>
+<li>浏览器/服务器模式(各种网站)<ol>
+<li>不需要下载安装客户端，只需要有一个浏览器即可</li>
+<li>软件全部部署在服务器端</li>
+<li>软件更新比较简单 只要更新服务器即可</li>
+<li>运算压力基本在服务端 一般不会用来做大型游戏</li>
+</ol>
+</li>
+</ul>
+<p>Java语言更适用于BS模式</p>
+<h2 id="互联网三大基石-URL-HTTP协议-HTML"><a href="#互联网三大基石-URL-HTTP协议-HTML" class="headerlink" title="互联网三大基石-URL HTTP协议 HTML"></a>互联网三大基石-URL HTTP协议 HTML</h2><p>互联网软件以来的三种基础技术</p>
+<ul>
+<li>URL - 统一资源定位符</li>
+<li>HTTP协议 - 数据解析的规范（双方都认识的规范发送与解读）</li>
+<li>HTML - 数据传输的载体（数据的内容）</li>
+</ul>
+<p>假设小明小红 传纸条</p>
+<ul>
+<li>URL 小红的地址 小明的地址</li>
+<li>HTTP协议 以中文发送 “中文”就是一个共同的解析数据的规范</li>
+<li>HTML纸条上的内容 信息的载体 &gt;&gt;&gt;晚上看电影</li>
+</ul>
+<h1 id="HTML入门"><a href="#HTML入门" class="headerlink" title="HTML入门"></a>HTML入门</h1><h2 id="什么是HTML"><a href="#什么是HTML" class="headerlink" title="什么是HTML"></a>什么是HTML</h2><ul>
+<li>HTML 是一种用来描述网页的一种语言</li>
+<li>HTML 指的是超文本标记语言：HyperText Markup Language<ol>
+<li>超文本：比普通文本更强 不仅仅可以展示文字 还可以展示各种媒体内容</li>
+<li>一般由前端工作人员来完成，后台研发人员正常不需要</li>
+<li>标记：（标签/元素/标记）<br>标记通常被称为 HTML 标签 （HTML tag）<ul>
+<li>HTML 标签是由尖括号包围的关键词，比如 <code>&lt;html&gt;</code></li>
+<li>封闭类标记（也称为双标记），必须成对出现，如<code>&lt;p&gt;&lt;/p&gt;</code></li>
+<li>标签对中的第一个标签是开始标签，第二个是结束标签</li>
+<li>开始和结束标签也称为开放标签和闭合标签</li>
+<li>非封闭类标记，也叫作空标记，或者单标记，如<code>&lt;br/&gt;</code></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p>ps:可以在自己的电脑上编写，也可以通过网络去访问服务器的文件</p>
+<p>总结：我们学习HTML就是学习各种各样的标签，可以达到比普通标签更厉害的功能，那么后续浏览器可以对html文件做解析，就可以在浏览器上展示好看的效果。<br>ps:文件+文件扩展名</p>
+<h2 id="HTML的作用"><a href="#HTML的作用" class="headerlink" title="HTML的作用"></a>HTML的作用</h2><p>&emsp;&emsp;通过使用HTML的各种标签，然后生成一个HTML文件，这个文件可以被浏览器解析，浏览器内都有一个专门的 HTML 的解析器，解析后我们就可以看到炫酷的页面。（编写网页的超文本标记语言）<br>ps:文件扩展名 windows上每个文件都有扩展名<br>ps:文件扩展名代表文件的类型 Windows 可以根据文件的扩展名去自动选择文件打开的程序。<br>ps:一般win7和win10默认隐藏文件扩展名<br>网页文件 扩展名为 .html 或者 html 的纯文本文件</p>
+<h2 id="HTML版本"><a href="#HTML版本" class="headerlink" title="HTML版本"></a>HTML版本</h2><p>HTML 4.01 – 1999<br>HTML 5    – 2012<br>ps：许多仍用HTML4，但现用HTML5</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>新建一个文本文档，将文本文档后缀改为.html(HTML不区分大小写，建议小写)</li>
+<li>右键 用记事本打开，编写代码</li>
+</ol>
+<p>ps:浏览器可以展示html文件中的文字，但是不能修改其中类容，用记事本打开即可<br>ps:<code>&lt;h1&gt;&lt;/h1&gt;</code> – 变大变粗</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/04/18/Java%20day1/" data-id="cknn1mv6l0001crupec4zbj7i" data-title="Java day1" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/04/18/network%20of%20computer2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          network of computer2
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/04/18/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/issues/" rel="tag">issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start-here/" rel="tag">start here</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/" rel="tag">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/" rel="tag">writing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Internet/" style="font-size: 15px;">Internet</a> <a href="/tags/Programming-Language/" style="font-size: 17.5px;">Programming Language</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/start-here/" style="font-size: 12.5px;">start here</a> <a href="/tags/system/" style="font-size: 20px;">system</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/writing/" style="font-size: 10px;">writing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/18/network%20of%20computer2/">network of computer2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/Java%20day1/">Java day1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/Java-day19/">Java day19</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/23/Java-day18/">Java day18</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>processing | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="进程 定义 – 在计算机发展史上，”进程”是为了解决什么问题而被引入的？ 组成 – 每个进程有哪些部分组成？ 组织方式 – 系统中各个进程之间是如何被组织起来的？ 特征 – 相比于程序，进程有哪些特征？  进程定义程序 – 就是一个指令序列  早期的计算机只支持单道程序 CPU只为这个程序服务，内存之中也只存放该程序相关信息，所有系统资源都为其服务  该程序的相关数据包括程序段与数据段  程序段">
+<meta property="og:type" content="article">
+<meta property="og:title" content="processing">
+<meta property="og:url" content="http://example.com/2021/01/12/processing/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="进程 定义 – 在计算机发展史上，”进程”是为了解决什么问题而被引入的？ 组成 – 每个进程有哪些部分组成？ 组织方式 – 系统中各个进程之间是如何被组织起来的？ 特征 – 相比于程序，进程有哪些特征？  进程定义程序 – 就是一个指令序列  早期的计算机只支持单道程序 CPU只为这个程序服务，内存之中也只存放该程序相关信息，所有系统资源都为其服务  该程序的相关数据包括程序段与数据段  程序段">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-12T03:08:58.000Z">
+<meta property="article:modified_time" content="2021-04-18T09:10:32.734Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="system">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-processing" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/12/processing/" class="article-date">
+  <time class="dt-published" datetime="2021-01-12T03:08:58.000Z" itemprop="datePublished">2021-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      processing
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><ul>
+<li>定义 – 在计算机发展史上，”进程”是为了解决什么问题而被引入的？</li>
+<li>组成 – 每个进程有哪些部分组成？</li>
+<li>组织方式 – 系统中各个进程之间是如何被组织起来的？</li>
+<li>特征 – 相比于程序，进程有哪些特征？</li>
+</ul>
+<h1 id="进程定义"><a href="#进程定义" class="headerlink" title="进程定义"></a>进程定义</h1><p><em><strong>程序</strong></em> – 就是一个指令序列</p>
+<ul>
+<li><p>早期的计算机只支持单道程序 CPU只为这个程序服务，内存之中也只存放该程序相关信息，所有系统资源都为其服务</p>
+</li>
+<li><p>该程序的相关数据包括程序段与数据段</p>
+<ul>
+<li>程序段 – 该程序代码本身，就是指令序列</li>
+<li>数据段 – 程序运行时使用产生的运算数据。如全局变量、局部变量、宏定义的常量 就存放在数据段</li>
+</ul>
+</li>
+<li><p>引入多道程序 – 内存中同时放入多道程序，各个程序的代码、运算数据存放的位置不同。</p>
+</li>
+</ul>
+<p>操作系统要怎么才能找到各程序的存放位置？ –&gt; 为了方便操作系统管理，完成各程序并发执行，引入进程与进程实体的概念</p>
+<p>&emsp;&emsp;系统为每个运行的程序配置一个数据结构，称为进程控制块(PCB)，用来描述进程的各种信息(如程序代码存放位置)。</p>
+<p>ps:PCB、程序段、数据段三部分构成了进程实体(也称进程映像)。<br>操作系统通过PCB来管理进程，因此PCB中应该包含操作系统对其进行管理所需的各种信息。</p>
+<p>&emsp;&emsp;一般情况下，我们把进程实体就简称为进程，例如，所谓创建进程，实质上是创建进程实体中的PCB；而撤销进程，实质上是撤销进程实体中的PCB。</p>
+<p>从不同角度，进程可以有不同的定义，比较传统经典的定义有：</p>
+<ol>
+<li>进程是程序的一次执行过程。</li>
+<li>进程是一个程序及其数据在处理机上顺序执行时，所发生的活动。</li>
+<li>进程是具有独立功能的程序在数据集合上运行的过程，它是系统进行资源分配和调度的一个独立单位</li>
+</ol>
+<p>ps:这里都强调了进程是一个动态的概念</p>
+<p>引入进程实体的概念后，可以把进程定义为：<br><em><strong>进程</strong></em> 是进程实体的 <em><strong>运行过程</strong></em> ，是系统进行资源分配和调度的一个独立单位</p>
+<p>注：严格来说，进程实体和进程并不一样，进程实体是静态的，进程则是动态地。不过除非专门考察二者区别，否则可以认为进程实体就是进程。因此我们也可以说”进程是有进程段、数据段、PCB三部分组成”</p>
+<p><em><strong>PCB中的内容 ：</strong></em></p>
+<ol>
+<li><p>进程描述信息 </p>
+<ul>
+<li>进程标志符 PID — 当进程被创建时，操作系统会为该进程分配一个唯一的、不重复的ID，用于区分不同的进程（类似于身份证号）</li>
+<li>用户标志符 UID — 该进程所属的用户是谁？</li>
+</ul>
+</li>
+<li><p>进程控制和管理信息</p>
+<ul>
+<li>进程当前状态</li>
+<li>进程优先级</li>
+</ul>
+</li>
+<li><p>资源分配清单</p>
+<ul>
+<li>程序段指针</li>
+<li>数据段指针</li>
+<li>键盘</li>
+<li>鼠标</li>
+</ul>
+</li>
+<li><p>处理机相关信息</p>
+<ul>
+<li>各种寄存器值 — 当进程切换是需要把进程当前的运行情况记录下来保存在PCB中，如：程序计算器的值表示了当前程序执行到那一句</li>
+</ul>
+</li>
+</ol>
+<p>PCB还可以分为：</p>
+<ul>
+<li>进程标志服</li>
+<li>处理机状态</li>
+<li>进程调度信息</li>
+<li>进程控制信息</li>
+</ul>
+<p>ps:只要与进程管理相关的数据一定是放在PCB中的<br>ps:程序段与数据段 存放的是程序运行本身所需的数据</p>
+<h1 id="进程的组织"><a href="#进程的组织" class="headerlink" title="进程的组织"></a>进程的组织</h1><p>&emsp;&emsp;在一个操作系统中，通常有数十、数百乃至数千个PCB。为了能对他们加以有效的管理，应该用适当的方式把这些PCB组织起来。</p>
+<p>ps:进程的组成讨论的是一个进程内部有哪些部分构成的问题，而进程的组织讨论的是多个进程之间的组织方式问题</p>
+<p><em><strong>组织方式 :</strong></em></p>
+<ul>
+<li><p>链接方式</p>
+<ul>
+<li>按照进程状态将PCB分为多个队列</li>
+<li>操作系统持有者指向各个队列的指针</li>
+</ul>
+</li>
+<li><p>索引方式</p>
+<ul>
+<li>根据进程状态的不同，建立几张索引表</li>
+<li>操作系统持有者指向各个索引表的指针</li>
+</ul>
+</li>
+</ul>
+<h2 id="链接方式"><a href="#链接方式" class="headerlink" title="链接方式"></a>链接方式</h2><ul>
+<li>执行指针 – 指向处于运行态（执行态）的进程 – &gt; 单个CPU计算机中，同一时刻，只会有一个进程处于运行态</li>
+<li>就绪队列指针 – 指向当前处于就绪态的进程 – &gt; 通常会把优先级高的进程放在对头</li>
+<li>阻塞态队列指针 – 指向当前处于阻塞态的进程，很多操作系统还会根据阻塞原因不同，再分为多个阻塞队列</li>
+</ul>
+<p>ps:队列 排成一串的东西</p>
+<h2 id="索引方式"><a href="#索引方式" class="headerlink" title="索引方式"></a>索引方式</h2><ul>
+<li>就绪表指针指向的是就绪索引表，其表项记录的是各个PCB</li>
+<li>阻塞表指针同理</li>
+</ul>
+<h1 id="进程特征"><a href="#进程特征" class="headerlink" title="进程特征"></a>进程特征</h1><ul>
+<li>动态性 – 进程是程序的一次执行过程，是动态地产生、变化和消亡的</li>
+<li>并发性 – 内存中有多个进程实体，各进程可并发执行</li>
+<li>独立性 – 进程使能独立运行、独立获得资源、独立接受调度的基本单位</li>
+<li>异步性 – 各进程按各自独立的、不可预知的速度向前推进，操作系统要提供”进程同步机制”来解决异步问题<ul>
+<li>异步性会导致并发程序执行结果的不确定性。具体会在”进程同步”相关小节学习</li>
+</ul>
+</li>
+<li>结构性 – 每个进程都会配置一个PCB。结构上看，进程由程序段、数据段、PCB组成</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/12/processing/" data-id="cknn1mv8t002hcrup868qhxwi" data-title="processing" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/12/state-of-processing/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          state of processing
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/11/Java-day4/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java day4</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/issues/" rel="tag">issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start-here/" rel="tag">start here</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/" rel="tag">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/" rel="tag">writing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Internet/" style="font-size: 15px;">Internet</a> <a href="/tags/Programming-Language/" style="font-size: 17.5px;">Programming Language</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/start-here/" style="font-size: 12.5px;">start here</a> <a href="/tags/system/" style="font-size: 20px;">system</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/writing/" style="font-size: 10px;">writing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/18/network%20of%20computer2/">network of computer2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/Java%20day1/">Java day1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/Java-day19/">Java day19</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/23/Java-day18/">Java day18</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

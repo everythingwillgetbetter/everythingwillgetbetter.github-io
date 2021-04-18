@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Smoker-problem" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/23/Smoker-problem/" class="article-date">
+  <time class="dt-published" datetime="2021-01-23T07:27:17.000Z" itemprop="datePublished">2021-01-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/23/Smoker-problem/">Smoker problem</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="PV操作"><a href="#PV操作" class="headerlink" title="PV操作"></a>PV操作</h1><p>P操作的主要动作是：  </p>
+<ol>
+<li>S减1；  </li>
+<li>若S减1后仍大于或等于0，则进程继续执行； </li>
+<li>若S减1后小于0，则该进程被阻塞后放入等待该信号量的等待队列中，然后转进程调度。</li>
+</ol>
+<p>V操作的主要动作是： </p>
+<ol>
+<li>S加1； </li>
+<li>若相加后结果大于0，则进程继续执行；</li>
+<li>若相加后结果小于或等于0，则从该信号的等待队列中释放一个等待进程，然后再返回原进程继续执行或转进程调度。</li>
+</ol>
+<h1 id="抽烟者问题"><a href="#抽烟者问题" class="headerlink" title="抽烟者问题"></a>抽烟者问题</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>&emsp;&emsp;假设一个系统有三个抽烟者进程和一个供应者进程。每个抽烟者不停地卷烟并抽掉它，但是要卷起并抽掉一支烟，抽烟者需要有三种材料:烟草、纸和胶水。三个抽烟者中，第一个拥有烟草、第二个拥有纸、第三个拥有胶水。供应者进程无限地提供三种材料，供应者每次将两种材料放桌子上，拥有剩下那种材料的抽烟者卷一根烟并抽掉它，并给供应者进程一个信号告诉完成了，供应者就会放另外两种材料再桌上，这个过程一直重复（让三个抽烟者轮流地抽烟)</p>
+<p>本质上这题也属于“生产者-消费者”问题，更详细的说应该是“可生产多种产品的单生产者-多消费者”。</p>
+<ol>
+<li><p>关系分析。找出题目中描述的各个进程，分析它们之间的同步、互斥关系。</p>
+<ul>
+<li>桌子可以抽象为容量为1的缓冲区，要互斥访问(看做一种组合)</li>
+<li>同步关系（从事件的角度来分析）:<ul>
+<li>桌上有组合一 –&gt; 第一个抽烟者取走东西</li>
+<li>桌上有组合二 –&gt; 第二个抽烟者取走东西</li>
+<li>桌上有组合三 –&gt; 第三个抽烟者取走东西</li>
+<li>发出完成信号 –&gt; 供应者将下一个组合放到桌上</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>整理思路。根据各进程的操作流程确定P、V操作的大致顺序</p>
+</li>
+<li><p>设置信号量。设置需要的信号量，并根据题目条件确定信号量初值。(互斥信号量初值一般为1，同步信号量的初始值要看对应资源的初始值是多少)</p>
+</li>
+</ol>
+<p>一开始没有组合一，需要供应者供应，固设置 offer1 = 0;<br>一开始没有任何完成信号，固设置 finish = 0;</p>
+<div style="width:70%;margin:auto"><img src="/2021/01/23/Smoker-problem/structure.png" class title="This is an example image"></div>
+
+<h2 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现"></a>如何实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">semaphore offer1 &#x3D; 0;		&#x2F;&#x2F;桌上组合一的数量</span><br><span class="line">semaphore offer2 &#x3D; 0;		&#x2F;&#x2F;桌上组合二的数量</span><br><span class="line">semaphore offer3 &#x3D; 0;		&#x2F;&#x2F;桌上组合三的数量</span><br><span class="line">semaphore finish &#x3D; 0;		&#x2F;&#x2F;抽烟是否完成</span><br><span class="line">int i &#x3D; 0;					&#x2F;&#x2F;用于实现“三个抽烟者轮流抽烟”</span><br><span class="line"></span><br><span class="line">provider()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		if(i &#x3D;&#x3D; 0)&#123;</span><br><span class="line">			将组合一放在桌上;</span><br><span class="line">			V(offer1)；</span><br><span class="line">		&#125;else if(i &#x3D;&#x3D; 1)&#123;</span><br><span class="line">			将组合二放在桌上;</span><br><span class="line">			V(offer2)；</span><br><span class="line">		&#125;else if(i &#x3D;&#x3D; 2)&#123;</span><br><span class="line">			将组合三放在桌上;</span><br><span class="line">			V(offer3)；</span><br><span class="line">		&#125;</span><br><span class="line">		i &#x3D; (i+1)%3;</span><br><span class="line">		P(finish);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">smoker1()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">	P(offer1);</span><br><span class="line">	从桌上拿走组合一:卷烟；抽掉；</span><br><span class="line">	V(finidh);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">smoker2()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">	P(offer2);</span><br><span class="line">	从桌上拿走组合二:卷烟；抽掉；</span><br><span class="line">	V(finidh);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">smoker3()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">	P(offer.);</span><br><span class="line">	从桌上拿走组合三:卷烟；抽掉；</span><br><span class="line">	V(finidh);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题回顾"><a href="#问题回顾" class="headerlink" title="问题回顾"></a>问题回顾</h2><ul>
+<li><p>吸烟者问题可以为我们解决“可以生产多个产品的单生产者”问题提供一个思路。</p>
+</li>
+<li><p>值得吸取的精华是:“轮流让各个吸烟者吸烟”必然需要“轮流的在桌上放上组合一、二、三”，注意体会我们是如何用一个整型变量i 实现这个“轮流”过程的。</p>
+</li>
+<li><p>如果题目改为“每次随机地让一个吸烟者吸烟”，我们有应该如何用代码写出这个逻辑呢?</p>
+</li>
+<li><p>若一个生产者要生产多种产品(或者说会引发多种前驱事件），那么各个V操作应该放在各自对应的“事件”发生之后的位置。</p>
+</li>
+</ul>
+<h1 id="读者写者问题"><a href="#读者写者问题" class="headerlink" title="读者写者问题"></a>读者写者问题</h1><h2 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h2><p>有读者和写者两组并发进程，共享一个文件，当两个或两个以上的读进程同时访问共享数据时不会产生副作用，但若某个写进程和其他进程（读进程或写进程）同时访问共享数据时则可能导致数据不一致的错误。因此要求:1.允许多个读者可以同时对文件执行读操作;2.只允许一个写者往文件中写信息;3.任一写者在完成写操作之前不允许其他读者或写者工作;4.写者执行写操作前,应让已有的读者和写者全部退出。</p>
+<p>ps:与消费者进程不同,读者进程在读数据后并不会将数据清空，并不会改变数据。因此多个读者可同时访问共享数据<br>ps:读进程与写进程同时共享数据,可能导致读出的数据不一致的问题</p>
+<h1 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h1><ol>
+<li>关系分析。找出题目中描述的各个进程，分析它们之间的同步、互斥关系。</li>
+<li>整理思路。根据各进程的操作流程确定P、V操作的大致顺序</li>
+<li>设置信号量。设置需要的信号量，并根据题目条件确定信号量初值。(互斥信号量初值一般为1，同步信号量的初始值要看对应资源的初始值是多少)</li>
+</ol>
+<p>两类进程:写进程、读进程<br>互斥关系:写进程一写进程、写进程―读进程。读进程与读进程不存在互斥问题。</p>
+<ul>
+<li>写者进程和任何进程都互斥，设置一个互斥信号量rw，在写者访问共享文件前后分别执行P、V操作。</li>
+<li>读者进程和写者进程也要互斥，因此读者访问共享文件前后也要对rw执行P、V操作。</li>
+<li>如果所有读者进程在访问共享文件之前都执行P(rw)操作，那么会导致各个读进程之间也无法同时访问文件。</li>
+<li>Key:读者写者问题的核心思想—-怎么处理该问题呢?</li>
+</ul>
+<p>P(rw)和V(rw)其实就是对共享文件的“加锁”和“解锁”。既然各个读进程需要同时访问，而读进程与写进程又必须互斥访问，那么我们可以 <em><strong>让第一个访问文件的读进程“加锁”，让最后一个访问完文件的读进程“解锁”</strong></em> 。可以设置一个整数变量count来记录当前有几个读进程在访问文件。</p>
+<h1 id="如何实现-1"><a href="#如何实现-1" class="headerlink" title="如何实现"></a>如何实现</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">semaphore rw &#x3D; 1;		</span><br><span class="line">&#x2F;&#x2F;用于实现对文件的互斥访问。表示当前是否有进程在访问共享文件</span><br><span class="line">int count &#x3D; 0;</span><br><span class="line">&#x2F;&#x2F;记录当前有几个读进程在访问文件</span><br><span class="line">semaphore mutex &#x3D; 1;	</span><br><span class="line">&#x2F;&#x2F;用于保证对count变量的互斥访问</span><br><span class="line"></span><br><span class="line">writer()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(rw);		&#x2F;&#x2F;写之前&quot;加锁&quot;</span><br><span class="line">		写文件;</span><br><span class="line">		V(rw);		&#x2F;&#x2F;写之后&quot;解锁&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">read()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(mutex);		&#x2F;&#x2F;各读进程互斥访问count</span><br><span class="line">		if(count &#x3D;&#x3D; 0)</span><br><span class="line">			P(rw);		&#x2F;&#x2F;第一个读进程负责&quot;加锁&quot;  并发时会被阻塞在这里</span><br><span class="line">		count++;		&#x2F;&#x2F;访问文件的读进程+1</span><br><span class="line">		读文件;</span><br><span class="line"></span><br><span class="line">		count--;		&#x2F;&#x2F;访问文件的读进程数-1</span><br><span class="line">		if(count &#x3D;&#x3D; 0)</span><br><span class="line">			V(rw);		&#x2F;&#x2F;最后一个读进程负责&quot;解锁&quot;</span><br><span class="line">		V(mutex);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>思考</strong></em> :若两个读进程并发执行，则两个读进程有可能先后执行P(rw)，从而使第二个读进程阻塞的情况。<br><em><strong>如何解决</strong></em> :出现上述问题的原因在于对count变量的检查和赋值无法一气呵成，因此可以设置另一个互斥信号量来保证各读进程对count的访问是互斥的。</p>
+<h2 id="如何实现-2"><a href="#如何实现-2" class="headerlink" title="如何实现"></a>如何实现</h2><p><em><strong>潜在的问题</strong></em> :只要有读进程还在读，写进程就要一直阻塞等待,可能“饿死”因此，这种算法中，读进程是优先的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">semaphore rw &#x3D; 1;		</span><br><span class="line">&#x2F;&#x2F;用于实现对文件的互斥访问。表示当前是否有进程在访问共享文件</span><br><span class="line">int count &#x3D; 0;</span><br><span class="line">&#x2F;&#x2F;记录当前有几个读进程在访问文件</span><br><span class="line">semaphore mutex &#x3D; 1;	</span><br><span class="line">&#x2F;&#x2F;用于保证对count变量的互斥访问</span><br><span class="line">semaphore w &#x3D; 1;</span><br><span class="line">&#x2F;&#x2F;用于实现写进程&quot;优先&quot;</span><br><span class="line"></span><br><span class="line">writer()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(w);</span><br><span class="line">		P(rw);		&#x2F;&#x2F;写之前&quot;加锁&quot;</span><br><span class="line">		写文件;</span><br><span class="line">		V(rw);		&#x2F;&#x2F;写之后&quot;解锁&quot;</span><br><span class="line">		V(w);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">read()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(w);</span><br><span class="line">		P(mutex);		&#x2F;&#x2F;各读进程互斥访问count</span><br><span class="line">		if(count &#x3D;&#x3D; 0)</span><br><span class="line">			P(rw);		&#x2F;&#x2F;第一个读进程负责&quot;加锁&quot;  并发时会被阻塞在这里</span><br><span class="line">		count++;		&#x2F;&#x2F;访问文件的读进程+1</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(w);</span><br><span class="line">		读文件;</span><br><span class="line">		P(mutex);</span><br><span class="line">		count--;		&#x2F;&#x2F;访问文件的读进程数-1</span><br><span class="line">		if(count &#x3D;&#x3D; 0)</span><br><span class="line">			V(rw);		&#x2F;&#x2F;最后一个读进程负责&quot;解锁&quot;</span><br><span class="line">		V(mutex);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>分析以下并发执行P(w)的情况:<br>读者1 –&gt; 读者2<br>写者1 –&gt; 写者2<br>写者1 –&gt; 读者1<br>读者1 –&gt; 写者1 –&gt; 读者2<br>写者1 –&gt; 读者1 –&gt; 写者2</p>
+<p><em><strong>结论</strong></em> :在这种算法中，连续进入的多个读者可以同时读文件;写者和其他进程不能同时访问文件;写者不会饥饿，但也并不是真正的“写优先”，而是相对公平的先来先服务原则。<br>有的书上把这种算法称为“读写公平法”。</p>
+<h2 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h2><ul>
+<li>读者-写者问题为我们解决复杂的互斥问题提供了一个参考思路。</li>
+<li>其 <em><strong>核心思想</strong></em> 在于设置了一个计数器count用来记录当前正在访问共享文件的读进程数。我们可以用count的值来判断当前进入的进程是否是第一个/最后一个读进程，从而做出不同的处理。</li>
+<li>另外，对count变量的检查和赋值不能一气呵成导致了一些错误，如果需要实现“一气呵成”，自然应该想到用互斥信号量。</li>
+<li>最后，还要认真体会我们是如何解决“写进程饥饿”问题的。</li>
+</ul>
+<p>ps:绝大多数的考研PVv操作大题都可以用之前介绍的几种生产者-消费者问题的思想来解决，如果遇到更复杂的问题，可以想想能否用读者写者问题的这几个思想来解决。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/23/Smoker-problem/" data-id="cknn1mv7n001bcrup4qbxhpeo" data-title="Smoker problem" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Java-day9" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/22/Java-day9/" class="article-date">
+  <time class="dt-published" datetime="2021-01-22T09:58:38.000Z" itemprop="datePublished">2021-01-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/22/Java-day9/">Java day9</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h1><ul>
+<li>div块标签 —&gt; 独占一行</li>
+<li>行内元素 宽高可能不生效</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.d1,.d2,.d3&#123;</span><br><span class="line">	width: 200px;</span><br><span class="line">	height: 200px;</span><br><span class="line">	&#x2F;* </span><br><span class="line">	display: inline;</span><br><span class="line">	导致宽高不生效</span><br><span class="line">	 *&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>因此需要浮动处理</strong></em> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">	.d1,.d2,.d3&#123;</span><br><span class="line">		width: 200px;</span><br><span class="line">		height: 200px;</span><br><span class="line">		&#x2F;* </span><br><span class="line">		display: inline;</span><br><span class="line">		导致宽高不生效</span><br><span class="line">		 *&#x2F;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	.d1&#123;</span><br><span class="line">		background-color: yellow;</span><br><span class="line">		float: left;</span><br><span class="line">	&#125;</span><br><span class="line">	.d2&#123;</span><br><span class="line">		background-color: green;</span><br><span class="line">		float: left;</span><br><span class="line">	&#125;</span><br><span class="line">	.d3&#123;</span><br><span class="line">		background-color: aqua;</span><br><span class="line">		float: left;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;块间空格</span><br><span class="line">.d1,.d2,.d3&#123;</span><br><span class="line">	width: 200px;</span><br><span class="line">	height: 200px;</span><br><span class="line">	&#x2F;* </span><br><span class="line">	display: inline;</span><br><span class="line">	导致宽高不生效</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	margin-left: 40px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>浮动</strong></em><br>可以让多个块标签处于同一行 不用转换成行内元素 宽和高及盒子模型的特征得以保留</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">	#outerdiv&#123;</span><br><span class="line">		width: 700px;</span><br><span class="line">		height: 500px;</span><br><span class="line">		border: 1px solid black;</span><br><span class="line">	&#125;</span><br><span class="line">	.d1,.d2,.d3&#123;</span><br><span class="line">		width: 150px;</span><br><span class="line">		height: 200px;</span><br><span class="line">		&#x2F;* </span><br><span class="line">		display: inline;</span><br><span class="line">		导致宽高不生效</span><br><span class="line">		 *&#x2F;</span><br><span class="line">		margin-left: 40px;</span><br><span class="line">		&#x2F;* 在父级块标签内进行浮动 *&#x2F;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	.d1&#123;</span><br><span class="line">		background-color: yellow;</span><br><span class="line">		float: left;</span><br><span class="line">	&#125;</span><br><span class="line">	.d2&#123;</span><br><span class="line">		background-color: green;</span><br><span class="line">		float: left;</span><br><span class="line">	&#125;</span><br><span class="line">	.d3&#123;</span><br><span class="line">		background-color: aqua;</span><br><span class="line">		float: left;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id&#x3D;&quot;outerdiv&quot;&gt;</span><br><span class="line">	&lt;div class&#x3D;&quot;d1&quot;&gt;</span><br><span class="line">		1</span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line">	&lt;div class&#x3D;&quot;d2&quot;&gt;</span><br><span class="line">		2</span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line">	&lt;div class&#x3D;&quot;d3&quot;&gt;</span><br><span class="line">		3</span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="浮动案例"><a href="#浮动案例" class="headerlink" title="浮动案例"></a>浮动案例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;style&gt;</span><br><span class="line">			.ad_item&#123;</span><br><span class="line">				width: 590px;</span><br><span class="line">				height: 160px;</span><br><span class="line">				float: left;</span><br><span class="line">			&#125;</span><br><span class="line">			.ad_item img&#123;</span><br><span class="line">				width: 590px;</span><br><span class="line">				height: 160px;</span><br><span class="line">			&#125;</span><br><span class="line">			.ad&#123;</span><br><span class="line">				width: 1190px;</span><br><span class="line">				height: 360px;</span><br><span class="line">				margin: 0px auto;</span><br><span class="line">			&#125;</span><br><span class="line">			#ad1&#123;</span><br><span class="line">				margin-right: 10px;</span><br><span class="line">				margin-bottom: 20px;</span><br><span class="line">			&#125;</span><br><span class="line">			#ad2&#123;</span><br><span class="line">				margin-bottom: 20px;</span><br><span class="line">			&#125;</span><br><span class="line">			#ad3&#123;</span><br><span class="line">				margin-right: 10px;</span><br><span class="line">				margin-bottom: 20px;</span><br><span class="line">			&#125;</span><br><span class="line">			#ad4&#123;</span><br><span class="line">				margin-bottom: 20px;</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;&#x2F;style&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div class&#x3D;&quot;ad&quot;&gt;</span><br><span class="line">			&lt;div id&#x3D;&quot;ad1&quot; class&#x3D;&quot;ad_item&quot;&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;cx.12306.cn&#x2F;tlcx&#x2F;index.html&quot; target&#x3D;&quot;_blank&quot;&gt;</span><br><span class="line">					&lt;img src&#x3D;&quot;https:&#x2F;&#x2F;www.12306.cn&#x2F;index&#x2F;images&#x2F;abanner01.jpg&quot; &#x2F;&gt;</span><br><span class="line">				&lt;&#x2F;a&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;div id&#x3D;&quot;ad2&quot; class&#x3D;&quot;ad_item&quot;&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;exservice.12306.cn&#x2F;excater&#x2F;index.html&quot; target&#x3D;&quot;_blank&quot;&gt;</span><br><span class="line">					&lt;img src&#x3D;&quot;https:&#x2F;&#x2F;www.12306.cn&#x2F;index&#x2F;images&#x2F;abanner02.jpg&quot; &#x2F;&gt;</span><br><span class="line">				&lt;&#x2F;a&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;div id&#x3D;&quot;ad3&quot; class&#x3D;&quot;ad_item&quot;&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;view&#x2F;my_insurance.html&quot; target&#x3D;&quot;_blank&quot;&gt;</span><br><span class="line">					&lt;img src&#x3D;&quot;https:&#x2F;&#x2F;www.12306.cn&#x2F;index&#x2F;images&#x2F;abanner03.jpg&quot; &#x2F;&gt;</span><br><span class="line">				&lt;&#x2F;a&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;div id&#x3D;&quot;ad4&quot; class&#x3D;&quot;ad_item&quot;&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;kyfw.12306.cn&#x2F;otn&#x2F;view&#x2F;commutation_index.html&quot; target&#x3D;&quot;_blank&quot;&gt;</span><br><span class="line">					&lt;img src&#x3D;&quot;https:&#x2F;&#x2F;www.12306.cn&#x2F;index&#x2F;images&#x2F;abanner04.jpg&quot; &#x2F;&gt;</span><br><span class="line">				&lt;&#x2F;a&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h1><p>页面布局的一种手段</p>
+<h2 id="绝对定位"><a href="#绝对定位" class="headerlink" title="绝对定位"></a>绝对定位</h2><p>标签样式出现的时候，都是以左上角为坐标原点，当被占用时会发生移动，但是没有被占用的时候，不会发生移动。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">	.div1&#123;</span><br><span class="line">		height: 200px;</span><br><span class="line">		width: 200px;</span><br><span class="line">		background-color: gray;</span><br><span class="line">		&#x2F;* </span><br><span class="line">		绝对定位</span><br><span class="line">		当位置改变 该位置的坐标原点会被释放 </span><br><span class="line">		后续的其他标签就可以占用该位置</span><br><span class="line">		 *&#x2F;</span><br><span class="line">		position: absolute;</span><br><span class="line">		&#x2F;* 位置值 *&#x2F;</span><br><span class="line">		top: 200px;</span><br><span class="line">		left: 300px;	</span><br><span class="line">	&#125;</span><br><span class="line">	.div2&#123;</span><br><span class="line">		height: 200px;</span><br><span class="line">		width: 200px;</span><br><span class="line">		background-color: burlywood;</span><br><span class="line">		position: absolute;</span><br><span class="line">		top: 400px;</span><br><span class="line">		left: 500px;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class&#x3D;&quot;div1&quot;&gt;1&lt;&#x2F;div&gt;</span><br><span class="line">&lt;div class&#x3D;&quot;div2&quot;&gt;2&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>相对定位</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">	.div1&#123;</span><br><span class="line">		height: 200px;</span><br><span class="line">		width: 200px;</span><br><span class="line">		background-color: gray;</span><br><span class="line">		&#x2F;* 相对定位 </span><br><span class="line">		相对自己原来的位置</span><br><span class="line">		当位置发生改变 不会释放自己的位置 其他标签无法占用该位置</span><br><span class="line">		</span><br><span class="line">		*&#x2F;</span><br><span class="line">		position: relative;</span><br><span class="line">		top: 200px;</span><br><span class="line">		left: 300px;	</span><br><span class="line">	&#125;</span><br><span class="line">	.div2&#123;</span><br><span class="line">		height: 200px;</span><br><span class="line">		width: 200px;</span><br><span class="line">		background-color: burlywood;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class&#x3D;&quot;div1&quot;&gt;1&lt;&#x2F;div&gt;</span><br><span class="line">&lt;div class&#x3D;&quot;div2&quot;&gt;2&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>相对浏览器窗口定位<br>常用作小广告</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">	.div1&#123;</span><br><span class="line">		height: 200px;</span><br><span class="line">		width: 200px;</span><br><span class="line">		background-color: gray;</span><br><span class="line">		&#x2F;* </span><br><span class="line">		 相对浏览器窗口定位</span><br><span class="line">		 </span><br><span class="line">		 *&#x2F;</span><br><span class="line">		position: fixed;</span><br><span class="line">		top: 200px;</span><br><span class="line">		width: 300px;</span><br><span class="line">	&#125;</span><br><span class="line">	.div2&#123;</span><br><span class="line">		height: 200px;</span><br><span class="line">		width: 200px;</span><br><span class="line">		background-color: burlywood;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="fixed案例"><a href="#fixed案例" class="headerlink" title="fixed案例"></a>fixed案例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;note_item&quot;&gt;</span><br><span class="line">	&lt;div class&#x3D;&quot;note_item1&quot;&gt;</span><br><span class="line">		&lt;img src&#x3D;&quot;img&#x2F;note1.png&quot; &#x2F;&gt;</span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line">	&lt;div class&#x3D;&quot;note_item1&quot;&gt;</span><br><span class="line">		&lt;img src&#x3D;&quot;img&#x2F;note2.png&quot; &#x2F;&gt;</span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line">	&lt;div class&#x3D;&quot;note_item1&quot;&gt;</span><br><span class="line">		&lt;img src&#x3D;&quot;img&#x2F;note3.png&quot; &#x2F;&gt;</span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line">	&lt;div class&#x3D;&quot;note_item2&quot;&gt;</span><br><span class="line">		&lt;img src&#x3D;&quot;img&#x2F;note4.png&quot; &#x2F;&gt;</span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">	.note_item1,.note_item2&#123;</span><br><span class="line">		width: 50px;</span><br><span class="line">	&#125;</span><br><span class="line">	.note_item1&#123;</span><br><span class="line">		height: 86px;</span><br><span class="line">	&#125;</span><br><span class="line">	.note_item2&#123;</span><br><span class="line">		height: 123px;</span><br><span class="line">	&#125;</span><br><span class="line">	.note_item&#123;</span><br><span class="line">		width: 50px;</span><br><span class="line">		height: 396px;</span><br><span class="line">		position: fixed;</span><br><span class="line">		right: 0px;</span><br><span class="line">		top: 150px;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/22/Java-day9/" data-id="cknn1mv7i0010crupd5qke0ac" data-title="Java day9" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-consumption-problem" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/21/consumption-problem/" class="article-date">
+  <time class="dt-published" datetime="2021-01-21T06:46:43.000Z" itemprop="datePublished">2021-01-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/21/consumption-problem/">consumption problem</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="生产者消者问题"><a href="#生产者消者问题" class="headerlink" title="生产者消者问题"></a>生产者消者问题</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><ul>
+<li>系统中有一组生产者进程和一组消费者进程，生产者进程每次生产一个产品放入缓冲区，消费者进程每次从缓冲区中取出一个产品并使用。（注:这里的“产品”理解为某种数据)</li>
+<li>生产者、消费者共享一个初始为空、大小为n的缓冲区。</li>
+<li>只有缓冲区没满时，生产者才能把产品放入缓冲区，否则必须等待。 —&gt; 同步关系</li>
+<li>只有缓冲区不空时，消费者才能从中取出产品，否则必须等待。 —&gt; 同步关系</li>
+<li>缓冲区是临界资源，各进程必须互斥地访问。 —&gt; 互斥关系</li>
+</ul>
+<h2 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h2><p>如何用信号量机制(P、V操作）实现生产者、消费者进程的这些功能呢?<br>信号量机制可实现互斥、同步、对一类系统资源的申请和释放。</p>
+<ul>
+<li>互斥 —&gt; 设置初值为1的互斥信号量</li>
+<li>同步 —&gt; 设置初值为0的同步信号量(实现一前一后)</li>
+<li>申请与释放 —&gt; 设置一个信号量,初始值即为资源的数量（本质上也属于“同步问题”，若无空闲资源，则申请资源的进程需要等待别的进程释放资源后才能继续往下执行)</li>
+</ul>
+<p><em><strong>PV操作题目分析步骤</strong></em></p>
+<ol>
+<li>关系分析。找出题目中描述的各个进程，分析它们之间的同步</li>
+<li>整理思路。根据各进程的操作流程确定P、V操作的大致顺序。</li>
+<li>设置信号量。设置需要的信号量，并根据题目条件确定信号量初值。(互斥信号量初值一般为1，同步信号量的初始值要看对应资源的初始值是多少)</li>
+</ol>
+<p>ps:生产者每次要消耗P)一个空闲缓冲区,并生产（V)一个产品。<br>消费者每次要消耗（P）一个产品,并释放一个空闲缓冲区（V).往缓冲区放入/取走产品需要互斥。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">semaphore mutex &#x3D; 1;		&#x2F;&#x2F;互斥信号量，实现对缓冲区的互斥访问</span><br><span class="line">semaphore empty &#x3D; n;		&#x2F;&#x2F;同步信号量，表示空闲缓存区的数量</span><br><span class="line">semaphore full &#x3D; 0;			&#x2F;&#x2F;同步信号量，表示产品的数量，也即非空缓冲区的数量</span><br><span class="line"></span><br><span class="line">producer ()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		生产一个产品;</span><br><span class="line">		P(empty);		1</span><br><span class="line">		P(mutex);		2</span><br><span class="line">		把一个产品放入缓冲区;</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(full);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">consumer()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(full);		3</span><br><span class="line">		P(mutex);		4</span><br><span class="line">		从缓冲区取出一个产品;</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(empty);</span><br><span class="line">		使用产品;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>ps:</p>
+<ol>
+<li>P操作放在动作之前;V操作放在动作之后;</li>
+<li>P操作代表消耗;V操作代表增加;</li>
+<li>对于互斥，先P后V，即先占用消耗，后释放增加;</li>
+<li>实现互斥的P操作一定要在实现同步的P操作之后 —&gt; 先确定能用，再占用</li>
+</ol>
+<h2 id="若改变相邻P、V顺序"><a href="#若改变相邻P、V顺序" class="headerlink" title="若改变相邻P、V顺序"></a>若改变相邻P、V顺序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">producer ()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		生产一个产品;	</span><br><span class="line">		P(mutex);		1</span><br><span class="line">		P(empty);		2</span><br><span class="line">		把一个产品放入缓冲区;</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(full);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">consumer()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(mutex);		3</span><br><span class="line">		P(full);		4</span><br><span class="line">		从缓冲区取出一个产品;</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(empty);</span><br><span class="line">		使用产品;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>若此时缓冲区内已经放满产品，则empty=o，full=n。</li>
+<li>则生产者进程执行1使mutex变为0，再执行2，由于已没有空闲缓冲区，因此生产者被阻塞。</li>
+<li>由于生产者阻塞，因此切换回消费者进程。消费者进程执行3，由于mutex为0，即生产者还没释放对临界资源的“锁”，因此消费者也被阻塞。</li>
+<li>这就造成了生产者等待消费者释放空闲缓冲区，而消费者又等待生产者释放临界区的情况，生产者和消费者循环等待被对方唤醒,出现“死锁”。</li>
+<li>同样的，若缓冲区中没有产品，即full=0，empty=n。按341的顺序执行就会发生死锁。</li>
+<li>因此， <em><strong>实现互斥的P操作一定要在实现同步的P操作之后</strong></em> 。</li>
+<li>V操作不会导致进程阻塞，因此两个v操作顺序可以交换。</li>
+</ul>
+<h2 id="知识点回顾"><a href="#知识点回顾" class="headerlink" title="知识点回顾"></a>知识点回顾</h2><ul>
+<li>生产者消费者问题是一个互斥、同步的综合问题。</li>
+<li>对于初学者来说最难的是发现题目中隐含的两对同步关系。</li>
+<li><em><strong>有时候是消费者需要等待生产者生产，有时候是生产者要等待消费者消费</strong></em> ，这是两个不同的“一前一后问题”，因此也需要设置两个同步信号量。</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/01/21/consumption-problem/relation.png" class title="This is an example image"></div>
+
+
+<h1 id="多生产者-多消费者"><a href="#多生产者-多消费者" class="headerlink" title="多生产者-多消费者"></a>多生产者-多消费者</h1><h2 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h2><p>&emsp;&emsp;桌子上有一只盘子，每次只能向其中放入一个水果。爸爸专向盘子中放苹果，妈妈专向盘子中放橘子，儿子专等着吃盘子中的橘子，女儿专等着吃盘子中的苹果。只有盘子空时，爸爸或妈妈才可向盘子中放一个水果。仅当盘子中有自己需要的水果时，儿子或女儿可以从盘子中取出水果。用PV操作实现上述过程。</p>
+<p>不同类别生产者与不同类别消费者，所生产与所消费不同</p>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><ol>
+<li><p>关系分析。找出题目中描述的各个进程，分析它们之间的同步、互斥关系。 —&gt; 盘子(互斥区)、有一前一后关系</p>
+</li>
+<li><p>整理思路。根据各进程的操作流程确定P、V操作的大致顺序。</p>
+<ul>
+<li>互斥:在临界区前后分别P</li>
+<li>同步:前V后P</li>
+</ul>
+</li>
+<li><p>设置信号量。设置需要的信号量，并根据题目条件确定信号量初值。(互斥信号量初值一般为1，同步信号量的初始值要看对应资源的初始值是多少)</p>
+</li>
+</ol>
+<p><em><strong>互斥关系</strong></em> :<br>对缓冲区（盘子）的访问要互斥地进行</p>
+<p><em><strong>同步关系（一前一后）</strong></em> :</p>
+<ol>
+<li>父亲将苹果放入盘子后，女儿才能取苹果</li>
+<li>母亲将橘子放入盘子后，儿子才能取橘子</li>
+<li>只有盘子为空时，父亲或母亲才能放入水果</li>
+</ol>
+<p>ps:”盘子为空”这个事件可以由儿子或女儿触发，事件发生后才允许父亲或母亲放水果</p>
+<h2 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现"></a>如何实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">semaphore mutex &#x3D; 1;		&#x2F;&#x2F;实现互斥访问盘子(缓冲区)</span><br><span class="line">semaphore apple &#x3D; 0;		&#x2F;&#x2F;盘子中有几个苹果</span><br><span class="line">semaphore orange &#x3D; 0;		&#x2F;&#x2F;盘子中有几个橘子</span><br><span class="line">semaphore plate &#x3D; 1;		&#x2F;&#x2F;盘子中还可以放多少个水果</span><br><span class="line"></span><br><span class="line">dad()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		准备一个苹果;</span><br><span class="line">		P(plate);</span><br><span class="line">		P(mutex);</span><br><span class="line">		把苹果放入盘子;</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(apple);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">mom()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">	准备一个橘子;</span><br><span class="line">	P(plate);</span><br><span class="line">	P(mutex);</span><br><span class="line">	把橘子放入盘子;</span><br><span class="line">	V(mutex);</span><br><span class="line">	V(orange);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">daughter()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(apple);		</span><br><span class="line">		P(mutex);</span><br><span class="line">		从盘子中取出苹果;</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(plate);</span><br><span class="line">		吃掉苹果;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">son()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(orange);		</span><br><span class="line">		P(metux);</span><br><span class="line">		从盘子中取出橘子;</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(plate);</span><br><span class="line">		吃掉橘子;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div style="width:70%;margin:auto"><img src="/2021/01/21/consumption-problem/plate.png" class title="This is an example image"></div>
+
+<h2 id="如果不设置互斥信号量"><a href="#如果不设置互斥信号量" class="headerlink" title="如果不设置互斥信号量"></a>如果不设置互斥信号量</h2><p><em><strong>分析</strong></em> :刚开始，儿子、女儿进程即使上处理机运行也会被阻塞。如果刚开始是父亲进程先上处理机运行，则:父亲P(plate)，可以访问盘子 –&gt; 母亲P(plate)，阻塞等待盘子 –&gt; 父亲放入苹果V(apple)，女儿进程被唤醒，其他进程即使运行也都会阻塞，暂时不可能访问临界资源（盘子) –&gt; 女儿P(apple)，访问盘子，V(plate)，等待盘子的母亲进程被唤醒 –&gt; 母亲进程访问盘子（其他进程暂时都无法进入临界区）之……</p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>本题中的缓冲区大小为1，在任何时刻,apple、 orange、 plate三个同步信号量中最多只有一个是1。因此在任何时刻,最多只有一个进程的P操作不会被阻塞，并<br>顺利地进入临界区…</p>
+<p><em><strong>如果缓冲区容量为2</strong></em> 可能引起覆盖现象</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在生产者-消费者问题中，如果缓冲区大小为1，那么 <em><strong>有可能</strong></em> 不需要设置互斥信号量就可以实现互斥访问缓冲区的功能。当然，这不是绝对的，要具体问题具体分析。</p>
+<p>建议:在考试中如果来不及仔细分析，可以加上互斥信号量，保证各进程一定会互斥地访问缓冲区。但需要注意的是，实现互斥的P操作一定要在实现同步的P操作之后，否则可能引起“死锁”。</p>
+<ul>
+<li><p>解决“多生产者-多消费者问题”的关键在于理清复杂的同步关系。</p>
+</li>
+<li><p>在分析同步问题（一前一后问题）的时候 <em><strong>不能从单个进程行为的角度</strong></em> 来分析，要把“一前一后”发生的事看做是两种“事件”的前后关系。</p>
+</li>
+<li><p>比如，如果从单个进程行为的角度来考虑的话，我们会有以下结论:</p>
+<ul>
+<li>如果盘子里装有苹果，那么一定要女儿取走苹果后父亲或母亲才能再放入水果</li>
+<li>如果盘子里装有橘子，那么一定要儿子取走橘子后父亲或母亲才能再放入水果</li>
+</ul>
+</li>
+<li><p>这么看是否就意味着要设置四个同步信号量分别实现这四个“一前一后”的关系了?</p>
+</li>
+<li><p>正确的分析方法应该从 <em><strong>“事件”</strong></em> 的角度来考虑，我们可以把上述四对“进程行为的前后关系”抽象为一对“事件的前后关系”</p>
+</li>
+<li><p>盘子变空事件 —&gt; 放入水果事件。“盘子变空事件”既可由儿子引发，也可由女儿引发:“放水果事件”既可能是父亲执行，也可能是母亲执行。这样的话，就可以用一个同步信号量解决问题了</p>
+</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/01/21/consumption-problem/event.png" class title="This is an example image"></div>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/21/consumption-problem/" data-id="cknn1mv7t001ocruph2tr3bqg" data-title="consumption problem" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Java-day8" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/20/Java-day8/" class="article-date">
+  <time class="dt-published" datetime="2021-01-20T08:44:28.000Z" itemprop="datePublished">2021-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/20/Java-day8/">Java day8</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h3><p>用于向某些选择器添加特殊效果</p>
+<p><em><strong>可查</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">www.w3school.com.cn</span><br></pre></td></tr></table></figure>
+
+<h4 id="锚伪类"><a href="#锚伪类" class="headerlink" title="锚伪类"></a>锚伪类</h4><p>链接的不同状态都可以用不同的方式显示，这些状态包括:活动状态、已被访问状态、未被访问状态、和鼠标悬停状态</p>
+<p>ctrl + shift + delete —&gt; 清楚浏览器打开后的信息<br>重新刷新网页，链接恢复未被访问状态</p>
+<p><em><strong>未被访问过的连接 a标签 默认是蓝色</strong></em></p>
+<div style="width:70%;margin:auto"><img src="/2021/01/20/Java-day8/baidu.png" class title="This is an example image"></div>
+
+<p>访问过后是紫色，按住不放是红色</p>
+<p>伪类选择器可以同时使用也可以单个使用<br>但是四个一起使用要注意顺序</p>
+<ul>
+<li>hover 必须置于 link与visited 之后才是有效的</li>
+<li>active 必须置于 hover 之后才有效</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;未被访问</span><br><span class="line">a:link&#123;</span><br><span class="line">	color: black;</span><br><span class="line">	text-decoration: none;	&#x2F;&#x2F;去除下划线</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;已被访问</span><br><span class="line">a:visited&#123;</span><br><span class="line">	color: gray;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;hover鼠标悬停</span><br><span class="line">a:hover&#123;</span><br><span class="line">	color: yellow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;鼠标点击</span><br><span class="line">a:active&#123;</span><br><span class="line">	color: darkred;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ps:注意顺序与生效有关 --&gt; 不要把悬停放在前面</span><br><span class="line"></span><br><span class="line">&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.baidu.com&quot;&gt;百度&lt;&#x2F;a&gt;</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>也可以在非超链接使用</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">	border: 1px double green;</span><br><span class="line">	width: 100px;</span><br><span class="line">	height: 100px;</span><br><span class="line">	background-color: lightyellow;</span><br><span class="line">&#125;</span><br><span class="line">div:hover&#123;</span><br><span class="line">	background-color: lightblue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;div&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li><p>input</p>
+<ul>
+<li>type<ul>
+<li>text 文本框</li>
+<li>password 密码框</li>
+<li>radio 单选框</li>
+<li>checkbox 复选框</li>
+<li>button 按钮</li>
+<li>file 文件上传</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>文本域</p>
+<ul>
+<li>textarea</li>
+</ul>
+</li>
+<li><p>下拉框</p>
+<ul>
+<li>select &gt;&gt;&gt; option</li>
+</ul>
+</li>
+<li><p>表单标签</p>
+<ul>
+<li><p>在页面上没有显示效果 用于划定数据提交范围</p>
+</li>
+<li><p>form</p>
+<ul>
+<li><p>action 用于定义提交地址</p>
+</li>
+<li><p>method 用于定义数据提交方式</p>
+<ul>
+<li>get 数据通过地址栏提交 数据量小 只能提交文本 相对不安全</li>
+<li>post 数据单独打包发送 数据量大 可以提交文本和文件 相对安全</li>
+</ul>
+</li>
+<li><p>要求form内部的所有输入框有name属性 通过value定义提交的值</p>
+<ul>
+<li>name属性用于让服务器区分数据的含义</li>
+</ul>
+</li>
+<li><p>提交按钮 input type=”submit”提交 type=”reset”</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>框架标签</p>
+<ul>
+<li><p>用于在当前网页引入其他网页</p>
+</li>
+<li><p>可以将多个网页整合到一个网页上</p>
+</li>
+<li><p>iframe src 引入网页的地址</p>
+</li>
+<li><p>frameset 将网页划分上下 rows=”20%, * ,200px” 或 左右 col=”第一部分的宽度…” 的几个部分</p>
+<ul>
+<li>frame src 引入网页的地址</li>
+</ul>
+</li>
+<li><p>使用frameset要求当前网页不能有body标签</p>
+</li>
+</ul>
+</li>
+<li><p>CSS &gt;&gt;&gt; 做网页美化</p>
+<ul>
+<li>三种引入方式</li>
+<li>行内式 通过标签的style属性引入 直接定义当前标签的CSS样式</li>
+<li>内嵌式 在head中 使用一堆style引入 通过选择器样式的作用范围</li>
+<li>链接式 单独定义CSS外部样式文件 在head中 使用link标签 引入外部样式文件</li>
+</ul>
+</li>
+<li><p>三大基本选择器</p>
+<ul>
+<li>标签名选择器 定位到页面上所有同名标签 标签名{样式名:样式值;样式名:样式值;…}</li>
+<li>id选择器 通过id定位到页面上唯一的一个标签 #id值{样式名:样式值;样式名:样式值;…}</li>
+<li>class选择器 通过class属性定位到页面多个可以是不同名字的标签 .class值{样式名:样式值;样式名:样式值;…}</li>
+</ul>
+</li>
+<li><p>层级选择器</p>
+<ul>
+<li>通过父级元素逐层找到子元素</li>
+<li>父级元素选择器 子元素选择器{}</li>
+</ul>
+</li>
+<li><p>属性选择器</p>
+<ul>
+<li>通过指定标签名和属性值得样式</li>
+<li>标签名[属性名=属性值]{}</li>
+</ul>
+</li>
+<li><p>分组选择器</p>
+<ul>
+<li>选择器1，选择器2，…，选择器n{}</li>
+</ul>
+</li>
+<li><p>伪类选择器</p>
+<ul>
+<li>用于定义标签的四种状态<ul>
+<li>未访问过 :link{}</li>
+<li>访问过 :visited{}</li>
+<li>鼠标悬停 :hover{}</li>
+<li>鼠标激活(按住鼠标不放) :active{}</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>hover必须在 link与visited之后</p>
+</li>
+<li><p>active必须在 hover之后</p>
+</li>
+</ul>
+<h1 id="主要目标"><a href="#主要目标" class="headerlink" title="主要目标"></a>主要目标</h1><ul>
+<li>盒子模型</li>
+<li>定位和浮动及案例开发</li>
+<li>列表标签及案例开发</li>
+<li>网页布局相关的CSS样式 以及案例</li>
+</ul>
+<h1 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h1><h2 id="什么是网页布局"><a href="#什么是网页布局" class="headerlink" title="什么是网页布局"></a>什么是网页布局</h2><p>房子 &gt;&gt;&gt; 格局<br>网页 &gt;&gt;&gt; 格局 网页内容的主体规划</p>
+<ol>
+<li>盒子模型 &gt;&gt;&gt; 标签和标签之间存在包含关系时 位置的调整</li>
+<li>定位 &gt;&gt;&gt; 多个块标签处于同一行的位置处理问题</li>
+<li>浮动 &gt;&gt;&gt; 块标签在页面上指定位置的处理问题</li>
+</ol>
+<p>块标签 &gt;&gt;&gt; 页面上独立占用一行的标签<br>行内标签 &gt;&gt;&gt; 不会独立占用一行的标签</p>
+<p>网页的布局基本都是用块标签来完成的<br>一般做布局 使用的标签是 div 帮助我们将网页划分成多个小方块</p>
+<h2 id="盒子模型基本用法"><a href="#盒子模型基本用法" class="headerlink" title="盒子模型基本用法"></a>盒子模型基本用法</h2><p>当块标签有包含关系时 位置的调整<br>好比两个盒子 一大一小 大盒子装小盒子，小盒子在大盒子内部位置如何调整</p>
+<p>ps:border线型</p>
+<ul>
+<li>dotted</li>
+<li>dashed</li>
+<li>solid</li>
+<li>double</li>
+<li>groove</li>
+<li>ridge</li>
+<li>inset</li>
+<li>outset</li>
+</ul>
+<h2 id="内边距"><a href="#内边距" class="headerlink" title="内边距"></a>内边距</h2><p><em><strong>内边距查看</strong></em></p>
+<ol>
+<li>FN + F12 —&gt; 开发者工具</li>
+<li>找到div</li>
+<li>找到盒子模型布局</li>
+</ol>
+<div style="width:70%;margin:auto"><img src="/2021/01/20/Java-day8/computed.png" class title="This is an example image"></div>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">   #div1&#123;</span><br><span class="line">      border:1px groove blue;</span><br><span class="line">      width: 400px;</span><br><span class="line">      height: 400px;</span><br><span class="line">      &#x2F;* 内部元素距离当前块元素边界的距离 *&#x2F;</span><br><span class="line">      &#x2F;* </span><br><span class="line">      padding:100px; </span><br><span class="line">      同时设置上下左右四个内边距都是100px</span><br><span class="line">      </span><br><span class="line">      padding:50px 100px; </span><br><span class="line">      设置上下内边距50px 左右内边距100px</span><br><span class="line">      </span><br><span class="line">      padding:10px 20px 30px 40px;</span><br><span class="line">      顺时针方向 上10px 右20px 下30px 左40px</span><br><span class="line">      </span><br><span class="line">      padding-top: 10px;</span><br><span class="line">      padding-right: 20px;</span><br><span class="line">      padding-bottom: 30px;</span><br><span class="line">      padding-left: 40px;</span><br><span class="line">      分别设置内边距</span><br><span class="line">      </span><br><span class="line">      内边不会占用空间 而是将块标签放大</span><br><span class="line"></span><br><span class="line">      *&#x2F;</span><br><span class="line">      padding-top: 10px;</span><br><span class="line">      padding-right: 20px;</span><br><span class="line">      padding-bottom: 30px;</span><br><span class="line">      padding-left: 40px;</span><br><span class="line">   &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id&#x3D;&quot;div1&quot;&gt;</span><br><span class="line">   hello word</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="外边距"><a href="#外边距" class="headerlink" title="外边距"></a>外边距</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">   #div1&#123;</span><br><span class="line">      border: 1px solid red;</span><br><span class="line">      background-color: darkgoldenrod;</span><br><span class="line">      width: 300px;</span><br><span class="line">      height: 300px;</span><br><span class="line">      &#x2F;* </span><br><span class="line">       外边距 当前块标签外部的和父级块标签之间的距离</span><br><span class="line">       </span><br><span class="line">       margin: 200px;</span><br><span class="line">       设置上下左右外边距200px</span><br><span class="line">       </span><br><span class="line">       margin: 100px 200px;</span><br><span class="line">       设置上下外边距100px 左右外边距100px</span><br><span class="line">       </span><br><span class="line">       margin: 10px 20px 30px 40px;</span><br><span class="line">       设置上10px 右20px 下30px 左40px</span><br><span class="line">       </span><br><span class="line">       margin-top: 10px;</span><br><span class="line">       margin-right: 20px;</span><br><span class="line">       margin-bottom: 30px;</span><br><span class="line">       margin-left: 40px;</span><br><span class="line">       四个单独设置</span><br><span class="line">       *&#x2F;</span><br><span class="line">      margin-top: 10px;</span><br><span class="line">      margin-right: 20px;</span><br><span class="line">      margin-bottom: 30px;</span><br><span class="line">      margin-left: 40px;</span><br><span class="line">   &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">   </span><br><span class="line">   &lt;div id&#x3D;&quot;div1&quot;&gt;</span><br><span class="line">      hello word</span><br><span class="line">   &lt;&#x2F;div&gt;</span><br><span class="line">   nice to meet you  </span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>盒子模型其实就是通过标签的内边距和外边距的特点调整两个有包含关系的标签</p>
+<h3 id="设置居中"><a href="#设置居中" class="headerlink" title="设置居中"></a>设置居中</h3><p>左右可用，但上下不可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">   .outerdiv&#123;</span><br><span class="line">      width: 400px;</span><br><span class="line">      height: 400px;</span><br><span class="line">      border: 1px solid red;</span><br><span class="line">      &#x2F;* 调整外部盒子内边距 *&#x2F;</span><br><span class="line">      &#x2F;* padding: 20px; *&#x2F;</span><br><span class="line">      </span><br><span class="line">      &#x2F;* </span><br><span class="line">      通过外边距设置居中</span><br><span class="line">      左右可以auto 自动分配居中 但是上下不生效</span><br><span class="line">      *&#x2F;</span><br><span class="line">      margin: 0px auto;</span><br><span class="line">   &#125;</span><br><span class="line">   .innerdiv&#123;</span><br><span class="line">      width:200px ;</span><br><span class="line">      height: 200px;</span><br><span class="line">      border: 1px solid green;</span><br><span class="line">      &#x2F;* 设置里面盒子外边距 *&#x2F;</span><br><span class="line">      &#x2F;*             </span><br><span class="line">      margin-top: 20px;</span><br><span class="line">      margin-left: 20px;</span><br><span class="line">       *&#x2F;</span><br><span class="line">      &#x2F;* 设置横向居中 *&#x2F;</span><br><span class="line">      margin: 0px auto;</span><br><span class="line">   &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class&#x3D;&quot;outerdiv&quot;&gt;</span><br><span class="line">   &lt;div class&#x3D;&quot;innerdiv&quot;&gt;</span><br><span class="line">      hello world</span><br><span class="line">   &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>ps:win + shift + s 快速截图</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">   #d1&#123;</span><br><span class="line">      &#x2F;* </span><br><span class="line">      width 宽度 内部容量为 ** 像素</span><br><span class="line">      height 高度 内部容量 **像素</span><br><span class="line">      块实际大小不一定 如边界会是指扩大</span><br><span class="line">       *&#x2F;</span><br><span class="line">      width: 200px;</span><br><span class="line">      height: 200px;</span><br><span class="line">      background-color: yellow;</span><br><span class="line">      border: 20px solid red;</span><br><span class="line">   &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">   &lt;div id&#x3D;&quot;d1&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>盒子模型无论是 <em><strong>内边距</strong></em> 还是 <em><strong>外边距</strong></em> 调整，都不会影响块标签内部的总量</li>
+<li>只能向外扩张</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">   #d1&#123;</span><br><span class="line">      &#x2F;* </span><br><span class="line">      width 宽度 内部容量为 ** 像素</span><br><span class="line">      height 高度 内部容量 **像素</span><br><span class="line">      块实际大小不一定 如边界会是指扩大</span><br><span class="line">       *&#x2F;</span><br><span class="line">      width: 200px;</span><br><span class="line">      height: 200px;</span><br><span class="line">      background-color: yellow;</span><br><span class="line">      border: 20px solid red;</span><br><span class="line">      &#x2F;* padding: 20px; *&#x2F;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   #d2&#123;</span><br><span class="line">      width: 100px;</span><br><span class="line">      height: 100px;</span><br><span class="line">      background-color: green;</span><br><span class="line">      margin-top: 20px;</span><br><span class="line">   &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id&#x3D;&quot;d1&quot;&gt;</span><br><span class="line">   &lt;div id&#x3D;&quot;d2&quot;&gt;</span><br><span class="line">      hello world</span><br><span class="line">   &lt;&#x2F;div&gt;</span><br><span class="line">   hello world</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可见调整外边距时不会让块标签大小产生变化，只会让块标签包含关系产生一种距离缝隙，如果调整内边距会让整个快的大小产变化。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/20/Java-day8/" data-id="cknn1mv7h000ycrup0f28bvqp" data-title="Java day8" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Semaphore-mechanism" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/20/Semaphore-mechanism/" class="article-date">
+  <time class="dt-published" datetime="2021-01-20T06:04:27.000Z" itemprop="datePublished">2021-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/20/Semaphore-mechanism/">Semaphore mechanism</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="信号量机制"><a href="#信号量机制" class="headerlink" title="信号量机制"></a>信号量机制</h1><ul>
+<li>进程互斥的四种软件实现方式（单标志法、双标志先检查、双标志后检查、Peterson算法)</li>
+<li>进程互斥的三种硬件实现方式（中断屏蔽方法、TS/TSL指令、Swap/XCHG指令)</li>
+</ul>
+<ol>
+<li>在双标志先检查法中，进入区的“检查”、“上锁”操作无法一气呵成，从而导致了两<br>个进程有可能同时进入临界区的问题;</li>
+<li>所有的解决方案都无法实现“让权等待”</li>
+</ol>
+<p>1965年，荷兰学者Dijkstra提出了一种卓有成效的实现进程互斥、同步的方法一一信号量机制</p>
+<ul>
+<li>用户进程可以通过使用操作系统提供的 <em><strong>一对原语</strong></em> 来对 <em><strong>信号量</strong></em> 进行操作，从而很方便的实现了进程互斥、进程同步。</li>
+<li><em><strong>信号量</strong></em> 其实就是一个变量（可以是一个整数，也可以是更复杂的记录型变量)，可以用一个信号量来 <em><strong>表示系统中某种资源的数量</strong></em> ，比如:系统中只有一台打印机，就可以设置一个初值为1的信号量。</li>
+<li><em><strong>原语</strong></em> 是一种特殊的程序段，其 <em><strong>执行只能一气呵成，不可被中断</strong></em> 。原语是由 <em><strong>关中断/开中断指令</strong></em> 实现的。软件解决方案的主要问题是由“进入区的各种操作无法一气呵成”，因此如果能把进入区、退出区的操作都用“原语”实现，使这些操作能“一气呵成”就能避免问题。</li>
+<li><em><strong>一对原语</strong></em> :wait(S)原语和 signal(S)原语，可以把原语理解为我们自己写的函数，函数名分别为wait和l signal，括号里的 <em><strong>信号量s</strong></em> 其实就是函数调用时传入的一个参数。</li>
+<li>wait、signal原语常 <em><strong>简称为P、v操作</strong></em> （来自荷兰语proberen和 verhogen)。因此，做题的时候常把wait(S)、signal(S)两个操作分别写为P(S)、 v(S)</li>
+</ul>
+<h2 id="整型信号量"><a href="#整型信号量" class="headerlink" title="整型信号量"></a>整型信号量</h2><p>用一个 <em><strong>整数型的变量</strong></em> 作为信号量，用来 <em><strong>表示系统中某种资源的数量</strong></em> 。<br>ps:与普通整数变量的区别:对信号量的操作只有三种,即初始化、P操作、V操作</p>
+<p>eg:某计算机系统中有一台打印机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">int S &#x3D; 1;		&#x2F;&#x2F;初始化整型信号量s，表示当前系统中可用的打印机数量</span><br><span class="line"></span><br><span class="line">viod wait (int S)&#123;		&#x2F;&#x2F;wait 原语，相当于&quot;进入区&quot; ---&gt; &quot;检查&quot;和&quot;上锁&quot;一气呵成，避免了并发、异步导致的问题</span><br><span class="line">	while (S &lt;&#x3D; 0);		&#x2F;&#x2F;如果资源数量不够，就一直循环等待 ---&gt; 存在的问题:不满足让权等待原则，会发生&quot;忙等&quot;</span><br><span class="line">	S&#x3D;S-1;				&#x2F;&#x2F;如果资源数量够，就占用一个资源</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void signal (int S)&#123;	&#x2F;&#x2F;signal 原语，相当于&quot;退出区&quot;</span><br><span class="line">	S&#x3D;S+1;				&#x2F;&#x2F;使用完资源后，在退出区释放资源</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">进程P0:</span><br><span class="line">...</span><br><span class="line">wait(S);			&#x2F;&#x2F;进入区，申请资源</span><br><span class="line">使用打印机资源...		&#x2F;&#x2F;临界区，访问资源</span><br><span class="line">signal(S);			&#x2F;&#x2F;退出区，释放资源</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">进程P1:</span><br><span class="line">...</span><br><span class="line">wait(S);			</span><br><span class="line">使用打印机资源...		</span><br><span class="line">signal(S);			</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">进程Pn:</span><br><span class="line">...</span><br><span class="line">wait(S);			</span><br><span class="line">使用打印机资源...		</span><br><span class="line">signal(S);			</span><br><span class="line">...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>ps:大多数认为，在原语下，发生等待，可以进行进程切换</p>
+<h2 id="记录型信号量"><a href="#记录型信号量" class="headerlink" title="记录型信号量"></a>记录型信号量</h2><p>整型信号量的缺陷是存在“忙等”问题，因此人们又提出了“记录型信号量”，即用记录型数据结构表示的信号量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*记录型信号量的定义*&#x2F;</span><br><span class="line">typedef struct &#123;</span><br><span class="line">	int value;			&#x2F;&#x2F;剩余资源数</span><br><span class="line">	struct process *L;	&#x2F;&#x2F;等待队列</span><br><span class="line">&#125; semaphore;</span><br><span class="line"></span><br><span class="line">&#x2F;*某进程需要使用资源时，通过wait 原语申请*&#x2F;</span><br><span class="line">void wait (semaphore S)&#123;</span><br><span class="line">	S.value--;</span><br><span class="line">	if(S.value &lt; 0)&#123;</span><br><span class="line">		block (S.L);		---&gt; 如果剩余资源数不够,使用block原语使进程从运行态进入阻塞态,并把挂到信号量S的等待队列（即阻寒队列)中</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;*进程使用完资源后，通过signal原语释放*&#x2F;</span><br><span class="line">void siganl (semaphore S)&#123;</span><br><span class="line">	S.value++;</span><br><span class="line">	if(S.value &lt;&#x3D; 0)&#123;</span><br><span class="line">		wakeup(S.L);		---&gt;释放资源后，若还有别的进程在等待这种资源，则使用wakeup原语唤醒等待队列中的一个进程，该进程从阻塞态变为就绪态</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>eg:某计算机系统中有2台打印机…，则可在初始化信号量S时将S.value的值设为2，队列S.L设置为空:</p>
+<ul>
+<li>S.value+1后&lt;=0,说明有进程在等待该资源</li>
+<li>S.value+1后&gt;0,说明已没有进程在等待该资源</li>
+<li>S.value=-1,有1个进程在等待</li>
+<li>S.value=-2,有2个进程在等待</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>在考研题目中 wait(S)、signal(S)也可以记为P(S)、v(s),这对原语可用于 <em><strong>实现系统资源的“申请”和“释放”</strong></em> 。</li>
+<li>S.value 的初值表示系统中 <em><strong>某种资源的数目</strong></em> 。</li>
+<li>对信号量S的 <em><strong>一次Р操作</strong></em> 意味着进程 <em><strong>请求一个单位的该类资源</strong></em> ，因此需要执行S.value–，表示资源数减1，当S.value &lt;0时表示该类资源已分配完毕，因此进程应 ***调用block原语进行自我阻塞*** （当前运行的进程从运行态 —&gt; 阻塞态），主动放弃处理机，并插入该类资源的 <em><strong>等待队列S.L</strong></em> 中。可见，该机制 <em><strong>遵循了“让权等待”原则</strong></em> ，不会出现“忙等”现象。</li>
+<li>对信号量s的 <em><strong>一次v操作</strong></em> 意味着进程 <em><strong>释放一个单位的该类资源</strong></em> ，因此需要执行S.value+s，表示资源数加1，若加1后仍是S.value &lt;=0，表示依然有进程在等待该类资源，因此应调用wakeup原语唤醒等待队列中的第一个进程（被唤醒进程从阻塞态 –&gt; 就绪态)。</li>
+</ul>
+<p>ps:记录型信号量在考研中是重要考点</p>
+<div style="width:70%;margin:auto"><img src="/2021/01/20/Semaphore-mechanism/conclusion.png" class title="This is an example image"></div>
+
+<p>注:若考试中出现P(S)、V(S)的操作，除非特别说明，否则默认S为记录型信号量。</p>
+<h2 id="实现进程互斥"><a href="#实现进程互斥" class="headerlink" title="实现进程互斥"></a>实现进程互斥</h2><ol>
+<li>分析并发进程的关键活动，划定临界区（如:对临界资源打印机的访问就应放在临界区) —&gt; 临界区同一时间只允许一个进程访问，可以理解为 信号量为1的资源</li>
+<li>设置互斥信号量mutex，初值为1</li>
+<li>在临界区之前执行P(mutex)</li>
+<li>在临界区之后执行v(mutex)</li>
+</ol>
+<p>ps:对不同的临界资源需要设置不同的互斥信号量。<br>ps:P、V操作必须成对出现。</p>
+<ul>
+<li>缺少P(mutex)就不能保证临界资源的互斥访问。</li>
+<li>缺少v(mutex)会导致资源永不被释放，等待进程永不被唤醒。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*信号量机制实现互斥*&#x2F;</span><br><span class="line">smaphore mutex &#x3D; 1;		&#x2F;&#x2F;初始化信号量  ---&gt; 要会自己定义记录型信号量,但如果题目中没特别说明,可以把信号量的声明简写成这种形式</span><br><span class="line"></span><br><span class="line">P1()&#123;</span><br><span class="line">	...</span><br><span class="line">	P(mutex);			&#x2F;&#x2F;使用临界区资源前需要加锁</span><br><span class="line">	临界区代码段...		</span><br><span class="line">	V(metux);			&#x2F;&#x2F;使用临界区资源后需要解锁</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">P2()&#123;</span><br><span class="line">	...</span><br><span class="line">	P(mutex);			&#x2F;&#x2F;使用临界区资源前需要加锁</span><br><span class="line">	临界区代码段...		</span><br><span class="line">	V(metux);			&#x2F;&#x2F;使用临界区资源后需要解锁</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="实现进程同步"><a href="#实现进程同步" class="headerlink" title="实现进程同步"></a>实现进程同步</h2><p>进程同步:要让各并发进程按要求有序地推进。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">P1()&#123;</span><br><span class="line">	代码1;</span><br><span class="line">	代码2;</span><br><span class="line">	代码3;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">P2()&#123;</span><br><span class="line">	代码5;</span><br><span class="line">	代码6;</span><br><span class="line">	代码7;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>比如，P1、P2并发执行，由于存在异步性，因此二者交替推进的次序是不确定的。</li>
+<li>若P2的“代码4”要基于P1的“代码1”和“代码2”的运行结果才能执行，那么我们就必须保证“代码4”一定是在“代码2”之后才会执行。</li>
+<li>这就是进程同步问题，让本来异步并发的进程互相配合，有序推进。</li>
+</ul>
+<h3 id="用信号量实现进程互斥"><a href="#用信号量实现进程互斥" class="headerlink" title="用信号量实现进程互斥"></a>用信号量实现进程互斥</h3><ol>
+<li>分析什么地方需要实现“同步关系”，即必须保证“一前一后”执行的两个操作（或两句代码)</li>
+<li>设置同步信号量S,初始为0</li>
+<li>在“前操作”之后执行v(S)</li>
+<li>在“后操作”之前执行P(S)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*信号量机制实现同步*&#x2F;</span><br><span class="line">semaphore S &#x3D; 0;	&#x2F;&#x2F;初始化同步信号量，初始值为0</span><br><span class="line"></span><br><span class="line">P1()&#123;</span><br><span class="line">	代码1;</span><br><span class="line">	代码2;</span><br><span class="line">	V(S);</span><br><span class="line">	代码3;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">P2()&#123;</span><br><span class="line">	P(S);</span><br><span class="line">	代码5;</span><br><span class="line">	代码6;</span><br><span class="line">	代码7;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>若先执行到 v(S)操作，则S++后S=1。之后当执行到P(S)操作时，由于S=1，表示有可用资源，会执行S–，S 的值变回0，P2进程不会执行block原语，而是继续往下执行代码4。</li>
+<li>若先执行到P(S)操作，由于S=0，S–后S=-1，表示此时没有可用资源，因此P操作中会执行block原语，主动请求阻塞。之后当执行完代码2，继而执行v(S)操作，S++，使s变回0,由于此时有进程在该信号量对应的阻塞队列中，因此会在v操作中执行wakeup原语，唤醒P2进程。这样P2就可以继续执行代码4了</li>
+</ul>
+<h2 id="实现进程的前驱"><a href="#实现进程的前驱" class="headerlink" title="实现进程的前驱"></a>实现进程的前驱</h2><p>进程P1中有句代码S1，P2中有句代码S2 …P3..P6中有句代码s6。这些代码要求按如下前驱图所示的顺序来执行:</p>
+<div style="width:70%;margin:auto"><img src="/2021/01/20/Semaphore-mechanism/precursor.png" class title="This is an example image"></div>
+
+<p>其实每一对前驱关系都是一个进程同步问题（需要保证一前一后的操作)因此，</p>
+<ol>
+<li>要为每一对前驱关系各设置一个同步变量</li>
+<li>在“前操作”之后对相应的同步变量执行v操作</li>
+<li>在“后操作”之前对相应的同步变量执行Р操作</li>
+</ol>
+<div style="width:70%;margin:auto"><img src="/2021/01/20/Semaphore-mechanism/action.png" class title="This is an example image"></div>
+
+
+<h1 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>设置互斥信号量，初值为1</li>
+<li>设置同步信号量，初值为0</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/01/20/Semaphore-mechanism/conclusion2.png" class title="This is an example image"></div>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/20/Semaphore-mechanism/" data-id="cknn1mv7m0019crup1fjr55dz" data-title="Semaphore mechanism" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-transparent-transmission" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/19/transparent-transmission/" class="article-date">
+  <time class="dt-published" datetime="2021-01-19T11:55:58.000Z" itemprop="datePublished">2021-01-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/19/transparent-transmission/">transparent-transmission</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="透明传输问题"><a href="#透明传输问题" class="headerlink" title="透明传输问题"></a>透明传输问题</h1><ul>
+<li>当PPP用在同步传输链路时，协议规定采用硬件来完成 <em><strong>比特填充</strong></em> （和HDLC的做法一样)。</li>
+<li>当PPP用在异步传输时，就使用一种特殊的 <em><strong>字符填充法</strong></em> 。</li>
+</ul>
+<h2 id="字符填充"><a href="#字符填充" class="headerlink" title="字符填充"></a>字符填充</h2><ul>
+<li>将信息字段中出现的每一个Ox7E字节转变成为2字节序列(0x7D,0x5E)。</li>
+<li>若信息字段中出现一个0x7D的字节,则将其转变成为⒉字节序列(Ox7D,0x5D)。</li>
+<li>若信息字段中出现ASCII码的控制字符（即数值小于0x20的字符)，则在该字符前面要加入一个0x7D字节，同时将该字符的编码加以改变。</li>
+</ul>
+<h2 id="零比特填充"><a href="#零比特填充" class="headerlink" title="零比特填充"></a>零比特填充</h2><ul>
+<li>PPP协议用在SONET/SDH链路时，使用同步传输（一连串的比特连续传送)。 <em><strong>这时PPP协议采用零比特填充方法来实现透明传输</strong></em> 。</li>
+<li>在发送端，只要发现有5个连续1，则立即填入一个0。</li>
+<li>接收端对帧中的比特流进行扫描。每当发现5个连续1时，就把这5个连续1后的一个0删除。</li>
+</ul>
+<p>否则，信息字段中出现了和标志字段F完全一样的8比特组合，会被误认为是标志字段F，因此发送端在5个连1之后填入0比特再发送出去，接收端把5个连1之后的0比特删除。</p>
+<p>ps:以0x开始的数据表示16进制。计算机中每位的权为16，即(16进制)10 = (10进制)1 * 16<br>所以，见到 7E —&gt; 7D 5E 见到 7D —&gt; 7D 5D</p>
+<h2 id="不提供使用序号和确认的可靠传输"><a href="#不提供使用序号和确认的可靠传输" class="headerlink" title="不提供使用序号和确认的可靠传输"></a>不提供使用序号和确认的可靠传输</h2><ul>
+<li>PPP协议之所以不使用序号和确认机制是出于以下的考虑:<ul>
+<li>在数据链路层出现差错的概率不大时，使用比较简单的PPP协议较为合理。</li>
+<li>在因特网环境下，PPP的信息字段放入的数据是IP数据报。数据链路层的可靠传输并不能够保证网络层的传输也是可靠的。</li>
+<li>帧检验序列FCS字段可保证无差错接受。</li>
+</ul>
+</li>
+</ul>
+<h2 id="PPP协议的工作状态"><a href="#PPP协议的工作状态" class="headerlink" title="PPP协议的工作状态"></a>PPP协议的工作状态</h2><ul>
+<li>当用户拨号接入ISP时，路由器的调制解调器对拨号做出确认，并建立一条物理连接。</li>
+<li>PC机向路由器发送一系列的LCP分组（封装成多个PPP帧)。</li>
+<li>这些分组及其响应选择一些PPP参数，并进行网络层配置，NCP给新接入的PC机分配一个临时的IP地址，使PC机成为因特网上的一个主机。</li>
+<li>通信完毕时，NCP释放网络层连接，收回原来分配出去的IP地址。接着，LCP释放数据链路层连接。最后释放的是物理层的连接。</li>
+</ul>
+<p>ps:ISP Internet Service Provider 互联网服务提供商;LCP Link Control Protocol 链路控制协议;NCP Network control protocol 网络控制协议</p>
+<ul>
+<li>链路控制协议（LCP）：一种扩展链路控制协议，用于建立、配置、测试和管理数据链路连接。</li>
+<li>网络控制协议（NCP）：协商该链路上所传输的数据包格式与类型，建立、配置不同的网络层协议；</li>
+</ul>
+<p><em><strong>PPP协议状态图</strong></em> </p>
+<div style="width:70%;margin:auto"><img src="/2021/01/19/transparent-transmission/status.png" class title="This is an example image"></div>
+
+<p>ps:NCP主要和上层(网络层)协议协商<br>ps:LCP主要和下次进行链路之间的协商<br>ps:鉴别为身份认证</p>
+<h2 id="使用广播信道的数据链路层"><a href="#使用广播信道的数据链路层" class="headerlink" title="使用广播信道的数据链路层"></a>使用广播信道的数据链路层</h2><h3 id="局域网的数据链路层"><a href="#局域网的数据链路层" class="headerlink" title="局域网的数据链路层"></a>局域网的数据链路层</h3><ul>
+<li><p><em><strong>局域网最主要的特点是:</strong></em></p>
+<ul>
+<li>网络为一个单位所拥有;</li>
+<li>地理范围和站点数目均有限。</li>
+</ul>
+</li>
+<li><p><em><strong>局域网的主要优点</strong></em></p>
+<ul>
+<li>具有广播功能，从一个站点可很方便地访问全网。局域网上的主机可共享连接在局域网上的各种硬件和软件资源。</li>
+<li>便于系统的扩展和逐渐地演变，各设备的位置可灵活调整和改变。</li>
+<li>提高了系统的可靠性、可用性和残存性。</li>
+</ul>
+</li>
+</ul>
+<p>拓扑结构:星形网、总线网、环型网</p>
+<ul>
+<li><p><em><strong>静态划分信道</strong></em></p>
+<ul>
+<li>频分复用</li>
+<li>时分复用</li>
+<li>波分复用</li>
+<li>码分复用</li>
+</ul>
+</li>
+<li><p><em><strong>动态媒体接入控制</strong></em></p>
+<ul>
+<li>随机接入</li>
+<li>受控接入,如多点线路探询(polling)，或轮询。</li>
+</ul>
+</li>
+</ul>
+<h3 id="主要用到的两个以太网标准"><a href="#主要用到的两个以太网标准" class="headerlink" title="主要用到的两个以太网标准"></a>主要用到的两个以太网标准</h3><ul>
+<li>DIX Ethernet V2是世界上第一个局域网产品(以太网）的规约。</li>
+<li>IEEE 802.3是第一个IEEE的以太网标准。</li>
+</ul>
+<h3 id="数据链路层的两个子层"><a href="#数据链路层的两个子层" class="headerlink" title="数据链路层的两个子层"></a>数据链路层的两个子层</h3><ul>
+<li><p>为了使数据链路层能更好地适应多种局域网标准，IEEE 802委员会就将局域网的数据链路层拆成两个子层:</p>
+<ul>
+<li>逻辑链路控制LLC (Logical Link Control)子层;</li>
+<li>媒体接入控制MAC (Medium Access Control)子层。</li>
+</ul>
+</li>
+<li><p>与接入到传输媒体有关的内容都放在MAC子层，而LLC子层则与传输媒体无关。</p>
+</li>
+<li><p>不管采用何种协议的局域网，对LLC子层来说都是透明的。</p>
+</li>
+</ul>
+<h3 id="适配器的作用"><a href="#适配器的作用" class="headerlink" title="适配器的作用"></a>适配器的作用</h3><ul>
+<li>网络接口板又称为通信适配器(adapter)或网络接口卡NIC(Network Interface Card)，或“网卡”</li>
+<li>适配器的重要功能:<ul>
+<li>进行串行/并行转换。</li>
+<li>对数据进行缓存。</li>
+<li>在计算机的操作系统安装设备驱动程序。</li>
+<li>实现以太网协议。</li>
+</ul>
+</li>
+</ul>
+<h3 id="计算机通过适配器和局域网进行通信"><a href="#计算机通过适配器和局域网进行通信" class="headerlink" title="计算机通过适配器和局域网进行通信"></a>计算机通过适配器和局域网进行通信</h3><div style="width:70%;margin:auto"><img src="/2021/01/19/transparent-transmission/adapter.png" class title="This is an example image"></div>
+
+<p>MAC:指硬件地址</p>
+<h3 id="CSMA-CD协议"><a href="#CSMA-CD协议" class="headerlink" title="CSMA/CD协议"></a>CSMA/CD协议</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/19/transparent-transmission/" data-id="cknn1mv90002vcrupexkj115v" data-title="transparent-transmission" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Java-day7" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/18/Java-day7/" class="article-date">
+  <time class="dt-published" datetime="2021-01-18T09:28:54.000Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/18/Java-day7/">Java day7</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="框架标签"><a href="#框架标签" class="headerlink" title="框架标签"></a>框架标签</h1><p>作用:将多个不同的页面组织后显示在同一个页面上</p>
+<h2 id="iframe-标签"><a href="#iframe-标签" class="headerlink" title="iframe 标签"></a>iframe 标签</h2><p>可以在当前网页上，引入其他网页</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe width&#x3D;&quot;50%&quot; height&#x3D;&quot;400px&quot; src&#x3D;&quot;http:&#x2F;&#x2F;bebetternow.github.io&quot;&gt;&lt;&#x2F;iframe&gt;</span><br></pre></td></tr></table></figure>
+
+<p>ps:height理论上无限大，百分比不生效，用像素俩规定<br>ps:iframe不会独占一行</p>
+<p><em><strong>指定框架内访问指定页面</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe width&#x3D;&quot;40%&quot; height&#x3D;&quot;400px&quot; src&#x3D;&quot;http:&#x2F;&#x2F;bebetternow.github.io&quot;&gt;&lt;&#x2F;iframe&gt;</span><br><span class="line">&lt;iframe name&#x3D;&quot;ifr&quot; width&#x3D;&quot;40%&quot; height&#x3D;&quot;400px&quot; src&#x3D;&quot;01Enter-label - 副本 - 副本.html&quot;&gt;&lt;&#x2F;iframe&gt;</span><br><span class="line">&lt;br &#x2F;&gt;</span><br><span class="line">&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;www.baidu.com&quot; target&#x3D;&quot;ifr&quot;&gt;百度&lt;&#x2F;a&gt;</span><br><span class="line">&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.taobao.com&quot; target&#x3D;&quot;ifr&quot;&gt;淘宝&lt;&#x2F;a&gt;</span><br></pre></td></tr></table></figure>
+
+<p>ps:利用好target属性与name属性</p>
+<h1 id="frameset标签"><a href="#frameset标签" class="headerlink" title="frameset标签"></a>frameset标签</h1><p>ps:不能有body标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;frameset rows&#x3D;&quot;200px,*,300px&quot;&gt;</span><br><span class="line">	&lt;frame src&#x3D;&quot;top.html&quot; &#x2F;&gt;</span><br><span class="line">	&lt;frame src&#x3D;&quot;http:&#x2F;&#x2F;www.baidu.com&quot; &#x2F;&gt;</span><br><span class="line">	&lt;frame src&#x3D;&quot;botton.html&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;frameset&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>rows三个属性分别代表上中下三个frame长度，其中 <code>*</code> 号代表剩余的意思</li>
+</ul>
+<p><em><strong>按左中右三部分分</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;frameset cols&#x3D;&quot;200px,200px,*&quot;&gt;</span><br><span class="line">	&lt;frame src&#x3D;&quot;01Enter-label - 副本 - 副本.html&quot; &#x2F;&gt;</span><br><span class="line">	&lt;frame src&#x3D;&quot;03formtag.html&quot; &#x2F;&gt;</span><br><span class="line">	&lt;frame src&#x3D;&quot;http:&#x2F;&#x2F;www.baidu.com&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;frameset&gt;</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>效果图</strong></em></p>
+<div style="width:70%;margin:auto"><img src="/2021/01/18/Java-day7/cols.png" class title="This is an example image"></div>
+
+<p><em><strong>只要两部分</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;frameset cols&#x3D;&quot;200px,*&quot;&gt;</span><br><span class="line">	&lt;frame src&#x3D;&quot;03formtag.html&quot; &#x2F;&gt;</span><br><span class="line">	&lt;frame src&#x3D;&quot;http:&#x2F;&#x2F;www.baidu.com&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;frameset&gt;</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>综合要求</strong></em></p>
+<div style="width:70%;margin:auto"><img src="/2021/01/18/Java-day7/target.png" class title="This is an example image"></div>
+
+<p><em><strong>主页面</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;frameset rows&#x3D;&quot;200px,*,300px&quot;&gt;</span><br><span class="line">	&lt;frame src&#x3D;&quot;top.html&quot; &#x2F;&gt;</span><br><span class="line">	&lt;frameset cols&#x3D;&quot;200px,*&quot;&gt;</span><br><span class="line">		&lt;frame src&#x3D;&quot;left.html&quot; &#x2F;&gt;</span><br><span class="line">		&lt;frame src&#x3D;&quot;http:&#x2F;&#x2F;www.baidu.com&quot; name&#x3D;&quot;right&quot; &#x2F;&gt;</span><br><span class="line">	&lt;&#x2F;frameset&gt;</span><br><span class="line">	&lt;frame src&#x3D;&quot;botton.html&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;frameset&gt;</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>插入left.html</strong></em>另做</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.biadu.com&quot; target&#x3D;&quot;right&quot;&gt;百度&lt;&#x2F;a&gt;</span><br><span class="line">		&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.jd.com&quot; target&#x3D;&quot;right&quot;&gt;京东&lt;&#x2F;a&gt;</span><br><span class="line">		&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.taobao.com&quot; target&#x3D;&quot;right&quot;&gt;淘宝&lt;&#x2F;a&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>ps:target对应要显示的地方frame的name属性 —&gt; 可以多个.html文件一起做</p>
+<h1 id="CSS-介绍和三种引入方式"><a href="#CSS-介绍和三种引入方式" class="headerlink" title="CSS 介绍和三种引入方式"></a>CSS 介绍和三种引入方式</h1><p>块标签 &gt;&gt;&gt; 块元素            在页面上独占一行的标签</p>
+<p>行内标签 &gt;&gt;&gt; 行内元素        在页面上不会独占一行的标签</p>
+<ul>
+<li>span &gt;&gt;&gt; 行内标签        一般用于在网页上划定一个范围    一般结合 CS样式 帮助我们确定某些现实效果的作用范围</li>
+<li>div  &gt;&gt;&gt; 快标签            一般用于做网页的布局</li>
+</ul>
+<p><em><strong>示例</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;</span><br><span class="line">	&lt;span style&#x3D;&quot;color: red;&quot;&gt;年前，习近平总书记说，北京冬奥会是我国重要历史节点的重大标志性活动。&lt;&#x2F;span&gt;</span><br><span class="line">	&lt;span style&#x3D;&quot;color: yellow;&quot;&gt;4年后，2021，已经来临，2022，近在咫尺，人们越来越理解这场盛会对于中国的意义，&lt;&#x2F;span&gt;</span><br><span class="line">	&lt;span style&#x3D;&quot;color: blue;&quot;&gt;也越来越读懂总书记对于冬奥筹办的看重。1月18日，习近平在北京考察冬奥会、&lt;&#x2F;span&gt;</span><br><span class="line">	&lt;span&gt;冬残奥会筹办工作。疫情之下的筹备进展如何？中国将向世界呈现怎样的盛会？&lt;&#x2F;span&gt;</span><br><span class="line">	&lt;span&gt;总书记关心，全世界亦瞩目。&lt;&#x2F;span&gt;</span><br><span class="line">&lt;&#x2F;p&gt;</span><br><span class="line">&lt;div style&#x3D;&quot;border: 1px solid red; width: 200px;height: 200px;&quot;&gt;</span><br><span class="line">	这里是文字</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="什么是CSS"><a href="#什么是CSS" class="headerlink" title="什么是CSS"></a>什么是CSS</h2><p>HTML –&gt; 搭建网页的主体结构<br>CSS  –&gt; 修饰网页 让网页更漂亮<br>JS   –&gt; 做交互</p>
+<p>&emsp;&emsp;层叠样式表(英文全称：Cascading Style Sheets)是一种用来表现HTML（标准通用标记语言的一个应用）或XML（标准通用标记语言的一个子集）等文件样式的计算机语言。CSS不仅可以静态地修饰网页，还可以配合各种脚本语言动态地对网页各元素进行格式化。<br>&emsp;&emsp; CSS 能够对网页中元素位置的排版进行像素级精确控制，支持几乎所有的字体字号样式，拥有对网页对象和模型样式编辑的能力。</p>
+<h2 id="CSS类型"><a href="#CSS类型" class="headerlink" title="CSS类型"></a>CSS类型</h2><ol>
+<li><p>行内式引入 </p>
+<ul>
+<li>借助标签的style属性引入</li>
+<li>style属性中的值得语法为:样式名:样式值;样式名:样式值;…</li>
+</ul>
+</li>
+<li><p>内嵌式</p>
+<ul>
+<li>将CSS样式的代表抽取出来，通过选择器确定样式作用范围</li>
+<li>在<head>标签中 使用一堆style标签 定义CSS样式     </head></li>
+<li>减少相同代码的编写量 减少代码的维护工作量</li>
+</ul>
+</li>
+<li><p>链接式</p>
+<ul>
+<li>行内式只能将样式作用于当前标签</li>
+<li>内嵌式可以将样式作用范围用于多个标签，不能作用于其他网页</li>
+<li>链接式可以将样式作用范围扩大多个不同网页</li>
+<li>链接式乐意将CSS代码放入独立的CSS文件中，可以使当前页面更加简洁</li>
+<li>每一需要引入样式的HTML 在head标签中使用 link标签引入css文件即可</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;行内式</span><br><span class="line">&lt;span style&#x3D;&quot;font-size: 20px;color: darkslategray;background-color: bisque;&quot;&gt;			</span><br><span class="line">	小姐姐好漂亮</span><br><span class="line">&lt;&#x2F;span&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;内嵌式</span><br><span class="line">	&#x2F;&#x2F;&lt;head&gt;中加入</span><br><span class="line">		&lt;style&gt;</span><br><span class="line">		&#x2F;* 选择器 *&#x2F;</span><br><span class="line">			span&#123;</span><br><span class="line">				font-size: 20px;color: red;background-color: bisque;</span><br><span class="line">			&#125; </span><br><span class="line">		&lt;&#x2F;style&gt;</span><br><span class="line">	&#x2F;&#x2F;引用</span><br><span class="line">		&lt;span&gt;</span><br><span class="line">			小姐姐好漂亮</span><br><span class="line">		&lt;&#x2F;span&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;链接式</span><br><span class="line">	&#x2F;&#x2F;CSS文件中</span><br><span class="line">		span&#123;</span><br><span class="line">			font-size: 20px;color: red;background-color: bisque;</span><br><span class="line">		&#125;</span><br><span class="line">	&#x2F;&#x2F;&lt;head&gt;标签中</span><br><span class="line">		&#x2F;&#x2F;其中 type属性 --&gt; 文本类型 与rel属性 --&gt; 样式表 可以不要</span><br><span class="line">		&lt;link type&#x3D;&quot;text&#x2F;css&quot; rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;css&#x2F;mycss.css&quot; &#x2F;&gt;</span><br><span class="line">	&#x2F;&#x2F;引用</span><br><span class="line">		&lt;span&gt;</span><br><span class="line">			小姐姐好漂亮</span><br><span class="line">		&lt;&#x2F;span&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="各种选择器"><a href="#各种选择器" class="headerlink" title="各种选择器"></a>各种选择器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">www.w3school.com.cn</span><br></pre></td></tr></table></figure>
+
+<p>上可以查看各种CSS选择器</p>
+<ul>
+<li>标签名选择器</li>
+<li>id选择器</li>
+<li>类选择器 </li>
+</ul>
+<h3 id="标签名选择器"><a href="#标签名选择器" class="headerlink" title="标签名选择器"></a>标签名选择器</h3><p>语法 标签名{样式}<br>给页面上所有同名的标签定义样式的选择器 —&gt; 作用在所有span上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">放在&lt;style&gt;中</span><br><span class="line">span&#123;</span><br><span class="line">	background-color: skyblue;</span><br><span class="line">	font-size: 40px;</span><br><span class="line">	font-family: &quot;楷体&quot;;</span><br><span class="line">	color: orange;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;span id&#x3D;&quot;s1&quot;&gt;好想你呀&lt;&#x2F;span&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="id选择器"><a href="#id选择器" class="headerlink" title="id选择器"></a>id选择器</h3><ul>
+<li>一般body中任何一个标签都有id属性</li>
+<li>id属性的值一般同一个网页上不允许有重复值</li>
+<li>id属性一般用于帮助我们定义到页面上唯一的一个标签</li>
+</ul>
+<p><em><strong>命名规则:</strong></em></p>
+<ul>
+<li>不能有空格和一些特殊符号    特殊符号中仅可以使用_与$ 不推荐使用 $ 会和jquery命名冲突</li>
+<li>不能以数字开头</li>
+</ul>
+<p><em><strong>推荐写法:</strong></em><br>英文字母开头 数字放在后面</p>
+<p>语法: #id值{样式}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">放在&lt;style&gt;中</span><br><span class="line">#p1&#123;</span><br><span class="line">	border: 1px dotted blue;</span><br><span class="line">	background-color: gray;</span><br><span class="line">	color: red;</span><br><span class="line">	width: 100px;</span><br><span class="line">	height: 100px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;p id&#x3D;&quot;p1&quot;&gt;好想你呀&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p id&#x3D;&quot;p2&quot;&gt;好想你呀&lt;&#x2F;p&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h3><p>一般body中的所有标签都有class属性</p>
+<ul>
+<li>多个不同的标签可以有相同的class属性值</li>
+<li>通过标签的class属性确定样式的作用范围</li>
+<li>语法: .class属性值{样式}</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">放在&lt;style&gt;中</span><br><span class="line">.c1&#123;</span><br><span class="line">	background-color: cadetblue;</span><br><span class="line">	font-size: 50px;</span><br><span class="line">	font-family: &quot;微软雅黑&quot;;</span><br><span class="line">	color: black;</span><br><span class="line">	text-decoration: none; 		&#x2F;&#x2F;表示什么装饰也没有 ---&gt; 去除下划线</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;p id&#x3D;&quot;p3&quot; class&#x3D;&quot;c1&quot;&gt;好想你呀&lt;&#x2F;p&gt;</span><br><span class="line">&lt;h1 id&#x3D;&quot;ha&quot; class&#x3D;&quot;c1&quot;&gt;喜欢你&lt;&#x2F;h1&gt;</span><br><span class="line">&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.baidu.com&quot; target&#x3D;&quot;_blank&quot; class&#x3D;&quot;c1&quot;&gt;百度&lt;&#x2F;a&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p><em><strong>综合代码</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;style&gt;</span><br><span class="line">			&#x2F;* </span><br><span class="line">			就算是后台也要熟练使用的选择器</span><br><span class="line">			标签名选择器</span><br><span class="line">			id选择器</span><br><span class="line">			类选择器</span><br><span class="line">			 *&#x2F;</span><br><span class="line">			&#x2F;* </span><br><span class="line">			 标签名选择器</span><br><span class="line">			 语法 标签名&#123;样式&#125;</span><br><span class="line">			 给页面上所有同名的标签定义样式的选择器 ---&gt; 作用在所有span上</span><br><span class="line">			 *&#x2F;</span><br><span class="line">			span&#123;</span><br><span class="line">				background-color: skyblue;</span><br><span class="line">				font-size: 40px;</span><br><span class="line">				font-family: &quot;楷体&quot;;</span><br><span class="line">				color: orange;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			&#x2F;* </span><br><span class="line">			 id选择器</span><br><span class="line">			 一般body中任何一个标签都有id属性</span><br><span class="line">			 id属性的值一般同一个网页上不允许有重复值</span><br><span class="line">			 id属性一般用于帮助我们定义到页面上唯一的一个标签</span><br><span class="line">			 </span><br><span class="line">			 命名规则:</span><br><span class="line">			 不能有空格和一些特殊符号	特殊符号中仅可以使用_与$ 不推荐使用 $ 会和jquery命名冲突</span><br><span class="line">			 不能以数字开头</span><br><span class="line">			 推荐写法:</span><br><span class="line">			 英文字母开头 数字放在后面</span><br><span class="line">			 语法:</span><br><span class="line">			 #id值&#123;样式&#125;</span><br><span class="line">			 *&#x2F;</span><br><span class="line">			#p1&#123;</span><br><span class="line">				border: 1px dotted blue;</span><br><span class="line">				background-color: gray;</span><br><span class="line">				color: red;</span><br><span class="line">				width: 100px;</span><br><span class="line">				height: 100px;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			&#x2F;* </span><br><span class="line">			 类选择器</span><br><span class="line">			 一般body中的所有标签都有class属性</span><br><span class="line">			 多个不同的标签可以有相同的class属性值</span><br><span class="line">			 通过标签的class属性确定样式的作用范围</span><br><span class="line">			 语法: .class属性值&#123;样式&#125;</span><br><span class="line">			 *&#x2F;</span><br><span class="line">			.c1&#123;</span><br><span class="line">				background-color: cadetblue;</span><br><span class="line">				font-size: 50px;</span><br><span class="line">				font-family: &quot;微软雅黑&quot;;</span><br><span class="line">				color: black;</span><br><span class="line">				text-decoration: none;</span><br><span class="line">			&#125;			</span><br><span class="line">		&lt;&#x2F;style&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;		</span><br><span class="line">		&lt;span id&#x3D;&quot;s1&quot;&gt;好想你呀&lt;&#x2F;span&gt;</span><br><span class="line">		&lt;br &#x2F;&gt;</span><br><span class="line">		&lt;span id&#x3D;&quot;s2&quot;&gt;好想你呀&lt;&#x2F;span&gt;</span><br><span class="line">		&lt;br &#x2F;&gt;</span><br><span class="line">		&lt;span&gt;好想你呀&lt;&#x2F;span&gt;</span><br><span class="line">		&lt;p id&#x3D;&quot;p1&quot;&gt;好想你呀&lt;&#x2F;p&gt;</span><br><span class="line">		&lt;p id&#x3D;&quot;p2&quot;&gt;好想你呀&lt;&#x2F;p&gt;</span><br><span class="line">		&lt;p id&#x3D;&quot;p3&quot; class&#x3D;&quot;c1&quot;&gt;好想你呀&lt;&#x2F;p&gt;</span><br><span class="line">		&lt;h1 id&#x3D;&quot;ha&quot; class&#x3D;&quot;c1&quot;&gt;喜欢你&lt;&#x2F;h1&gt;</span><br><span class="line">		&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.baidu.com&quot; target&#x3D;&quot;_blank&quot; class&#x3D;&quot;c1&quot;&gt;百度&lt;&#x2F;a&gt;</span><br><span class="line">		</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="其他选择器"><a href="#其他选择器" class="headerlink" title="其他选择器"></a>其他选择器</h2><h3 id="层级选择器"><a href="#层级选择器" class="headerlink" title="层级选择器"></a>层级选择器</h3><p>通过层次关系，定位样式的作用范围<br>层级选择器的每一个层级的确定可以是标签名、id、class</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;style中</span><br><span class="line">p font span&#123;</span><br><span class="line">	color: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;body中</span><br><span class="line">&lt;span&gt;今天又可爱了呢&lt;&#x2F;span&gt;</span><br><span class="line">&lt;p&gt;</span><br><span class="line">	&lt;font&gt;</span><br><span class="line">		&lt;span&gt;比昨天可爱呀&lt;&#x2F;span&gt;</span><br><span class="line">	&lt;&#x2F;font&gt;</span><br><span class="line">	&lt;span&gt;更比前天可爱呀&lt;&#x2F;span&gt;</span><br><span class="line">&lt;&#x2F;p&gt;</span><br><span class="line">&#x2F;&#x2F;只有&quot;比昨天可爱呀&quot;生效</span><br><span class="line"></span><br><span class="line">p span&#123;</span><br><span class="line">	color: red;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;都生效</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;# + &quot;id&quot;  . + &quot;class&quot;</span><br><span class="line">#p1 .c1&#123;</span><br><span class="line">	color: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;span&gt;今天又可爱了呢&lt;&#x2F;span&gt;</span><br><span class="line">&lt;p id&#x3D;&quot;p1&quot;&gt;</span><br><span class="line">	&lt;font&gt;</span><br><span class="line">		&lt;span class&#x3D;&quot;c1&quot;&gt;比昨天可爱呀&lt;&#x2F;span&gt;</span><br><span class="line">	&lt;&#x2F;font&gt;</span><br><span class="line">	&lt;span&gt;更比前天可爱呀&lt;&#x2F;span&gt;</span><br><span class="line">&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h3><p>根据标签的某个属性确定样式的作用范围</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* 属性选择器 *&#x2F;</span><br><span class="line">input[type&#x3D;password]&#123;</span><br><span class="line">	width: 300px;</span><br><span class="line">	height: 40px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;input type&#x3D;&quot;text&quot; &#x2F;&gt;</span><br><span class="line">&lt;br &#x2F;&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;password&quot; &#x2F;&gt;</span><br><span class="line">&#x2F;&#x2F;只有密码框生效</span><br><span class="line"></span><br><span class="line">.c2[type&#x3D;password]&#123;</span><br><span class="line">	width: 300px;</span><br><span class="line">	height: 40px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;input class&#x3D;&quot;c2&quot; type&#x3D;&quot;text&quot; &#x2F;&gt;</span><br><span class="line">&lt;br &#x2F;&gt;</span><br><span class="line">&lt;input class&#x3D;&quot;c2&quot; type&#x3D;&quot;password&quot; &#x2F;&gt;</span><br><span class="line">&#x2F;&#x2F;也可以用class定义到外层标签</span><br></pre></td></tr></table></figure>
+
+<h3 id="分组选择器"><a href="#分组选择器" class="headerlink" title="分组选择器"></a>分组选择器</h3><p>可以将多个不同层级关系、不同的class、id等多个标签同时使用相同的样式效果 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;放在style中，且不是包含关系，而是并列关系，用&quot;,&quot;使之间隔开来</span><br><span class="line">h1,.c3,.s2,#pa&#123;</span><br><span class="line">	color: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;h1 id&#x3D;&quot;ha&quot;&gt;今天也在想你啊&lt;&#x2F;h1&gt;</span><br><span class="line">&lt;h2 class&#x3D;&quot;c3&quot;&gt;今天也在想你啊&lt;&#x2F;h2&gt;</span><br><span class="line">&lt;span class&#x3D;&quot;s2&quot;&gt;今天也在想你啊&lt;&#x2F;span&gt;</span><br><span class="line">&lt;p id&#x3D;&quot;pa&quot;&gt;今天也在想你啊&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/18/Java-day7/" data-id="cknn1mv7g000wcrup8irodsxy" data-title="Java day7" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Synchronization-and-mutex" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/18/Synchronization-and-mutex/" class="article-date">
+  <time class="dt-published" datetime="2021-01-18T07:42:28.000Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/18/Synchronization-and-mutex/">Synchronization and mutex</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="同步、互斥问题"><a href="#同步、互斥问题" class="headerlink" title="同步、互斥问题"></a>同步、互斥问题</h1><h2 id="什么是进程同步"><a href="#什么是进程同步" class="headerlink" title="什么是进程同步"></a>什么是进程同步</h2><p>进程具有 <em><strong>异步性</strong></em> ，各并发执行的进程以各自独立的、不可预知的速度向前推进。</p>
+<p><em><strong>例子:</strong></em><br>进程通信 —&gt; 管道通信<br>读进程与写进程并发地运行，由于并发必然导致异步性，因此”写数据”和”读数据”两个操作执行的先后顺序是不确定的。而实际应用中，又必须按照”写数据 —&gt; 读数据”的顺序来执行的。</p>
+<p><em><strong>同步</strong></em> 也称 <em><strong>直接制约关系</strong></em> ，它是指为完成某种任务而建立的两个或多个进程，这些进程因为需要在某些位置上 <em><strong>协调</strong></em> 它们的 <em><strong>工作次序</strong></em> 而产生的制约关系。进程间的直接制约关系就是源于它们之间的相互合作。</p>
+<h2 id="什么是进程互斥"><a href="#什么是进程互斥" class="headerlink" title="什么是进程互斥"></a>什么是进程互斥</h2><p>进程的”并发”需要”共享”的支持。各个并发执行的进程不可避免的需要共享一些系统资源(比如说内存、打印机、摄像头等I/O设备)</p>
+<h3 id="两种资源共享方式"><a href="#两种资源共享方式" class="headerlink" title="两种资源共享方式"></a>两种资源共享方式</h3><ul>
+<li>互斥共享 —&gt; 系统中的某些资源，虽然可以提供给多个进程使用，但一个时间段内只允许一个进程访问该资源</li>
+<li>同时共享 —&gt; 系统中的某些资源， <em><strong>允许一个时间段内由多个进程”同时”对它们进行访问</strong></em> ，这里指宏观上同时</li>
+</ul>
+<p>我们把 <em><strong>一个时间段内只允许一个进程使用</strong></em> 的资源称为临界资源。许多物理设备（比如摄像头、打印机）都属于临界资源。此外还有许多变量、数据、内存缓冲区等都属于临界资源。<br>对临界资源的访问，必须互斥地进行。互斥，亦称 <em><strong>间接制约关系</strong></em> 。 <em><strong>进程互斥</strong></em> 指当一个进程访问某临界资源时，另一个想要访问该临界资源的进程必须等待。当前访问临界资源的进程访问结束，释放该资源之后，另一个进程才能去访问临界资源。 —&gt; 间接产生互斥关系，不是直接的关系</p>
+<p>对临界资源的互斥访问，可以在逻辑上分为如下几个部分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">do&#123;</span><br><span class="line">	entry section;			&#x2F;&#x2F;进入区</span><br><span class="line">	critical section;		&#x2F;&#x2F;临界区</span><br><span class="line">	exit section;			&#x2F;&#x2F;退出区</span><br><span class="line">	remainder section;		&#x2F;&#x2F;剩余区</span><br><span class="line">&#125;while(true)</span><br></pre></td></tr></table></figure>
+
+<h3 id="进入区"><a href="#进入区" class="headerlink" title="进入区"></a>进入区</h3><p>负责检查是否可以进入临界区，若可以进入，则应设置 <em><strong>正在访问临界资源的标志</strong></em> (可以理解为”上锁”)，以反之其他进程同时进入临界区</p>
+<h3 id="临界区"><a href="#临界区" class="headerlink" title="临界区"></a>临界区</h3><p>访问临界资源</p>
+<h3 id="退出区"><a href="#退出区" class="headerlink" title="退出区"></a>退出区</h3><p>负责解除 <em><strong>正在访问临界资源的标志</strong></em> 可以理解为”解锁”</p>
+<h3 id="剩余区"><a href="#剩余区" class="headerlink" title="剩余区"></a>剩余区</h3><p>做其他处理</p>
+<p><em><strong>注意</strong></em><br>临界区时进程中 <em><strong>访问临界资源</strong></em> 的代码段<br>进入去与退出区是负责实现 <em><strong>互斥</strong></em> 的代码段<br>临界区也称临界段</p>
+<p>为了实现对临界区资源的互斥访问，同时保证系统总体的性能，需要遵循以下原则:</p>
+<ol>
+<li>空闲让进。临界区空闲时，可以允许一个请求进入临界区的进程立即进入临界区；</li>
+<li>忙则等待。当已有进程进入临界区时，其他试图进入临界区的进程必须等待；</li>
+<li>有限等待。对请求访问的进程，应保证能在有限时间内进入临界区(保证不会饥饿)；</li>
+<li>让权等待。当进程不能进入临界区时，应立即释放处理机，防止进程忙等待。</li>
+</ol>
+<h1 id="进程互斥的软件实现方法"><a href="#进程互斥的软件实现方法" class="headerlink" title="进程互斥的软件实现方法"></a>进程互斥的软件实现方法</h1><h2 id="单标志法"><a href="#单标志法" class="headerlink" title="单标志法"></a>单标志法</h2><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>两个进程在 <em><strong>访问完临界区后</strong></em> 会把临界区的权限转交给另一个进程。也就是说 <em><strong>每个进程进入</strong></em> 领结去的权限只能被另一个进程赋予</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int turn &#x3D; 0;		&#x2F;&#x2F;turn 表示当前允许进入临界区的进程号</span><br><span class="line">其中 0 代表0号进程</span><br><span class="line"></span><br><span class="line">P0 进程:</span><br><span class="line">while(turn !&#x3D; 0);		1</span><br><span class="line">critical section;		2</span><br><span class="line">turn &#x3D; 1;				3</span><br><span class="line">remainder section;		4</span><br><span class="line"></span><br><span class="line">P1 进程:</span><br><span class="line">while(turn !&#x3D; 1);		5</span><br><span class="line">critical section;		6</span><br><span class="line">turn &#x3D; 0;				7</span><br><span class="line">remainder section;		8</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>turn 的初始值为 0 ，即刚开始只允许0号进程进入临界区。</li>
+<li>若P1先上处理机运行。则会一直卡在 5处。直到P1时间片用完，发生调度，切换P0上处理机运行。</li>
+<li>代码1 不会卡住P0，P0可以正常访问临界区，在P0访问临界区期间即时切回P1，P1依然会卡在代码5。</li>
+</ul>
+<ol>
+<li>可见该算法可以实现”同一时刻最多只允许一个进程访问临界区”</li>
+<li>turn 表示当前允许进入临界区的进程号，而只有当前允许进入临界区的进程在访问了临界区之后，才会修改turn的值。也就是说，对于临界区的访问，一定是按P0 –&gt; P1 –&gt; P0 这样轮流访问的。<br>因此，单标志法存在的主要问题是:违背”空闲让进”原则。</li>
+</ol>
+<h2 id="双标志先检查"><a href="#双标志先检查" class="headerlink" title="双标志先检查"></a>双标志先检查</h2><h3 id="算法思想-1"><a href="#算法思想-1" class="headerlink" title="算法思想"></a>算法思想</h3><p>设置一个布尔型数组flag[],数组中各个元素用来标记各进程想进入临界区的意愿，比如”flag[0] = true”意味着0号进程P0现在想要进入临界区。每个进程在进入临界区之前先检查当前有没有别的进程想进入临界区，如果没有，则把自身对应标志flag[i]设为true,之后开始访问临界区。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">bool flag[2];			&#x2F;&#x2F;表示进入临界区意愿的数组</span><br><span class="line">flag[0] &#x3D; false;		</span><br><span class="line">flag[1] &#x3D; false;		&#x2F;&#x2F;刚开始设置为两个进程都不想进入临界区</span><br><span class="line"></span><br><span class="line">P0 进程:</span><br><span class="line">while(flag[1]);		1</span><br><span class="line">flag[0] &#x3D; true;		2</span><br><span class="line">critical section;	3</span><br><span class="line">flag[0] &#x3D; false;	4</span><br><span class="line">remainder section;	</span><br><span class="line"></span><br><span class="line">P1 进程:</span><br><span class="line">while(flag[0]);		5		&#x2F;&#x2F;如果此时P0想要进入临界区，P1就一直循环</span><br><span class="line">flag[1] &#x3D; true;		6		&#x2F;&#x2F;标志位P1进程想要进入临界区</span><br><span class="line">critical section;	7		&#x2F;&#x2F;访问临界区</span><br><span class="line">flag[2] &#x3D; false;	8		&#x2F;&#x2F;访问完临界区，修改标记为P1不想使用临界区</span><br><span class="line">remainder section;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>若按照 142637…的顺序执行，P0和P1将会同时访问临界区。</li>
+<li>因此，双标志先检查法的主要问题是:违反了”忙则等待”原则。</li>
+<li>原因在于，进入区的”检查”和”上锁”不是一气呵成的，”检查”之后，”上锁之前”可能发生进程切换</li>
+</ul>
+<h2 id="双标志后检查"><a href="#双标志后检查" class="headerlink" title="双标志后检查"></a>双标志后检查</h2><h3 id="算法思想-2"><a href="#算法思想-2" class="headerlink" title="算法思想"></a>算法思想</h3><p>双标志先检查法的改版。前一个算法的问题是先“检查”后“上锁”，但是这两个操作又无法一气呵成，因此导致了两个进程同时进入临界区的问题。因此，人们又想到先“上锁”后“检查”的方法，来避免上述问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">bool flag[2];			&#x2F;&#x2F;表示进入临界区意愿的数组</span><br><span class="line">flag[0] &#x3D; false;		</span><br><span class="line">flag[1] &#x3D; false;		&#x2F;&#x2F;刚开始设置为两个进程都不想进入临界区</span><br><span class="line"></span><br><span class="line">P0 进程:</span><br><span class="line">flag[0] &#x3D; true;		1</span><br><span class="line">while(flag[1]);		2</span><br><span class="line">critical section;	3</span><br><span class="line">flag[0] &#x3D; false;	4</span><br><span class="line">remainder section;	</span><br><span class="line"></span><br><span class="line">P1 进程:</span><br><span class="line">flag[1] &#x3D; true;		5		&#x2F;&#x2F;标志位P1进程想要进入临界区</span><br><span class="line">while(flag[0]);		6		&#x2F;&#x2F;如果此时P0想要进入临界区，P1就一直循环</span><br><span class="line">critical section;	7		&#x2F;&#x2F;访问临界区</span><br><span class="line">flag[2] &#x3D; false;	8		&#x2F;&#x2F;访问完临界区，修改标记为P1不想使用临界区</span><br><span class="line">remainder section;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>若按1526…顺序执行，P0和P1都无法进入临界区</li>
+<li>因此，双标志后检查法虽然解决了”忙则等待”的问题，但是又违背了”空闲让进”和”有限等待”原则，会因各进程都长期无法访问临界资源而产生”饥饿”现象。</li>
+</ul>
+<h2 id="Petersin算法"><a href="#Petersin算法" class="headerlink" title="Petersin算法"></a>Petersin算法</h2><h3 id="算法思想-3"><a href="#算法思想-3" class="headerlink" title="算法思想"></a>算法思想</h3><p>双标志后检查法中，两个进程都争着想进入临界区，但是谁也不让谁，最后谁都无法进入临界区。Gary L. Peterson想到了一种方法，如果双方都争着想进入临界区，那可以让进程尝试“孔融让梨”，主动让对方先使用临界区。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">bool flag[2]			&#x2F;&#x2F;表示进入临界区意愿的数组，初始值都是false</span><br><span class="line">int turn &#x3D; 0;</span><br><span class="line"></span><br><span class="line">P0 进程:</span><br><span class="line">flag[0] &#x3D; true;					1</span><br><span class="line">turn &#x3D; 1;						2</span><br><span class="line">while(flag[1] &amp;&amp; turn &#x3D;&#x3D; 1);	3</span><br><span class="line">critical section;				4</span><br><span class="line">flag[0] &#x3D; false;				5</span><br><span class="line">remainder section;</span><br><span class="line"></span><br><span class="line">P1 进程:</span><br><span class="line">flag[1] &#x3D; true;					6	&#x2F;&#x2F;表示自己想进入临界区</span><br><span class="line">turn &#x3D; 0;						7	&#x2F;&#x2F;可以优先让对方进入临界区</span><br><span class="line">while(flag[0] &amp;&amp; turn &#x3D;&#x3D; 0);	8	&#x2F;&#x2F;对方想近，且最后一次是自己&quot;让梨&quot;，那就自己循环等待</span><br><span class="line">critical section;				9</span><br><span class="line">flag[1] &#x3D; false;				10	&#x2F;&#x2F;访问完临界区，表示自己已经不想访问临界区了</span><br><span class="line">remainder section; </span><br></pre></td></tr></table></figure>
+
+<p>运行顺序 1 -&gt; 2 -&gt; 3 -&gt; 7 -&gt; 8 -&gt; 3(跳出循环) -&gt; 4 </p>
+<p>进入区: </p>
+<ol>
+<li>主动争取;</li>
+<li>主动谦让;</li>
+<li>检查对方是否也想使用，且最后一次是不是自己说了”客气话”</li>
+</ol>
+<p>Peterson算法用软件方法解决了进程互斥问题，遵循了空闲让进、忙则等待、有限等待三个原则，但是依然未遵循 <em><strong>让权等待</strong></em> 的原则。 —&gt; 依然占用CPU，没有放权</p>
+<h1 id="进程互斥硬件实现方法"><a href="#进程互斥硬件实现方法" class="headerlink" title="进程互斥硬件实现方法"></a>进程互斥硬件实现方法</h1><h2 id="中断屏蔽方法"><a href="#中断屏蔽方法" class="headerlink" title="中断屏蔽方法"></a>中断屏蔽方法</h2><p>利用“开/关中断指令”实现（与原语的实现思想相同，即在某进程开始访问临界区到结束访问为止都不允许被中断，也就不能发生进程切换，因此也不可能发生两个同时访问临界区的情况)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">关中断;				&#x2F;&#x2F;关中断后即不允许当前进程被中断，也必然不会发生进程切换</span><br><span class="line">临界区;</span><br><span class="line">开中断;				&#x2F;&#x2F;直到当前进程访问完临界区，在执行开中断指令，才有可能有别的进程上处理机并访问临界区</span><br></pre></td></tr></table></figure>
+
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>简单、高效</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>不适用于多处理机;</li>
+<li>只适用于操作系统内核进程，不适用于用户进程（因为开/关中断指令只能运行在内核态，这组指令如果能让用户随意使用会很危险)</li>
+</ul>
+<h2 id="TestAndSet-TS指令-TSL指令"><a href="#TestAndSet-TS指令-TSL指令" class="headerlink" title="TestAndSet (TS指令/TSL指令)"></a>TestAndSet (TS指令/TSL指令)</h2><p>简称TS指令，也有地方称为TestAndSetLock指令，或TSL指令<br>TSL指令是 <em><strong>用硬件实现</strong></em> 的，执行的过程不允许被中断，只能一气呵成。以下是用c语言描述的逻辑</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;布尔型共享变量 lock 表示当前临界区是否被加锁 </span><br><span class="line">&#x2F;&#x2F;true 表示已被加锁， false 表示未被加锁</span><br><span class="line">bool TestAndSet (bool *lock)&#123;</span><br><span class="line">	bool old;</span><br><span class="line">	old &#x3D; *lock;		&#x2F;&#x2F;old用来存放lock	原来的值</span><br><span class="line">	*lock &#x3D; true;		&#x2F;&#x2F;无论之前是否已加锁，都将lock设为true</span><br><span class="line">	return old;			&#x2F;&#x2F;返回lock原来的值 --&gt; 将lock的值放在某个物理寄存器，再把lock的值覆盖为true</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;以下是使用 TSL 指令实现互斥的算法逻辑</span><br><span class="line">while(TestAndSet (&amp;lock));	&#x2F;&#x2F;&quot;上锁&quot;并&quot;检查&quot;</span><br><span class="line">临界区代码段...</span><br><span class="line">lock &#x3D; false;		&#x2F;&#x2F;&quot;解锁&quot;</span><br><span class="line">剩余区代码段... </span><br></pre></td></tr></table></figure>
+
+<p>若刚开始lock 是 false，则TSL返回的old值为 false，while循环条件不满足，直接跳过循环，进入临界区。若刚开始lock 是 true，则执行TLS后old返回的值为true，while循环条件满足，会一直循环，直到当前访问临界区的进程在退出区进行“解锁”。</p>
+<p>相比软件实现方法，TSL指令把“上锁”和“检查”操作用硬件的方式变成了一气呵成的原子操作。</p>
+<h3 id="优点-1"><a href="#优点-1" class="headerlink" title="优点:"></a>优点:</h3><ul>
+<li>实现简单，无需像软件实现方法那样严格检查是否会有逻辑漏洞;</li>
+<li>适用于多处理机环境;</li>
+</ul>
+<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点:"></a>缺点:</h3><p>不满足“让权等待”原则，暂时无法进入临界区的进程会占用CPU并循环执行TSL指令，从而导致“忙等”。</p>
+<h2 id="Swap指令-XCHG指令"><a href="#Swap指令-XCHG指令" class="headerlink" title="Swap指令(XCHG指令)"></a>Swap指令(XCHG指令)</h2><p>有的地方也叫Exchange指令，或简称XCHG指令。<br>Swap指令是用硬件实现的，执行的过程不允许被中断，只能一气呵成。以下是用c语言描述的逻辑</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;Swap 指令的作用是交换两个变量的值</span><br><span class="line">Swap (bool *a,bool *b)&#123;</span><br><span class="line">	bool temp;</span><br><span class="line">	temp &#x3D; *a</span><br><span class="line">	*a &#x3D; *b;</span><br><span class="line">	*b &#x3D; temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;以下是用Swap指令实现互斥的算法逻辑</span><br><span class="line">&#x2F;&#x2F;lock 表示当前临界区是否被加锁</span><br><span class="line">bool old &#x3D; true;</span><br><span class="line">while(old &#x3D;&#x3D; true)	&#x2F;&#x2F;如果已经上锁，则一直循环下去，直到跳出循环</span><br><span class="line">	Swap (&amp;lock,&amp;old)</span><br><span class="line">临界区代码段...</span><br><span class="line">lock &#x3D; false;</span><br><span class="line">剩余区代码段...</span><br></pre></td></tr></table></figure>
+
+<p>逻辑上来看Swap和 TSL并无太大区别，都是先记录下此时临界区是否已经被上锁（记录在old变量上)，再将上锁标记lock 设置为true，最后检查old，如果old为 false则说明之前没有别的进程对临界区上锁，则可跳出循环，进入临界区。</p>
+<h3 id="优点-2"><a href="#优点-2" class="headerlink" title="优点:"></a>优点:</h3><ul>
+<li>实现简单，无需像软件实现方法那样严格检查是否会有逻辑漏洞;</li>
+<li>适用于多处理机环境;</li>
+</ul>
+<h3 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点:"></a>缺点:</h3><ul>
+<li>不满足“让权等待”原则，暂时无法进入临界区的进程会占用CPU,并循环执行TSL指令，从而导致“忙等”。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/18/Synchronization-and-mutex/" data-id="cknn1mv7q001gcrupa4haggh3" data-title="Synchronization and mutex" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Java-day6" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/16/Java-day6/" class="article-date">
+  <time class="dt-published" datetime="2021-01-16T07:40:23.000Z" itemprop="datePublished">2021-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/16/Java-day6/">Java-day6</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>标签 &gt;&gt;&gt; <code>&lt;html&gt;&lt;/html&gt;</code><br>属性 &gt;&gt;&gt; 用于设置标签的一些特征 一般放置于开始标签‘<br>文本 &gt;&gt;&gt; 双标签中间的内容<br>元素 &gt;&gt;&gt; 一堆完整的标签 DOM解析</p>
+<p>h1 &gt;&gt;&gt; h6 六级标题 (独占一行)<br>p 段落标签 (独占一行)<br>big small b i em … sub sup (不会独占一行)<br>字符实体 对于html有特殊含义的符号<br><code>&lt;&amp;lt; &gt;&amp;gt; &amp;amp; &amp;nbsp</code><br>特殊的不常见符号 (不会独占一行)</p>
+<p>img   src title鼠标悬停图片上显示的文字 alt (不会独占一行)<br>audio  src controls 显示播放控件 autoplay loop width height (不会独占一行)<br>video  (不会独占一行)</p>
+<p>列表标签 (独占一行)<br>有序列表  order list  ol  列表项 li type=”1”  a A i l<br>无需列表  unorder list  ul 列表项 li type = “circle disc square”<br>定义列表  dl &gt;&gt;&gt; dd dt 一般用于图文混排</p>
+<p>表格标签<br>table 整张表格<br>    tr  代表一行<br>        td  代表一个单元格<br>    thead 表头<br>    tbody 表体<br>    tfoot 表尾<br>            th &gt;&gt;&gt; 自带文字加粗居中<br>colspan 横向跨列<br>rowspan 纵向跨行 </p>
+<h1 id="输入标签和表单标签"><a href="#输入标签和表单标签" class="headerlink" title="输入标签和表单标签"></a>输入标签和表单标签</h1><h2 id="各种输入标签"><a href="#各种输入标签" class="headerlink" title="各种输入标签"></a>各种输入标签</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;!-- 文本框 --&gt;</span><br><span class="line">	账号:&lt;input type&#x3D;&quot;text&quot; &#x2F;&gt; &lt;br &#x2F;&gt;</span><br><span class="line">	&lt;!-- 密码框 --&gt;</span><br><span class="line">	密码:&lt;input type&#x3D;&quot;password&quot; &#x2F;&gt; &lt;br &#x2F;&gt;</span><br><span class="line">	&lt;!-- </span><br><span class="line">	如果需要让多个单选框有互斥的效果 </span><br><span class="line">	那么需要给多个单选框添加name属性 </span><br><span class="line">	并且name属性的值相同 </span><br><span class="line">	</span><br><span class="line">	通过check 属性控制其中某一个选项被选中  checked</span><br><span class="line">	都添加了最后一个生效</span><br><span class="line">	--&gt;</span><br><span class="line">	性别:</span><br><span class="line">	&lt;!-- 单选框 --&gt;</span><br><span class="line">		&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; &#x2F;&gt;男 </span><br><span class="line">		&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; checked&#x2F;&gt;女</span><br><span class="line">	&lt;br &#x2F;&gt;</span><br><span class="line">	</span><br><span class="line">	爱好:</span><br><span class="line">	&lt;!-- 复选框 不能互斥  --&gt;</span><br><span class="line">		&lt;input type&#x3D;&quot;checkbox&quot; &#x2F;&gt;篮球</span><br><span class="line">		&lt;input type&#x3D;&quot;checkbox&quot; checked&#x2F;&gt;足球</span><br><span class="line">		&lt;input type&#x3D;&quot;checkbox&quot; &#x2F;&gt;羽毛球</span><br><span class="line">		&lt;input type&#x3D;&quot;checkbox&quot; &#x2F;&gt;乒乓球</span><br><span class="line">		&lt;br &#x2F;&gt;</span><br><span class="line">	请选择照片：</span><br><span class="line">		&lt;!-- 文件框 --&gt;</span><br><span class="line">		&lt;input type&#x3D;&quot;file&quot; &#x2F;&gt;</span><br><span class="line">		&lt;br &#x2F;&gt;</span><br><span class="line">	&lt;!-- text 不能调整长宽 只能单行输入 --&gt;</span><br><span class="line">	个人简介:</span><br><span class="line">	&lt;!-- 文本域 --&gt;</span><br><span class="line">		&lt;textarea style&#x3D;&quot;width: 200px;height: 200px;&quot;&gt;请介绍一下你自己&lt;&#x2F;textarea&gt;</span><br><span class="line">		&lt;br &#x2F;&gt;</span><br><span class="line">	&lt;!-- 下拉框 select option 默认第一个为初始选项--&gt;</span><br><span class="line">	籍贯:</span><br><span class="line">	&lt;select multiple&#x3D;&quot;multiple&quot;&gt;	</span><br><span class="line">		&lt;!-- multiple 显示所有 --&gt;</span><br><span class="line">		&lt;option&gt;吉林&lt;&#x2F;option&gt;</span><br><span class="line">		&lt;option&gt;黑龙江&lt;&#x2F;option&gt;</span><br><span class="line">		&lt;option&gt;辽林&lt;&#x2F;option&gt;</span><br><span class="line">		&lt;option selected&#x3D;&quot;selected&quot;&gt;-请选择省份-&lt;&#x2F;option&gt;</span><br><span class="line">		</span><br><span class="line">	&lt;&#x2F;select&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>用表格进行修饰</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">&lt;table width&#x3D;&quot;30%&quot; align&#x3D;&quot;center&quot; border&#x3D;&quot;1px&quot; cellspacing&#x3D;&quot;0px&quot;&gt;</span><br><span class="line">	&lt;tr&gt;</span><br><span class="line">		&lt;td&gt;</span><br><span class="line">			&lt;!-- 文本框 --&gt;</span><br><span class="line">			账号: </span><br><span class="line">		&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;</span><br><span class="line">			&lt;input type&#x3D;&quot;text&quot; &#x2F;&gt;</span><br><span class="line">		&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;&#x2F;tr&gt;</span><br><span class="line">	&lt;tr&gt;</span><br><span class="line">		&lt;td&gt;</span><br><span class="line">			密码:</span><br><span class="line">		&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;</span><br><span class="line">			&lt;input type&#x3D;&quot;password&quot; &#x2F;&gt;</span><br><span class="line">		&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;&#x2F;tr&gt;</span><br><span class="line">	&lt;tr&gt;</span><br><span class="line">		&lt;td&gt;</span><br><span class="line">			性别:</span><br><span class="line">		&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;</span><br><span class="line">			&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; checked &#x2F;&gt;男</span><br><span class="line">			&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot;  &#x2F;&gt;女</span><br><span class="line">		&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;&#x2F;tr&gt;</span><br><span class="line">	&lt;tr&gt;</span><br><span class="line">		&lt;td&gt;</span><br><span class="line">			爱好:</span><br><span class="line">		&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;</span><br><span class="line">			&lt;input type&#x3D;&quot;checkbox&quot; &#x2F;&gt;篮球</span><br><span class="line">			&lt;input type&#x3D;&quot;checkbox&quot; &#x2F;&gt;足球</span><br><span class="line">			&lt;input type&#x3D;&quot;checkbox&quot; &#x2F;&gt;羽毛球</span><br><span class="line">			&lt;input type&#x3D;&quot;checkbox&quot; &#x2F;&gt;乒乓球</span><br><span class="line">		&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;&#x2F;tr&gt;</span><br><span class="line">	&lt;tr&gt;</span><br><span class="line">		&lt;td&gt;</span><br><span class="line">			请选择照片:</span><br><span class="line">		&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;</span><br><span class="line">			&lt;input type&#x3D;&quot;file&quot; &#x2F;&gt;</span><br><span class="line">		&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;&#x2F;tr&gt;</span><br><span class="line">	&lt;tr&gt;</span><br><span class="line">		&lt;td&gt;</span><br><span class="line">			个人简介:</span><br><span class="line">		&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;</span><br><span class="line">			&lt;textarea style&#x3D;&quot;width: 200px;height: 100px;&quot;&gt;请介绍一下你自己&lt;&#x2F;textarea&gt;</span><br><span class="line">		&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;&#x2F;tr&gt;</span><br><span class="line">	&lt;tr&gt;</span><br><span class="line">		&lt;td&gt;</span><br><span class="line">			籍贯</span><br><span class="line">		&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;</span><br><span class="line">			&lt;select&gt;</span><br><span class="line">				&lt;option selected&gt;-请选择省份-&lt;&#x2F;option&gt;</span><br><span class="line">				&lt;option&gt;江苏&lt;&#x2F;option&gt;</span><br><span class="line">				&lt;option&gt;北京&lt;&#x2F;option&gt;</span><br><span class="line">				&lt;option&gt;上海&lt;&#x2F;option&gt;</span><br><span class="line">			&lt;&#x2F;select&gt;</span><br><span class="line">		&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;&#x2F;tr&gt;</span><br><span class="line">&lt;&#x2F;table&gt;</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>效果图</strong></em></p>
+<div style="width:70%;margin:auto"><img src="/2021/01/16/Java-day6/formtag.png" class title="This is an example image"></div>
+
+<p><em><strong>提交动作</strong></em></p>
+<div style="width:70%;margin:auto"><img src="/2021/01/16/Java-day6/handing.png" class title="This is an example image"></div>
+
+<h2 id="表单标签"><a href="#表单标签" class="headerlink" title="表单标签"></a>表单标签</h2><p>form 表单标签在网页上没有任何的显示效果<br>将网页上输入的数据向后台传递数据所使用的标签<br>form 表单标签包裹的范围就是可以向后台传递的范围<br>actiom 属性 数据提交地址<br>method 属性 数据提交方式<br>    get  数据量小    数据显示在地址栏上    不安全<br>    post 数据量大    数据不显示在地址栏上    安全</p>
+<ol>
+<li>使用form标签包裹数据提交范围</li>
+<li>通过antion属性确定数据提交地址</li>
+<li>通过method属性确定数据提交方式        <ul>
+<li>get<ul>
+<li>数据通过地址栏传递    有长度限制    传输数据量有限</li>
+<li>地址栏只能放文字    只能提交文本类型    不能上传文件</li>
+<li>数据显示地址栏上    数据相对不安全</li>
+</ul>
+</li>
+<li>post<ul>
+<li>数据不通过地址栏    单独打成数据包发送<br>数据包一般认为没有限制    传输数据量很大</li>
+<li>数据包可以传文字    也可以传输文件</li>
+<li>数据不显示在地址栏上    相对安全</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>准备一个提交按钮<ul>
+<li>不能是button button知识一个简单的按钮 不能提交数据</li>
+<li>应该用submit submit具备提交数据功能<ul>
+<li>但是必须在form表单内部 标志提交的是当前所在的表单</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>给需要提交数据的输入框提交 name 和 value属性  <ul>
+<li>有些value就是文本框中提交的值</li>
+<li>name是给数据的名字 让后台区分不同数据的含义<ul>
+<li>不添加name不能发送 不能识别数据时干什么的 默认不传</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><em><strong>应得效果</strong></em></p>
+<div style="width:70%;margin:auto"><img src="/2021/01/16/Java-day6/action.png" class title="This is an example image"></div>
+
+
+<p><em><strong>查看post的效果</strong></em></p>
+<ol>
+<li>FN + F12调出调试模式</li>
+<li>点开network 在参数处可以查看</li>
+</ol>
+<p><em><strong>查看表单</strong></em></p>
+<div style="width:70%;margin:auto"><img src="/2021/01/16/Java-day6/post.png" class title="This is an example image"></div>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;!-- </span><br><span class="line">	1. 使用form标签包裹数据提交范围</span><br><span class="line">	2. 通过antion属性确定数据提交地址</span><br><span class="line">	3. 通过method属性确定数据提交方式		</span><br><span class="line">		get</span><br><span class="line">			数据通过地址栏传递	有长度限制	传输数据量有限</span><br><span class="line">			地址栏只能放文字	只能提交文本类型	不能上传文件</span><br><span class="line">			数据显示地址栏上	数据相对不安全</span><br><span class="line">		post</span><br><span class="line">			数据不通过地址栏	单独打成数据包发送	数据包一般认为没有限制	传输数据量很大</span><br><span class="line">			数据包可以传文字	也可以传输文件</span><br><span class="line">			数据不显示在地址栏上	相对安全</span><br><span class="line">	4.准备一个提交按钮</span><br><span class="line">		不能是button button知识一个简单的按钮 不能提交数据</span><br><span class="line">		应该用submit submit具备提交数据功能</span><br><span class="line">			但是必须在form表单内部 标志提交的是当前所在的表单</span><br><span class="line">	5.给需要提交数据的输入框提交 name 和 value属性  </span><br><span class="line">		有些value就是文本框中提交的值</span><br><span class="line">		name是给数据的名字 让后台区分不同数据的含义</span><br><span class="line">			不添加name不能发送 不能识别数据时干什么的 默认不传</span><br><span class="line">	 --&gt;</span><br><span class="line">	&lt;form action&#x3D;&quot;http:&#x2F;&#x2F;bebetternow.github.io&quot; method&#x3D;&quot;post&quot;&gt;</span><br><span class="line">		账号:&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;username&quot; &#x2F;&gt; &lt;br &#x2F;&gt;</span><br><span class="line">			&lt;!-- value属性就是输入框上实际的值 --&gt;</span><br><span class="line">		密码:&lt;input type&#x3D;&quot;password&quot; name&#x3D;&quot;pwd&quot;&#x2F;&gt; &lt;br &#x2F;&gt;</span><br><span class="line">		性别:</span><br><span class="line">			&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; &#x2F;&gt;男 </span><br><span class="line">			&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; checked&#x2F;&gt;女</span><br><span class="line">		&lt;br &#x2F;&gt;</span><br><span class="line">		爱好:</span><br><span class="line">			&lt;input type&#x3D;&quot;checkbox&quot; &#x2F;&gt;篮球</span><br><span class="line">			&lt;input type&#x3D;&quot;checkbox&quot; checked&#x2F;&gt;足球</span><br><span class="line">			&lt;input type&#x3D;&quot;checkbox&quot; &#x2F;&gt;羽毛球</span><br><span class="line">			&lt;input type&#x3D;&quot;checkbox&quot; &#x2F;&gt;乒乓球</span><br><span class="line">			&lt;br &#x2F;&gt;</span><br><span class="line">		请选择照片：</span><br><span class="line">			&lt;input type&#x3D;&quot;file&quot; &#x2F;&gt;</span><br><span class="line">			&lt;br &#x2F;&gt;</span><br><span class="line">		个人简介:</span><br><span class="line">			&lt;textarea style&#x3D;&quot;width: 200px;height: 200px;&quot;&gt;请介绍一下你自己&lt;&#x2F;textarea&gt;</span><br><span class="line">			&lt;br &#x2F;&gt;</span><br><span class="line">		籍贯:</span><br><span class="line">		&lt;select multiple&#x3D;&quot;multiple&quot;&gt;			</span><br><span class="line">			&lt;option&gt;吉林&lt;&#x2F;option&gt;</span><br><span class="line">			&lt;option&gt;黑龙江&lt;&#x2F;option&gt;</span><br><span class="line">			&lt;option&gt;辽林&lt;&#x2F;option&gt;</span><br><span class="line">			&lt;option selected&#x3D;&quot;selected&quot;&gt;-请选择省份-&lt;&#x2F;option&gt;</span><br><span class="line">		&lt;&#x2F;select&gt;</span><br><span class="line">		&lt;br &#x2F;&gt;</span><br><span class="line">		&lt;!-- button 是一个按钮 不能提交数据 --&gt;</span><br><span class="line">		&lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;提交&quot;&#x2F;&gt;</span><br><span class="line">	&lt;&#x2F;form&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<p><em><strong>value属性</strong></em> :用于定义提交的数据<br>不同属性从value不同:</p>
+<ol>
+<li>text –&gt; 文本框中的数据 不写也行</li>
+<li>radio –&gt; 不写提交知识”on”，不能区分究竟哪个选项  需要加上value值进行区分  避免中文 “0/1”</li>
+<li>checkbox –&gt; 必须要设置name与value,缺少一个都不能有效提交</li>
+<li>file —&gt; 后续文件上传处理</li>
+<li>textarea —&gt; 同text</li>
+<li>select —&gt; 写上name属性，不写value属性，则option中的值会被提交；或给每个option加上value值，则提交指定值。</li>
+<li>不是所有属性添加name与value都可以提交，必须是输入属性，如p就不行</li>
+</ol>
+<p><em><strong>？</strong></em>之后是提交的数据，前面是服务器地址<br><em><strong>形式</strong></em> :数据名 + 数据值  一对一对(键值对)</p>
+<div style="width:70%;margin:auto"><img src="/2021/01/16/Java-day6/value.png" class title="This is an example image"></div>
+
+<h2 id="清空输入"><a href="#清空输入" class="headerlink" title="清空输入"></a>清空输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;reset&quot; value&#x3D;&quot;清空&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>最终代码</strong></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action&#x3D;&quot;http:&#x2F;&#x2F;bebetternow.github.io&quot; method&#x3D;&quot;get&quot;&gt;</span><br><span class="line">		账号:&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;username&quot; &#x2F;&gt; &lt;br &#x2F;&gt;</span><br><span class="line">			&lt;!-- value属性就是输入框上实际的值 --&gt;</span><br><span class="line">		密码:&lt;input type&#x3D;&quot;password&quot; name&#x3D;&quot;pwd&quot;&#x2F;&gt; &lt;br &#x2F;&gt;</span><br><span class="line">		性别:</span><br><span class="line">			&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;0&quot; &#x2F;&gt;男 </span><br><span class="line">			&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;1&quot; checked&#x2F;&gt;女</span><br><span class="line">		&lt;br &#x2F;&gt;</span><br><span class="line">		爱好:</span><br><span class="line">			&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;hobby&quot; value&#x3D;&quot;1&quot; &#x2F;&gt;篮球</span><br><span class="line">			&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;hobby&quot; value&#x3D;&quot;2&quot; checked&#x2F;&gt;足球</span><br><span class="line">			&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;hobby&quot; value&#x3D;&quot;3&quot; &#x2F;&gt;羽毛球</span><br><span class="line">			&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;hobby&quot; value&#x3D;&quot;4&quot; &#x2F;&gt;乒乓球</span><br><span class="line">			&lt;br &#x2F;&gt;</span><br><span class="line">		请选择照片：</span><br><span class="line">			&lt;input type&#x3D;&quot;file&quot; &#x2F;&gt;</span><br><span class="line">			&lt;br &#x2F;&gt;</span><br><span class="line">		个人简介:</span><br><span class="line">			&lt;textarea style&#x3D;&quot;width: 200px;height: 200px;&quot; name&#x3D;&quot;intro&quot;&gt;请介绍一下你自己&lt;&#x2F;textarea&gt;</span><br><span class="line">			&lt;br &#x2F;&gt;</span><br><span class="line">		籍贯:</span><br><span class="line">		&lt;select multiple&#x3D;&quot;multiple&quot; name&#x3D;&quot;pro&quot;&gt;			</span><br><span class="line">			&lt;option value&#x3D;&quot;1&quot;&gt;吉林&lt;&#x2F;option&gt;</span><br><span class="line">			&lt;option value&#x3D;&quot;2&quot;&gt;黑龙江&lt;&#x2F;option&gt;</span><br><span class="line">			&lt;option value&#x3D;&quot;3&quot;&gt;辽林&lt;&#x2F;option&gt;</span><br><span class="line">			&lt;option value&#x3D;&quot;4&quot; selected&#x3D;&quot;selected&quot;&gt;-请选择省份-&lt;&#x2F;option&gt;</span><br><span class="line">		&lt;&#x2F;select&gt;</span><br><span class="line">		&lt;br &#x2F;&gt;</span><br><span class="line">		&lt;p name&#x3D;&quot;p&quot; value&#x3D;&quot;pvalue&quot;&gt;这里是一个段落&lt;&#x2F;p&gt;</span><br><span class="line">		&lt;!-- button 是一个按钮 不能提交数据 --&gt;</span><br><span class="line">		&lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;提交&quot;&#x2F;&gt;</span><br><span class="line">		&lt;input type&#x3D;&quot;reset&quot; value&#x3D;&quot;清空&quot;&#x2F;&gt;</span><br><span class="line">	&lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
+
+<p>提交数据 : </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;bebetternow.github.io&#x2F;?username&#x3D;qrw&amp;pwd&#x3D;ads&amp;gender&#x3D;1&amp;hobby&#x3D;2&amp;intro&#x3D;123456789&amp;pro&#x3D;2</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/16/Java-day6/" data-id="cknn1mv7f000ucrup4l6kgkbb" data-title="Java-day6" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-dispatc-algorithm" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/16/dispatc-algorithm/" class="article-date">
+  <time class="dt-published" datetime="2021-01-16T06:32:59.000Z" itemprop="datePublished">2021-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/16/dispatc-algorithm/">dispatc-algorithm</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="调度算法的评价指标"><a href="#调度算法的评价指标" class="headerlink" title="调度算法的评价指标"></a>调度算法的评价指标</h1><h2 id="CPU利用率"><a href="#CPU利用率" class="headerlink" title="CPU利用率"></a>CPU利用率</h2><p>指CPU”忙碌”的时间占总时间的比例</p>
+<div style="width:70%;margin:auto"><img src="/2021/01/16/dispatc-algorithm/formula.png" class title="This is an example image"></div>
+
+<p>通常会考察多道程序并发执行的情况，可以用”甘特图”来辅助计算</p>
+<h2 id="系统吞吐量"><a href="#系统吞吐量" class="headerlink" title="系统吞吐量"></a>系统吞吐量</h2><p>对于计算机来说，希望用尽可能少的时间处理完尽可能多的作业<br>指单位时间内完成作业的数量</p>
+<div style="width:70%;margin:auto"><img src="/2021/01/16/dispatc-algorithm/formula2.png" class title="This is an example image"></div>
+
+<h2 id="周转时间"><a href="#周转时间" class="headerlink" title="周转时间"></a>周转时间</h2><p>对于计算机的用户来说，他很关心自己的作业从提交到完成共花了多少时间。<br><em><strong>周转时间</strong></em> ，是指从作业被提交给系统开始，到作业完成为止的这段时间间隔。<br>它包括四个部分:</p>
+<ul>
+<li>作业在外存后备队列上等待作业调度(高级调度)的时间</li>
+<li>进程在就绪队列上等待进程调度(低级调度)的时间</li>
+<li>进程在CPU上执行的时间</li>
+<li>进程等待I/O操作完成的时间。</li>
+</ul>
+<p>后三项在一个作业的整个处理过程中可能多次发生</p>
+<ul>
+<li>周转时间 –&gt; 对于用户来说，更关心自己的单个作业的周转时间</li>
+<li>平均周转时间 –&gt; 对于操作系统来说，更关心系统的整体表现，因此更关心所有作业周转时间的平均值</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/01/16/dispatc-algorithm/formula3.png" class title="This is an example image"></div>
+
+<ul>
+<li><p>带权周转时间 –&gt; 必然大于等于1，带权周转时间与周转时间都是越小越好</p>
+<ol>
+<li>对于周转时间相同的两个作业，实际运行时间长的作业在相同时间内被服务的时间更多，带权周转时间更小，用户满意度更高，</li>
+<li>对于实际运行时间相同的两个作业，周转时间短的带权周转时间更小，用户满意度更高</li>
+</ol>
+</li>
+<li><p>平均带权周转时间</p>
+</li>
+</ul>
+<div style="width:70%;margin:auto"><img src="/2021/01/16/dispatc-algorithm/formula4.png" class title="This is an example image"></div>
+
+<h2 id="等待时间"><a href="#等待时间" class="headerlink" title="等待时间"></a>等待时间</h2><p>对于计算机用户来说，希望自己的作业尽可能少的等待处理机<br>等待时间，指进程/作业 <em><strong>处于等待处理机状态时间之和</strong></em> ，等待时间越长，用户满意度越低。</p>
+<div style="width:70%;margin:auto"><img src="/2021/01/16/dispatc-algorithm/waiting.png" class title="This is an example image"></div>
+
+<p>对于 <em><strong>进程</strong></em> 来说，等待时间就是指进程建立后 <em><strong>等待别服务的时间之和</strong></em> ，在等待I/O完成的期间其实进程也是在被服务的，所以不计入等待时间<br>对于 <em><strong>作业</strong></em> 来说，不仅要考虑建立进程后的等待时间，还要加上作业在外存后备队列中等待时间。</p>
+<p>一个作业总共需要被CPU服务多久，被I/O设备服务多久一般是确定不变的，因此调度算法其实只会影响作业/进程的等待时间。当然，与前面指标类似，也会有”平均等待时间”来评价整体的性能。</p>
+<h2 id="相应时间"><a href="#相应时间" class="headerlink" title="相应时间"></a>相应时间</h2><p>对计算机用户来说，会希望自己提交的请求(比如通过键盘输入了一个调试命令)尽可能早的开始被系统服务、回应。<br><em><strong>响应时间</strong></em> ，指从用户 <em><strong>提交请求</strong></em> 到首次产生响应所用的时间。</p>
+<h1 id="时间片轮转调度算法-RR"><a href="#时间片轮转调度算法-RR" class="headerlink" title="时间片轮转调度算法 (RR)"></a>时间片轮转调度算法 (RR)</h1><p>Round-Robin</p>
+<h2 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h2><p>公平、轮流地为各个进程服务，让每个进程在一定时间间隔内都可以得到轮流响应</p>
+<h2 id="算法规则"><a href="#算法规则" class="headerlink" title="算法规则"></a>算法规则</h2><p>按照各进程到达就绪队列的顺序，轮流让各个进程执行一个时间片(如100ms)。若进程未在一个时间片内执行完，则剥夺处理机，将进程重新放到就绪队列队尾重新排序</p>
+<h2 id="用于作业-高级-进程-低级-调度"><a href="#用于作业-高级-进程-低级-调度" class="headerlink" title="用于作业(高级)/进程(低级)调度"></a>用于作业(高级)/进程(低级)调度</h2><p><em><strong>区别</strong></em></p>
+<ol>
+<li>作业调度按一定的算法从磁盘上的”输入井”中选择资源能得到满足的作业装入内存，使作业有机会去占用处理器执行。</li>
+<li>但是，一个作业能否占用处理器，什么时间能够占用处理器，必须由进程调度来决定。</li>
+<li>所以，作业调度选中了一个作业且把它装入内存时，就应为该作业创建一个进程，若有多个作业被装入内存，则内存中同时存在多个进程，这些进程的初始状态为就绪状态，然后，由进程调度来选择当前可占用处理器的进程</li>
+<li>进程运行中由于某种原因状态发生变化，当它让出处理器时，进程调度就再选另一个作业的进程运行。</li>
+<li>因此，作业调度与进程调度相互配合才能实现多道作业的并行执行</li>
+</ol>
+<p>—&gt;用于进程调度(只有作业放入内存建立了相应的进程后，才能被分配处理机时间片)</p>
+<h2 id="是否可抢占"><a href="#是否可抢占" class="headerlink" title="是否可抢占"></a>是否可抢占</h2><p>若进程未能在时间片内运行完，将被强行剥夺处理机使用权，因此时间片轮转调度算法属于 <em><strong>抢占式</strong></em> 的算法。由时钟装置发出时钟中断来通知CPU时间片已到</p>
+<p>ps:时间片轮转常用于分时操作系统，更注重”响应时间”，因而此处不计算周转时间</p>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>轮流让就绪队列中的进程依次执行一个时间片(每次选择的都是排在就绪队列对头的进程)</p>
+<p>若在2时刻，P1下处理机，同一时刻新进程P2到达，则默认新到达进程先进入就绪队列。</p>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><ul>
+<li><p>优点:</p>
+<ul>
+<li>公平</li>
+<li>响应快，适用于分时操作系统</li>
+</ul>
+</li>
+<li><p>缺点:</p>
+<ul>
+<li>由于高频率的进程切换，因此有一定开销;</li>
+<li>不区分任务的紧急程度</li>
+</ul>
+</li>
+</ul>
+<h2 id="是否会导致饥饿"><a href="#是否会导致饥饿" class="headerlink" title="是否会导致饥饿"></a>是否会导致饥饿</h2><p>不会 —&gt; 一定是轮流的被服务</p>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p><em><strong>时间片太小太大的影响</strong></em></p>
+<ol>
+<li>如果时间片太大，使得每个进程都可以在一个时间片内完成，则时间片轮转算法 <em><strong>退化为先来先服务</strong></em> 算法，并且会增大进程响应时间。因此时间片不能太大。</li>
+</ol>
+<p><em><strong>eg</strong></em> ：系统有10个进程在并发执行，如果时间片为1s，则一个进程被响应可能需要等待9s，如果用户在自己进程时间片外，通过键盘发出调试指令，可能需要等待9s才能被系统响应</p>
+<ol start="2">
+<li>另一方面，进程调度、切换是有时间代价的(保存、恢复运行环境)，因此如果时间片太小，会导致进程切换过于频繁，系统会化大量的时间来处理进程切换，从而导致实际用于进程执行的时间比例减少，可见时间片也不能小</li>
+</ol>
+<p>ps:一般来说，设计时间片时要让切换进程的开销占比不超过1%</p>
+<h1 id="优先级调度算法"><a href="#优先级调度算法" class="headerlink" title="优先级调度算法"></a>优先级调度算法</h1><h2 id="算法思想-1"><a href="#算法思想-1" class="headerlink" title="算法思想"></a>算法思想</h2><p>随着计算机的发展，特别是实时操作系统的出现，越来越多的应用场景需要根据任务的紧急程度来决定处理顺序</p>
+<h2 id="算法规则-1"><a href="#算法规则-1" class="headerlink" title="算法规则"></a>算法规则</h2><p>每个作业/进程有各自的优先级，调度时选择优先级最高的作业/进程</p>
+<h2 id="用于作业-进程调度"><a href="#用于作业-进程调度" class="headerlink" title="用于作业/进程调度"></a>用于作业/进程调度</h2><p>既可以用于作业调度 外存–&gt;内存，也可用于进程调度 就绪–&gt;处理机。甚至，还会用于在之后学习的I/O调度中。</p>
+<h2 id="是否可抢占？"><a href="#是否可抢占？" class="headerlink" title="是否可抢占？"></a>是否可抢占？</h2><p>抢占式、非抢占式都有。做题时的区别在于:非抢占式只需在进程主动放弃处理机时进行调度即可，而抢占式还需要在就绪队列变化时，检查是否会发生抢占。</p>
+<h2 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h2><h3 id="非抢占式优先级调度算法"><a href="#非抢占式优先级调度算法" class="headerlink" title="非抢占式优先级调度算法"></a>非抢占式优先级调度算法</h3><p>每次调度时选择当前已到达且优先级最高的进程。当前进程主动放弃处理机时发生调度。</p>
+<p>ps:注意区分抢占还是非抢占、优先数越小优先级越高，还是优先数越大优先级越高<br>ps:优先级相同，先到先服务</p>
+<h3 id="抢占式优先级调度算法"><a href="#抢占式优先级调度算法" class="headerlink" title="抢占式优先级调度算法"></a>抢占式优先级调度算法</h3><p><em><strong>每次调度时</strong></em> 选择当前已到达且优先级最高的进程。当前进程主动放弃处理机时发生调度。另外，当 <em><strong>就绪队列发生改变时</strong></em> 也需要检查是否会发生抢占。</p>
+<h2 id="补充-1"><a href="#补充-1" class="headerlink" title="补充"></a>补充</h2><p>就绪队列未必只有一个，可以按照不同优先级来组织。另外，也可以把优先级高的进程排在更靠近队头的位置。<br>根据优先级是否可以动态改变，可将优先级分为静态优先级和动态优先级两种。<br><em><strong>静态优先级</strong></em> :创建进程时确定，之后一直不变<br><em><strong>动态优先级</strong></em> :创建进程时有一个初始值，之后会根据情况动态地调整优先级</p>
+<h3 id="如何合理地设置各类进程优先级"><a href="#如何合理地设置各类进程优先级" class="headerlink" title="如何合理地设置各类进程优先级"></a>如何合理地设置各类进程优先级</h3><p><em><strong>通常</strong></em></p>
+<ul>
+<li>系统进程优先级 <em><strong>高于</strong></em> 用户进程</li>
+<li>前台进程优先级 <em><strong>高于</strong></em> 后台进程</li>
+<li>操作系统会更偏好I/O型(或称为I/O繁忙型进程)<ul>
+<li>I/O设备和CPU可以 <em><strong>并行</strong></em> 工作。如果优先级让I/O繁忙型进程优先级运行的话，则越有可能让I/O设备尽早地投入工作，则资源利用率、系统吞吐量都会得到提升</li>
+</ul>
+</li>
+</ul>
+<p>ps:与I/O型进程相对的是 <em><strong>计算型进程</strong></em> (或称为CPU繁忙型进程)</p>
+<h3 id="如何采用的是动态进程优先级，什么时候应该调整"><a href="#如何采用的是动态进程优先级，什么时候应该调整" class="headerlink" title="如何采用的是动态进程优先级，什么时候应该调整"></a>如何采用的是动态进程优先级，什么时候应该调整</h3><p>可以从追求公平、提高资源利用率等角度考虑</p>
+<ul>
+<li>如果某进程在就绪队列中等待了很长时间，则可以适当提升其优先级 —&gt; 高响应比优先算法也是如此</li>
+<li>如果某进程占用处理机运行了很长时间，则可以适当降低其优先级</li>
+<li>如果发现一个进程频繁地进行I/O操作，则可以适当提升其优先级</li>
+</ul>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>用优先级区分紧急程度、重要程度，适用于实时操作系统。可以灵活地调整对各种作业/进程的偏好程度。</p>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>若源源不断地有高优先级进程到来，则可能导致饥饿</p>
+<h2 id="是否会发生饥饿"><a href="#是否会发生饥饿" class="headerlink" title="是否会发生饥饿"></a>是否会发生饥饿</h2><p>会</p>
+<h1 id="多级反馈队列调度算法"><a href="#多级反馈队列调度算法" class="headerlink" title="多级反馈队列调度算法"></a>多级反馈队列调度算法</h1><h2 id="各类算法"><a href="#各类算法" class="headerlink" title="各类算法"></a>各类算法</h2><p>FCFS算法 —&gt; 优点是公平<br>SIF算法 —&gt; 优点是尽快处理完短作业，平均等待/周转时间等参数很优秀<br>时间片轮转调度算法 —&gt; 可以让各个进程得到及时的响应<br>优先级调度算法 —&gt; 可以灵活地调整各种进程被服务的机会</p>
+<h2 id="算法思想-2"><a href="#算法思想-2" class="headerlink" title="算法思想"></a>算法思想</h2><p>对其他调度算法的折中</p>
+<h2 id="算法规则-2"><a href="#算法规则-2" class="headerlink" title="算法规则"></a>算法规则</h2><ol>
+<li>设置多级就绪队列，各级队列优先级从高到低，时间片从小到大</li>
+<li>新进程到达时先进入第1队列，按照FCFS原则排队等待被分配时间片，若用完时间片进程还未结束，则进程进入下一级队列队尾。如果此时已经在最下级的队列，则重新放回该队列队尾</li>
+<li>只有第k级队列为空时，才会为k+1级对头的进程分配时间片</li>
+</ol>
+<h2 id="用于进程调度-作业调度"><a href="#用于进程调度-作业调度" class="headerlink" title="用于进程调度/作业调度"></a>用于进程调度/作业调度</h2><p>进程调度</p>
+<h2 id="是否可抢占-1"><a href="#是否可抢占-1" class="headerlink" title="是否可抢占"></a>是否可抢占</h2><p><em><strong>抢占式算法</strong></em> 。在k级队列的进程运行过程中，若更上一级队列(1 -&gt; k-1级)中进入了一个新进，则由于新进程处于优先级更高的队列中，因此新进程会抢占处理机，原来运行进程放回k级队列队尾</p>
+<h2 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h2><ul>
+<li>设置多级就绪队列，各级队列优先级从小到大</li>
+<li>新进程到达时进入第1级队列，按FCFS(先来先服务)原则排队等待被分配时间片。若用时间片进程还未结束，则进程进入下一级队列队尾。如果此时已经在最下级的队列，则重新放回最下级队列队尾</li>
+<li>只有第k级队列为空，才会为k+1级队头的进程分配时间片</li>
+<li>被抢占处理机的进程重新放回队列队尾</li>
+</ul>
+<h2 id="优缺点-1"><a href="#优缺点-1" class="headerlink" title="优缺点"></a>优缺点</h2><ul>
+<li>对各类型进程相对公平(FCFS的优点)；</li>
+<li>每个新到达的进程都可以很快就得到响应(RR优点);</li>
+<li>短进程只用较小的时间就可以完成(SPF的优点);</li>
+<li>不必实现估计进程的运行时间(避免用户作假);</li>
+<li>可灵活地调整对各类进程的偏好程度，比如CPU密集型进程、I/O密集型进程</li>
+<li>扩展:可以将因I/O而阻塞的进程重新放回原队列，这样I/O型进程就可以保持较高优先级</li>
+</ul>
+<p>ps:实际可能会有非抢占式版本</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><div style="width:70%;margin:auto"><img src="/2021/01/16/dispatc-algorithm/back.png" class title="This is an example image"></div>
+
+<p>注:比起早期的批处理操作系统来说，由于计算机造价大幅降低，因此之后出现的交互式操作系统（包括分时操作系统、实时操作系统等）更注重系统的响应时间、公平性平衡性等指标。而这几种算法恰好也能较好地满足交互式系统的需求。因此这三种算法适合用于 <em><strong>交互式系统</strong></em> 。(比如UNIX使用的就是多级反馈队列调度算法)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/16/dispatc-algorithm/" data-id="cknn1mv80001vcrup984ugf3v" data-title="dispatc-algorithm" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/issues/" rel="tag">issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start-here/" rel="tag">start here</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/" rel="tag">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/" rel="tag">writing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Internet/" style="font-size: 15px;">Internet</a> <a href="/tags/Programming-Language/" style="font-size: 17.5px;">Programming Language</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/start-here/" style="font-size: 12.5px;">start here</a> <a href="/tags/system/" style="font-size: 20px;">system</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/writing/" style="font-size: 10px;">writing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/18/network%20of%20computer2/">network of computer2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/Java%20day1/">Java day1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/Java-day19/">Java day19</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/23/Java-day18/">Java day18</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

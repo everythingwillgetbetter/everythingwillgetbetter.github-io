@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Operating System day2 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="操作系统的发展与分类ps:理解各个阶段优缺点 手工操作阶段 没有操作系统 计算机处理速度快 输入&#x2F;输出速度较慢  主要缺点：  用户独占全机 人机速度矛盾导致资源利用率极低  批处理阶段单道批处理系统&amp;emsp;&amp;emsp;引入脱机输入&#x2F;输出技术（磁带完成），并监督程序负责控制作业的输入、输出 -&gt; 操作系统雏形  磁带速度比纸袋机快很多 纸带 -&gt; 外围机 -&gt; 磁带 -&amp;gt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Operating System day2">
+<meta property="og:url" content="http://example.com/2021/01/10/Operation%20System%20day2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="操作系统的发展与分类ps:理解各个阶段优缺点 手工操作阶段 没有操作系统 计算机处理速度快 输入&#x2F;输出速度较慢  主要缺点：  用户独占全机 人机速度矛盾导致资源利用率极低  批处理阶段单道批处理系统&amp;emsp;&amp;emsp;引入脱机输入&#x2F;输出技术（磁带完成），并监督程序负责控制作业的输入、输出 -&gt; 操作系统雏形  磁带速度比纸袋机快很多 纸带 -&gt; 外围机 -&gt; 磁带 -&amp;gt">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-10T02:43:12.000Z">
+<meta property="article:modified_time" content="2021-04-18T09:10:29.796Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="system">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Operation System day2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/10/Operation%20System%20day2/" class="article-date">
+  <time class="dt-published" datetime="2021-01-10T02:43:12.000Z" itemprop="datePublished">2021-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Operating System day2
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="操作系统的发展与分类"><a href="#操作系统的发展与分类" class="headerlink" title="操作系统的发展与分类"></a>操作系统的发展与分类</h1><p>ps:理解各个阶段优缺点</p>
+<h2 id="手工操作阶段"><a href="#手工操作阶段" class="headerlink" title="手工操作阶段"></a>手工操作阶段</h2><ul>
+<li>没有操作系统</li>
+<li>计算机处理速度快</li>
+<li>输入/输出速度较慢</li>
+</ul>
+<p><em><strong>主要缺点：</strong></em></p>
+<ol>
+<li>用户独占全机</li>
+<li>人机速度矛盾导致资源利用率极低</li>
+</ol>
+<h2 id="批处理阶段"><a href="#批处理阶段" class="headerlink" title="批处理阶段"></a>批处理阶段</h2><h3 id="单道批处理系统"><a href="#单道批处理系统" class="headerlink" title="单道批处理系统"></a>单道批处理系统</h3><p>&emsp;&emsp;引入脱机输入/输出技术（磁带完成），并监督程序负责控制作业的输入、输出 -&gt; 操作系统雏形</p>
+<ul>
+<li>磁带速度比纸袋机快很多</li>
+<li>纸带 -&gt; 外围机 -&gt; 磁带 -&gt; 处理器 -&gt; ···</li>
+</ul>
+<p><em><strong>主要优点：</strong></em></p>
+<ol>
+<li>缓解了一定程度的人机速度矛盾</li>
+<li>资源利用率有所提升</li>
+</ol>
+<p><em><strong>主要缺点：</strong></em></p>
+<ol>
+<li>内存中仅能够有一道程序运行，只有该程序运行结束之后才能调入下一道程序</li>
+<li>CPU有大量的时间是在空闲等待I/O完成</li>
+<li>资源利用率依然很低</li>
+</ol>
+<h3 id="多道批处理系统-（操作系统开始出现）"><a href="#多道批处理系统-（操作系统开始出现）" class="headerlink" title="多道批处理系统 （操作系统开始出现）"></a>多道批处理系统 （操作系统开始出现）</h3><p>&emsp;&emsp;依然是磁带，每次往内存中输入多道程序。操作系统正式诞生，并引入 <em><strong>中断技术</strong></em> ，由操作系统负责管理这些程序的运行。各阶段并发执行。</p>
+<p><em><strong>主要优点:</strong></em></p>
+<ol>
+<li>多道程序并发执行</li>
+<li>共享计算机资源</li>
+<li>资源利用率大幅度提升</li>
+<li>CPU和其他资源保持”忙碌”状态，系统吞吐量增大</li>
+</ol>
+<p><em><strong>主要缺点:</strong></em></p>
+<ol>
+<li>用户响应时间长</li>
+<li>没有人机交互功能 （用户提交自己的作业之后就只能等待计算机处理完成，中间不能控制自己的作业执行）</li>
+</ol>
+<h2 id="分时操作系统"><a href="#分时操作系统" class="headerlink" title="分时操作系统"></a>分时操作系统</h2><p>&emsp;&emsp;计算机以时间片为单位轮流为各个用户/作业服务，各个用户可通过终端与计算机进行交互。</p>
+<p><em><strong>主要优点:</strong></em></p>
+<ol>
+<li>用户请求可以被即时响应，解决了人机交互问题。</li>
+<li>允许多个用户同时使用一台计算机</li>
+<li>用户对计算机的操作相互独立，感受不到别人的存在</li>
+</ol>
+<p><em><strong>主要缺点:</strong></em></p>
+<ol>
+<li>不能优先处理一些紧急任务，操作系统对各个用户/作业都是完全公平的</li>
+<li>循环地为每个用户/作业服务一个时间片，不区分任务的紧急性</li>
+</ol>
+<h2 id="实时操作系统"><a href="#实时操作系统" class="headerlink" title="实时操作系统"></a>实时操作系统</h2><p><em><strong>主要优点:</strong></em></p>
+<ol>
+<li>能够优先响应一些紧急任务，某些紧急任务不需时间片排队</li>
+</ol>
+<p>&emsp;&emsp;在实时操作系统的控制下，计算机系统接收外部信号后及时进行处理，并且要在严格的时限内处理完事件。实时操作系统的主要特点是 <em><strong>及时性和可靠性</strong></em> 。</p>
+<ul>
+<li>硬实时系统 必须在绝对严格的规定时间内完成处理  — 导弹控制系统 、 自动驾驶系统</li>
+<li>软实时系统 能接受偶尔违反时间规定 — 火车订票系统</li>
+</ul>
+<h2 id="网络操作系统"><a href="#网络操作系统" class="headerlink" title="网络操作系统"></a>网络操作系统</h2><p>实现网络中各种资源的共享和各台计算机之间的通信</p>
+<h2 id="分布式操作系统"><a href="#分布式操作系统" class="headerlink" title="分布式操作系统"></a>分布式操作系统</h2><ul>
+<li>分布性和并行性</li>
+<li>任何工作都可以分布在这些计算机上，由它们并行、协同完成这个任务</li>
+</ul>
+<h2 id="个人计算机操作系统"><a href="#个人计算机操作系统" class="headerlink" title="个人计算机操作系统"></a>个人计算机操作系统</h2><h1 id="OS的运行机制和体系结构"><a href="#OS的运行机制和体系结构" class="headerlink" title="OS的运行机制和体系结构"></a>OS的运行机制和体系结构</h1><h2 id="运行机制"><a href="#运行机制" class="headerlink" title="运行机制"></a>运行机制</h2><h3 id="两种指令"><a href="#两种指令" class="headerlink" title="两种指令"></a>两种指令</h3><ul>
+<li>什么是指令<ul>
+<li>一条高级语言的代码翻译过来可能会对应多条指令</li>
+<li>指令指处理器CPU能够识别、执行的最基本命令（二进制语言）</li>
+<li>有的程序有很高的权限 如内存数据清零<ul>
+<li>特权指令    不允许用户程序使用</li>
+<li>非特权指令  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="两种处理器状态"><a href="#两种处理器状态" class="headerlink" title="两种处理器状态"></a>两种处理器状态</h3><p>&emsp;&emsp;用户状态字寄存器（PSW）中的某标志位来识别当前处理器处于什么状态。如0为用户态、1为核心态</p>
+<ul>
+<li><p>核心态 目态</p>
+<ul>
+<li>CPU只能执行非特权指令</li>
+</ul>
+</li>
+<li><p>用户态 管态</p>
+<ul>
+<li>特权指令、非特权指令都可以执行</li>
+</ul>
+</li>
+</ul>
+<h3 id="两种程序"><a href="#两种程序" class="headerlink" title="两种程序"></a>两种程序</h3><ul>
+<li><p>内核程序</p>
+<ul>
+<li>操作系统的内核程序是系统的管理者，既可以执行特权指令，也可以执行非特权指令，运行在核心态</li>
+</ul>
+</li>
+<li><p>应用程序</p>
+<ul>
+<li>为了保证系统能安全运行，普通应用程序只能执行非特权指令、运行在用户态</li>
+</ul>
+</li>
+</ul>
+<h2 id="操作系统内核"><a href="#操作系统内核" class="headerlink" title="操作系统内核"></a>操作系统内核</h2><p>&emsp;&emsp;那些属于内核程序？</p>
+<ul>
+<li><p>离纯硬件最近的部分</p>
+<ol>
+<li><p>时钟管理</p>
+<ul>
+<li>实现计时功能。</li>
+</ul>
+</li>
+<li><p>中断处理</p>
+</li>
+<li><p>原语</p>
+<ul>
+<li>原语是一种特殊的程序</li>
+<li>是最接近硬件的部分，中程序的运行具有原子性。</li>
+<li>运行时间较短、调用频繁</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p>ps:这种程序要么不执行，要么执行就必须一次执行到底，不可被打断</p>
+<ul>
+<li>此外也是内核 对系统资源进行管理的功能<ol>
+<li>进程管理</li>
+<li>存储器管理</li>
+<li>设备管理</li>
+</ol>
+</li>
+</ul>
+<p>ps:有的操作系统不把这部分功能归为”内核功能”。也就是说不同的操作系统，对内核功能的划分可能并不一样</p>
+<ul>
+<li><p>大内核 - 包含的部分比较多</p>
+<ul>
+<li><p>将操作系统的主要功能模块都作为系统内核，运行在核心态</p>
+</li>
+<li><p>优点</p>
+<ol>
+<li>高性能</li>
+</ol>
+</li>
+<li><p>缺点</p>
+<ol>
+<li>内核代码庞大</li>
+<li>结构混乱</li>
+<li>难以维护</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>微内核 - 包含的部分比较少</p>
+<ul>
+<li><p>只把最基本的功能保留在内核</p>
+</li>
+<li><p>优点</p>
+<ol>
+<li>内核功能少</li>
+<li>结构清晰</li>
+<li>方便维护</li>
+</ol>
+</li>
+<li><p>缺点</p>
+<ol>
+<li>需要频繁地在核心态和用户态之间切换</li>
+<li>性能低</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p>ps:内核是计算机上配置的低层软件，是操作系统最基本、最核心的部分。<br>ps:实现操作系统内核的那些程序就是内核程序。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/10/Operation%20System%20day2/" data-id="cknn1mv7k0014crup6dibhl8r" data-title="Operating System day2" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/11/thread/photo/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          photo
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/09/Java%20day3/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java day3</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/issues/" rel="tag">issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start-here/" rel="tag">start here</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/" rel="tag">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/" rel="tag">writing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Internet/" style="font-size: 15px;">Internet</a> <a href="/tags/Programming-Language/" style="font-size: 17.5px;">Programming Language</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/start-here/" style="font-size: 12.5px;">start here</a> <a href="/tags/system/" style="font-size: 20px;">system</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/writing/" style="font-size: 10px;">writing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/18/network%20of%20computer2/">network of computer2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/Java%20day1/">Java day1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/Java-day19/">Java day19</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/23/Java-day18/">Java day18</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>processor-dispatching | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="基本概念当有一堆任务要处理，但由于资源有限，这些事情没法同时处理。这就需要确定某种规则来决定处理这些任务的顺序，这就是”调度”研究的问题。 在多道程序系统中，进程的数量往往是多于处理机的个数，这样不可能同时并行地处理各个进程。 处理机调度，就是从就绪队列中 按照一定的算法选择一个进程 并将处理机分配给它运行，已实现进程的并发执行。 三个层次高级调度(作业调度)由于内存空间有限，有时无法将用户提交的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="processor-dispatching">
+<meta property="og:url" content="http://example.com/2021/01/14/processor-dispatching/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="基本概念当有一堆任务要处理，但由于资源有限，这些事情没法同时处理。这就需要确定某种规则来决定处理这些任务的顺序，这就是”调度”研究的问题。 在多道程序系统中，进程的数量往往是多于处理机的个数，这样不可能同时并行地处理各个进程。 处理机调度，就是从就绪队列中 按照一定的算法选择一个进程 并将处理机分配给它运行，已实现进程的并发执行。 三个层次高级调度(作业调度)由于内存空间有限，有时无法将用户提交的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/01/14/processor-dispatching/comparison.png">
+<meta property="og:image" content="http://example.com/2021/01/14/processor-dispatching/model.png">
+<meta property="article:published_time" content="2021-01-14T02:56:46.000Z">
+<meta property="article:modified_time" content="2021-04-18T09:10:33.070Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="system">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/01/14/processor-dispatching/comparison.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-processor-dispatching" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/14/processor-dispatching/" class="article-date">
+  <time class="dt-published" datetime="2021-01-14T02:56:46.000Z" itemprop="datePublished">2021-01-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      processor-dispatching
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p>当有一堆任务要处理，但由于资源有限，这些事情没法同时处理。这就需要确定某种规则来决定处理这些任务的顺序，这就是”调度”研究的问题。</p>
+<p>在多道程序系统中，进程的数量往往是多于处理机的个数，这样不可能同时并行地处理各个进程。</p>
+<p>处理机调度，就是从就绪队列中 <em><strong>按照一定的算法选择一个进程</strong></em> 并将处理机分配给它运行，已实现进程的并发执行。</p>
+<h1 id="三个层次"><a href="#三个层次" class="headerlink" title="三个层次"></a>三个层次</h1><h2 id="高级调度-作业调度"><a href="#高级调度-作业调度" class="headerlink" title="高级调度(作业调度)"></a>高级调度(作业调度)</h2><p>由于内存空间有限，有时无法将用户提交的作业全部放入内存，因此就需要确定某种规则来决定将作业调入内存的顺序。</p>
+<p><em><strong>高级调度</strong></em> ，按照一定的原则从外存上处于后备队列的作业中挑选一个(或多个)作业，给他们分配内存等必要的资源，并建立相应的进程(建立PCB)，以使它们 <em><strong>获得竞争处理机的权利</strong></em></p>
+<p>高级调度室辅存(外存)与内存之间的调度。每个作业只调入一次，调出一次。 <em><strong>作业调入时会建立相应的PCB，作业调出时才撤销PCB。</strong></em> 高级调度主要是调入的问题，因为只有调入的时机需要操作系统来确定，但是调出的时机必然是作业运行结束才调出。</p>
+<h2 id="中级调度-内存调度"><a href="#中级调度-内存调度" class="headerlink" title="中级调度(内存调度)"></a>中级调度(内存调度)</h2><ul>
+<li>引入虚拟存储技术之后，可将暂时不能运行的进程调至外存等待。等他重新具备了运行条件且内存又稍有空闲时，再重新调入内存。</li>
+<li>这么做的目的是为了提高 <em><strong>内存利用率</strong></em> 和 <em><strong>系统吞吐量</strong></em> 。</li>
+<li>暂时调到外存等待的进程为 <em><strong>挂起状态</strong></em> 。值得注意得是，PCB并不会一起调到外存，而是会常驻内存。PCB中会 <em><strong>记录进程数据在外存中存放的位置</strong></em> ，进程状态等信息，操作系统通过内存中的PCB来保持对各个进程的监控、管理。被挂起的进程PCB会被放到的 <em><strong>挂起队列</strong></em> 中。</li>
+</ul>
+<p>中级调度，就是要决定将哪个处于挂起状态的进程重新调入内存。<br>一个进程可能会被多次调出、调入内存，因此中级调度发送的频率要比高级调度更高。</p>
+<h2 id="低级调度-进程调度"><a href="#低级调度-进程调度" class="headerlink" title="低级调度(进程调度)"></a>低级调度(进程调度)</h2><p>其主要任务是按照某种方法和策略从就绪队列中选取一个进程，将处理机分配给它。<br>进程调度是操作系统中最基本的一种调度，在一般的操作系统中都必须配置进程调度。<br>进程调度的频率很高，一般几十毫秒一次。</p>
+<h1 id="三层调度的联系、对比"><a href="#三层调度的联系、对比" class="headerlink" title="三层调度的联系、对比"></a>三层调度的联系、对比</h1><div style="width:70%;margin:auto"><img src="/2021/01/14/processor-dispatching/comparison.png" class title="This is an example image"></div>
+
+<h1 id="补充知识"><a href="#补充知识" class="headerlink" title="补充知识"></a>补充知识</h1><h2 id="进程的”挂起态”"><a href="#进程的”挂起态”" class="headerlink" title="进程的”挂起态”"></a>进程的”挂起态”</h2><p>暂时调到外存等待的进程状态称为 <em><strong>挂起状态</strong></em> (挂起态，suspend)<br>挂起态又可以进一步细分为就绪挂起、阻塞挂起两种状态<br>所以 五状态模型 -&gt; 七状态模型</p>
+<h2 id="七状态模型"><a href="#七状态模型" class="headerlink" title="七状态模型"></a>七状态模型</h2><div style="width:70%;margin:auto"><img src="/2021/01/14/processor-dispatching/model.png" class title="This is an example image"></div>
+
+<p>注意，”挂起” 与 “阻塞” 的区别，；两种状态都是暂时不能获得CPU服务的，但是挂起态是将进程映像调到外存去了，而阻塞态下进程映像还在内存中。<br>有的操作系统会把就绪挂起、阻塞挂起分为两个挂起队列，甚至会更具阻塞原因，再把阻塞挂起进程进一步分为多个队列。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/14/processor-dispatching/" data-id="cknn1mv8u002jcrup8rds1vk8" data-title="processor-dispatching" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system/" rel="tag">system</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/16/process-scheduling/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          process scheduling
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/14/thread/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">thread</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Internet/" rel="tag">Internet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Language/" rel="tag">Programming Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/issues/" rel="tag">issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start-here/" rel="tag">start here</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system/" rel="tag">system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writing/" rel="tag">writing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Internet/" style="font-size: 15px;">Internet</a> <a href="/tags/Programming-Language/" style="font-size: 17.5px;">Programming Language</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/start-here/" style="font-size: 12.5px;">start here</a> <a href="/tags/system/" style="font-size: 20px;">system</a> <a href="/tags/test/" style="font-size: 12.5px;">test</a> <a href="/tags/writing/" style="font-size: 10px;">writing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/18/network%20of%20computer2/">network of computer2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/Java%20day1/">Java day1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/Java-day19/">Java day19</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/23/Java-day18/">Java day18</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
