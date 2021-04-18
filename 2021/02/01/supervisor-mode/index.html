@@ -9,36 +9,36 @@
   <meta name="description" content="内存管理的概念ps: 连续分配 指为用户进程分配的必须是一个连续的内存空间。 单一连续分配 在单一连续分配方式中，内存被分为 系统区 和 用户区 。 系统区通常位于内存的低地址部分，用于存放操作系统相关数据:用户区用于存放用户进程相关数据。 内存中只能有 一道用户程序 ，用户程序独占整个用户区空间。  优点 :  实现简单: 无外部碎片 ; 可以采用覆盖技术扩充内存: 不一定需要采取内存保护（eg">
 <meta property="og:type" content="article">
 <meta property="og:title" content="supervisor mode">
-<meta property="og:url" content="http://example.com/2021/02/01/supervisor-mode/index.html">
+<meta property="og:url" content="http://everythingwillgetbetter.github.io/2021/02/01/supervisor-mode/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="内存管理的概念ps: 连续分配 指为用户进程分配的必须是一个连续的内存空间。 单一连续分配 在单一连续分配方式中，内存被分为 系统区 和 用户区 。 系统区通常位于内存的低地址部分，用于存放操作系统相关数据:用户区用于存放用户进程相关数据。 内存中只能有 一道用户程序 ，用户程序独占整个用户区空间。  优点 :  实现简单: 无外部碎片 ; 可以采用覆盖技术扩充内存: 不一定需要采取内存保护（eg">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/table.png">
-<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/speration.png">
-<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/eg1.png">
-<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/eg2.png">
-<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/eg3.png">
-<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/eg4.png">
-<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/eg5.png">
-<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/eg6.png">
-<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/conclusion.png">
-<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/conclusion1.png">
-<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/change.png">
-<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/eg7.png">
-<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/strature.png">
-<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/conclusion2.png">
-<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/PROCESS.png">
-<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/table3.png">
-<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/conclusion3.png">
-<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/part.png">
-<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/proccess.png">
-<meta property="og:image" content="http://example.com/2021/02/01/supervisor-mode/conclusion4.png">
+<meta property="og:image" content="http://everythingwillgetbetter.github.io/2021/02/01/supervisor-mode/table.png">
+<meta property="og:image" content="http://everythingwillgetbetter.github.io/2021/02/01/supervisor-mode/speration.png">
+<meta property="og:image" content="http://everythingwillgetbetter.github.io/2021/02/01/supervisor-mode/eg1.png">
+<meta property="og:image" content="http://everythingwillgetbetter.github.io/2021/02/01/supervisor-mode/eg2.png">
+<meta property="og:image" content="http://everythingwillgetbetter.github.io/2021/02/01/supervisor-mode/eg3.png">
+<meta property="og:image" content="http://everythingwillgetbetter.github.io/2021/02/01/supervisor-mode/eg4.png">
+<meta property="og:image" content="http://everythingwillgetbetter.github.io/2021/02/01/supervisor-mode/eg5.png">
+<meta property="og:image" content="http://everythingwillgetbetter.github.io/2021/02/01/supervisor-mode/eg6.png">
+<meta property="og:image" content="http://everythingwillgetbetter.github.io/2021/02/01/supervisor-mode/conclusion.png">
+<meta property="og:image" content="http://everythingwillgetbetter.github.io/2021/02/01/supervisor-mode/conclusion1.png">
+<meta property="og:image" content="http://everythingwillgetbetter.github.io/2021/02/01/supervisor-mode/change.png">
+<meta property="og:image" content="http://everythingwillgetbetter.github.io/2021/02/01/supervisor-mode/eg7.png">
+<meta property="og:image" content="http://everythingwillgetbetter.github.io/2021/02/01/supervisor-mode/strature.png">
+<meta property="og:image" content="http://everythingwillgetbetter.github.io/2021/02/01/supervisor-mode/conclusion2.png">
+<meta property="og:image" content="http://everythingwillgetbetter.github.io/2021/02/01/supervisor-mode/PROCESS.png">
+<meta property="og:image" content="http://everythingwillgetbetter.github.io/2021/02/01/supervisor-mode/table3.png">
+<meta property="og:image" content="http://everythingwillgetbetter.github.io/2021/02/01/supervisor-mode/conclusion3.png">
+<meta property="og:image" content="http://everythingwillgetbetter.github.io/2021/02/01/supervisor-mode/part.png">
+<meta property="og:image" content="http://everythingwillgetbetter.github.io/2021/02/01/supervisor-mode/proccess.png">
+<meta property="og:image" content="http://everythingwillgetbetter.github.io/2021/02/01/supervisor-mode/conclusion4.png">
 <meta property="article:published_time" content="2021-02-01T07:48:53.000Z">
 <meta property="article:modified_time" content="2021-04-18T09:10:37.809Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="system">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2021/02/01/supervisor-mode/table.png">
+<meta name="twitter:image" content="http://everythingwillgetbetter.github.io/2021/02/01/supervisor-mode/table.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -88,7 +88,7 @@
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://everythingwillgetbetter.github.io"></form>
       </div>
     </div>
   </div>
@@ -397,7 +397,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/01/supervisor-mode/" data-id="cknn1mv9c003ccrupd5bkg2z7" data-title="supervisor mode" class="article-share-link">Share</a>
+      <a data-url="http://everythingwillgetbetter.github.io/2021/02/01/supervisor-mode/" data-id="cknn2n85e003dmqupget57l32" data-title="supervisor mode" class="article-share-link">Share</a>
       
       
       
